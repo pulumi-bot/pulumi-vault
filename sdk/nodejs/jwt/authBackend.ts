@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/jwt_auth_backend.html.markdown.
- */
 export class AuthBackend extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackend resource's state with the given name, ID, and optional extra
@@ -53,44 +50,48 @@ export class AuthBackend extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not set, system certificates are used.
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not
+     * set, system certificates are used.
      */
     public readonly jwksCaPem!: pulumi.Output<string | undefined>;
     /**
-     * JWKS URL to use to authenticate signatures. Cannot be used with "oidcDiscoveryUrl" or "jwtValidationPubkeys".
+     * JWKS URL to use to authenticate signatures. Cannot be used with 'oidc_discovery_url' or 'jwt_validation_pubkeys'.
      */
     public readonly jwksUrl!: pulumi.Output<string | undefined>;
     /**
-     * A list of supported signing algorithms. Vault 1.1.0 defaults to [RS256] but future or past versions of Vault may differ
+     * A list of supported signing algorithms. Defaults to [RS256]
      */
     public readonly jwtSupportedAlgs!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used in combination with `oidcDiscoveryUrl`
+     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used with 'jwks_url' or
+     * 'oidc_discovery_url'.
      */
     public readonly jwtValidationPubkeys!: pulumi.Output<string[] | undefined>;
     /**
-     * Client ID used for OIDC backends
+     * Client ID used for OIDC
      */
     public readonly oidcClientId!: pulumi.Output<string | undefined>;
     /**
-     * Client Secret used for OIDC backends
+     * Client Secret used for OIDC
      */
     public readonly oidcClientSecret!: pulumi.Output<string | undefined>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery URL. If not set, system certificates are used
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery
+     * URL. If not set, system certificates are used
      */
     public readonly oidcDiscoveryCaPem!: pulumi.Output<string | undefined>;
     /**
-     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used in combination with `jwtValidationPubkeys`
+     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used with 'jwks_url' or
+     * 'jwt_validation_pubkeys'.
      */
     public readonly oidcDiscoveryUrl!: pulumi.Output<string | undefined>;
     /**
-     * Path to mount the JWT/OIDC auth backend
+     * path to mount the backend
      */
     public readonly path!: pulumi.Output<string | undefined>;
     public readonly tune!: pulumi.Output<outputs.jwt.AuthBackendTune>;
     /**
-     * Type of auth backend. Should be one of `jwt` or `oidc`. Default - `jwt`
+     * Type of backend. Can be either 'jwt' or 'oidc'
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -171,44 +172,48 @@ export interface AuthBackendState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not set, system certificates are used.
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not
+     * set, system certificates are used.
      */
     readonly jwksCaPem?: pulumi.Input<string>;
     /**
-     * JWKS URL to use to authenticate signatures. Cannot be used with "oidcDiscoveryUrl" or "jwtValidationPubkeys".
+     * JWKS URL to use to authenticate signatures. Cannot be used with 'oidc_discovery_url' or 'jwt_validation_pubkeys'.
      */
     readonly jwksUrl?: pulumi.Input<string>;
     /**
-     * A list of supported signing algorithms. Vault 1.1.0 defaults to [RS256] but future or past versions of Vault may differ
+     * A list of supported signing algorithms. Defaults to [RS256]
      */
     readonly jwtSupportedAlgs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used in combination with `oidcDiscoveryUrl`
+     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used with 'jwks_url' or
+     * 'oidc_discovery_url'.
      */
     readonly jwtValidationPubkeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Client ID used for OIDC backends
+     * Client ID used for OIDC
      */
     readonly oidcClientId?: pulumi.Input<string>;
     /**
-     * Client Secret used for OIDC backends
+     * Client Secret used for OIDC
      */
     readonly oidcClientSecret?: pulumi.Input<string>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery URL. If not set, system certificates are used
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery
+     * URL. If not set, system certificates are used
      */
     readonly oidcDiscoveryCaPem?: pulumi.Input<string>;
     /**
-     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used in combination with `jwtValidationPubkeys`
+     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used with 'jwks_url' or
+     * 'jwt_validation_pubkeys'.
      */
     readonly oidcDiscoveryUrl?: pulumi.Input<string>;
     /**
-     * Path to mount the JWT/OIDC auth backend
+     * path to mount the backend
      */
     readonly path?: pulumi.Input<string>;
     readonly tune?: pulumi.Input<inputs.jwt.AuthBackendTune>;
     /**
-     * Type of auth backend. Should be one of `jwt` or `oidc`. Default - `jwt`
+     * Type of backend. Can be either 'jwt' or 'oidc'
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -230,44 +235,48 @@ export interface AuthBackendArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not set, system certificates are used.
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not
+     * set, system certificates are used.
      */
     readonly jwksCaPem?: pulumi.Input<string>;
     /**
-     * JWKS URL to use to authenticate signatures. Cannot be used with "oidcDiscoveryUrl" or "jwtValidationPubkeys".
+     * JWKS URL to use to authenticate signatures. Cannot be used with 'oidc_discovery_url' or 'jwt_validation_pubkeys'.
      */
     readonly jwksUrl?: pulumi.Input<string>;
     /**
-     * A list of supported signing algorithms. Vault 1.1.0 defaults to [RS256] but future or past versions of Vault may differ
+     * A list of supported signing algorithms. Defaults to [RS256]
      */
     readonly jwtSupportedAlgs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used in combination with `oidcDiscoveryUrl`
+     * A list of PEM-encoded public keys to use to authenticate signatures locally. Cannot be used with 'jwks_url' or
+     * 'oidc_discovery_url'.
      */
     readonly jwtValidationPubkeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Client ID used for OIDC backends
+     * Client ID used for OIDC
      */
     readonly oidcClientId?: pulumi.Input<string>;
     /**
-     * Client Secret used for OIDC backends
+     * Client Secret used for OIDC
      */
     readonly oidcClientSecret?: pulumi.Input<string>;
     /**
-     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery URL. If not set, system certificates are used
+     * The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery
+     * URL. If not set, system certificates are used
      */
     readonly oidcDiscoveryCaPem?: pulumi.Input<string>;
     /**
-     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used in combination with `jwtValidationPubkeys`
+     * The OIDC Discovery URL, without any .well-known component (base path). Cannot be used with 'jwks_url' or
+     * 'jwt_validation_pubkeys'.
      */
     readonly oidcDiscoveryUrl?: pulumi.Input<string>;
     /**
-     * Path to mount the JWT/OIDC auth backend
+     * path to mount the backend
      */
     readonly path?: pulumi.Input<string>;
     readonly tune?: pulumi.Input<inputs.jwt.AuthBackendTune>;
     /**
-     * Type of auth backend. Should be one of `jwt` or `oidc`. Default - `jwt`
+     * Type of backend. Can be either 'jwt' or 'oidc'
      */
     readonly type?: pulumi.Input<string>;
 }

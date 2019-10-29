@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_group_policies.html.markdown.
- */
 export class GroupPolicies extends pulumi.CustomResource {
     /**
      * Get an existing GroupPolicies resource's state with the given name, ID, and optional extra

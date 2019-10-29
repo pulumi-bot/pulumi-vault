@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to configure the [GCP auth backend within Vault](https://www.vaultproject.io/docs/auth/gcp.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as vault from "@pulumi/vault";
- * 
- * const gcp = new vault.gcp.AuthBackend("gcp", {
- *     credentials: fs.readFileSync("vault-gcp-credentials.json", "utf-8"),
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_auth_backend.html.markdown.
- */
 export class AuthBackend extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackend resource's state with the given name, ID, and optional extra
@@ -48,27 +31,12 @@ export class AuthBackend extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthBackend.__pulumiType;
     }
 
-    /**
-     * The clients email associated with the credentials
-     */
     public readonly clientEmail!: pulumi.Output<string>;
-    /**
-     * The Client ID of the credentials
-     */
     public readonly clientId!: pulumi.Output<string>;
-    /**
-     * A JSON string containing the contents of a GCP credentials file. If this value is empty, Vault will try to use Application Default Credentials from the machine on which the Vault server is running.
-     */
     public readonly credentials!: pulumi.Output<string | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly path!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the private key from the credentials
-     */
     public readonly privateKeyId!: pulumi.Output<string>;
-    /**
-     * The GCP Project ID
-     */
     public readonly projectId!: pulumi.Output<string>;
 
     /**
@@ -115,27 +83,12 @@ export class AuthBackend extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthBackend resources.
  */
 export interface AuthBackendState {
-    /**
-     * The clients email associated with the credentials
-     */
     readonly clientEmail?: pulumi.Input<string>;
-    /**
-     * The Client ID of the credentials
-     */
     readonly clientId?: pulumi.Input<string>;
-    /**
-     * A JSON string containing the contents of a GCP credentials file. If this value is empty, Vault will try to use Application Default Credentials from the machine on which the Vault server is running.
-     */
     readonly credentials?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly path?: pulumi.Input<string>;
-    /**
-     * The ID of the private key from the credentials
-     */
     readonly privateKeyId?: pulumi.Input<string>;
-    /**
-     * The GCP Project ID
-     */
     readonly projectId?: pulumi.Input<string>;
 }
 
@@ -143,26 +96,11 @@ export interface AuthBackendState {
  * The set of arguments for constructing a AuthBackend resource.
  */
 export interface AuthBackendArgs {
-    /**
-     * The clients email associated with the credentials
-     */
     readonly clientEmail?: pulumi.Input<string>;
-    /**
-     * The Client ID of the credentials
-     */
     readonly clientId?: pulumi.Input<string>;
-    /**
-     * A JSON string containing the contents of a GCP credentials file. If this value is empty, Vault will try to use Application Default Credentials from the machine on which the Vault server is running.
-     */
     readonly credentials?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly path?: pulumi.Input<string>;
-    /**
-     * The ID of the private key from the credentials
-     */
     readonly privateKeyId?: pulumi.Input<string>;
-    /**
-     * The GCP Project ID
-     */
     readonly projectId?: pulumi.Input<string>;
 }

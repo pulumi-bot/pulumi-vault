@@ -4,53 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Logs into a Vault server using an AWS auth backend. Login can be
- * accomplished using a signed identity request from IAM or using ec2
- * instance metadata. For more information, see the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/aws.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const aws = new vault.AuthBackend("aws", {
- *     type: "aws",
- * });
- * const exampleAuthBackendClient = new vault.aws.AuthBackendClient("example", {
- *     accessKey: "123456789012",
- *     backend: aws.path,
- *     secretKey: "AWSSECRETKEYGOESHERE",
- * });
- * const exampleAuthBackendRole = new vault.aws.AuthBackendRole("example", {
- *     authType: "ec2",
- *     backend: aws.path,
- *     boundAccountId: "123456789012",
- *     boundAmiId: "ami-8c1be5f6",
- *     boundIamInstanceProfileArn: "arn:aws:iam::123456789012:instance-profile/MyProfile",
- *     boundSubnetId: "vpc-133128f1",
- *     boundVpcId: "vpc-b61106d4",
- *     maxTtl: 120,
- *     policies: [
- *         "default",
- *         "dev",
- *         "prod",
- *     ],
- *     role: "test-role",
- *     ttl: 60,
- * }, {dependsOn: [exampleAuthBackendClient]});
- * const exampleAuthBackendLogin = new vault.aws.AuthBackendLogin("example", {
- *     backend: vault_auth_backend_example.path,
- *     identity: "BASE64ENCODEDIDENTITYDOCUMENT",
- *     role: exampleAuthBackendRole.role,
- *     signature: "BASE64ENCODEDSHA256IDENTITYDOCUMENTSIGNATURE",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_login.html.markdown.
- */
 export class AuthBackendLogin extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendLogin resource's state with the given name, ID, and optional extra
@@ -79,16 +32,15 @@ export class AuthBackendLogin extends pulumi.CustomResource {
     }
 
     /**
-     * The token's accessor.
+     * The accessor returned from Vault for this token.
      */
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
-     * The authentication type used to generate this token.
+     * The auth method used to generate this token.
      */
     public /*out*/ readonly authType!: pulumi.Output<string>;
     /**
-     * The unique name of the AWS auth backend. Defaults to
-     * 'aws'.
+     * AWS Auth Backend to read the token from.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
@@ -96,33 +48,27 @@ export class AuthBackendLogin extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientToken!: pulumi.Output<string>;
     /**
-     * The HTTP method used in the signed IAM
-     * request.
+     * The HTTP method used in the signed request.
      */
     public readonly iamHttpRequestMethod!: pulumi.Output<string | undefined>;
     /**
-     * The base64-encoded body of the signed
-     * request.
+     * The Base64-encoded body of the signed request.
      */
     public readonly iamRequestBody!: pulumi.Output<string | undefined>;
     /**
-     * The base64-encoded, JSON serialized
-     * representation of the GetCallerIdentity HTTP request headers.
+     * The Base64-encoded, JSON serialized representation of the sts:GetCallerIdentity HTTP request headers.
      */
     public readonly iamRequestHeaders!: pulumi.Output<string | undefined>;
     /**
-     * The base64-encoded HTTP URL used in the signed
-     * request.
+     * The Base64-encoded HTTP URL used in the signed request.
      */
     public readonly iamRequestUrl!: pulumi.Output<string | undefined>;
     /**
-     * The base64-encoded EC2 instance identity document to
-     * authenticate with. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded EC2 instance identity document to authenticate with.
      */
     public readonly identity!: pulumi.Output<string | undefined>;
     /**
-     * The duration in seconds the token will be valid, relative
-     * to the time in `leaseStartTime`.
+     * Lease duration in seconds relative to the time in lease_start_time.
      */
     public /*out*/ readonly leaseDuration!: pulumi.Output<number>;
     /**
@@ -130,40 +76,31 @@ export class AuthBackendLogin extends pulumi.CustomResource {
      */
     public /*out*/ readonly leaseStartTime!: pulumi.Output<string>;
     /**
-     * A map of information returned by the Vault server about the
-     * authentication used to generate this token.
+     * The metadata reported by the Vault server.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The unique nonce to be used for login requests. Can be
-     * set to a user-specified value, or will contain the server-generated value
-     * once a token is issued. EC2 instances can only acquire a single token until
-     * the whitelist is tidied again unless they keep track of this nonce.
+     * The nonce to be used for subsequent login requests.
      */
     public readonly nonce!: pulumi.Output<string>;
     /**
-     * The PKCS#7 signature of the identity document to
-     * authenticate with, with all newline characters removed. Can be retrieved from
-     * the EC2 metadata server.
+     * PKCS7 signature of the identity document to authenticate with, with all newline characters removed.
      */
     public readonly pkcs7!: pulumi.Output<string | undefined>;
     /**
-     * The Vault policies assigned to this token.
+     * The policies assigned to this token.
      */
     public /*out*/ readonly policies!: pulumi.Output<string[]>;
     /**
-     * Set to true if the token can be extended through renewal.
+     * True if the duration of this lease can be extended through renewal.
      */
     public /*out*/ readonly renewable!: pulumi.Output<boolean>;
     /**
-     * The name of the AWS auth backend role to create tokens
-     * against.
+     * AWS Auth Role to read the token from.
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The base64-encoded SHA256 RSA signature of the
-     * instance identity document to authenticate with, with all newline characters
-     * removed. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded SHA256 RSA signature of the instance identtiy document to authenticate with.
      */
     public readonly signature!: pulumi.Output<string | undefined>;
 
@@ -234,16 +171,15 @@ export class AuthBackendLogin extends pulumi.CustomResource {
  */
 export interface AuthBackendLoginState {
     /**
-     * The token's accessor.
+     * The accessor returned from Vault for this token.
      */
     readonly accessor?: pulumi.Input<string>;
     /**
-     * The authentication type used to generate this token.
+     * The auth method used to generate this token.
      */
     readonly authType?: pulumi.Input<string>;
     /**
-     * The unique name of the AWS auth backend. Defaults to
-     * 'aws'.
+     * AWS Auth Backend to read the token from.
      */
     readonly backend?: pulumi.Input<string>;
     /**
@@ -251,33 +187,27 @@ export interface AuthBackendLoginState {
      */
     readonly clientToken?: pulumi.Input<string>;
     /**
-     * The HTTP method used in the signed IAM
-     * request.
+     * The HTTP method used in the signed request.
      */
     readonly iamHttpRequestMethod?: pulumi.Input<string>;
     /**
-     * The base64-encoded body of the signed
-     * request.
+     * The Base64-encoded body of the signed request.
      */
     readonly iamRequestBody?: pulumi.Input<string>;
     /**
-     * The base64-encoded, JSON serialized
-     * representation of the GetCallerIdentity HTTP request headers.
+     * The Base64-encoded, JSON serialized representation of the sts:GetCallerIdentity HTTP request headers.
      */
     readonly iamRequestHeaders?: pulumi.Input<string>;
     /**
-     * The base64-encoded HTTP URL used in the signed
-     * request.
+     * The Base64-encoded HTTP URL used in the signed request.
      */
     readonly iamRequestUrl?: pulumi.Input<string>;
     /**
-     * The base64-encoded EC2 instance identity document to
-     * authenticate with. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded EC2 instance identity document to authenticate with.
      */
     readonly identity?: pulumi.Input<string>;
     /**
-     * The duration in seconds the token will be valid, relative
-     * to the time in `leaseStartTime`.
+     * Lease duration in seconds relative to the time in lease_start_time.
      */
     readonly leaseDuration?: pulumi.Input<number>;
     /**
@@ -285,40 +215,31 @@ export interface AuthBackendLoginState {
      */
     readonly leaseStartTime?: pulumi.Input<string>;
     /**
-     * A map of information returned by the Vault server about the
-     * authentication used to generate this token.
+     * The metadata reported by the Vault server.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The unique nonce to be used for login requests. Can be
-     * set to a user-specified value, or will contain the server-generated value
-     * once a token is issued. EC2 instances can only acquire a single token until
-     * the whitelist is tidied again unless they keep track of this nonce.
+     * The nonce to be used for subsequent login requests.
      */
     readonly nonce?: pulumi.Input<string>;
     /**
-     * The PKCS#7 signature of the identity document to
-     * authenticate with, with all newline characters removed. Can be retrieved from
-     * the EC2 metadata server.
+     * PKCS7 signature of the identity document to authenticate with, with all newline characters removed.
      */
     readonly pkcs7?: pulumi.Input<string>;
     /**
-     * The Vault policies assigned to this token.
+     * The policies assigned to this token.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set to true if the token can be extended through renewal.
+     * True if the duration of this lease can be extended through renewal.
      */
     readonly renewable?: pulumi.Input<boolean>;
     /**
-     * The name of the AWS auth backend role to create tokens
-     * against.
+     * AWS Auth Role to read the token from.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The base64-encoded SHA256 RSA signature of the
-     * instance identity document to authenticate with, with all newline characters
-     * removed. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded SHA256 RSA signature of the instance identtiy document to authenticate with.
      */
     readonly signature?: pulumi.Input<string>;
 }
@@ -328,57 +249,43 @@ export interface AuthBackendLoginState {
  */
 export interface AuthBackendLoginArgs {
     /**
-     * The unique name of the AWS auth backend. Defaults to
-     * 'aws'.
+     * AWS Auth Backend to read the token from.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The HTTP method used in the signed IAM
-     * request.
+     * The HTTP method used in the signed request.
      */
     readonly iamHttpRequestMethod?: pulumi.Input<string>;
     /**
-     * The base64-encoded body of the signed
-     * request.
+     * The Base64-encoded body of the signed request.
      */
     readonly iamRequestBody?: pulumi.Input<string>;
     /**
-     * The base64-encoded, JSON serialized
-     * representation of the GetCallerIdentity HTTP request headers.
+     * The Base64-encoded, JSON serialized representation of the sts:GetCallerIdentity HTTP request headers.
      */
     readonly iamRequestHeaders?: pulumi.Input<string>;
     /**
-     * The base64-encoded HTTP URL used in the signed
-     * request.
+     * The Base64-encoded HTTP URL used in the signed request.
      */
     readonly iamRequestUrl?: pulumi.Input<string>;
     /**
-     * The base64-encoded EC2 instance identity document to
-     * authenticate with. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded EC2 instance identity document to authenticate with.
      */
     readonly identity?: pulumi.Input<string>;
     /**
-     * The unique nonce to be used for login requests. Can be
-     * set to a user-specified value, or will contain the server-generated value
-     * once a token is issued. EC2 instances can only acquire a single token until
-     * the whitelist is tidied again unless they keep track of this nonce.
+     * The nonce to be used for subsequent login requests.
      */
     readonly nonce?: pulumi.Input<string>;
     /**
-     * The PKCS#7 signature of the identity document to
-     * authenticate with, with all newline characters removed. Can be retrieved from
-     * the EC2 metadata server.
+     * PKCS7 signature of the identity document to authenticate with, with all newline characters removed.
      */
     readonly pkcs7?: pulumi.Input<string>;
     /**
-     * The name of the AWS auth backend role to create tokens
-     * against.
+     * AWS Auth Role to read the token from.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The base64-encoded SHA256 RSA signature of the
-     * instance identity document to authenticate with, with all newline characters
-     * removed. Can be retrieved from the EC2 metadata server.
+     * Base64-encoded SHA256 RSA signature of the instance identtiy document to authenticate with.
      */
     readonly signature?: pulumi.Input<string>;
 }

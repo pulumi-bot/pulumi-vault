@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a group in an [LDAP auth backend within Vault](https://www.vaultproject.io/docs/auth/ldap.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const ldap = new vault.lDAP.AuthBackend("ldap", {
- *     discoverdn: false,
- *     groupdn: "OU=Groups,DC=example,DC=org",
- *     groupfilter: "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))",
- *     path: "ldap",
- *     upndomain: "EXAMPLE.ORG",
- *     url: "ldaps://dc-01.example.org",
- *     userattr: "sAMAccountName",
- *     userdn: "OU=Users,OU=Accounts,DC=example,DC=org",
- * });
- * const group = new vault.lDAP.AuthBackendGroup("group", {
- *     backend: ldap.path,
- *     groupname: "dba",
- *     policies: ["dba"],
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend_group.html.markdown.
- */
 export class AuthBackendGroup extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendGroup resource's state with the given name, ID, and optional extra
@@ -59,17 +31,8 @@ export class AuthBackendGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthBackendGroup.__pulumiType;
     }
 
-    /**
-     * Path to the authentication backend
-     */
     public readonly backend!: pulumi.Output<string | undefined>;
-    /**
-     * The LDAP groupname
-     */
     public readonly groupname!: pulumi.Output<string>;
-    /**
-     * Policies which should be granted to members of the group
-     */
     public readonly policies!: pulumi.Output<string[]>;
 
     /**
@@ -111,17 +74,8 @@ export class AuthBackendGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthBackendGroup resources.
  */
 export interface AuthBackendGroupState {
-    /**
-     * Path to the authentication backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * The LDAP groupname
-     */
     readonly groupname?: pulumi.Input<string>;
-    /**
-     * Policies which should be granted to members of the group
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -129,16 +83,7 @@ export interface AuthBackendGroupState {
  * The set of arguments for constructing a AuthBackendGroup resource.
  */
 export interface AuthBackendGroupArgs {
-    /**
-     * Path to the authentication backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * The LDAP groupname
-     */
     readonly groupname: pulumi.Input<string>;
-    /**
-     * Policies which should be granted to members of the group
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }
