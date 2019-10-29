@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a resource to manage [Duo MFA](https://www.vaultproject.io/docs/enterprise/mfa/mfa-duo.html).
- * 
- * **Note** this feature is available only with Vault Enterprise.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const userpass = new vault.AuthBackend("userpass", {
- *     path: "userpass",
- *     type: "userpass",
- * });
- * const myDuo = new vault.MfaDuo("myDuo", {
- *     apiHostname: "api-2b5c39f5.duosecurity.com",
- *     integrationKey: "BIACEUEAXI20BNWTEYXT",
- *     mountAccessor: userpass.accessor,
- *     secretKey: "8C7THtrIigh2rPZQMbguugt8IUftWhMRCOBzbuyz",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/mfa_duo.html.markdown.
- */
 export class MfaDuo extends pulumi.CustomResource {
     /**
      * Get an existing MfaDuo resource's state with the given name, ID, and optional extra

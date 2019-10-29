@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_endpoint.html.markdown.
- */
 export class Endpoint extends pulumi.CustomResource {
     /**
      * Get an existing Endpoint resource's state with the given name, ID, and optional extra
@@ -35,8 +32,7 @@ export class Endpoint extends pulumi.CustomResource {
     }
 
     /**
-     * String containing a JSON-encoded object that will be
-     * written to the given path as the secret data.
+     * JSON-encoded data to write.
      */
     public readonly dataJson!: pulumi.Output<string>;
     /**
@@ -44,11 +40,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly disableDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data or if the endpoint does
-     * not support the `GET` method. Setting this to `true` will break drift
-     * detection. You should set this to `true` for endpoints that are
-     * write-only. Defaults to false.
+     * Don't attempt to read the path from Vault if true; drift won't be detected
      */
     public readonly disableRead!: pulumi.Output<boolean | undefined>;
     /**
@@ -56,10 +48,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly ignoreAbsentFields!: pulumi.Output<boolean | undefined>;
     /**
-     * The full logical path at which to write the given
-     * data. Consult each backend's documentation to see which endpoints
-     * support the `PUT` methods and to determine whether they also support
-     * `DELETE` and `GET`.
+     * Full path where to the endpoint that will be written
      */
     public readonly path!: pulumi.Output<string>;
     /**
@@ -128,8 +117,7 @@ export class Endpoint extends pulumi.CustomResource {
  */
 export interface EndpointState {
     /**
-     * String containing a JSON-encoded object that will be
-     * written to the given path as the secret data.
+     * JSON-encoded data to write.
      */
     readonly dataJson?: pulumi.Input<string>;
     /**
@@ -137,11 +125,7 @@ export interface EndpointState {
      */
     readonly disableDelete?: pulumi.Input<boolean>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data or if the endpoint does
-     * not support the `GET` method. Setting this to `true` will break drift
-     * detection. You should set this to `true` for endpoints that are
-     * write-only. Defaults to false.
+     * Don't attempt to read the path from Vault if true; drift won't be detected
      */
     readonly disableRead?: pulumi.Input<boolean>;
     /**
@@ -149,10 +133,7 @@ export interface EndpointState {
      */
     readonly ignoreAbsentFields?: pulumi.Input<boolean>;
     /**
-     * The full logical path at which to write the given
-     * data. Consult each backend's documentation to see which endpoints
-     * support the `PUT` methods and to determine whether they also support
-     * `DELETE` and `GET`.
+     * Full path where to the endpoint that will be written
      */
     readonly path?: pulumi.Input<string>;
     /**
@@ -174,8 +155,7 @@ export interface EndpointState {
  */
 export interface EndpointArgs {
     /**
-     * String containing a JSON-encoded object that will be
-     * written to the given path as the secret data.
+     * JSON-encoded data to write.
      */
     readonly dataJson: pulumi.Input<string>;
     /**
@@ -183,11 +163,7 @@ export interface EndpointArgs {
      */
     readonly disableDelete?: pulumi.Input<boolean>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data or if the endpoint does
-     * not support the `GET` method. Setting this to `true` will break drift
-     * detection. You should set this to `true` for endpoints that are
-     * write-only. Defaults to false.
+     * Don't attempt to read the path from Vault if true; drift won't be detected
      */
     readonly disableRead?: pulumi.Input<boolean>;
     /**
@@ -195,10 +171,7 @@ export interface EndpointArgs {
      */
     readonly ignoreAbsentFields?: pulumi.Input<boolean>;
     /**
-     * The full logical path at which to write the given
-     * data. Consult each backend's documentation to see which endpoints
-     * support the `PUT` methods and to determine whether they also support
-     * `DELETE` and `GET`.
+     * Full path where to the endpoint that will be written
      */
     readonly path: pulumi.Input<string>;
     /**

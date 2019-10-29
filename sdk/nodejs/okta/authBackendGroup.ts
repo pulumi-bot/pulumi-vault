@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a group in an
- * [Okta auth backend within Vault](https://www.vaultproject.io/docs/auth/okta.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.okta.AuthBackend("example", {
- *     organization: "dummy",
- *     path: "groupOkta",
- * });
- * const foo = new vault.okta.AuthBackendGroup("foo", {
- *     groupName: "foo",
- *     path: example.path,
- *     policies: [
- *         "one",
- *         "two",
- *     ],
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/okta_auth_backend_group.html.markdown.
- */
 export class AuthBackendGroup extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendGroup resource's state with the given name, ID, and optional extra
@@ -60,15 +34,15 @@ export class AuthBackendGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the group within the Okta
+     * Name of the Okta group
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * The path where the Okta auth backend is mounted
+     * Path to the Okta auth backend
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * Vault policies to associate with this group
+     * Policies to associate with this group
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
 
@@ -115,15 +89,15 @@ export class AuthBackendGroup extends pulumi.CustomResource {
  */
 export interface AuthBackendGroupState {
     /**
-     * Name of the group within the Okta
+     * Name of the Okta group
      */
     readonly groupName?: pulumi.Input<string>;
     /**
-     * The path where the Okta auth backend is mounted
+     * Path to the Okta auth backend
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Vault policies to associate with this group
+     * Policies to associate with this group
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -133,15 +107,15 @@ export interface AuthBackendGroupState {
  */
 export interface AuthBackendGroupArgs {
     /**
-     * Name of the group within the Okta
+     * Name of the Okta group
      */
     readonly groupName: pulumi.Input<string>;
     /**
-     * The path where the Okta auth backend is mounted
+     * Path to the Okta auth backend
      */
     readonly path: pulumi.Input<string>;
     /**
-     * Vault policies to associate with this group
+     * Policies to associate with this group
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }

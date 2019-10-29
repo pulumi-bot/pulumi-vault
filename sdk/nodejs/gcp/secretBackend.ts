@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_backend.html.markdown.
- */
 export class SecretBackend extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackend resource's state with the given name, ID, and optional extra
@@ -35,26 +32,23 @@ export class SecretBackend extends pulumi.CustomResource {
     }
 
     /**
-     * The GCP service account credentials in JSON format.
+     * JSON-encoded credentials to use to connect to GCP
      */
     public readonly credentials!: pulumi.Output<string | undefined>;
     /**
-     * The default TTL for credentials
-     * issued by this backend. Defaults to '0'.
+     * Default lease duration for secrets in seconds
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number | undefined>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend. Defaults to '0'.
+     * Maximum possible lease duration for secrets in seconds
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number | undefined>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `gcp`.
+     * Path to mount the backend at.
      */
     public readonly path!: pulumi.Output<string | undefined>;
 
@@ -99,26 +93,23 @@ export class SecretBackend extends pulumi.CustomResource {
  */
 export interface SecretBackendState {
     /**
-     * The GCP service account credentials in JSON format.
+     * JSON-encoded credentials to use to connect to GCP
      */
     readonly credentials?: pulumi.Input<string>;
     /**
-     * The default TTL for credentials
-     * issued by this backend. Defaults to '0'.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend. Defaults to '0'.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `gcp`.
+     * Path to mount the backend at.
      */
     readonly path?: pulumi.Input<string>;
 }
@@ -128,26 +119,23 @@ export interface SecretBackendState {
  */
 export interface SecretBackendArgs {
     /**
-     * The GCP service account credentials in JSON format.
+     * JSON-encoded credentials to use to connect to GCP
      */
     readonly credentials?: pulumi.Input<string>;
     /**
-     * The default TTL for credentials
-     * issued by this backend. Defaults to '0'.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend. Defaults to '0'.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `gcp`.
+     * Path to mount the backend at.
      */
     readonly path?: pulumi.Input<string>;
 }
