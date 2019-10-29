@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_client.html.markdown.
- */
 export class AuthBackendClient extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendClient resource's state with the given name, ID, and optional extra
@@ -35,39 +32,32 @@ export class AuthBackendClient extends pulumi.CustomResource {
     }
 
     /**
-     * The AWS access key that Vault should use for the
-     * auth backend.
+     * AWS Access key with permissions to query AWS APIs.
      */
     public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * Override the URL Vault uses when making EC2 API
-     * calls.
+     * URL to override the default generated endpoint for making AWS EC2 API calls.
      */
     public readonly ec2Endpoint!: pulumi.Output<string | undefined>;
     /**
-     * Override the URL Vault uses when making IAM API
-     * calls.
+     * URL to override the default generated endpoint for making AWS IAM API calls.
      */
     public readonly iamEndpoint!: pulumi.Output<string | undefined>;
     /**
-     * The value to require in the
-     * `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-     * that are used in the IAM auth method.
+     * The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in
+     * the iam auth method.
      */
     public readonly iamServerIdHeaderValue!: pulumi.Output<string | undefined>;
     /**
-     * The AWS secret key that Vault should use for the
-     * auth backend.
+     * AWS Secret key with permissions to query AWS APIs.
      */
     public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
-     * Override the URL Vault uses when making STS API
-     * calls.
+     * URL to override the default generated endpoint for making AWS STS API calls.
      */
     public readonly stsEndpoint!: pulumi.Output<string | undefined>;
 
@@ -116,39 +106,32 @@ export class AuthBackendClient extends pulumi.CustomResource {
  */
 export interface AuthBackendClientState {
     /**
-     * The AWS access key that Vault should use for the
-     * auth backend.
+     * AWS Access key with permissions to query AWS APIs.
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making EC2 API
-     * calls.
+     * URL to override the default generated endpoint for making AWS EC2 API calls.
      */
     readonly ec2Endpoint?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making IAM API
-     * calls.
+     * URL to override the default generated endpoint for making AWS IAM API calls.
      */
     readonly iamEndpoint?: pulumi.Input<string>;
     /**
-     * The value to require in the
-     * `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-     * that are used in the IAM auth method.
+     * The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in
+     * the iam auth method.
      */
     readonly iamServerIdHeaderValue?: pulumi.Input<string>;
     /**
-     * The AWS secret key that Vault should use for the
-     * auth backend.
+     * AWS Secret key with permissions to query AWS APIs.
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making STS API
-     * calls.
+     * URL to override the default generated endpoint for making AWS STS API calls.
      */
     readonly stsEndpoint?: pulumi.Input<string>;
 }
@@ -158,39 +141,32 @@ export interface AuthBackendClientState {
  */
 export interface AuthBackendClientArgs {
     /**
-     * The AWS access key that Vault should use for the
-     * auth backend.
+     * AWS Access key with permissions to query AWS APIs.
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making EC2 API
-     * calls.
+     * URL to override the default generated endpoint for making AWS EC2 API calls.
      */
     readonly ec2Endpoint?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making IAM API
-     * calls.
+     * URL to override the default generated endpoint for making AWS IAM API calls.
      */
     readonly iamEndpoint?: pulumi.Input<string>;
     /**
-     * The value to require in the
-     * `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-     * that are used in the IAM auth method.
+     * The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in
+     * the iam auth method.
      */
     readonly iamServerIdHeaderValue?: pulumi.Input<string>;
     /**
-     * The AWS secret key that Vault should use for the
-     * auth backend.
+     * AWS Secret key with permissions to query AWS APIs.
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
-     * Override the URL Vault uses when making STS API
-     * calls.
+     * URL to override the default generated endpoint for making AWS STS API calls.
      */
     readonly stsEndpoint?: pulumi.Input<string>;
 }

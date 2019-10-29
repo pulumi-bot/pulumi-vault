@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an Identity Group Alias for Vault. The [Identity secrets engine](https://www.vaultproject.io/docs/secrets/identity/index.html) is the identity management solution for Vault.
- * 
- * Group aliases allows entity membership in external groups to be managed semi-automatically. External group serves as a mapping to a group that is outside of the identity store. External groups can have one (and only one) alias. This alias should map to a notion of group that is outside of the identity store. For example, groups in LDAP, and teams in GitHub. A username in LDAP, belonging to a group in LDAP, can get its entity ID added as a member of a group in Vault automatically during logins and token renewals. This works only if the group in Vault is an external group and has an alias that maps to the group in LDAP. If the user is removed from the group in LDAP, that change gets reflected in Vault only upon the subsequent login or renewal operation.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const group = new vault.identity.Group("group", {
- *     policies: ["test"],
- *     type: "external",
- * });
- * const github = new vault.AuthBackend("github", {
- *     path: "github",
- *     type: "github",
- * });
- * const groupAlias = new vault.identity.GroupAlias("group-alias", {
- *     canonicalId: group.id,
- *     mountAccessor: github.accessor,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_group_alias.html.markdown.
- */
 export class GroupAlias extends pulumi.CustomResource {
     /**
      * Get an existing GroupAlias resource's state with the given name, ID, and optional extra
@@ -63,11 +36,11 @@ export class GroupAlias extends pulumi.CustomResource {
      */
     public readonly canonicalId!: pulumi.Output<string>;
     /**
-     * Mount accessor of the authentication backend to which this alias belongs to.
+     * Mount accessor to which this alias belongs to.
      */
     public readonly mountAccessor!: pulumi.Output<string>;
     /**
-     * Name of the group alias to create.
+     * Name of the group alias.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -118,11 +91,11 @@ export interface GroupAliasState {
      */
     readonly canonicalId?: pulumi.Input<string>;
     /**
-     * Mount accessor of the authentication backend to which this alias belongs to.
+     * Mount accessor to which this alias belongs to.
      */
     readonly mountAccessor?: pulumi.Input<string>;
     /**
-     * Name of the group alias to create.
+     * Name of the group alias.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -136,11 +109,11 @@ export interface GroupAliasArgs {
      */
     readonly canonicalId: pulumi.Input<string>;
     /**
-     * Mount accessor of the authentication backend to which this alias belongs to.
+     * Mount accessor to which this alias belongs to.
      */
     readonly mountAccessor: pulumi.Input<string>;
     /**
-     * Name of the group alias to create.
+     * Name of the group alias.
      */
     readonly name?: pulumi.Input<string>;
 }

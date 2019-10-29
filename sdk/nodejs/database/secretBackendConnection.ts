@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_connection.html.markdown.
- */
 export class SecretBackendConnection extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendConnection resource's state with the given name, ID, and optional extra
@@ -37,16 +34,15 @@ export class SecretBackendConnection extends pulumi.CustomResource {
     }
 
     /**
-     * A list of roles that are allowed to use this
-     * connection.
+     * A list of roles that are allowed to use this connection.
      */
     public readonly allowedRoles!: pulumi.Output<string[] | undefined>;
     /**
-     * The unique name of the Vault mount to configure.
+     * Unique name of the Vault mount to configure.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * A nested block containing configuration options for Cassandra connections.
+     * Connection parameters for the cassandra-database-plugin plugin.
      */
     public readonly cassandra!: pulumi.Output<outputs.database.SecretBackendConnectionCassandra | undefined>;
     /**
@@ -54,43 +50,43 @@ export class SecretBackendConnection extends pulumi.CustomResource {
      */
     public readonly data!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * A nested block containing configuration options for SAP HanaDB connections.
+     * Connection parameters for the hana-database-plugin plugin.
      */
     public readonly hana!: pulumi.Output<outputs.database.SecretBackendConnectionHana | undefined>;
     /**
-     * A nested block containing configuration options for MongoDB connections.
+     * Connection parameters for the mongodb-database-plugin plugin.
      */
     public readonly mongodb!: pulumi.Output<outputs.database.SecretBackendConnectionMongodb | undefined>;
     /**
-     * A nested block containing configuration options for MSSQL connections.
+     * Connection parameters for the mssql-database-plugin plugin.
      */
     public readonly mssql!: pulumi.Output<outputs.database.SecretBackendConnectionMssql | undefined>;
     /**
-     * A nested block containing configuration options for MySQL connections.
+     * Connection parameters for the mysql-database-plugin plugin.
      */
     public readonly mysql!: pulumi.Output<outputs.database.SecretBackendConnectionMysql | undefined>;
     /**
-     * A nested block containing configuration options for Aurora MySQL connections.
+     * Connection parameters for the mysql-aurora-database-plugin plugin.
      */
     public readonly mysqlAurora!: pulumi.Output<outputs.database.SecretBackendConnectionMysqlAurora | undefined>;
     /**
-     * A nested block containing configuration options for legacy MySQL connections.
+     * Connection parameters for the mysql-legacy-database-plugin plugin.
      */
     public readonly mysqlLegacy!: pulumi.Output<outputs.database.SecretBackendConnectionMysqlLegacy | undefined>;
     /**
-     * A nested block containing configuration options for RDS MySQL connections.
+     * Connection parameters for the mysql-rds-database-plugin plugin.
      */
     public readonly mysqlRds!: pulumi.Output<outputs.database.SecretBackendConnectionMysqlRds | undefined>;
     /**
-     * A unique name to give the database connection.
+     * Name of the database connection.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A nested block containing configuration options for Oracle connections.
+     * Connection parameters for the oracle-database-plugin plugin.
      */
     public readonly oracle!: pulumi.Output<outputs.database.SecretBackendConnectionOracle | undefined>;
     /**
-     * A nested block containing configuration options for PostgreSQL connections.
+     * Connection parameters for the postgresql-database-plugin plugin.
      */
     public readonly postgresql!: pulumi.Output<outputs.database.SecretBackendConnectionPostgresql | undefined>;
     /**
@@ -98,8 +94,7 @@ export class SecretBackendConnection extends pulumi.CustomResource {
      */
     public readonly rootRotationStatements!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether the connection should be verified on
-     * initial configuration or not.
+     * Specifies if the connection is verified during initial configuration.
      */
     public readonly verifyConnection!: pulumi.Output<boolean | undefined>;
 
@@ -169,16 +164,15 @@ export class SecretBackendConnection extends pulumi.CustomResource {
  */
 export interface SecretBackendConnectionState {
     /**
-     * A list of roles that are allowed to use this
-     * connection.
+     * A list of roles that are allowed to use this connection.
      */
     readonly allowedRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the Vault mount to configure.
+     * Unique name of the Vault mount to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * A nested block containing configuration options for Cassandra connections.
+     * Connection parameters for the cassandra-database-plugin plugin.
      */
     readonly cassandra?: pulumi.Input<inputs.database.SecretBackendConnectionCassandra>;
     /**
@@ -186,43 +180,43 @@ export interface SecretBackendConnectionState {
      */
     readonly data?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A nested block containing configuration options for SAP HanaDB connections.
+     * Connection parameters for the hana-database-plugin plugin.
      */
     readonly hana?: pulumi.Input<inputs.database.SecretBackendConnectionHana>;
     /**
-     * A nested block containing configuration options for MongoDB connections.
+     * Connection parameters for the mongodb-database-plugin plugin.
      */
     readonly mongodb?: pulumi.Input<inputs.database.SecretBackendConnectionMongodb>;
     /**
-     * A nested block containing configuration options for MSSQL connections.
+     * Connection parameters for the mssql-database-plugin plugin.
      */
     readonly mssql?: pulumi.Input<inputs.database.SecretBackendConnectionMssql>;
     /**
-     * A nested block containing configuration options for MySQL connections.
+     * Connection parameters for the mysql-database-plugin plugin.
      */
     readonly mysql?: pulumi.Input<inputs.database.SecretBackendConnectionMysql>;
     /**
-     * A nested block containing configuration options for Aurora MySQL connections.
+     * Connection parameters for the mysql-aurora-database-plugin plugin.
      */
     readonly mysqlAurora?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlAurora>;
     /**
-     * A nested block containing configuration options for legacy MySQL connections.
+     * Connection parameters for the mysql-legacy-database-plugin plugin.
      */
     readonly mysqlLegacy?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlLegacy>;
     /**
-     * A nested block containing configuration options for RDS MySQL connections.
+     * Connection parameters for the mysql-rds-database-plugin plugin.
      */
     readonly mysqlRds?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlRds>;
     /**
-     * A unique name to give the database connection.
+     * Name of the database connection.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested block containing configuration options for Oracle connections.
+     * Connection parameters for the oracle-database-plugin plugin.
      */
     readonly oracle?: pulumi.Input<inputs.database.SecretBackendConnectionOracle>;
     /**
-     * A nested block containing configuration options for PostgreSQL connections.
+     * Connection parameters for the postgresql-database-plugin plugin.
      */
     readonly postgresql?: pulumi.Input<inputs.database.SecretBackendConnectionPostgresql>;
     /**
@@ -230,8 +224,7 @@ export interface SecretBackendConnectionState {
      */
     readonly rootRotationStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the connection should be verified on
-     * initial configuration or not.
+     * Specifies if the connection is verified during initial configuration.
      */
     readonly verifyConnection?: pulumi.Input<boolean>;
 }
@@ -241,16 +234,15 @@ export interface SecretBackendConnectionState {
  */
 export interface SecretBackendConnectionArgs {
     /**
-     * A list of roles that are allowed to use this
-     * connection.
+     * A list of roles that are allowed to use this connection.
      */
     readonly allowedRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the Vault mount to configure.
+     * Unique name of the Vault mount to configure.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * A nested block containing configuration options for Cassandra connections.
+     * Connection parameters for the cassandra-database-plugin plugin.
      */
     readonly cassandra?: pulumi.Input<inputs.database.SecretBackendConnectionCassandra>;
     /**
@@ -258,43 +250,43 @@ export interface SecretBackendConnectionArgs {
      */
     readonly data?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A nested block containing configuration options for SAP HanaDB connections.
+     * Connection parameters for the hana-database-plugin plugin.
      */
     readonly hana?: pulumi.Input<inputs.database.SecretBackendConnectionHana>;
     /**
-     * A nested block containing configuration options for MongoDB connections.
+     * Connection parameters for the mongodb-database-plugin plugin.
      */
     readonly mongodb?: pulumi.Input<inputs.database.SecretBackendConnectionMongodb>;
     /**
-     * A nested block containing configuration options for MSSQL connections.
+     * Connection parameters for the mssql-database-plugin plugin.
      */
     readonly mssql?: pulumi.Input<inputs.database.SecretBackendConnectionMssql>;
     /**
-     * A nested block containing configuration options for MySQL connections.
+     * Connection parameters for the mysql-database-plugin plugin.
      */
     readonly mysql?: pulumi.Input<inputs.database.SecretBackendConnectionMysql>;
     /**
-     * A nested block containing configuration options for Aurora MySQL connections.
+     * Connection parameters for the mysql-aurora-database-plugin plugin.
      */
     readonly mysqlAurora?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlAurora>;
     /**
-     * A nested block containing configuration options for legacy MySQL connections.
+     * Connection parameters for the mysql-legacy-database-plugin plugin.
      */
     readonly mysqlLegacy?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlLegacy>;
     /**
-     * A nested block containing configuration options for RDS MySQL connections.
+     * Connection parameters for the mysql-rds-database-plugin plugin.
      */
     readonly mysqlRds?: pulumi.Input<inputs.database.SecretBackendConnectionMysqlRds>;
     /**
-     * A unique name to give the database connection.
+     * Name of the database connection.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested block containing configuration options for Oracle connections.
+     * Connection parameters for the oracle-database-plugin plugin.
      */
     readonly oracle?: pulumi.Input<inputs.database.SecretBackendConnectionOracle>;
     /**
-     * A nested block containing configuration options for PostgreSQL connections.
+     * Connection parameters for the postgresql-database-plugin plugin.
      */
     readonly postgresql?: pulumi.Input<inputs.database.SecretBackendConnectionPostgresql>;
     /**
@@ -302,8 +294,7 @@ export interface SecretBackendConnectionArgs {
      */
     readonly rootRotationStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the connection should be verified on
-     * initial configuration or not.
+     * Specifies if the connection is verified during initial configuration.
      */
     readonly verifyConnection?: pulumi.Input<boolean>;
 }

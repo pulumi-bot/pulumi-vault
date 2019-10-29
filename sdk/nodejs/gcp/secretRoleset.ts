@@ -6,38 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a Roleset in the [GCP Secrets Engine](https://www.vaultproject.io/docs/secrets/gcp/index.html) for Vault.
- * 
- * Each Roleset is [tied](https://www.vaultproject.io/docs/secrets/gcp/index.html#service-accounts-are-tied-to-rolesets) to a Service Account, and can have one or more [bindings](https://www.vaultproject.io/docs/secrets/gcp/index.html#roleset-bindings) associated with it.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as vault from "@pulumi/vault";
- * 
- * const project = "my-awesome-project";
- * const gcp = new vault.gcp.SecretBackend("gcp", {
- *     credentials: fs.readFileSync("credentials.json", "utf-8"),
- *     path: "gcp",
- * });
- * const roleset = new vault.gcp.SecretRoleset("roleset", {
- *     backend: gcp.path,
- *     bindings: [{
- *         resource: `//cloudresourcemanager.googleapis.com/projects/${project}`,
- *         roles: ["roles/viewer"],
- *     }],
- *     project: project,
- *     roleset: "projectViewer",
- *     secretType: "accessToken",
- *     tokenScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_roleset.html.markdown.
- */
 export class SecretRoleset extends pulumi.CustomResource {
     /**
      * Get an existing SecretRoleset resource's state with the given name, ID, and optional extra
@@ -66,23 +34,21 @@ export class SecretRoleset extends pulumi.CustomResource {
     }
 
     /**
-     * Path where the GCP Secrets Engine is mounted
+     * Path where the GCP secrets engine is mounted.
      */
     public readonly backend!: pulumi.Output<string>;
-    /**
-     * Bindings to create for this roleset. This can be specified multiple times for multiple bindings. Structure is documented below.
-     */
     public readonly bindings!: pulumi.Output<outputs.gcp.SecretRolesetBinding[]>;
     /**
      * Name of the GCP project that this roleset's service account will belong to.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Name of the Roleset to create
+     * Name of the RoleSet to create
      */
     public readonly roleset!: pulumi.Output<string>;
     /**
-     * Type of secret generated for this role set. Accepted values: `accessToken`, `serviceAccountKey`. Defaults to `accessToken`.
+     * Type of secret generated for this role set. Defaults to `access_token`. Accepted values: `access_token`,
+     * `service_account_key`
      */
     public readonly secretType!: pulumi.Output<string>;
     /**
@@ -90,7 +56,8 @@ export class SecretRoleset extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
-     * List of OAuth scopes to assign to `accessToken` secrets generated under this role set (`accessToken` role sets only).
+     * List of OAuth scopes to assign to `access_token` secrets generated under this role set (`access_token` role sets
+     * only)
      */
     public readonly tokenScopes!: pulumi.Output<string[] | undefined>;
 
@@ -151,23 +118,21 @@ export class SecretRoleset extends pulumi.CustomResource {
  */
 export interface SecretRolesetState {
     /**
-     * Path where the GCP Secrets Engine is mounted
+     * Path where the GCP secrets engine is mounted.
      */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * Bindings to create for this roleset. This can be specified multiple times for multiple bindings. Structure is documented below.
-     */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.gcp.SecretRolesetBinding>[]>;
     /**
      * Name of the GCP project that this roleset's service account will belong to.
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Name of the Roleset to create
+     * Name of the RoleSet to create
      */
     readonly roleset?: pulumi.Input<string>;
     /**
-     * Type of secret generated for this role set. Accepted values: `accessToken`, `serviceAccountKey`. Defaults to `accessToken`.
+     * Type of secret generated for this role set. Defaults to `access_token`. Accepted values: `access_token`,
+     * `service_account_key`
      */
     readonly secretType?: pulumi.Input<string>;
     /**
@@ -175,7 +140,8 @@ export interface SecretRolesetState {
      */
     readonly serviceAccountEmail?: pulumi.Input<string>;
     /**
-     * List of OAuth scopes to assign to `accessToken` secrets generated under this role set (`accessToken` role sets only).
+     * List of OAuth scopes to assign to `access_token` secrets generated under this role set (`access_token` role sets
+     * only)
      */
     readonly tokenScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -185,27 +151,26 @@ export interface SecretRolesetState {
  */
 export interface SecretRolesetArgs {
     /**
-     * Path where the GCP Secrets Engine is mounted
+     * Path where the GCP secrets engine is mounted.
      */
     readonly backend: pulumi.Input<string>;
-    /**
-     * Bindings to create for this roleset. This can be specified multiple times for multiple bindings. Structure is documented below.
-     */
     readonly bindings: pulumi.Input<pulumi.Input<inputs.gcp.SecretRolesetBinding>[]>;
     /**
      * Name of the GCP project that this roleset's service account will belong to.
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Name of the Roleset to create
+     * Name of the RoleSet to create
      */
     readonly roleset: pulumi.Input<string>;
     /**
-     * Type of secret generated for this role set. Accepted values: `accessToken`, `serviceAccountKey`. Defaults to `accessToken`.
+     * Type of secret generated for this role set. Defaults to `access_token`. Accepted values: `access_token`,
+     * `service_account_key`
      */
     readonly secretType?: pulumi.Input<string>;
     /**
-     * List of OAuth scopes to assign to `accessToken` secrets generated under this role set (`accessToken` role sets only).
+     * List of OAuth scopes to assign to `access_token` secrets generated under this role set (`access_token` role sets
+     * only)
      */
     readonly tokenScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage CA information in an SSH secret backend
- * [SSH secret backend within Vault](https://www.vaultproject.io/docs/secrets/ssh/index.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.Mount("example", {
- *     type: "ssh",
- * });
- * const foo = new vault.ssh.SecretBackendCa("foo", {
- *     backend: example.path,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ssh_secret_backend_ca.html.markdown.
- */
 export class SecretBackendCa extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendCa resource's state with the given name, ID, and optional extra
@@ -52,19 +32,19 @@ export class SecretBackendCa extends pulumi.CustomResource {
     }
 
     /**
-     * The path where the SSH secret backend is mounted. Defaults to 'ssh'
+     * The path of the SSH Secret Backend where the CA should be configured
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * Whether Vault should generate the signing key pair internally. Defaults to true
+     * Whether Vault should generate the signing key pair internally.
      */
     public readonly generateSigningKey!: pulumi.Output<boolean | undefined>;
     /**
-     * The private key part the SSH CA key pair; required if generateSigningKey is false.
+     * Private key part the SSH CA key pair; required if generate_signing_key is false.
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
-     * The public key part the SSH CA key pair; required if generateSigningKey is false.
+     * Public key part the SSH CA key pair; required if generate_signing_key is false.
      */
     public readonly publicKey!: pulumi.Output<string>;
 
@@ -107,19 +87,19 @@ export class SecretBackendCa extends pulumi.CustomResource {
  */
 export interface SecretBackendCaState {
     /**
-     * The path where the SSH secret backend is mounted. Defaults to 'ssh'
+     * The path of the SSH Secret Backend where the CA should be configured
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Whether Vault should generate the signing key pair internally. Defaults to true
+     * Whether Vault should generate the signing key pair internally.
      */
     readonly generateSigningKey?: pulumi.Input<boolean>;
     /**
-     * The private key part the SSH CA key pair; required if generateSigningKey is false.
+     * Private key part the SSH CA key pair; required if generate_signing_key is false.
      */
     readonly privateKey?: pulumi.Input<string>;
     /**
-     * The public key part the SSH CA key pair; required if generateSigningKey is false.
+     * Public key part the SSH CA key pair; required if generate_signing_key is false.
      */
     readonly publicKey?: pulumi.Input<string>;
 }
@@ -129,19 +109,19 @@ export interface SecretBackendCaState {
  */
 export interface SecretBackendCaArgs {
     /**
-     * The path where the SSH secret backend is mounted. Defaults to 'ssh'
+     * The path of the SSH Secret Backend where the CA should be configured
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Whether Vault should generate the signing key pair internally. Defaults to true
+     * Whether Vault should generate the signing key pair internally.
      */
     readonly generateSigningKey?: pulumi.Input<boolean>;
     /**
-     * The private key part the SSH CA key pair; required if generateSigningKey is false.
+     * Private key part the SSH CA key pair; required if generate_signing_key is false.
      */
     readonly privateKey?: pulumi.Input<string>;
     /**
-     * The public key part the SSH CA key pair; required if generateSigningKey is false.
+     * Public key part the SSH CA key pair; required if generate_signing_key is false.
      */
     readonly publicKey?: pulumi.Input<string>;
 }

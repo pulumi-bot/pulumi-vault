@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an Kubernetes auth backend config in a Vault server. See the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/kubernetes.html) for more
- * information.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const kubernetes = new vault.AuthBackend("kubernetes", {
- *     type: "kubernetes",
- * });
- * const example = new vault.kubernetes.AuthBackendConfig("example", {
- *     backend: kubernetes.path,
- *     kubernetesCaCert: `-----BEGIN CERTIFICATE-----
- * example
- * -----END CERTIFICATE-----`,
- *     kubernetesHost: "http://example.com:443",
- *     tokenReviewerJwt: "ZXhhbXBsZQo=",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/kubernetes_auth_backend_config.html.markdown.
- */
 export class AuthBackendConfig extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendConfig resource's state with the given name, ID, and optional extra
@@ -70,11 +44,14 @@ export class AuthBackendConfig extends pulumi.CustomResource {
      */
     public readonly kubernetesHost!: pulumi.Output<string>;
     /**
-     * List of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes exposes these keys. 
+     * Optional list of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service
+     * account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes
+     * exposes these keys.
      */
     public readonly pemKeys!: pulumi.Output<string[] | undefined>;
     /**
-     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
+     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT
+     * used for login will be used to access the API.
      */
     public readonly tokenReviewerJwt!: pulumi.Output<string | undefined>;
 
@@ -134,11 +111,14 @@ export interface AuthBackendConfigState {
      */
     readonly kubernetesHost?: pulumi.Input<string>;
     /**
-     * List of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes exposes these keys. 
+     * Optional list of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service
+     * account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes
+     * exposes these keys.
      */
     readonly pemKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
+     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT
+     * used for login will be used to access the API.
      */
     readonly tokenReviewerJwt?: pulumi.Input<string>;
 }
@@ -160,11 +140,14 @@ export interface AuthBackendConfigArgs {
      */
     readonly kubernetesHost: pulumi.Input<string>;
     /**
-     * List of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes exposes these keys. 
+     * Optional list of PEM-formatted public keys or certificates used to verify the signatures of Kubernetes service
+     * account JWTs. If a certificate is given, its public key will be extracted. Not every installation of Kubernetes
+     * exposes these keys.
      */
     readonly pemKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
+     * A service account JWT used to access the TokenReview API to validate other JWTs during login. If not set the JWT
+     * used for login will be used to access the API.
      */
     readonly tokenReviewerJwt?: pulumi.Input<string>;
 }
