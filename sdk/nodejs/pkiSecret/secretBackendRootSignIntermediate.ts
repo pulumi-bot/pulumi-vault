@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an PKI certificate.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_root_sign_intermediate.html.markdown.
- */
 export class SecretBackendRootSignIntermediate extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendRootSignIntermediate resource's state with the given name, ID, and optional extra
@@ -37,7 +32,7 @@ export class SecretBackendRootSignIntermediate extends pulumi.CustomResource {
     }
 
     /**
-     * List of alternative names
+     * List of alternative names.
      */
     public readonly altNames!: pulumi.Output<string[] | undefined>;
     /**
@@ -45,91 +40,91 @@ export class SecretBackendRootSignIntermediate extends pulumi.CustomResource {
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * The CA chain
+     * The CA chain.
      */
     public /*out*/ readonly caChain!: pulumi.Output<string>;
     /**
-     * The certificate
+     * The certicate.
      */
     public /*out*/ readonly certificate!: pulumi.Output<string>;
     /**
-     * CN of intermediate to create
+     * CN of intermediate to create.
      */
     public readonly commonName!: pulumi.Output<string>;
     /**
-     * The country
+     * The country.
      */
     public readonly country!: pulumi.Output<string | undefined>;
     /**
-     * The CSR
+     * The CSR.
      */
     public readonly csr!: pulumi.Output<string>;
     /**
-     * Flag to exclude CN from SANs
+     * Flag to exclude CN from SANs.
      */
     public readonly excludeCnFromSans!: pulumi.Output<boolean | undefined>;
     /**
-     * The format of data
+     * The format of data.
      */
     public readonly format!: pulumi.Output<string | undefined>;
     /**
-     * List of alternative IPs
+     * List of alternative IPs.
      */
     public readonly ipSans!: pulumi.Output<string[] | undefined>;
     /**
-     * The issuing CA
+     * The issuing CA.
      */
     public /*out*/ readonly issuingCa!: pulumi.Output<string>;
     /**
-     * The locality
+     * The locality.
      */
     public readonly locality!: pulumi.Output<string | undefined>;
     /**
-     * The maximum path length to encode in the generated certificate
+     * The maximum path length to encode in the generated certificate.
      */
     public readonly maxPathLength!: pulumi.Output<number | undefined>;
     /**
-     * The organization
+     * The organization.
      */
     public readonly organization!: pulumi.Output<string | undefined>;
     /**
-     * List of other SANs
+     * List of other SANs.
      */
     public readonly otherSans!: pulumi.Output<string[] | undefined>;
     /**
-     * The organization unit
+     * The organization unit.
      */
     public readonly ou!: pulumi.Output<string | undefined>;
     /**
-     * List of domains for which certificates are allowed to be issued
+     * List of domains for which certificates are allowed to be issued.
      */
     public readonly permittedDnsDomains!: pulumi.Output<string[] | undefined>;
     /**
-     * The postal code
+     * The postal code.
      */
     public readonly postalCode!: pulumi.Output<string | undefined>;
     /**
-     * The province
+     * The province.
      */
     public readonly province!: pulumi.Output<string | undefined>;
     /**
-     * The serial
+     * The serial number.
      */
     public /*out*/ readonly serial!: pulumi.Output<string>;
     /**
-     * The street address
+     * The street address.
      */
     public readonly streetAddress!: pulumi.Output<string | undefined>;
     /**
-     * Time to live
+     * Time to leave.
      */
     public readonly ttl!: pulumi.Output<string | undefined>;
     /**
-     * List of alternative URIs
+     * List of alterative URIs.
      */
     public readonly uriSans!: pulumi.Output<string[] | undefined>;
     /**
-     * Preserve CSR values
+     * Preserve CSR values.
      */
     public readonly useCsrValues!: pulumi.Output<boolean | undefined>;
 
@@ -221,7 +216,7 @@ export class SecretBackendRootSignIntermediate extends pulumi.CustomResource {
  */
 export interface SecretBackendRootSignIntermediateState {
     /**
-     * List of alternative names
+     * List of alternative names.
      */
     readonly altNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -229,91 +224,91 @@ export interface SecretBackendRootSignIntermediateState {
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The CA chain
+     * The CA chain.
      */
     readonly caChain?: pulumi.Input<string>;
     /**
-     * The certificate
+     * The certicate.
      */
     readonly certificate?: pulumi.Input<string>;
     /**
-     * CN of intermediate to create
+     * CN of intermediate to create.
      */
     readonly commonName?: pulumi.Input<string>;
     /**
-     * The country
+     * The country.
      */
     readonly country?: pulumi.Input<string>;
     /**
-     * The CSR
+     * The CSR.
      */
     readonly csr?: pulumi.Input<string>;
     /**
-     * Flag to exclude CN from SANs
+     * Flag to exclude CN from SANs.
      */
     readonly excludeCnFromSans?: pulumi.Input<boolean>;
     /**
-     * The format of data
+     * The format of data.
      */
     readonly format?: pulumi.Input<string>;
     /**
-     * List of alternative IPs
+     * List of alternative IPs.
      */
     readonly ipSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The issuing CA
+     * The issuing CA.
      */
     readonly issuingCa?: pulumi.Input<string>;
     /**
-     * The locality
+     * The locality.
      */
     readonly locality?: pulumi.Input<string>;
     /**
-     * The maximum path length to encode in the generated certificate
+     * The maximum path length to encode in the generated certificate.
      */
     readonly maxPathLength?: pulumi.Input<number>;
     /**
-     * The organization
+     * The organization.
      */
     readonly organization?: pulumi.Input<string>;
     /**
-     * List of other SANs
+     * List of other SANs.
      */
     readonly otherSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The organization unit
+     * The organization unit.
      */
     readonly ou?: pulumi.Input<string>;
     /**
-     * List of domains for which certificates are allowed to be issued
+     * List of domains for which certificates are allowed to be issued.
      */
     readonly permittedDnsDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The postal code
+     * The postal code.
      */
     readonly postalCode?: pulumi.Input<string>;
     /**
-     * The province
+     * The province.
      */
     readonly province?: pulumi.Input<string>;
     /**
-     * The serial
+     * The serial number.
      */
     readonly serial?: pulumi.Input<string>;
     /**
-     * The street address
+     * The street address.
      */
     readonly streetAddress?: pulumi.Input<string>;
     /**
-     * Time to live
+     * Time to leave.
      */
     readonly ttl?: pulumi.Input<string>;
     /**
-     * List of alternative URIs
+     * List of alterative URIs.
      */
     readonly uriSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Preserve CSR values
+     * Preserve CSR values.
      */
     readonly useCsrValues?: pulumi.Input<boolean>;
 }
@@ -323,7 +318,7 @@ export interface SecretBackendRootSignIntermediateState {
  */
 export interface SecretBackendRootSignIntermediateArgs {
     /**
-     * List of alternative names
+     * List of alternative names.
      */
     readonly altNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -331,75 +326,75 @@ export interface SecretBackendRootSignIntermediateArgs {
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * CN of intermediate to create
+     * CN of intermediate to create.
      */
     readonly commonName: pulumi.Input<string>;
     /**
-     * The country
+     * The country.
      */
     readonly country?: pulumi.Input<string>;
     /**
-     * The CSR
+     * The CSR.
      */
     readonly csr: pulumi.Input<string>;
     /**
-     * Flag to exclude CN from SANs
+     * Flag to exclude CN from SANs.
      */
     readonly excludeCnFromSans?: pulumi.Input<boolean>;
     /**
-     * The format of data
+     * The format of data.
      */
     readonly format?: pulumi.Input<string>;
     /**
-     * List of alternative IPs
+     * List of alternative IPs.
      */
     readonly ipSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The locality
+     * The locality.
      */
     readonly locality?: pulumi.Input<string>;
     /**
-     * The maximum path length to encode in the generated certificate
+     * The maximum path length to encode in the generated certificate.
      */
     readonly maxPathLength?: pulumi.Input<number>;
     /**
-     * The organization
+     * The organization.
      */
     readonly organization?: pulumi.Input<string>;
     /**
-     * List of other SANs
+     * List of other SANs.
      */
     readonly otherSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The organization unit
+     * The organization unit.
      */
     readonly ou?: pulumi.Input<string>;
     /**
-     * List of domains for which certificates are allowed to be issued
+     * List of domains for which certificates are allowed to be issued.
      */
     readonly permittedDnsDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The postal code
+     * The postal code.
      */
     readonly postalCode?: pulumi.Input<string>;
     /**
-     * The province
+     * The province.
      */
     readonly province?: pulumi.Input<string>;
     /**
-     * The street address
+     * The street address.
      */
     readonly streetAddress?: pulumi.Input<string>;
     /**
-     * Time to live
+     * Time to leave.
      */
     readonly ttl?: pulumi.Input<string>;
     /**
-     * List of alternative URIs
+     * List of alterative URIs.
      */
     readonly uriSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Preserve CSR values
+     * Preserve CSR values.
      */
     readonly useCsrValues?: pulumi.Input<boolean>;
 }

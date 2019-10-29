@@ -6,13 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages policy mappings for Github Teams authenticated via Github. See the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/github.html) for more
- * information.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/github_team.html.markdown.
- */
 export class Team extends pulumi.CustomResource {
     /**
      * Get an existing Team resource's state with the given name, ID, and optional extra
@@ -41,13 +34,11 @@ export class Team extends pulumi.CustomResource {
     }
 
     /**
-     * Path where the github auth backend is mounted. Defaults to `github`
-     * if not specified.
+     * Auth backend to which team mapping will be congigured.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * An array of strings specifying the policies to be set on tokens
-     * issued using this role.
+     * Policies to be assigned to this team.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
@@ -149,13 +140,11 @@ export class Team extends pulumi.CustomResource {
  */
 export interface TeamState {
     /**
-     * Path where the github auth backend is mounted. Defaults to `github`
-     * if not specified.
+     * Auth backend to which team mapping will be congigured.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * An array of strings specifying the policies to be set on tokens
-     * issued using this role.
+     * Policies to be assigned to this team.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -205,13 +194,11 @@ export interface TeamState {
  */
 export interface TeamArgs {
     /**
-     * Path where the github auth backend is mounted. Defaults to `github`
-     * if not specified.
+     * Auth backend to which team mapping will be congigured.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * An array of strings specifying the policies to be set on tokens
-     * issued using this role.
+     * Policies to be assigned to this team.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**

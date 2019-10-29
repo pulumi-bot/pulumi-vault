@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage (file audit device)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const test = new vault.Audit("test", {
- *     options: {
- *         file_path: "C:/temp/audit.txt",
- *     },
- *     type: "file",
- * });
- * ```
- * 
- * ## Example Usage (socket audit device)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const test = new vault.Audit("test", {
- *     options: {
- *         address: "127.0.0.1:8000",
- *         description: "application x socket",
- *         socket_type: "tcp",
- *     },
- *     path: "appSocket",
- *     type: "socket",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/audit.html.markdown.
- */
 export class Audit extends pulumi.CustomResource {
     /**
      * Get an existing Audit resource's state with the given name, ID, and optional extra
@@ -66,19 +32,19 @@ export class Audit extends pulumi.CustomResource {
     }
 
     /**
-     * Human-friendly description of the audit device.
+     * Human-friendly description of the audit device
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Configuration options to pass to the audit device itself.
+     * Configuration options to pass to the audit device itself
      */
     public readonly options!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The path to mount the audit device. This defaults to the type.
+     * Path in which to enable the audit device
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * Type of the audit device, such as 'file'.
+     * Type of the audit device, such as 'file'
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -127,19 +93,19 @@ export class Audit extends pulumi.CustomResource {
  */
 export interface AuditState {
     /**
-     * Human-friendly description of the audit device.
+     * Human-friendly description of the audit device
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Configuration options to pass to the audit device itself.
+     * Configuration options to pass to the audit device itself
      */
     readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The path to mount the audit device. This defaults to the type.
+     * Path in which to enable the audit device
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Type of the audit device, such as 'file'.
+     * Type of the audit device, such as 'file'
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -149,19 +115,19 @@ export interface AuditState {
  */
 export interface AuditArgs {
     /**
-     * Human-friendly description of the audit device.
+     * Human-friendly description of the audit device
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Configuration options to pass to the audit device itself.
+     * Configuration options to pass to the audit device itself
      */
     readonly options: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The path to mount the audit device. This defaults to the type.
+     * Path in which to enable the audit device
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Type of the audit device, such as 'file'.
+     * Type of the audit device, such as 'file'
      */
     readonly type: pulumi.Input<string>;
 }

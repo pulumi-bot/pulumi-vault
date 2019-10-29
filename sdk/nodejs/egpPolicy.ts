@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a resource to manage Endpoint Governing Policy (EGP) via [Sentinel](https://www.vaultproject.io/docs/enterprise/sentinel/index.html).
- * 
- * **Note** this feature is available only with Vault Enterprise.
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const allowAll = new vault.EgpPolicy("allow-all", {
- *     enforcementLevel: "soft-mandatory",
- *     paths: ["*"],
- *     policy: `main = rule {
- *   true
- * }
- * `,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/egp_policy.html.markdown.
- */
 export class EgpPolicy extends pulumi.CustomResource {
     /**
      * Get an existing EgpPolicy resource's state with the given name, ID, and optional extra
@@ -56,19 +32,19 @@ export class EgpPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Enforcement level of Sentinel policy. Can be either `advisory` or `soft-mandatory` or `hard-mandatory`
+     * Enforcement level of Sentinel policy. Can be one of: 'advisory', 'soft-mandatory' or 'hard-mandatory'
      */
     public readonly enforcementLevel!: pulumi.Output<string>;
     /**
-     * The name of the policy
+     * Name of the policy
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of paths to which the policy will be applied to
+     * List of paths to which the policy will be applied
      */
     public readonly paths!: pulumi.Output<string[]>;
     /**
-     * String containing a Sentinel policy
+     * The policy document
      */
     public readonly policy!: pulumi.Output<string>;
 
@@ -120,19 +96,19 @@ export class EgpPolicy extends pulumi.CustomResource {
  */
 export interface EgpPolicyState {
     /**
-     * Enforcement level of Sentinel policy. Can be either `advisory` or `soft-mandatory` or `hard-mandatory`
+     * Enforcement level of Sentinel policy. Can be one of: 'advisory', 'soft-mandatory' or 'hard-mandatory'
      */
     readonly enforcementLevel?: pulumi.Input<string>;
     /**
-     * The name of the policy
+     * Name of the policy
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of paths to which the policy will be applied to
+     * List of paths to which the policy will be applied
      */
     readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String containing a Sentinel policy
+     * The policy document
      */
     readonly policy?: pulumi.Input<string>;
 }
@@ -142,19 +118,19 @@ export interface EgpPolicyState {
  */
 export interface EgpPolicyArgs {
     /**
-     * Enforcement level of Sentinel policy. Can be either `advisory` or `soft-mandatory` or `hard-mandatory`
+     * Enforcement level of Sentinel policy. Can be one of: 'advisory', 'soft-mandatory' or 'hard-mandatory'
      */
     readonly enforcementLevel: pulumi.Input<string>;
     /**
-     * The name of the policy
+     * Name of the policy
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of paths to which the policy will be applied to
+     * List of paths to which the policy will be applied
      */
     readonly paths: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String containing a Sentinel policy
+     * The policy document
      */
     readonly policy: pulumi.Input<string>;
 }

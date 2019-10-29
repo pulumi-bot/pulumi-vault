@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a role on an PKI Secret Backend for Vault.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const pki = new vault.pkiSecret.SecretBackend("pki", {
- *     defaultLeaseTtlSeconds: 3600,
- *     maxLeaseTtlSeconds: 86400,
- *     path: "%s",
- * });
- * const role = new vault.pkiSecret.SecretBackendRole("role", {
- *     backend: pki.path,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_role.html.markdown.
- */
 export class SecretBackendRole extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendRole resource's state with the given name, ID, and optional extra
@@ -57,7 +36,7 @@ export class SecretBackendRole extends pulumi.CustomResource {
      */
     public readonly allowAnyName!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to allow certificates matching the actual domain
+     * Flag to allow certificates matching the actual domain.
      */
     public readonly allowBareDomains!: pulumi.Output<boolean | undefined>;
     /**
@@ -69,15 +48,15 @@ export class SecretBackendRole extends pulumi.CustomResource {
      */
     public readonly allowIpSans!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to allow certificates for localhost
+     * Flag to allow certificates for localhost.
      */
     public readonly allowLocalhost!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to allow certificates matching subdomains
+     * Flag to allow certificates matching subdomains.
      */
     public readonly allowSubdomains!: pulumi.Output<boolean | undefined>;
     /**
-     * List of allowed domains for certificates 
+     * The domains of the role.
      */
     public readonly allowedDomains!: pulumi.Output<string[] | undefined>;
     /**
@@ -89,27 +68,27 @@ export class SecretBackendRole extends pulumi.CustomResource {
      */
     public readonly allowedUriSans!: pulumi.Output<string[] | undefined>;
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * Flag to mark basic constraints valid when issuing non-CA certificates
+     * Flag to mark basic constraints valid when issuing non-CA certificates.
      */
     public readonly basicConstraintsValidForNonCa!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to specify certificates for client use
+     * Flag to specify certificates for client use.
      */
     public readonly clientFlag!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to specify certificates for code signing use
+     * Flag to specify certificates for code signing use.
      */
     public readonly codeSigningFlag!: pulumi.Output<boolean | undefined>;
     /**
-     * The country of generated certificates
+     * The country of generated certificates.
      */
     public readonly countries!: pulumi.Output<string[] | undefined>;
     /**
-     * Flag to specify certificates for email protection use
+     * Flag to specify certificates for email protection use.
      */
     public readonly emailProtectionFlag!: pulumi.Output<boolean | undefined>;
     /**
@@ -117,83 +96,83 @@ export class SecretBackendRole extends pulumi.CustomResource {
      */
     public readonly enforceHostnames!: pulumi.Output<boolean | undefined>;
     /**
-     * Specify the allowed extended key usage constraint on issued certificates
+     * Specify the allowed extended key usage constraint on issued certificates.
      */
     public readonly extKeyUsages!: pulumi.Output<string[] | undefined>;
     /**
-     * Flag to generate leases with certificates
+     * Flag to generate leases with certificates.
      */
     public readonly generateLease!: pulumi.Output<boolean | undefined>;
     /**
-     * The number of bits of generated keys
+     * The number of bits of generated keys.
      */
     public readonly keyBits!: pulumi.Output<number | undefined>;
     /**
-     * The type of generated keys
+     * The type of generated keys.
      */
     public readonly keyType!: pulumi.Output<string | undefined>;
     /**
-     * Specify the allowed key usage constraint on issued certificates
+     * Specify the allowed key usage constraint on issued certificates.
      */
     public readonly keyUsages!: pulumi.Output<string[] | undefined>;
     /**
-     * The locality of generated certificates
+     * The locality of generated certificates.
      */
     public readonly localities!: pulumi.Output<string[] | undefined>;
     /**
-     * The maximum TTL
+     * The maximum TTL.
      */
     public readonly maxTtl!: pulumi.Output<string | undefined>;
     /**
-     * The name to identify this role within the backend. Must be unique within the backend.
+     * Unique name for the role.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Flag to not store certificates in the storage backend
+     * Flag to not store certificates in the storage backend.
      */
     public readonly noStore!: pulumi.Output<boolean | undefined>;
     /**
-     * The organization of generated certificates
+     * The organization of generated certificates.
      */
     public readonly organizations!: pulumi.Output<string[] | undefined>;
     /**
-     * The organization unit of generated certificates
+     * The organization unit of generated certificates.
      */
     public readonly organizationUnit!: pulumi.Output<string[] | undefined>;
     /**
-     * Specify the list of allowed policies IODs
+     * Specify the list of allowed policies IODs.
      */
     public readonly policyIdentifiers!: pulumi.Output<string[] | undefined>;
     /**
-     * The postal code of generated certificates
+     * The postal code of generated certificates.
      */
     public readonly postalCodes!: pulumi.Output<string[] | undefined>;
     /**
-     * The province of generated certificates
+     * The province of generated certificates.
      */
     public readonly provinces!: pulumi.Output<string[] | undefined>;
     /**
-     * Flag to force CN usage
+     * Flag to force CN usage.
      */
     public readonly requireCn!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to specify certificates for server use
+     * Flag to specify certificates for server use.
      */
     public readonly serverFlag!: pulumi.Output<boolean | undefined>;
     /**
-     * The street address of generated certificates
+     * The street address of generated certificates.
      */
     public readonly streetAddresses!: pulumi.Output<string[] | undefined>;
     /**
-     * The TTL
+     * The TTL.
      */
     public readonly ttl!: pulumi.Output<string | undefined>;
     /**
-     * Flag to use the CN in the CSR
+     * Flag to use the CN in the CSR.
      */
     public readonly useCsrCommonName!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to use the SANs in the CSR
+     * Flag to use the SANs in the CSR.
      */
     public readonly useCsrSans!: pulumi.Output<boolean | undefined>;
 
@@ -307,7 +286,7 @@ export interface SecretBackendRoleState {
      */
     readonly allowAnyName?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates matching the actual domain
+     * Flag to allow certificates matching the actual domain.
      */
     readonly allowBareDomains?: pulumi.Input<boolean>;
     /**
@@ -319,15 +298,15 @@ export interface SecretBackendRoleState {
      */
     readonly allowIpSans?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates for localhost
+     * Flag to allow certificates for localhost.
      */
     readonly allowLocalhost?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates matching subdomains
+     * Flag to allow certificates matching subdomains.
      */
     readonly allowSubdomains?: pulumi.Input<boolean>;
     /**
-     * List of allowed domains for certificates 
+     * The domains of the role.
      */
     readonly allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -339,27 +318,27 @@ export interface SecretBackendRoleState {
      */
     readonly allowedUriSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Flag to mark basic constraints valid when issuing non-CA certificates
+     * Flag to mark basic constraints valid when issuing non-CA certificates.
      */
     readonly basicConstraintsValidForNonCa?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for client use
+     * Flag to specify certificates for client use.
      */
     readonly clientFlag?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for code signing use
+     * Flag to specify certificates for code signing use.
      */
     readonly codeSigningFlag?: pulumi.Input<boolean>;
     /**
-     * The country of generated certificates
+     * The country of generated certificates.
      */
     readonly countries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to specify certificates for email protection use
+     * Flag to specify certificates for email protection use.
      */
     readonly emailProtectionFlag?: pulumi.Input<boolean>;
     /**
@@ -367,83 +346,83 @@ export interface SecretBackendRoleState {
      */
     readonly enforceHostnames?: pulumi.Input<boolean>;
     /**
-     * Specify the allowed extended key usage constraint on issued certificates
+     * Specify the allowed extended key usage constraint on issued certificates.
      */
     readonly extKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to generate leases with certificates
+     * Flag to generate leases with certificates.
      */
     readonly generateLease?: pulumi.Input<boolean>;
     /**
-     * The number of bits of generated keys
+     * The number of bits of generated keys.
      */
     readonly keyBits?: pulumi.Input<number>;
     /**
-     * The type of generated keys
+     * The type of generated keys.
      */
     readonly keyType?: pulumi.Input<string>;
     /**
-     * Specify the allowed key usage constraint on issued certificates
+     * Specify the allowed key usage constraint on issued certificates.
      */
     readonly keyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The locality of generated certificates
+     * The locality of generated certificates.
      */
     readonly localities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The maximum TTL
+     * The maximum TTL.
      */
     readonly maxTtl?: pulumi.Input<string>;
     /**
-     * The name to identify this role within the backend. Must be unique within the backend.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Flag to not store certificates in the storage backend
+     * Flag to not store certificates in the storage backend.
      */
     readonly noStore?: pulumi.Input<boolean>;
     /**
-     * The organization of generated certificates
+     * The organization of generated certificates.
      */
     readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The organization unit of generated certificates
+     * The organization unit of generated certificates.
      */
     readonly organizationUnit?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specify the list of allowed policies IODs
+     * Specify the list of allowed policies IODs.
      */
     readonly policyIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The postal code of generated certificates
+     * The postal code of generated certificates.
      */
     readonly postalCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The province of generated certificates
+     * The province of generated certificates.
      */
     readonly provinces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to force CN usage
+     * Flag to force CN usage.
      */
     readonly requireCn?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for server use
+     * Flag to specify certificates for server use.
      */
     readonly serverFlag?: pulumi.Input<boolean>;
     /**
-     * The street address of generated certificates
+     * The street address of generated certificates.
      */
     readonly streetAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL
+     * The TTL.
      */
     readonly ttl?: pulumi.Input<string>;
     /**
-     * Flag to use the CN in the CSR
+     * Flag to use the CN in the CSR.
      */
     readonly useCsrCommonName?: pulumi.Input<boolean>;
     /**
-     * Flag to use the SANs in the CSR
+     * Flag to use the SANs in the CSR.
      */
     readonly useCsrSans?: pulumi.Input<boolean>;
 }
@@ -457,7 +436,7 @@ export interface SecretBackendRoleArgs {
      */
     readonly allowAnyName?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates matching the actual domain
+     * Flag to allow certificates matching the actual domain.
      */
     readonly allowBareDomains?: pulumi.Input<boolean>;
     /**
@@ -469,15 +448,15 @@ export interface SecretBackendRoleArgs {
      */
     readonly allowIpSans?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates for localhost
+     * Flag to allow certificates for localhost.
      */
     readonly allowLocalhost?: pulumi.Input<boolean>;
     /**
-     * Flag to allow certificates matching subdomains
+     * Flag to allow certificates matching subdomains.
      */
     readonly allowSubdomains?: pulumi.Input<boolean>;
     /**
-     * List of allowed domains for certificates 
+     * The domains of the role.
      */
     readonly allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -489,27 +468,27 @@ export interface SecretBackendRoleArgs {
      */
     readonly allowedUriSans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * Flag to mark basic constraints valid when issuing non-CA certificates
+     * Flag to mark basic constraints valid when issuing non-CA certificates.
      */
     readonly basicConstraintsValidForNonCa?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for client use
+     * Flag to specify certificates for client use.
      */
     readonly clientFlag?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for code signing use
+     * Flag to specify certificates for code signing use.
      */
     readonly codeSigningFlag?: pulumi.Input<boolean>;
     /**
-     * The country of generated certificates
+     * The country of generated certificates.
      */
     readonly countries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to specify certificates for email protection use
+     * Flag to specify certificates for email protection use.
      */
     readonly emailProtectionFlag?: pulumi.Input<boolean>;
     /**
@@ -517,83 +496,83 @@ export interface SecretBackendRoleArgs {
      */
     readonly enforceHostnames?: pulumi.Input<boolean>;
     /**
-     * Specify the allowed extended key usage constraint on issued certificates
+     * Specify the allowed extended key usage constraint on issued certificates.
      */
     readonly extKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to generate leases with certificates
+     * Flag to generate leases with certificates.
      */
     readonly generateLease?: pulumi.Input<boolean>;
     /**
-     * The number of bits of generated keys
+     * The number of bits of generated keys.
      */
     readonly keyBits?: pulumi.Input<number>;
     /**
-     * The type of generated keys
+     * The type of generated keys.
      */
     readonly keyType?: pulumi.Input<string>;
     /**
-     * Specify the allowed key usage constraint on issued certificates
+     * Specify the allowed key usage constraint on issued certificates.
      */
     readonly keyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The locality of generated certificates
+     * The locality of generated certificates.
      */
     readonly localities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The maximum TTL
+     * The maximum TTL.
      */
     readonly maxTtl?: pulumi.Input<string>;
     /**
-     * The name to identify this role within the backend. Must be unique within the backend.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Flag to not store certificates in the storage backend
+     * Flag to not store certificates in the storage backend.
      */
     readonly noStore?: pulumi.Input<boolean>;
     /**
-     * The organization of generated certificates
+     * The organization of generated certificates.
      */
     readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The organization unit of generated certificates
+     * The organization unit of generated certificates.
      */
     readonly organizationUnit?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specify the list of allowed policies IODs
+     * Specify the list of allowed policies IODs.
      */
     readonly policyIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The postal code of generated certificates
+     * The postal code of generated certificates.
      */
     readonly postalCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The province of generated certificates
+     * The province of generated certificates.
      */
     readonly provinces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Flag to force CN usage
+     * Flag to force CN usage.
      */
     readonly requireCn?: pulumi.Input<boolean>;
     /**
-     * Flag to specify certificates for server use
+     * Flag to specify certificates for server use.
      */
     readonly serverFlag?: pulumi.Input<boolean>;
     /**
-     * The street address of generated certificates
+     * The street address of generated certificates.
      */
     readonly streetAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL
+     * The TTL.
      */
     readonly ttl?: pulumi.Input<string>;
     /**
-     * Flag to use the CN in the CSR
+     * Flag to use the CN in the CSR.
      */
     readonly useCsrCommonName?: pulumi.Input<boolean>;
     /**
-     * Flag to use the SANs in the CSR
+     * Flag to use the SANs in the CSR.
      */
     readonly useCsrSans?: pulumi.Input<boolean>;
 }

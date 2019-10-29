@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.AuthBackend("example", {
- *     type: "github",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/auth_backend.html.markdown.
- */
 export class AuthBackend extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackend resource's state with the given name, ID, and optional extra
@@ -46,35 +32,35 @@ export class AuthBackend extends pulumi.CustomResource {
     }
 
     /**
-     * The accessor for this auth method
+     * The accessor of the auth backend
      */
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
-     * The default lease duration in seconds.
+     * Default lease duration in seconds
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * A description of the auth method
+     * The description of the auth backend
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * Specifies whether to show this mount in the UI-specific listing endpoint
      */
     public readonly listingVisibility!: pulumi.Output<string | undefined>;
     /**
-     * Specifies if the auth method is local only.
+     * Specifies if the auth method is local only
      */
     public readonly local!: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum lease duration in seconds.
+     * Maximum possible lease duration in seconds
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * The path to mount the auth method — this defaults to the name of the type
+     * path to mount the backend. This defaults to the type.
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * The name of the auth method type
+     * Name of the auth backend
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -128,35 +114,35 @@ export class AuthBackend extends pulumi.CustomResource {
  */
 export interface AuthBackendState {
     /**
-     * The accessor for this auth method
+     * The accessor of the auth backend
      */
     readonly accessor?: pulumi.Input<string>;
     /**
-     * The default lease duration in seconds.
+     * Default lease duration in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A description of the auth method
+     * The description of the auth backend
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * Specifies whether to show this mount in the UI-specific listing endpoint
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
-     * Specifies if the auth method is local only.
+     * Specifies if the auth method is local only
      */
     readonly local?: pulumi.Input<boolean>;
     /**
-     * The maximum lease duration in seconds.
+     * Maximum possible lease duration in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The path to mount the auth method — this defaults to the name of the type
+     * path to mount the backend. This defaults to the type.
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * The name of the auth method type
+     * Name of the auth backend
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -166,31 +152,31 @@ export interface AuthBackendState {
  */
 export interface AuthBackendArgs {
     /**
-     * The default lease duration in seconds.
+     * Default lease duration in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A description of the auth method
+     * The description of the auth backend
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * Specifies whether to show this mount in the UI-specific listing endpoint
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
-     * Specifies if the auth method is local only.
+     * Specifies if the auth method is local only
      */
     readonly local?: pulumi.Input<boolean>;
     /**
-     * The maximum lease duration in seconds.
+     * Maximum possible lease duration in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The path to mount the auth method — this defaults to the name of the type
+     * path to mount the backend. This defaults to the type.
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * The name of the auth method type
+     * Name of the auth backend
      */
     readonly type: pulumi.Input<string>;
 }

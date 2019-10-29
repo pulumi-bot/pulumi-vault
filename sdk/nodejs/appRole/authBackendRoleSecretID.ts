@@ -4,41 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AppRole auth backend SecretID in a Vault server. See the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/approle.html) for more
- * information.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const approle = new vault.AuthBackend("approle", {
- *     type: "approle",
- * });
- * const example = new vault.appRole.AuthBackendRole("example", {
- *     backend: approle.path,
- *     policies: [
- *         "default",
- *         "dev",
- *         "prod",
- *     ],
- *     roleName: "test-role",
- * });
- * const id = new vault.appRole.AuthBackendRoleSecretID("id", {
- *     backend: approle.path,
- *     metadata: `{
- *   "hello": "world"
- * }
- * `,
- *     roleName: example.roleName,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/approle_auth_backend_role_secret_id.html.markdown.
- */
 export class AuthBackendRoleSecretID extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendRoleSecretID resource's state with the given name, ID, and optional extra
@@ -67,7 +32,7 @@ export class AuthBackendRoleSecretID extends pulumi.CustomResource {
     }
 
     /**
-     * The unique ID for this SecretID that can be safely logged.
+     * The unique ID used to access this SecretID.
      */
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
@@ -75,38 +40,31 @@ export class AuthBackendRoleSecretID extends pulumi.CustomResource {
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * If set, specifies blocks of IP addresses which can
-     * perform the login operation using this SecretID.
+     * List of CIDR blocks that can log in using the SecretID.
      */
     public readonly cidrLists!: pulumi.Output<string[] | undefined>;
     /**
-     * A JSON-encoded string containing metadata in
-     * key-value pairs to be set on tokens issued with this SecretID.
+     * JSON-encoded secret data to write.
      */
     public readonly metadata!: pulumi.Output<string | undefined>;
     /**
-     * The name of the role to create the SecretID for.
+     * Name of the role.
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
-     * The SecretID to be created. If set, uses "Push"
-     * mode.  Defaults to Vault auto-generating SecretIDs.
+     * The SecretID to be managed. If not specified, Vault auto-generates one.
      */
     public readonly secretId!: pulumi.Output<string>;
     /**
-     * The unique ID for the response-wrapped SecretID that can
-     * be safely logged.
+     * The wrapped SecretID accessor.
      */
     public /*out*/ readonly wrappingAccessor!: pulumi.Output<string>;
     /**
-     * The token used to retrieve a response-wrapped SecretID.
+     * The wrapped SecretID token.
      */
     public /*out*/ readonly wrappingToken!: pulumi.Output<string>;
     /**
-     * If set, the SecretID response will be
-     * [response-wrapped](https://www.vaultproject.io/docs/concepts/response-wrapping.html)
-     * and available for the duration specified. Only a single unwrapping of the
-     * token is allowed.
+     * The TTL duration of the wrapped SecretID.
      */
     public readonly wrappingTtl!: pulumi.Output<string | undefined>;
 
@@ -162,7 +120,7 @@ export class AuthBackendRoleSecretID extends pulumi.CustomResource {
  */
 export interface AuthBackendRoleSecretIDState {
     /**
-     * The unique ID for this SecretID that can be safely logged.
+     * The unique ID used to access this SecretID.
      */
     readonly accessor?: pulumi.Input<string>;
     /**
@@ -170,38 +128,31 @@ export interface AuthBackendRoleSecretIDState {
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * If set, specifies blocks of IP addresses which can
-     * perform the login operation using this SecretID.
+     * List of CIDR blocks that can log in using the SecretID.
      */
     readonly cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A JSON-encoded string containing metadata in
-     * key-value pairs to be set on tokens issued with this SecretID.
+     * JSON-encoded secret data to write.
      */
     readonly metadata?: pulumi.Input<string>;
     /**
-     * The name of the role to create the SecretID for.
+     * Name of the role.
      */
     readonly roleName?: pulumi.Input<string>;
     /**
-     * The SecretID to be created. If set, uses "Push"
-     * mode.  Defaults to Vault auto-generating SecretIDs.
+     * The SecretID to be managed. If not specified, Vault auto-generates one.
      */
     readonly secretId?: pulumi.Input<string>;
     /**
-     * The unique ID for the response-wrapped SecretID that can
-     * be safely logged.
+     * The wrapped SecretID accessor.
      */
     readonly wrappingAccessor?: pulumi.Input<string>;
     /**
-     * The token used to retrieve a response-wrapped SecretID.
+     * The wrapped SecretID token.
      */
     readonly wrappingToken?: pulumi.Input<string>;
     /**
-     * If set, the SecretID response will be
-     * [response-wrapped](https://www.vaultproject.io/docs/concepts/response-wrapping.html)
-     * and available for the duration specified. Only a single unwrapping of the
-     * token is allowed.
+     * The TTL duration of the wrapped SecretID.
      */
     readonly wrappingTtl?: pulumi.Input<string>;
 }
@@ -215,29 +166,23 @@ export interface AuthBackendRoleSecretIDArgs {
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * If set, specifies blocks of IP addresses which can
-     * perform the login operation using this SecretID.
+     * List of CIDR blocks that can log in using the SecretID.
      */
     readonly cidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A JSON-encoded string containing metadata in
-     * key-value pairs to be set on tokens issued with this SecretID.
+     * JSON-encoded secret data to write.
      */
     readonly metadata?: pulumi.Input<string>;
     /**
-     * The name of the role to create the SecretID for.
+     * Name of the role.
      */
     readonly roleName: pulumi.Input<string>;
     /**
-     * The SecretID to be created. If set, uses "Push"
-     * mode.  Defaults to Vault auto-generating SecretIDs.
+     * The SecretID to be managed. If not specified, Vault auto-generates one.
      */
     readonly secretId?: pulumi.Input<string>;
     /**
-     * If set, the SecretID response will be
-     * [response-wrapped](https://www.vaultproject.io/docs/concepts/response-wrapping.html)
-     * and available for the duration specified. Only a single unwrapping of the
-     * token is allowed.
+     * The TTL duration of the wrapped SecretID.
      */
     readonly wrappingTtl?: pulumi.Input<string>;
 }
