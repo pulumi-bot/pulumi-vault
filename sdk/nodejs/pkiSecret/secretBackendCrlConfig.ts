@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows setting the duration for which the generated CRL should be marked valid. If the CRL is disabled, it will return a signed but zero-length CRL for any request. If enabled, it will re-build the CRL.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const pki = new vault.Mount("pki", {
- *     defaultLeaseTtlSeconds: 3600,
- *     maxLeaseTtlSeconds: 86400,
- *     path: "%s",
- *     type: "pki",
- * });
- * const crlConfig = new vault.pkiSecret.SecretBackendCrlConfig("crlConfig", {
- *     backend: pki.path,
- *     disable: false,
- *     expiry: "72h",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_crl_config.html.markdown.
- */
 export class SecretBackendCrlConfig extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendCrlConfig resource's state with the given name, ID, and optional extra
@@ -56,11 +32,11 @@ export class SecretBackendCrlConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * Disables or enables CRL building.
+     * Disables or enables CRL building
      */
     public readonly disable!: pulumi.Output<boolean | undefined>;
     /**
@@ -108,11 +84,11 @@ export class SecretBackendCrlConfig extends pulumi.CustomResource {
  */
 export interface SecretBackendCrlConfigState {
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Disables or enables CRL building.
+     * Disables or enables CRL building
      */
     readonly disable?: pulumi.Input<boolean>;
     /**
@@ -126,11 +102,11 @@ export interface SecretBackendCrlConfigState {
  */
 export interface SecretBackendCrlConfigArgs {
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * Disables or enables CRL building.
+     * Disables or enables CRL building
      */
     readonly disable?: pulumi.Input<boolean>;
     /**

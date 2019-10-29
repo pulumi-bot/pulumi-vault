@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows setting the issuing certificate endpoints, CRL distribution points, and OCSP server endpoints that will be encoded into issued certificates.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const pki = new vault.pkiSecret.SecretBackend("pki", {
- *     defaultLeaseTtlSeconds: 3600,
- *     maxLeaseTtlSeconds: 86400,
- *     path: "%s",
- * });
- * const configUrls = new vault.pkiSecret.SecretBackendConfigUrls("configUrls", {
- *     backend: pki.path,
- *     issuingCertificates: ["http://127.0.0.1:8200/v1/pki/ca"],
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_config_urls.html.markdown.
- */
 export class SecretBackendConfigUrls extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendConfigUrls resource's state with the given name, ID, and optional extra
@@ -54,7 +32,7 @@ export class SecretBackendConfigUrls extends pulumi.CustomResource {
     }
 
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
@@ -112,7 +90,7 @@ export class SecretBackendConfigUrls extends pulumi.CustomResource {
  */
 export interface SecretBackendConfigUrlsState {
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
@@ -134,7 +112,7 @@ export interface SecretBackendConfigUrlsState {
  */
 export interface SecretBackendConfigUrlsArgs {
     /**
-     * The path the PKI secret backend is mounted at, with no leading or trailing `/`s.
+     * The path of the PKI secret backend the resource belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**

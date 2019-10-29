@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a resource to generate a vault token with its options. The token renewing is supported through optional
- * arguments.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.Token("example", {
- *     policies: [
- *         "policy1",
- *         "policy2",
- *     ],
- *     renewIncrement: 86400,
- *     renewMinLease: 43200,
- *     renewable: true,
- *     roleName: "app",
- *     ttl: "24h",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token.html.markdown.
- */
 export class Token extends pulumi.CustomResource {
     /**
      * Get an existing Token resource's state with the given name, ID, and optional extra
@@ -57,63 +32,63 @@ export class Token extends pulumi.CustomResource {
     }
 
     /**
-     * String containing the client token if stored in present file
+     * The client token.
      */
     public /*out*/ readonly clientToken!: pulumi.Output<string>;
     /**
-     * String containing the token display name
+     * The display name of the token.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The explicit max TTL of this token
+     * The explicit max TTL of the token.
      */
     public readonly explicitMaxTtl!: pulumi.Output<string | undefined>;
     /**
-     * String containing the token lease duration if present in state file
+     * The token lease duration.
      */
     public /*out*/ readonly leaseDuration!: pulumi.Output<number>;
     /**
-     * String containing the token lease started time if present in state file
+     * The token lease started on.
      */
     public /*out*/ readonly leaseStarted!: pulumi.Output<string>;
     /**
-     * Flag to not attach the default policy to this token
+     * Flag to disable the default policy.
      */
     public readonly noDefaultPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * Flag to create a token without parent
+     * Flag to create a token without parent.
      */
     public readonly noParent!: pulumi.Output<boolean>;
     /**
-     * The number of allowed uses of this token
+     * The number of allowed uses of the token.
      */
     public readonly numUses!: pulumi.Output<number>;
     /**
-     * The period of this token
+     * The period of the token.
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * List of policies to attach to this token
+     * List of policies.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
-     * The renew increment
+     * The renew increment.
      */
     public readonly renewIncrement!: pulumi.Output<number | undefined>;
     /**
-     * The minimal lease to renew this token
+     * The minimum lease to renew token.
      */
     public readonly renewMinLease!: pulumi.Output<number | undefined>;
     /**
-     * Flag to allow to renew this token
+     * Flag to allow the token to be renewed
      */
     public readonly renewable!: pulumi.Output<boolean>;
     /**
-     * The token role name
+     * The token role name.
      */
     public readonly roleName!: pulumi.Output<string | undefined>;
     /**
-     * The TTL period of this token
+     * The TTL period of the token.
      */
     public readonly ttl!: pulumi.Output<string | undefined>;
     /**
@@ -196,63 +171,63 @@ export class Token extends pulumi.CustomResource {
  */
 export interface TokenState {
     /**
-     * String containing the client token if stored in present file
+     * The client token.
      */
     readonly clientToken?: pulumi.Input<string>;
     /**
-     * String containing the token display name
+     * The display name of the token.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The explicit max TTL of this token
+     * The explicit max TTL of the token.
      */
     readonly explicitMaxTtl?: pulumi.Input<string>;
     /**
-     * String containing the token lease duration if present in state file
+     * The token lease duration.
      */
     readonly leaseDuration?: pulumi.Input<number>;
     /**
-     * String containing the token lease started time if present in state file
+     * The token lease started on.
      */
     readonly leaseStarted?: pulumi.Input<string>;
     /**
-     * Flag to not attach the default policy to this token
+     * Flag to disable the default policy.
      */
     readonly noDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * Flag to create a token without parent
+     * Flag to create a token without parent.
      */
     readonly noParent?: pulumi.Input<boolean>;
     /**
-     * The number of allowed uses of this token
+     * The number of allowed uses of the token.
      */
     readonly numUses?: pulumi.Input<number>;
     /**
-     * The period of this token
+     * The period of the token.
      */
     readonly period?: pulumi.Input<string>;
     /**
-     * List of policies to attach to this token
+     * List of policies.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The renew increment
+     * The renew increment.
      */
     readonly renewIncrement?: pulumi.Input<number>;
     /**
-     * The minimal lease to renew this token
+     * The minimum lease to renew token.
      */
     readonly renewMinLease?: pulumi.Input<number>;
     /**
-     * Flag to allow to renew this token
+     * Flag to allow the token to be renewed
      */
     readonly renewable?: pulumi.Input<boolean>;
     /**
-     * The token role name
+     * The token role name.
      */
     readonly roleName?: pulumi.Input<string>;
     /**
-     * The TTL period of this token
+     * The TTL period of the token.
      */
     readonly ttl?: pulumi.Input<string>;
     /**
@@ -274,51 +249,51 @@ export interface TokenState {
  */
 export interface TokenArgs {
     /**
-     * String containing the token display name
+     * The display name of the token.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The explicit max TTL of this token
+     * The explicit max TTL of the token.
      */
     readonly explicitMaxTtl?: pulumi.Input<string>;
     /**
-     * Flag to not attach the default policy to this token
+     * Flag to disable the default policy.
      */
     readonly noDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * Flag to create a token without parent
+     * Flag to create a token without parent.
      */
     readonly noParent?: pulumi.Input<boolean>;
     /**
-     * The number of allowed uses of this token
+     * The number of allowed uses of the token.
      */
     readonly numUses?: pulumi.Input<number>;
     /**
-     * The period of this token
+     * The period of the token.
      */
     readonly period?: pulumi.Input<string>;
     /**
-     * List of policies to attach to this token
+     * List of policies.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The renew increment
+     * The renew increment.
      */
     readonly renewIncrement?: pulumi.Input<number>;
     /**
-     * The minimal lease to renew this token
+     * The minimum lease to renew token.
      */
     readonly renewMinLease?: pulumi.Input<number>;
     /**
-     * Flag to allow to renew this token
+     * Flag to allow the token to be renewed
      */
     readonly renewable?: pulumi.Input<boolean>;
     /**
-     * The token role name
+     * The token role name.
      */
     readonly roleName?: pulumi.Input<string>;
     /**
-     * The TTL period of this token
+     * The TTL period of the token.
      */
     readonly ttl?: pulumi.Input<string>;
     /**

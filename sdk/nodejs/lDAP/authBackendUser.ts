@@ -4,37 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a user in an [LDAP auth backend within Vault](https://www.vaultproject.io/docs/auth/ldap.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const ldap = new vault.lDAP.AuthBackend("ldap", {
- *     discoverdn: false,
- *     groupdn: "OU=Groups,DC=example,DC=org",
- *     groupfilter: "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))",
- *     path: "ldap",
- *     upndomain: "EXAMPLE.ORG",
- *     url: "ldaps://dc-01.example.org",
- *     userattr: "sAMAccountName",
- *     userdn: "OU=Users,OU=Accounts,DC=example,DC=org",
- * });
- * const user = new vault.lDAP.AuthBackendUser("user", {
- *     backend: ldap.path,
- *     policies: [
- *         "dba",
- *         "sysops",
- *     ],
- *     username: "test-user",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend_user.html.markdown.
- */
 export class AuthBackendUser extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendUser resource's state with the given name, ID, and optional extra
@@ -62,21 +31,9 @@ export class AuthBackendUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthBackendUser.__pulumiType;
     }
 
-    /**
-     * Path to the authentication backend
-     */
     public readonly backend!: pulumi.Output<string | undefined>;
-    /**
-     * Override LDAP groups which should be granted to user
-     */
     public readonly groups!: pulumi.Output<string[]>;
-    /**
-     * Policies which should be granted to user
-     */
     public readonly policies!: pulumi.Output<string[]>;
-    /**
-     * The LDAP username
-     */
     public readonly username!: pulumi.Output<string>;
 
     /**
@@ -120,21 +77,9 @@ export class AuthBackendUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthBackendUser resources.
  */
 export interface AuthBackendUserState {
-    /**
-     * Path to the authentication backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * Override LDAP groups which should be granted to user
-     */
     readonly groups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policies which should be granted to user
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The LDAP username
-     */
     readonly username?: pulumi.Input<string>;
 }
 
@@ -142,20 +87,8 @@ export interface AuthBackendUserState {
  * The set of arguments for constructing a AuthBackendUser resource.
  */
 export interface AuthBackendUserArgs {
-    /**
-     * Path to the authentication backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * Override LDAP groups which should be granted to user
-     */
     readonly groups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policies which should be granted to user
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The LDAP username
-     */
     readonly username: pulumi.Input<string>;
 }
