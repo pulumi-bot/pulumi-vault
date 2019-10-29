@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.Policy("example", {
- *     policy: `path "secret/my_app" {
- *   policy = "write"
- * }
- * `,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/policy.html.markdown.
- */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -49,11 +32,11 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the policy
+     * Name of the policy
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * String containing a Vault policy
+     * The policy document
      */
     public readonly policy!: pulumi.Output<string>;
 
@@ -95,11 +78,11 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * The name of the policy
+     * Name of the policy
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * String containing a Vault policy
+     * The policy document
      */
     readonly policy?: pulumi.Input<string>;
 }
@@ -109,11 +92,11 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * The name of the policy
+     * Name of the policy
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * String containing a Vault policy
+     * The policy document
      */
     readonly policy: pulumi.Input<string>;
 }

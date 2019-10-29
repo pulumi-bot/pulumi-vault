@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/aws_access_credentials.html.markdown.
- */
 export function getAccessCredentials(args: GetAccessCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessCredentialsResult> & GetAccessCredentialsResult {
     if (!opts) {
         opts = {}
@@ -28,22 +25,8 @@ export function getAccessCredentials(args: GetAccessCredentialsArgs, opts?: pulu
  * A collection of arguments for invoking getAccessCredentials.
  */
 export interface GetAccessCredentialsArgs {
-    /**
-     * The path to the AWS secret backend to
-     * read credentials from, with no leading or trailing `/`s.
-     */
     readonly backend: string;
-    /**
-     * The name of the AWS secret backend role to read
-     * credentials from, with no leading or trailing `/`s.
-     */
     readonly role: string;
-    /**
-     * The type of credentials to read. Defaults
-     * to `"creds"`, which just returns an AWS Access Key ID and Secret
-     * Key. Can also be set to `"sts"`, which will return a security token
-     * in addition to the keys.
-     */
     readonly type?: string;
 }
 
@@ -51,31 +34,14 @@ export interface GetAccessCredentialsArgs {
  * A collection of values returned by getAccessCredentials.
  */
 export interface GetAccessCredentialsResult {
-    /**
-     * The AWS Access Key ID returned by Vault.
-     */
     readonly accessKey: string;
     readonly backend: string;
-    /**
-     * The duration of the secret lease, in seconds relative
-     * to the time the data was requested. Once this time has passed any plan
-     * generated with this data may fail to apply.
-     */
     readonly leaseDuration: number;
-    /**
-     * The lease identifier assigned by Vault.
-     */
     readonly leaseId: string;
     readonly leaseRenewable: boolean;
     readonly leaseStartTime: string;
     readonly role: string;
-    /**
-     * The AWS Secret Key returned by Vault.
-     */
     readonly secretKey: string;
-    /**
-     * The STS token returned by Vault, if any.
-     */
     readonly securityToken: string;
     readonly type?: string;
     /**
