@@ -4,42 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Logs into Vault using the AppRole auth backend. See the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/approle.html) for more
- * information.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const approle = new vault.AuthBackend("approle", {
- *     type: "approle",
- * });
- * const example = new vault.appRole.AuthBackendRole("example", {
- *     backend: approle.path,
- *     policies: [
- *         "default",
- *         "dev",
- *         "prod",
- *     ],
- *     roleName: "test-role",
- * });
- * const id = new vault.appRole.AuthBackendRoleSecretID("id", {
- *     backend: approle.path,
- *     roleName: example.roleName,
- * });
- * const login = new vault.appRole.AuthBackendLogin("login", {
- *     backend: approle.path,
- *     roleId: example.roleId,
- *     secretId: id.secretId,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/approle_auth_backend_login.html.markdown.
- */
 export class AuthBackendLogin extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendLogin resource's state with the given name, ID, and optional extra
@@ -72,27 +36,27 @@ export class AuthBackendLogin extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
-     * The unique path of the Vault backend to log in with.
+     * Unique name of the auth backend to configure.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * The Vault token created.
+     * The token.
      */
     public /*out*/ readonly clientToken!: pulumi.Output<string>;
     /**
-     * How long the token is valid for, in seconds.
+     * How long the token is valid for.
      */
     public /*out*/ readonly leaseDuration!: pulumi.Output<number>;
     /**
-     * The date and time the lease started, in RFC 3339 format.
+     * The timestamp the lease started on, as determined by the machine running Terraform.
      */
     public /*out*/ readonly leaseStarted!: pulumi.Output<string>;
     /**
-     * The metadata associated with the token.
+     * Metadata associated with the token.
      */
     public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
-     * A list of policies applied to the token.
+     * Policies set on the token.
      */
     public /*out*/ readonly policies!: pulumi.Output<string[]>;
     /**
@@ -100,12 +64,11 @@ export class AuthBackendLogin extends pulumi.CustomResource {
      */
     public /*out*/ readonly renewable!: pulumi.Output<boolean>;
     /**
-     * The ID of the role to log in with.
+     * The RoleID to log in with.
      */
     public readonly roleId!: pulumi.Output<string>;
     /**
-     * The secret ID of the role to log in with. Required
-     * unless `bindSecretId` is set to false on the role.
+     * The SecretID to log in with.
      */
     public readonly secretId!: pulumi.Output<string | undefined>;
 
@@ -167,27 +130,27 @@ export interface AuthBackendLoginState {
      */
     readonly accessor?: pulumi.Input<string>;
     /**
-     * The unique path of the Vault backend to log in with.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The Vault token created.
+     * The token.
      */
     readonly clientToken?: pulumi.Input<string>;
     /**
-     * How long the token is valid for, in seconds.
+     * How long the token is valid for.
      */
     readonly leaseDuration?: pulumi.Input<number>;
     /**
-     * The date and time the lease started, in RFC 3339 format.
+     * The timestamp the lease started on, as determined by the machine running Terraform.
      */
     readonly leaseStarted?: pulumi.Input<string>;
     /**
-     * The metadata associated with the token.
+     * Metadata associated with the token.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A list of policies applied to the token.
+     * Policies set on the token.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -195,12 +158,11 @@ export interface AuthBackendLoginState {
      */
     readonly renewable?: pulumi.Input<boolean>;
     /**
-     * The ID of the role to log in with.
+     * The RoleID to log in with.
      */
     readonly roleId?: pulumi.Input<string>;
     /**
-     * The secret ID of the role to log in with. Required
-     * unless `bindSecretId` is set to false on the role.
+     * The SecretID to log in with.
      */
     readonly secretId?: pulumi.Input<string>;
 }
@@ -210,16 +172,15 @@ export interface AuthBackendLoginState {
  */
 export interface AuthBackendLoginArgs {
     /**
-     * The unique path of the Vault backend to log in with.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The ID of the role to log in with.
+     * The RoleID to log in with.
      */
     readonly roleId: pulumi.Input<string>;
     /**
-     * The secret ID of the role to log in with. Required
-     * unless `bindSecretId` is set to false on the role.
+     * The SecretID to log in with.
      */
     readonly secretId?: pulumi.Input<string>;
 }

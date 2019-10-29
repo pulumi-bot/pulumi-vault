@@ -6,13 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an JWT/OIDC auth backend role in a Vault server. See the [Vault
- * documentation](https://www.vaultproject.io/docs/auth/jwt.html) for more
- * information.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/jwt_auth_backend_role.html.markdown.
- */
 export class AuthBackendRole extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendRole resource's state with the given name, ID, and optional extra
@@ -41,122 +34,93 @@ export class AuthBackendRole extends pulumi.CustomResource {
     }
 
     /**
-     * The list of allowed values for redirectUri during OIDC logins.
-     * Required for OIDC roles
+     * The list of allowed values for redirect_uri during OIDC logins.
      */
     public readonly allowedRedirectUris!: pulumi.Output<string[] | undefined>;
     /**
-     * The unique name of the auth backend to configure.
-     * Defaults to `jwt`.
+     * Unique name of the auth backend to configure.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * List of `aud` claims to match
-     * against. Any match is sufficient.
+     * List of aud claims to match against. Any match is sufficient.
      */
     public readonly boundAudiences!: pulumi.Output<string[]>;
     /**
-     * If set, a list of
-     * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * List of CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
     public readonly boundCidrs!: pulumi.Output<string[] | undefined>;
     /**
-     * If set, a map of claims/values to match against.
-     * The expected value may be a single string or a list of strings.
+     * Map of claims/values to match against. The expected value may be a single string or a comma-separated string list.
      */
     public readonly boundClaims!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * If set, requires that the `sub` claim matches
-     * this value.
+     * If set, requires that the sub claim matches this value.
      */
     public readonly boundSubject!: pulumi.Output<string | undefined>;
     /**
-     * If set, a map of claims (keys) to be copied
-     * to specified metadata fields (values).
+     * Map of claims (keys) to be copied to specified metadata fields (values).
      */
     public readonly claimMappings!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The claim to use to uniquely identify
-     * the set of groups to which the user belongs; this will be used as the names
-     * for the Identity group aliases created due to a successful login. The claim
-     * value must be a list of strings.
+     * The claim to use to uniquely identify the set of groups to which the user belongs; this will be used as the names
+     * for the Identity group aliases created due to a successful login. The claim value must be a list of strings.
      */
     public readonly groupsClaim!: pulumi.Output<string | undefined>;
     /**
-     * (Optional; Deprecated. This field has been
-     * removed since Vault 1.1. If the groups claim is not at the top level, it can
-     * now be specified as a [JSONPointer](https://tools.ietf.org/html/rfc6901).)
-     * A pattern of delimiters
-     * used to allow the groupsClaim to live outside of the top-level JWT structure.
-     * For instance, a groupsClaim of meta/user.name/groups with this field
-     * set to // will expect nested structures named meta, user.name, and groups.
-     * If this field was set to /./ the groups information would expect to be
-     * via nested structures of meta, user, name, and groups.
+     * A pattern of delimiters used to allow the groups_claim to live outside of the top-level JWT structure. For instance,
+     * a groups_claim of meta/user.name/groups with this field set to // will expect nested structures named meta,
+     * user.name, and groups. If this field was set to /./ the groups information would expect to be via nested structures
+     * of meta, user, name, and groups.
      */
     public readonly groupsClaimDelimiterPattern!: pulumi.Output<string | undefined>;
     /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
+     * Number of seconds after which issued tokens can no longer be renewed.
      */
     public readonly maxTtl!: pulumi.Output<number | undefined>;
     /**
-     * If set, puts a use-count
-     * limitation on the issued token.
+     * Number of times issued tokens can be used. Setting this to 0 or leaving it unset means unlimited uses.
      */
     public readonly numUses!: pulumi.Output<number | undefined>;
     /**
-     * If set, a list of OIDC scopes to be used with an OIDC role.
-     * The standard scope "openid" is automatically included and need not be specified.
+     * List of OIDC scopes to be used with an OIDC role. The standard scope "openid" is automatically included and need not
+     * be specified.
      */
     public readonly oidcScopes!: pulumi.Output<string[] | undefined>;
     /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
+     * Number of seconds to set the TTL to for issued tokens upon renewal. Makes the token a periodic token, which will
+     * never expire as long as it is renewed before the TTL each period.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
+     * Policies to be set on tokens issued using this role.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
-     * The name of the role.
+     * Name of the role.
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
-     * Type of role, either "oidc" (default) or "jwt".
+     * Type of role, either "oidc" (default) or "jwt"
      */
     public readonly roleType!: pulumi.Output<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     public readonly tokenBoundCidrs!: pulumi.Output<string[] | undefined>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     public readonly tokenExplicitMaxTtl!: pulumi.Output<number | undefined>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     public readonly tokenMaxTtl!: pulumi.Output<number | undefined>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     public readonly tokenNoDefaultPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     public readonly tokenNumUses!: pulumi.Output<number | undefined>;
     /**
@@ -164,31 +128,23 @@ export class AuthBackendRole extends pulumi.CustomResource {
      */
     public readonly tokenPeriod!: pulumi.Output<number | undefined>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     public readonly tokenPolicies!: pulumi.Output<string[] | undefined>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     public readonly tokenTtl!: pulumi.Output<number | undefined>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     public readonly tokenType!: pulumi.Output<string | undefined>;
     /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
+     * Default number of seconds to set as the TTL for issued tokens and at renewal time.
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * The claim to use to uniquely identify
-     * the user; this will be used as the name for the Identity entity alias created
+     * The claim to use to uniquely identify the user; this will be used as the name for the Identity entity alias created
      * due to a successful login.
      */
     public readonly userClaim!: pulumi.Output<string>;
@@ -287,122 +243,93 @@ export class AuthBackendRole extends pulumi.CustomResource {
  */
 export interface AuthBackendRoleState {
     /**
-     * The list of allowed values for redirectUri during OIDC logins.
-     * Required for OIDC roles
+     * The list of allowed values for redirect_uri during OIDC logins.
      */
     readonly allowedRedirectUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the auth backend to configure.
-     * Defaults to `jwt`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * List of `aud` claims to match
-     * against. Any match is sufficient.
+     * List of aud claims to match against. Any match is sufficient.
      */
     readonly boundAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, a list of
-     * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * List of CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, a map of claims/values to match against.
-     * The expected value may be a single string or a list of strings.
+     * Map of claims/values to match against. The expected value may be a single string or a comma-separated string list.
      */
     readonly boundClaims?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If set, requires that the `sub` claim matches
-     * this value.
+     * If set, requires that the sub claim matches this value.
      */
     readonly boundSubject?: pulumi.Input<string>;
     /**
-     * If set, a map of claims (keys) to be copied
-     * to specified metadata fields (values).
+     * Map of claims (keys) to be copied to specified metadata fields (values).
      */
     readonly claimMappings?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The claim to use to uniquely identify
-     * the set of groups to which the user belongs; this will be used as the names
-     * for the Identity group aliases created due to a successful login. The claim
-     * value must be a list of strings.
+     * The claim to use to uniquely identify the set of groups to which the user belongs; this will be used as the names
+     * for the Identity group aliases created due to a successful login. The claim value must be a list of strings.
      */
     readonly groupsClaim?: pulumi.Input<string>;
     /**
-     * (Optional; Deprecated. This field has been
-     * removed since Vault 1.1. If the groups claim is not at the top level, it can
-     * now be specified as a [JSONPointer](https://tools.ietf.org/html/rfc6901).)
-     * A pattern of delimiters
-     * used to allow the groupsClaim to live outside of the top-level JWT structure.
-     * For instance, a groupsClaim of meta/user.name/groups with this field
-     * set to // will expect nested structures named meta, user.name, and groups.
-     * If this field was set to /./ the groups information would expect to be
-     * via nested structures of meta, user, name, and groups.
+     * A pattern of delimiters used to allow the groups_claim to live outside of the top-level JWT structure. For instance,
+     * a groups_claim of meta/user.name/groups with this field set to // will expect nested structures named meta,
+     * user.name, and groups. If this field was set to /./ the groups information would expect to be via nested structures
+     * of meta, user, name, and groups.
      */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
+     * Number of seconds after which issued tokens can no longer be renewed.
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
-     * If set, puts a use-count
-     * limitation on the issued token.
+     * Number of times issued tokens can be used. Setting this to 0 or leaving it unset means unlimited uses.
      */
     readonly numUses?: pulumi.Input<number>;
     /**
-     * If set, a list of OIDC scopes to be used with an OIDC role.
-     * The standard scope "openid" is automatically included and need not be specified.
+     * List of OIDC scopes to be used with an OIDC role. The standard scope "openid" is automatically included and need not
+     * be specified.
      */
     readonly oidcScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
+     * Number of seconds to set the TTL to for issued tokens upon renewal. Makes the token a periodic token, which will
+     * never expire as long as it is renewed before the TTL each period.
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
+     * Policies to be set on tokens issued using this role.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role.
+     * Name of the role.
      */
     readonly roleName?: pulumi.Input<string>;
     /**
-     * Type of role, either "oidc" (default) or "jwt".
+     * Type of role, either "oidc" (default) or "jwt"
      */
     readonly roleType?: pulumi.Input<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     readonly tokenBoundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     readonly tokenExplicitMaxTtl?: pulumi.Input<number>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     readonly tokenMaxTtl?: pulumi.Input<number>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**
@@ -410,31 +337,23 @@ export interface AuthBackendRoleState {
      */
     readonly tokenPeriod?: pulumi.Input<number>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     readonly tokenPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     readonly tokenTtl?: pulumi.Input<number>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     readonly tokenType?: pulumi.Input<string>;
     /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
+     * Default number of seconds to set as the TTL for issued tokens and at renewal time.
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The claim to use to uniquely identify
-     * the user; this will be used as the name for the Identity entity alias created
+     * The claim to use to uniquely identify the user; this will be used as the name for the Identity entity alias created
      * due to a successful login.
      */
     readonly userClaim?: pulumi.Input<string>;
@@ -445,122 +364,93 @@ export interface AuthBackendRoleState {
  */
 export interface AuthBackendRoleArgs {
     /**
-     * The list of allowed values for redirectUri during OIDC logins.
-     * Required for OIDC roles
+     * The list of allowed values for redirect_uri during OIDC logins.
      */
     readonly allowedRedirectUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the auth backend to configure.
-     * Defaults to `jwt`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * List of `aud` claims to match
-     * against. Any match is sufficient.
+     * List of aud claims to match against. Any match is sufficient.
      */
     readonly boundAudiences: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, a list of
-     * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * List of CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, a map of claims/values to match against.
-     * The expected value may be a single string or a list of strings.
+     * Map of claims/values to match against. The expected value may be a single string or a comma-separated string list.
      */
     readonly boundClaims?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If set, requires that the `sub` claim matches
-     * this value.
+     * If set, requires that the sub claim matches this value.
      */
     readonly boundSubject?: pulumi.Input<string>;
     /**
-     * If set, a map of claims (keys) to be copied
-     * to specified metadata fields (values).
+     * Map of claims (keys) to be copied to specified metadata fields (values).
      */
     readonly claimMappings?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The claim to use to uniquely identify
-     * the set of groups to which the user belongs; this will be used as the names
-     * for the Identity group aliases created due to a successful login. The claim
-     * value must be a list of strings.
+     * The claim to use to uniquely identify the set of groups to which the user belongs; this will be used as the names
+     * for the Identity group aliases created due to a successful login. The claim value must be a list of strings.
      */
     readonly groupsClaim?: pulumi.Input<string>;
     /**
-     * (Optional; Deprecated. This field has been
-     * removed since Vault 1.1. If the groups claim is not at the top level, it can
-     * now be specified as a [JSONPointer](https://tools.ietf.org/html/rfc6901).)
-     * A pattern of delimiters
-     * used to allow the groupsClaim to live outside of the top-level JWT structure.
-     * For instance, a groupsClaim of meta/user.name/groups with this field
-     * set to // will expect nested structures named meta, user.name, and groups.
-     * If this field was set to /./ the groups information would expect to be
-     * via nested structures of meta, user, name, and groups.
+     * A pattern of delimiters used to allow the groups_claim to live outside of the top-level JWT structure. For instance,
+     * a groups_claim of meta/user.name/groups with this field set to // will expect nested structures named meta,
+     * user.name, and groups. If this field was set to /./ the groups information would expect to be via nested structures
+     * of meta, user, name, and groups.
      */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
+     * Number of seconds after which issued tokens can no longer be renewed.
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
-     * If set, puts a use-count
-     * limitation on the issued token.
+     * Number of times issued tokens can be used. Setting this to 0 or leaving it unset means unlimited uses.
      */
     readonly numUses?: pulumi.Input<number>;
     /**
-     * If set, a list of OIDC scopes to be used with an OIDC role.
-     * The standard scope "openid" is automatically included and need not be specified.
+     * List of OIDC scopes to be used with an OIDC role. The standard scope "openid" is automatically included and need not
+     * be specified.
      */
     readonly oidcScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
+     * Number of seconds to set the TTL to for issued tokens upon renewal. Makes the token a periodic token, which will
+     * never expire as long as it is renewed before the TTL each period.
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
+     * Policies to be set on tokens issued using this role.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role.
+     * Name of the role.
      */
     readonly roleName: pulumi.Input<string>;
     /**
-     * Type of role, either "oidc" (default) or "jwt".
+     * Type of role, either "oidc" (default) or "jwt"
      */
     readonly roleType?: pulumi.Input<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     readonly tokenBoundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     readonly tokenExplicitMaxTtl?: pulumi.Input<number>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     readonly tokenMaxTtl?: pulumi.Input<number>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**
@@ -568,31 +458,23 @@ export interface AuthBackendRoleArgs {
      */
     readonly tokenPeriod?: pulumi.Input<number>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     readonly tokenPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     readonly tokenTtl?: pulumi.Input<number>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     readonly tokenType?: pulumi.Input<string>;
     /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
+     * Default number of seconds to set as the TTL for issued tokens and at renewal time.
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The claim to use to uniquely identify
-     * the user; this will be used as the name for the Identity entity alias created
+     * The claim to use to uniquely identify the user; this will be used as the name for the Identity entity alias created
      * due to a successful login.
      */
     readonly userClaim: pulumi.Input<string>;

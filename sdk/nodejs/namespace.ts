@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a resource to manage [Namespaces](https://www.vaultproject.io/docs/enterprise/namespaces/index.html).
- * 
- * **Note** this feature is available only with Vault Enterprise.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const ns1 = new vault.Namespace("ns1", {
- *     path: "ns1",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/namespace.html.markdown.
- */
 export class Namespace extends pulumi.CustomResource {
     /**
      * Get an existing Namespace resource's state with the given name, ID, and optional extra
@@ -50,7 +32,7 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
-     * The path of the namespace. Must not have a trailing `/`
+     * Path of the namespace.
      */
     public readonly path!: pulumi.Output<string>;
 
@@ -90,7 +72,7 @@ export class Namespace extends pulumi.CustomResource {
  */
 export interface NamespaceState {
     /**
-     * The path of the namespace. Must not have a trailing `/`
+     * Path of the namespace.
      */
     readonly path?: pulumi.Input<string>;
 }
@@ -100,7 +82,7 @@ export interface NamespaceState {
  */
 export interface NamespaceArgs {
     /**
-     * The path of the namespace. Must not have a trailing `/`
+     * Path of the namespace.
      */
     readonly path: pulumi.Input<string>;
 }

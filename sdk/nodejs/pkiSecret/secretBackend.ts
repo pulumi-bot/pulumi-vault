@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an PKI Secret Backend for Vault. PKI secret backends can then issue certificates, once a role has been added to
- * the backend.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const pki = new vault.pkiSecret.SecretBackend("pki", {
- *     defaultLeaseTtlSeconds: 3600,
- *     maxLeaseTtlSeconds: 86400,
- *     path: "pki",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend.html.markdown.
- */
 export class SecretBackend extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackend resource's state with the given name, ID, and optional extra
@@ -51,19 +32,19 @@ export class SecretBackend extends pulumi.CustomResource {
     }
 
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for tokens and secrets in seconds
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum TTL that can be requested for credentials issued by this backend.
+     * Maximum possible lease duration for tokens and secrets in seconds
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * The unique path this backend should be mounted at. Must not begin or end with a `/`.
+     * Path to mount the backend at.
      */
     public readonly path!: pulumi.Output<string>;
 
@@ -109,19 +90,19 @@ export class SecretBackend extends pulumi.CustomResource {
  */
 export interface SecretBackendState {
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for tokens and secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested for credentials issued by this backend.
+     * Maximum possible lease duration for tokens and secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique path this backend should be mounted at. Must not begin or end with a `/`.
+     * Path to mount the backend at.
      */
     readonly path?: pulumi.Input<string>;
 }
@@ -131,19 +112,19 @@ export interface SecretBackendState {
  */
 export interface SecretBackendArgs {
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for tokens and secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested for credentials issued by this backend.
+     * Maximum possible lease duration for tokens and secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique path this backend should be mounted at. Must not begin or end with a `/`.
+     * Path to mount the backend at.
      */
     readonly path: pulumi.Input<string>;
 }

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_oidc_key_allowed_client_id.html.markdown.
- */
 export class OidcKeyAllowedClientID extends pulumi.CustomResource {
     /**
      * Get an existing OidcKeyAllowedClientID resource's state with the given name, ID, and optional extra
@@ -35,11 +32,11 @@ export class OidcKeyAllowedClientID extends pulumi.CustomResource {
     }
 
     /**
-     * Client ID to allow usage with the OIDC named key
+     * Role Client ID allowed to use the key for signing.
      */
     public readonly allowedClientId!: pulumi.Output<string>;
     /**
-     * Name of the OIDC Key allow the Client ID.
+     * Name of the key.
      */
     public readonly keyName!: pulumi.Output<string>;
 
@@ -84,11 +81,11 @@ export class OidcKeyAllowedClientID extends pulumi.CustomResource {
  */
 export interface OidcKeyAllowedClientIDState {
     /**
-     * Client ID to allow usage with the OIDC named key
+     * Role Client ID allowed to use the key for signing.
      */
     readonly allowedClientId?: pulumi.Input<string>;
     /**
-     * Name of the OIDC Key allow the Client ID.
+     * Name of the key.
      */
     readonly keyName?: pulumi.Input<string>;
 }
@@ -98,11 +95,11 @@ export interface OidcKeyAllowedClientIDState {
  */
 export interface OidcKeyAllowedClientIDArgs {
     /**
-     * Client ID to allow usage with the OIDC named key
+     * Role Client ID allowed to use the key for signing.
      */
     readonly allowedClientId: pulumi.Input<string>;
     /**
-     * Name of the OIDC Key allow the Client ID.
+     * Name of the key.
      */
     readonly keyName: pulumi.Input<string>;
 }

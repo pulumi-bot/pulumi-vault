@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const example = new vault.Mount("example", {
- *     description: "This is an example mount",
- *     path: "dummy",
- *     type: "generic",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/mount.html.markdown.
- */
 export class Mount extends pulumi.CustomResource {
     /**
      * Get an existing Mount resource's state with the given name, ID, and optional extra
@@ -48,7 +32,7 @@ export class Mount extends pulumi.CustomResource {
     }
 
     /**
-     * The accessor for this mount.
+     * Accessor of the mount
      */
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
@@ -60,7 +44,7 @@ export class Mount extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Boolean flag that can be explicitly set to true to enforce local mount in HA environment
+     * Local mount flag that can be explicitly set to true to enforce local mount in HA environment
      */
     public readonly local!: pulumi.Output<boolean | undefined>;
     /**
@@ -76,7 +60,7 @@ export class Mount extends pulumi.CustomResource {
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * Type of the backend, such as "aws"
+     * Type of the backend, such as 'aws'
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -133,7 +117,7 @@ export class Mount extends pulumi.CustomResource {
  */
 export interface MountState {
     /**
-     * The accessor for this mount.
+     * Accessor of the mount
      */
     readonly accessor?: pulumi.Input<string>;
     /**
@@ -145,7 +129,7 @@ export interface MountState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Boolean flag that can be explicitly set to true to enforce local mount in HA environment
+     * Local mount flag that can be explicitly set to true to enforce local mount in HA environment
      */
     readonly local?: pulumi.Input<boolean>;
     /**
@@ -161,7 +145,7 @@ export interface MountState {
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Type of the backend, such as "aws"
+     * Type of the backend, such as 'aws'
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -179,7 +163,7 @@ export interface MountArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Boolean flag that can be explicitly set to true to enforce local mount in HA environment
+     * Local mount flag that can be explicitly set to true to enforce local mount in HA environment
      */
     readonly local?: pulumi.Input<boolean>;
     /**
@@ -195,7 +179,7 @@ export interface MountArgs {
      */
     readonly path: pulumi.Input<string>;
     /**
-     * Type of the backend, such as "aws"
+     * Type of the backend, such as 'aws'
      */
     readonly type: pulumi.Input<string>;
 }
