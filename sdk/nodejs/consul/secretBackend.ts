@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/consul_secret_backend.html.markdown.
- */
 export class SecretBackend extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackend resource's state with the given name, ID, and optional extra
@@ -39,28 +36,27 @@ export class SecretBackend extends pulumi.CustomResource {
      */
     public readonly address!: pulumi.Output<string>;
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number | undefined>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number | undefined>;
     /**
-     * The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+     * Unique name of the Vault Consul mount to configure
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the URL scheme to use. Defaults to `http`.
+     * Specifies the URL scheme to use. Defaults to "http".
      */
     public readonly scheme!: pulumi.Output<string | undefined>;
     /**
-     * The Consul management token this backend should use to issue new tokens.
+     * Specifies the Consul ACL token to use. This must be a management type token.
      */
     public readonly token!: pulumi.Output<string>;
 
@@ -119,28 +115,27 @@ export interface SecretBackendState {
      */
     readonly address?: pulumi.Input<string>;
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+     * Unique name of the Vault Consul mount to configure
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Specifies the URL scheme to use. Defaults to `http`.
+     * Specifies the URL scheme to use. Defaults to "http".
      */
     readonly scheme?: pulumi.Input<string>;
     /**
-     * The Consul management token this backend should use to issue new tokens.
+     * Specifies the Consul ACL token to use. This must be a management type token.
      */
     readonly token?: pulumi.Input<string>;
 }
@@ -154,28 +149,27 @@ export interface SecretBackendArgs {
      */
     readonly address: pulumi.Input<string>;
     /**
-     * The default TTL for credentials issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+     * Unique name of the Vault Consul mount to configure
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Specifies the URL scheme to use. Defaults to `http`.
+     * Specifies the URL scheme to use. Defaults to "http".
      */
     readonly scheme?: pulumi.Input<string>;
     /**
-     * The Consul management token this backend should use to issue new tokens.
+     * Specifies the Consul ACL token to use. This must be a management type token.
      */
     readonly token: pulumi.Input<string>;
 }
