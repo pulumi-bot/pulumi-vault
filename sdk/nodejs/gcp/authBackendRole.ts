@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to create a role in an [GCP auth backend within Vault](https://www.vaultproject.io/docs/auth/gcp.html).
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_auth_backend_role.html.markdown.
- */
 export class AuthBackendRole extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendRole resource's state with the given name, ID, and optional extra
@@ -37,91 +32,37 @@ export class AuthBackendRole extends pulumi.CustomResource {
     }
 
     public readonly addGroupAliases!: pulumi.Output<boolean>;
-    /**
-     * A flag to determine if this role should allow GCE instances to authenticate by inferring service accounts from the GCE identity metadata token.
-     */
     public readonly allowGceInference!: pulumi.Output<boolean>;
-    /**
-     * Path to the mounted GCP auth backend
-     */
     public readonly backend!: pulumi.Output<string | undefined>;
-    /**
-     * The instance groups that an authorized instance must belong to in order to be authenticated. If specified, either `boundZones` or `boundRegions` must be set too.
-     */
     public readonly boundInstanceGroups!: pulumi.Output<string[]>;
-    /**
-     * A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
-     */
     public readonly boundLabels!: pulumi.Output<string[]>;
-    /**
-     * GCP Projects that the role exists within
-     */
     public readonly boundProjects!: pulumi.Output<string[] | undefined>;
-    /**
-     * The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
-     */
     public readonly boundRegions!: pulumi.Output<string[]>;
-    /**
-     * GCP Service Accounts allowed to issue tokens under this role. (Note: **Required** if role is `iam`)
-     */
     public readonly boundServiceAccounts!: pulumi.Output<string[]>;
-    /**
-     * The list of zones that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a zonal group and the group must belong to this zone.
-     */
     public readonly boundZones!: pulumi.Output<string[]>;
-    /**
-     * The number of seconds past the time of authentication that the login param JWT must expire within. For example, if a user attempts to login with a token that expires within an hour and this is set to 15 minutes, Vault will return an error prompting the user to create a new signed JWT with a shorter `exp`. The GCE metadata tokens currently do not allow the `exp` claim to be customized.
-     */
     public readonly maxJwtExp!: pulumi.Output<string>;
-    /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
-     */
     public readonly maxTtl!: pulumi.Output<string>;
-    /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
-     */
     public readonly period!: pulumi.Output<string>;
-    /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
-     */
     public readonly policies!: pulumi.Output<string[]>;
-    /**
-     * Name of the GCP role
-     */
     public readonly role!: pulumi.Output<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     public readonly tokenBoundCidrs!: pulumi.Output<string[] | undefined>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     public readonly tokenExplicitMaxTtl!: pulumi.Output<number | undefined>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     public readonly tokenMaxTtl!: pulumi.Output<number | undefined>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     public readonly tokenNoDefaultPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     public readonly tokenNumUses!: pulumi.Output<number | undefined>;
     /**
@@ -129,31 +70,18 @@ export class AuthBackendRole extends pulumi.CustomResource {
      */
     public readonly tokenPeriod!: pulumi.Output<number | undefined>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     public readonly tokenPolicies!: pulumi.Output<string[] | undefined>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     public readonly tokenTtl!: pulumi.Output<number | undefined>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     public readonly tokenType!: pulumi.Output<string | undefined>;
-    /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
-     */
     public readonly ttl!: pulumi.Output<string>;
-    /**
-     * Type of GCP authentication role (either `gce` or `iam`)
-     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -243,91 +171,37 @@ export class AuthBackendRole extends pulumi.CustomResource {
  */
 export interface AuthBackendRoleState {
     readonly addGroupAliases?: pulumi.Input<boolean>;
-    /**
-     * A flag to determine if this role should allow GCE instances to authenticate by inferring service accounts from the GCE identity metadata token.
-     */
     readonly allowGceInference?: pulumi.Input<boolean>;
-    /**
-     * Path to the mounted GCP auth backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * The instance groups that an authorized instance must belong to in order to be authenticated. If specified, either `boundZones` or `boundRegions` must be set too.
-     */
     readonly boundInstanceGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
-     */
     readonly boundLabels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * GCP Projects that the role exists within
-     */
     readonly boundProjects?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
-     */
     readonly boundRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * GCP Service Accounts allowed to issue tokens under this role. (Note: **Required** if role is `iam`)
-     */
     readonly boundServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of zones that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a zonal group and the group must belong to this zone.
-     */
     readonly boundZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The number of seconds past the time of authentication that the login param JWT must expire within. For example, if a user attempts to login with a token that expires within an hour and this is set to 15 minutes, Vault will return an error prompting the user to create a new signed JWT with a shorter `exp`. The GCE metadata tokens currently do not allow the `exp` claim to be customized.
-     */
     readonly maxJwtExp?: pulumi.Input<string>;
-    /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
-     */
     readonly maxTtl?: pulumi.Input<string>;
-    /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
-     */
     readonly period?: pulumi.Input<string>;
-    /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the GCP role
-     */
     readonly role?: pulumi.Input<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     readonly tokenBoundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     readonly tokenExplicitMaxTtl?: pulumi.Input<number>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     readonly tokenMaxTtl?: pulumi.Input<number>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**
@@ -335,31 +209,18 @@ export interface AuthBackendRoleState {
      */
     readonly tokenPeriod?: pulumi.Input<number>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     readonly tokenPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     readonly tokenTtl?: pulumi.Input<number>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     readonly tokenType?: pulumi.Input<string>;
-    /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
-     */
     readonly ttl?: pulumi.Input<string>;
-    /**
-     * Type of GCP authentication role (either `gce` or `iam`)
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -368,91 +229,37 @@ export interface AuthBackendRoleState {
  */
 export interface AuthBackendRoleArgs {
     readonly addGroupAliases?: pulumi.Input<boolean>;
-    /**
-     * A flag to determine if this role should allow GCE instances to authenticate by inferring service accounts from the GCE identity metadata token.
-     */
     readonly allowGceInference?: pulumi.Input<boolean>;
-    /**
-     * Path to the mounted GCP auth backend
-     */
     readonly backend?: pulumi.Input<string>;
-    /**
-     * The instance groups that an authorized instance must belong to in order to be authenticated. If specified, either `boundZones` or `boundRegions` must be set too.
-     */
     readonly boundInstanceGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
-     */
     readonly boundLabels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * GCP Projects that the role exists within
-     */
     readonly boundProjects?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
-     */
     readonly boundRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * GCP Service Accounts allowed to issue tokens under this role. (Note: **Required** if role is `iam`)
-     */
     readonly boundServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of zones that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a zonal group and the group must belong to this zone.
-     */
     readonly boundZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The number of seconds past the time of authentication that the login param JWT must expire within. For example, if a user attempts to login with a token that expires within an hour and this is set to 15 minutes, Vault will return an error prompting the user to create a new signed JWT with a shorter `exp`. The GCE metadata tokens currently do not allow the `exp` claim to be customized.
-     */
     readonly maxJwtExp?: pulumi.Input<string>;
-    /**
-     * The maximum allowed lifetime of tokens
-     * issued using this role, provided as a number of seconds.
-     */
     readonly maxTtl?: pulumi.Input<string>;
-    /**
-     * If set, indicates that the
-     * token generated using this role should never expire. The token should be renewed within the
-     * duration specified by this value. At each renewal, the token's TTL will be set to the
-     * value of this field. The maximum allowed lifetime of token issued using this
-     * role. Specified as a number of seconds.
-     */
     readonly period?: pulumi.Input<string>;
-    /**
-     * An array of strings
-     * specifying the policies to be set on tokens issued using this role.
-     */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the GCP role
-     */
     readonly role: pulumi.Input<string>;
     /**
-     * List of CIDR blocks; if set, specifies blocks of IP
-     * addresses which can authenticate successfully, and ties the resulting token to these blocks
-     * as well.
+     * Specifies the blocks of IP addresses which are allowed to use the generated token
      */
     readonly tokenBoundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set, will encode an
-     * [explicit max TTL](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls)
-     * onto the token in number of seconds. This is a hard cap even if `tokenTtl` and
-     * `tokenMaxTtl` would otherwise allow a renewal.
+     * Generated Token's Explicit Maximum TTL in seconds
      */
     readonly tokenExplicitMaxTtl?: pulumi.Input<number>;
     /**
-     * The maximum lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The maximum lifetime of the generated token
      */
     readonly tokenMaxTtl?: pulumi.Input<number>;
     /**
-     * If set, the default policy will not be set on
-     * generated tokens; otherwise it will be added to the policies set in token_policies.
+     * If true, the 'default' policy will not automatically be added to generated tokens
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The maximum number of times a token may be used, a value of zero means unlimited
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**
@@ -460,30 +267,17 @@ export interface AuthBackendRoleArgs {
      */
     readonly tokenPeriod?: pulumi.Input<number>;
     /**
-     * List of policies to encode onto generated tokens. Depending
-     * on the auth method, this list may be supplemented by user/group/other values.
+     * Generated Token's Policies
      */
     readonly tokenPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The incremental lifetime for generated tokens in number of seconds.
-     * Its current value will be referenced at renewal time.
+     * The initial ttl of the token to generate in seconds
      */
     readonly tokenTtl?: pulumi.Input<number>;
     /**
-     * The type of token that should be generated. Can be `service`,
-     * `batch`, or `default` to use the mount's tuned default (which unless changed will be
-     * `service` tokens). For token store roles, there are two additional possibilities:
-     * `default-service` and `default-batch` which specify the type to return unless the client
-     * requests a different type at generation time.
+     * The type of token to generate, service or batch
      */
     readonly tokenType?: pulumi.Input<string>;
-    /**
-     * The TTL period of tokens issued
-     * using this role, provided as a number of seconds.
-     */
     readonly ttl?: pulumi.Input<string>;
-    /**
-     * Type of GCP authentication role (either `gce` or `iam`)
-     */
     readonly type: pulumi.Input<string>;
 }

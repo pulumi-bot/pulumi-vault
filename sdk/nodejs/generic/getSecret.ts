@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/generic_secret.html.markdown.
- */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
     if (!opts) {
         opts = {}
@@ -27,13 +24,6 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getSecret.
  */
 export interface GetSecretArgs {
-    /**
-     * The full logical path from which to request data.
-     * To read data from the "generic" secret backend mounted in Vault by
-     * default, this should be prefixed with `secret/`. Reading from other backends
-     * with this data source is possible; consult each backend's documentation
-     * to see which endpoints support the `GET` method.
-     */
     readonly path: string;
     readonly version?: number;
 }
@@ -42,27 +32,9 @@ export interface GetSecretArgs {
  * A collection of values returned by getSecret.
  */
 export interface GetSecretResult {
-    /**
-     * A mapping whose keys are the top-level data keys returned from
-     * Vault and whose values are the corresponding values. This map can only
-     * represent string data, so any non-string values returned from Vault are
-     * serialized as JSON.
-     */
     readonly data: {[key: string]: any};
-    /**
-     * A string containing the full data payload retrieved from
-     * Vault, serialized in JSON format.
-     */
     readonly dataJson: string;
-    /**
-     * The duration of the secret lease, in seconds relative
-     * to the time the data was requested. Once this time has passed any plan
-     * generated with this data may fail to apply.
-     */
     readonly leaseDuration: number;
-    /**
-     * The lease identifier assigned by Vault, if any.
-     */
     readonly leaseId: string;
     readonly leaseRenewable: boolean;
     readonly leaseStartTime: string;
