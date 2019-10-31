@@ -380,7 +380,7 @@ export namespace identity {
         /**
          * Arbitrary metadata
          */
-        metadata: {[key: string]: any};
+        metadata: {[key: string]: string};
         /**
          * Authentication mount acccessor which this alias belongs to
          */

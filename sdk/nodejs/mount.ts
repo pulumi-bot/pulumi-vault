@@ -70,7 +70,7 @@ export class Mount extends pulumi.CustomResource {
     /**
      * Specifies mount type specific options that are passed to the backend
      */
-    public readonly options!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Where the secret backend will be mounted
      */
@@ -155,7 +155,7 @@ export interface MountState {
     /**
      * Specifies mount type specific options that are passed to the backend
      */
-    readonly options?: pulumi.Input<{[key: string]: any}>;
+    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Where the secret backend will be mounted
      */
@@ -189,7 +189,7 @@ export interface MountArgs {
     /**
      * Specifies mount type specific options that are passed to the backend
      */
-    readonly options?: pulumi.Input<{[key: string]: any}>;
+    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Where the secret backend will be mounted
      */

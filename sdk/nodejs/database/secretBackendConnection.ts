@@ -52,7 +52,7 @@ export class SecretBackendConnection extends pulumi.CustomResource {
     /**
      * A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
      */
-    public readonly data!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A nested block containing configuration options for SAP HanaDB connections.
      */
@@ -184,7 +184,7 @@ export interface SecretBackendConnectionState {
     /**
      * A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
      */
-    readonly data?: pulumi.Input<{[key: string]: any}>;
+    readonly data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A nested block containing configuration options for SAP HanaDB connections.
      */
@@ -256,7 +256,7 @@ export interface SecretBackendConnectionArgs {
     /**
      * A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
      */
-    readonly data?: pulumi.Input<{[key: string]: any}>;
+    readonly data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A nested block containing configuration options for SAP HanaDB connections.
      */

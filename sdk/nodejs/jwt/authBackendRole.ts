@@ -64,7 +64,7 @@ export class AuthBackendRole extends pulumi.CustomResource {
      * If set, a map of claims/values to match against.
      * The expected value may be a single string or a list of strings.
      */
-    public readonly boundClaims!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly boundClaims!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * If set, requires that the `sub` claim matches
      * this value.
@@ -74,7 +74,7 @@ export class AuthBackendRole extends pulumi.CustomResource {
      * If set, a map of claims (keys) to be copied
      * to specified metadata fields (values).
      */
-    public readonly claimMappings!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly claimMappings!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The claim to use to uniquely identify
      * the set of groups to which the user belongs; this will be used as the names
@@ -310,7 +310,7 @@ export interface AuthBackendRoleState {
      * If set, a map of claims/values to match against.
      * The expected value may be a single string or a list of strings.
      */
-    readonly boundClaims?: pulumi.Input<{[key: string]: any}>;
+    readonly boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If set, requires that the `sub` claim matches
      * this value.
@@ -320,7 +320,7 @@ export interface AuthBackendRoleState {
      * If set, a map of claims (keys) to be copied
      * to specified metadata fields (values).
      */
-    readonly claimMappings?: pulumi.Input<{[key: string]: any}>;
+    readonly claimMappings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The claim to use to uniquely identify
      * the set of groups to which the user belongs; this will be used as the names
@@ -468,7 +468,7 @@ export interface AuthBackendRoleArgs {
      * If set, a map of claims/values to match against.
      * The expected value may be a single string or a list of strings.
      */
-    readonly boundClaims?: pulumi.Input<{[key: string]: any}>;
+    readonly boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If set, requires that the `sub` claim matches
      * this value.
@@ -478,7 +478,7 @@ export interface AuthBackendRoleArgs {
      * If set, a map of claims (keys) to be copied
      * to specified metadata fields (values).
      */
-    readonly claimMappings?: pulumi.Input<{[key: string]: any}>;
+    readonly claimMappings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The claim to use to uniquely identify
      * the set of groups to which the user belongs; this will be used as the names
