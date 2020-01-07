@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/approle_auth_backend_role_id.html.markdown.
  */
-export function getAuthBackendRoleId(args: GetAuthBackendRoleIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendRoleIdResult> & GetAuthBackendRoleIdResult {
+export function getAuthBackendRoleId(args: GetAuthBackendRoleIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendRoleIdResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,12 +31,10 @@ export function getAuthBackendRoleId(args: GetAuthBackendRoleIdArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAuthBackendRoleIdResult> = pulumi.runtime.invoke("vault:appRole/getAuthBackendRoleId:getAuthBackendRoleId", {
+    return pulumi.runtime.invoke("vault:appRole/getAuthBackendRoleId:getAuthBackendRoleId", {
         "backend": args.backend,
         "roleName": args.roleName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

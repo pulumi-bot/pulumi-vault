@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/generic_secret.html.markdown.
  */
-export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
+export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     if (!opts) {
         opts = {}
     }
@@ -15,12 +15,10 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecretResult> = pulumi.runtime.invoke("vault:generic/getSecret:getSecret", {
+    return pulumi.runtime.invoke("vault:generic/getSecret:getSecret", {
         "path": args.path,
         "version": args.version,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

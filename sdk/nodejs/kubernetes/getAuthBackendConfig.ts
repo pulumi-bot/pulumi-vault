@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/kubernetes_auth_backend_config.html.markdown.
  */
-export function getAuthBackendConfig(args?: GetAuthBackendConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendConfigResult> & GetAuthBackendConfigResult {
+export function getAuthBackendConfig(args?: GetAuthBackendConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendConfigResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,15 +33,13 @@ export function getAuthBackendConfig(args?: GetAuthBackendConfigArgs, opts?: pul
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAuthBackendConfigResult> = pulumi.runtime.invoke("vault:kubernetes/getAuthBackendConfig:getAuthBackendConfig", {
+    return pulumi.runtime.invoke("vault:kubernetes/getAuthBackendConfig:getAuthBackendConfig", {
         "backend": args.backend,
         "issuer": args.issuer,
         "kubernetesCaCert": args.kubernetesCaCert,
         "kubernetesHost": args.kubernetesHost,
         "pemKeys": args.pemKeys,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
