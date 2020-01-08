@@ -339,6 +339,7 @@ export interface AuthBackendRoleState {
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, a map of claims/values to match against.
@@ -385,11 +386,13 @@ export interface AuthBackendRoleState {
      * If this field was set to /./ the groups information would expect to be
      * via nested structures of meta, user, name, and groups.
      */
+    /** @deprecated `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer. */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * The amount of leeway to add to not before (`nbf`) claims to account for
@@ -401,6 +404,7 @@ export interface AuthBackendRoleState {
      * If set, puts a use-count
      * limitation on the issued token.
      */
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: pulumi.Input<number>;
     /**
      * If set, a list of OIDC scopes to be used with an OIDC role.
@@ -413,11 +417,13 @@ export interface AuthBackendRoleState {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the role.
@@ -485,6 +491,7 @@ export interface AuthBackendRoleState {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
     /**
      * The claim to use to uniquely identify
@@ -523,6 +530,7 @@ export interface AuthBackendRoleArgs {
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, a map of claims/values to match against.
@@ -569,11 +577,13 @@ export interface AuthBackendRoleArgs {
      * If this field was set to /./ the groups information would expect to be
      * via nested structures of meta, user, name, and groups.
      */
+    /** @deprecated `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer. */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * The amount of leeway to add to not before (`nbf`) claims to account for
@@ -585,6 +595,7 @@ export interface AuthBackendRoleArgs {
      * If set, puts a use-count
      * limitation on the issued token.
      */
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: pulumi.Input<number>;
     /**
      * If set, a list of OIDC scopes to be used with an OIDC role.
@@ -597,11 +608,13 @@ export interface AuthBackendRoleArgs {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the role.
@@ -669,6 +682,7 @@ export interface AuthBackendRoleArgs {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
     /**
      * The claim to use to uniquely identify

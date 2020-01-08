@@ -230,6 +230,7 @@ export interface AuthBackendRoleState {
      * If set,
      * specifies blocks of IP addresses which can perform the login operation.
      */
+    /** @deprecated use `secret_id_bound_cidrs` instead */
     readonly boundCidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, indicates that the
@@ -237,11 +238,13 @@ export interface AuthBackendRoleState {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The RoleID of this role. If not specified, one will be
@@ -342,6 +345,7 @@ export interface AuthBackendRoleArgs {
      * If set,
      * specifies blocks of IP addresses which can perform the login operation.
      */
+    /** @deprecated use `secret_id_bound_cidrs` instead */
     readonly boundCidrLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, indicates that the
@@ -349,11 +353,13 @@ export interface AuthBackendRoleArgs {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The RoleID of this role. If not specified, one will be

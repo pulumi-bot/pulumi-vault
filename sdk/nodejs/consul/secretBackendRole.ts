@@ -137,6 +137,7 @@ export interface SecretBackendRoleState {
     /**
      * The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
      */
+    /** @deprecated use `backend` instead */
     readonly path?: pulumi.Input<string>;
     /**
      * The list of Consul ACL policies to associate with these roles.
@@ -175,6 +176,7 @@ export interface SecretBackendRoleArgs {
     /**
      * The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
      */
+    /** @deprecated use `backend` instead */
     readonly path?: pulumi.Input<string>;
     /**
      * The list of Consul ACL policies to associate with these roles.
