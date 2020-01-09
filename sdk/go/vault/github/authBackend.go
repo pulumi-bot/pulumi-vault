@@ -227,6 +227,7 @@ type AuthBackendState struct {
 	Description interface{}
 	// (Optional; Deprecated, use `tokenMaxTtl` instead if you are running Vault >= 1.2) The maximum allowed lifetime of tokens
 	// issued using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
+// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// The organization configured users must be part of.
 	Organization interface{}
@@ -271,6 +272,7 @@ type AuthBackendState struct {
 	TokenType interface{}
 	// (Optional; Deprecated, use `tokenTtl` instead if you are running Vault >= 1.2) The TTL period of tokens issued
 	// using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
+// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	Tune interface{}
 }
@@ -285,6 +287,7 @@ type AuthBackendArgs struct {
 	Description interface{}
 	// (Optional; Deprecated, use `tokenMaxTtl` instead if you are running Vault >= 1.2) The maximum allowed lifetime of tokens
 	// issued using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
+// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// The organization configured users must be part of.
 	Organization interface{}
@@ -329,6 +332,7 @@ type AuthBackendArgs struct {
 	TokenType interface{}
 	// (Optional; Deprecated, use `tokenTtl` instead if you are running Vault >= 1.2) The TTL period of tokens issued
 	// using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
+// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	Tune interface{}
 }

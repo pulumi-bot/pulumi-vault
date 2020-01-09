@@ -224,7 +224,7 @@ export interface AuthBackendState {
     /**
      * (Optional; Deprecated, use `tokenMaxTtl` instead if you are running Vault >= 1.2) The maximum allowed lifetime of tokens
      * issued using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
-     */
+     *      * @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2     */
     readonly maxTtl?: pulumi.Input<string>;
     /**
      * The organization configured users must be part of.
@@ -292,7 +292,7 @@ export interface AuthBackendState {
     /**
      * (Optional; Deprecated, use `tokenTtl` instead if you are running Vault >= 1.2) The TTL period of tokens issued
      * using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
-     */
+     *      * @deprecated use `token_ttl` instead if you are running Vault >= 1.2     */
     readonly ttl?: pulumi.Input<string>;
     readonly tune?: pulumi.Input<inputs.github.AuthBackendTune>;
 }
@@ -314,7 +314,7 @@ export interface AuthBackendArgs {
     /**
      * (Optional; Deprecated, use `tokenMaxTtl` instead if you are running Vault >= 1.2) The maximum allowed lifetime of tokens
      * issued using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
-     */
+     *      * @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2     */
     readonly maxTtl?: pulumi.Input<string>;
     /**
      * The organization configured users must be part of.
@@ -382,7 +382,7 @@ export interface AuthBackendArgs {
     /**
      * (Optional; Deprecated, use `tokenTtl` instead if you are running Vault >= 1.2) The TTL period of tokens issued
      * using this role. This must be a valid [duration string](https://golang.org/pkg/time/#ParseDuration).
-     */
+     *      * @deprecated use `token_ttl` instead if you are running Vault >= 1.2     */
     readonly ttl?: pulumi.Input<string>;
     readonly tune?: pulumi.Input<inputs.github.AuthBackendTune>;
 }
