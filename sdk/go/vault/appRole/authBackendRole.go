@@ -250,14 +250,17 @@ type AuthBackendRoleState struct {
 	BindSecretId interface{}
 	// If set,
 	// specifies blocks of IP addresses which can perform the login operation.
+// Deprecated: use `secret_id_bound_cidrs` instead
 	BoundCidrLists interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// The RoleID of this role. If not specified, one will be
 	// auto-generated.
@@ -322,14 +325,17 @@ type AuthBackendRoleArgs struct {
 	BindSecretId interface{}
 	// If set,
 	// specifies blocks of IP addresses which can perform the login operation.
+// Deprecated: use `secret_id_bound_cidrs` instead
 	BoundCidrLists interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// The RoleID of this role. If not specified, one will be
 	// auto-generated.

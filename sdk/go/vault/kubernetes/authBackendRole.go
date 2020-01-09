@@ -258,6 +258,7 @@ type AuthBackendRoleState struct {
 	Backend interface{}
 	// If set, a list of
 	// CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+// Deprecated: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// List of service account names able to access this role. If set to `["*"]` all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
 	BoundServiceAccountNames interface{}
@@ -265,17 +266,21 @@ type AuthBackendRoleState struct {
 	BoundServiceAccountNamespaces interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// If set, puts a use-count
 	// limitation on the issued token.
+// Deprecated: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// Name of the role.
 	RoleName interface{}
@@ -317,6 +322,7 @@ type AuthBackendRoleState struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 }
 
@@ -328,6 +334,7 @@ type AuthBackendRoleArgs struct {
 	Backend interface{}
 	// If set, a list of
 	// CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+// Deprecated: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// List of service account names able to access this role. If set to `["*"]` all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
 	BoundServiceAccountNames interface{}
@@ -335,17 +342,21 @@ type AuthBackendRoleArgs struct {
 	BoundServiceAccountNamespaces interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// If set, puts a use-count
 	// limitation on the issued token.
+// Deprecated: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// Name of the role.
 	RoleName interface{}
@@ -387,5 +398,6 @@ type AuthBackendRoleArgs struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 }

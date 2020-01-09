@@ -436,6 +436,7 @@ export interface AuthBackendRoleState {
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * If set, indicates that the
@@ -443,11 +444,13 @@ export interface AuthBackendRoleState {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set to `true`, the
@@ -531,6 +534,7 @@ export interface AuthBackendRoleState {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
 }
 
@@ -640,6 +644,7 @@ export interface AuthBackendRoleArgs {
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * If set, indicates that the
@@ -647,11 +652,13 @@ export interface AuthBackendRoleArgs {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set to `true`, the
@@ -735,5 +742,6 @@ export interface AuthBackendRoleArgs {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
 }

@@ -236,6 +236,7 @@ export interface AuthBackendRoleState {
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of service account names able to access this role. If set to `["*"]` all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
@@ -249,11 +250,13 @@ export interface AuthBackendRoleState {
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * If set, puts a use-count
      * limitation on the issued token.
      */
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: pulumi.Input<number>;
     /**
      * If set, indicates that the
@@ -261,11 +264,13 @@ export interface AuthBackendRoleState {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the role.
@@ -329,6 +334,7 @@ export interface AuthBackendRoleState {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
 }
 
@@ -348,6 +354,7 @@ export interface AuthBackendRoleArgs {
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
      */
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of service account names able to access this role. If set to `["*"]` all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
@@ -361,11 +368,13 @@ export interface AuthBackendRoleArgs {
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: pulumi.Input<number>;
     /**
      * If set, puts a use-count
      * limitation on the issued token.
      */
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: pulumi.Input<number>;
     /**
      * If set, indicates that the
@@ -373,11 +382,13 @@ export interface AuthBackendRoleArgs {
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
      */
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
      */
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the role.
@@ -441,5 +452,6 @@ export interface AuthBackendRoleArgs {
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
      */
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: pulumi.Input<number>;
 }

@@ -67,10 +67,15 @@ export interface GetAuthBackendRoleArgs {
      * retrieve Role attributes for resides in. Defaults to "kubernetes".
      */
     readonly backend?: string;
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: string[];
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: number;
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: number;
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: number;
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: string[];
     /**
      * The name of the role to retrieve the Role attributes for.
@@ -85,6 +90,7 @@ export interface GetAuthBackendRoleArgs {
     readonly tokenPolicies?: string[];
     readonly tokenTtl?: number;
     readonly tokenType?: string;
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: number;
 }
 
@@ -97,6 +103,7 @@ export interface GetAuthBackendRoleResult {
      */
     readonly audience?: string;
     readonly backend?: string;
+    /** @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2 */
     readonly boundCidrs?: string[];
     /**
      * List of service account names able to access this role. If set to "*" all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
@@ -106,9 +113,13 @@ export interface GetAuthBackendRoleResult {
      * List of namespaces allowed to access this role. If set to "*" all namespaces are allowed, both this and boundServiceAccountNames can not be set to "*".
      */
     readonly boundServiceAccountNamespaces: string[];
+    /** @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2 */
     readonly maxTtl?: number;
+    /** @deprecated use `token_num_uses` instead if you are running Vault >= 1.2 */
     readonly numUses?: number;
+    /** @deprecated use `token_period` instead if you are running Vault >= 1.2 */
     readonly period?: number;
+    /** @deprecated use `token_policies` instead if you are running Vault >= 1.2 */
     readonly policies?: string[];
     readonly roleName: string;
     /**
@@ -165,6 +176,7 @@ export interface GetAuthBackendRoleResult {
      * requests a different type at generation time.
      */
     readonly tokenType?: string;
+    /** @deprecated use `token_ttl` instead if you are running Vault >= 1.2 */
     readonly ttl?: number;
     /**
      * id is the provider-assigned unique ID for this managed resource.
