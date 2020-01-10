@@ -136,6 +136,8 @@ export interface SecretBackendRoleState {
     readonly name?: pulumi.Input<string>;
     /**
      * The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
+     * 
+     * @deprecated use `backend` instead
      */
     readonly path?: pulumi.Input<string>;
     /**
@@ -174,6 +176,8 @@ export interface SecretBackendRoleArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
+     * 
+     * @deprecated use `backend` instead
      */
     readonly path?: pulumi.Input<string>;
     /**

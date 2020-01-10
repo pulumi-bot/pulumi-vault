@@ -131,6 +131,7 @@ type SecretBackendRoleState struct {
 	// The name of the Consul secrets engine role to create.
 	Name interface{}
 	// The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
+	// Deprecated: use `backend` instead
 	Path interface{}
 	// The list of Consul ACL policies to associate with these roles.
 	Policies interface{}
@@ -151,6 +152,7 @@ type SecretBackendRoleArgs struct {
 	// The name of the Consul secrets engine role to create.
 	Name interface{}
 	// The unique name of an existing Consul secrets backend mount. Must not begin or end with a `/`. **Deprecated**
+	// Deprecated: use `backend` instead
 	Path interface{}
 	// The list of Consul ACL policies to associate with these roles.
 	Policies interface{}

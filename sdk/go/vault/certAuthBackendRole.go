@@ -299,6 +299,7 @@ type CertAuthBackendRoleState struct {
 	Backend interface{}
 	// Restriction usage of the
 	// certificates to client IPs falling within the range of the specified CIDRs
+	// Deprecated: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// CA certificate used to validate client certificates
 	Certificate interface{}
@@ -306,6 +307,7 @@ type CertAuthBackendRoleState struct {
 	DisplayName interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// Name of the role
 	Name interface{}
@@ -313,9 +315,11 @@ type CertAuthBackendRoleState struct {
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// TLS extensions required on client certificates
 	RequiredExtensions interface{}
@@ -357,6 +361,7 @@ type CertAuthBackendRoleState struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 }
 
@@ -378,6 +383,7 @@ type CertAuthBackendRoleArgs struct {
 	Backend interface{}
 	// Restriction usage of the
 	// certificates to client IPs falling within the range of the specified CIDRs
+	// Deprecated: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// CA certificate used to validate client certificates
 	Certificate interface{}
@@ -385,6 +391,7 @@ type CertAuthBackendRoleArgs struct {
 	DisplayName interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// Deprecated: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// Name of the role
 	Name interface{}
@@ -392,9 +399,11 @@ type CertAuthBackendRoleArgs struct {
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// Deprecated: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// Deprecated: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// TLS extensions required on client certificates
 	RequiredExtensions interface{}
@@ -436,5 +445,6 @@ type CertAuthBackendRoleArgs struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// Deprecated: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 }

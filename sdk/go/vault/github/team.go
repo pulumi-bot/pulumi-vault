@@ -167,22 +167,31 @@ type TeamState struct {
 	// GitHub team name in "slugified" format.
 	Team interface{}
 	// Specifies the blocks of IP addresses which are allowed to use the generated token
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenBoundCidrs interface{}
 	// Generated Token's Explicit Maximum TTL in seconds
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenExplicitMaxTtl interface{}
 	// The maximum lifetime of the generated token
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenMaxTtl interface{}
 	// If true, the 'default' policy will not automatically be added to generated tokens
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNoDefaultPolicy interface{}
 	// The maximum number of times a token may be used, a value of zero means unlimited
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNumUses interface{}
 	// Generated Token's Period
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPeriod interface{}
 	// Generated Token's Policies
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPolicies interface{}
 	// The initial ttl of the token to generate in seconds
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenTtl interface{}
 	// The type of token to generate, service or batch
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenType interface{}
 }
 
@@ -197,21 +206,30 @@ type TeamArgs struct {
 	// GitHub team name in "slugified" format.
 	Team interface{}
 	// Specifies the blocks of IP addresses which are allowed to use the generated token
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenBoundCidrs interface{}
 	// Generated Token's Explicit Maximum TTL in seconds
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenExplicitMaxTtl interface{}
 	// The maximum lifetime of the generated token
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenMaxTtl interface{}
 	// If true, the 'default' policy will not automatically be added to generated tokens
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNoDefaultPolicy interface{}
 	// The maximum number of times a token may be used, a value of zero means unlimited
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNumUses interface{}
 	// Generated Token's Period
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPeriod interface{}
 	// Generated Token's Policies
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPolicies interface{}
 	// The initial ttl of the token to generate in seconds
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenTtl interface{}
 	// The type of token to generate, service or batch
+	// Deprecated: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenType interface{}
 }
