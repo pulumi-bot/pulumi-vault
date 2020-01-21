@@ -305,14 +305,17 @@ type AuthBackendRoleState struct {
 	MaxJwtExp interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// Name of the GCP role
 	Role interface{}
@@ -354,6 +357,7 @@ type AuthBackendRoleState struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	// Type of GCP authentication role (either `gce` or `iam`)
 	Type interface{}
@@ -382,14 +386,17 @@ type AuthBackendRoleArgs struct {
 	MaxJwtExp interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// Name of the GCP role
 	Role interface{}
@@ -431,6 +438,7 @@ type AuthBackendRoleArgs struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	// Type of GCP authentication role (either `gce` or `iam`)
 	Type interface{}

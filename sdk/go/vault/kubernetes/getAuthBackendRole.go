@@ -69,10 +69,15 @@ type GetAuthBackendRoleArgs struct {
 	// The unique name for the Kubernetes backend the role to
 	// retrieve Role attributes for resides in. Defaults to "kubernetes".
 	Backend interface{}
+	// DeprecationMessage: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
+	// DeprecationMessage: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// The name of the role to retrieve the Role attributes for.
 	RoleName interface{}
@@ -85,6 +90,7 @@ type GetAuthBackendRoleArgs struct {
 	TokenPolicies interface{}
 	TokenTtl interface{}
 	TokenType interface{}
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 }
 
@@ -93,14 +99,19 @@ type GetAuthBackendRoleResult struct {
 	// (Optional) Audience claim to verify in the JWT.
 	Audience interface{}
 	Backend interface{}
+	// DeprecationMessage: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// List of service account names able to access this role. If set to "*" all names are allowed, both this and boundServiceAccountNamespaces can not be "*".
 	BoundServiceAccountNames interface{}
 	// List of namespaces allowed to access this role. If set to "*" all namespaces are allowed, both this and boundServiceAccountNames can not be set to "*".
 	BoundServiceAccountNamespaces interface{}
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
+	// DeprecationMessage: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	RoleName interface{}
 	// List of CIDR blocks; if set, specifies blocks of IP
@@ -139,6 +150,7 @@ type GetAuthBackendRoleResult struct {
 	// `default-service` and `default-batch` which specify the type to return unless the client
 	// requests a different type at generation time.
 	TokenType interface{}
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

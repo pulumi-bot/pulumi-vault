@@ -379,6 +379,7 @@ type AuthBackendRoleState struct {
 	BoundAudiences interface{}
 	// If set, a list of
 	// CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+	// DeprecationMessage: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// If set, a map of claims/values to match against.
 	// The expected value may be a single string or a list of strings.
@@ -411,9 +412,11 @@ type AuthBackendRoleState struct {
 	// set to // will expect nested structures named meta, user.name, and groups.
 	// If this field was set to /./ the groups information would expect to be
 	// via nested structures of meta, user, name, and groups.
+	// DeprecationMessage: `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer.
 	GroupsClaimDelimiterPattern interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// The amount of leeway to add to not before (`nbf`) claims to account for
 	// clock skew, in seconds. Defaults to `60` seconds if set to `0` and can be disabled if set to `-1`.
@@ -421,6 +424,7 @@ type AuthBackendRoleState struct {
 	NotBeforeLeeway interface{}
 	// If set, puts a use-count
 	// limitation on the issued token.
+	// DeprecationMessage: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
 	// If set, a list of OIDC scopes to be used with an OIDC role.
 	// The standard scope "openid" is automatically included and need not be specified.
@@ -429,9 +433,11 @@ type AuthBackendRoleState struct {
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// The name of the role.
 	RoleName interface{}
@@ -475,6 +481,7 @@ type AuthBackendRoleState struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	// The claim to use to uniquely identify
 	// the user; this will be used as the name for the Identity entity alias created
@@ -499,6 +506,7 @@ type AuthBackendRoleArgs struct {
 	BoundAudiences interface{}
 	// If set, a list of
 	// CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+	// DeprecationMessage: use `token_bound_cidrs` instead if you are running Vault >= 1.2
 	BoundCidrs interface{}
 	// If set, a map of claims/values to match against.
 	// The expected value may be a single string or a list of strings.
@@ -531,9 +539,11 @@ type AuthBackendRoleArgs struct {
 	// set to // will expect nested structures named meta, user.name, and groups.
 	// If this field was set to /./ the groups information would expect to be
 	// via nested structures of meta, user, name, and groups.
+	// DeprecationMessage: `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer.
 	GroupsClaimDelimiterPattern interface{}
 	// The maximum allowed lifetime of tokens
 	// issued using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_max_ttl` instead if you are running Vault >= 1.2
 	MaxTtl interface{}
 	// The amount of leeway to add to not before (`nbf`) claims to account for
 	// clock skew, in seconds. Defaults to `60` seconds if set to `0` and can be disabled if set to `-1`.
@@ -541,6 +551,7 @@ type AuthBackendRoleArgs struct {
 	NotBeforeLeeway interface{}
 	// If set, puts a use-count
 	// limitation on the issued token.
+	// DeprecationMessage: use `token_num_uses` instead if you are running Vault >= 1.2
 	NumUses interface{}
 	// If set, a list of OIDC scopes to be used with an OIDC role.
 	// The standard scope "openid" is automatically included and need not be specified.
@@ -549,9 +560,11 @@ type AuthBackendRoleArgs struct {
 	// token generated using this role should never expire. The token should be renewed within the
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
+	// DeprecationMessage: use `token_period` instead if you are running Vault >= 1.2
 	Period interface{}
 	// An array of strings
 	// specifying the policies to be set on tokens issued using this role.
+	// DeprecationMessage: use `token_policies` instead if you are running Vault >= 1.2
 	Policies interface{}
 	// The name of the role.
 	RoleName interface{}
@@ -595,6 +608,7 @@ type AuthBackendRoleArgs struct {
 	TokenType interface{}
 	// The TTL period of tokens issued
 	// using this role, provided as a number of seconds.
+	// DeprecationMessage: use `token_ttl` instead if you are running Vault >= 1.2
 	Ttl interface{}
 	// The claim to use to uniquely identify
 	// the user; this will be used as the name for the Identity entity alias created

@@ -165,22 +165,31 @@ type UserState struct {
 	// using this role.
 	Policies interface{}
 	// Specifies the blocks of IP addresses which are allowed to use the generated token
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenBoundCidrs interface{}
 	// Generated Token's Explicit Maximum TTL in seconds
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenExplicitMaxTtl interface{}
 	// The maximum lifetime of the generated token
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenMaxTtl interface{}
 	// If true, the 'default' policy will not automatically be added to generated tokens
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNoDefaultPolicy interface{}
 	// The maximum number of times a token may be used, a value of zero means unlimited
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNumUses interface{}
 	// Generated Token's Period
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPeriod interface{}
 	// Generated Token's Policies
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPolicies interface{}
 	// The initial ttl of the token to generate in seconds
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenTtl interface{}
 	// The type of token to generate, service or batch
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenType interface{}
 	// GitHub user name.
 	User interface{}
@@ -195,22 +204,31 @@ type UserArgs struct {
 	// using this role.
 	Policies interface{}
 	// Specifies the blocks of IP addresses which are allowed to use the generated token
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenBoundCidrs interface{}
 	// Generated Token's Explicit Maximum TTL in seconds
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenExplicitMaxTtl interface{}
 	// The maximum lifetime of the generated token
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenMaxTtl interface{}
 	// If true, the 'default' policy will not automatically be added to generated tokens
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNoDefaultPolicy interface{}
 	// The maximum number of times a token may be used, a value of zero means unlimited
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenNumUses interface{}
 	// Generated Token's Period
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPeriod interface{}
 	// Generated Token's Policies
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenPolicies interface{}
 	// The initial ttl of the token to generate in seconds
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenTtl interface{}
 	// The type of token to generate, service or batch
+	// DeprecationMessage: This parameter should be moved to the Github Auth backend config block. It does nothing in a user/team block.
 	TokenType interface{}
 	// GitHub user name.
 	User interface{}
