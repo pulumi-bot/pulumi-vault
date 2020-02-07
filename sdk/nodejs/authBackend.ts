@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     type: "github",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/auth_backend.html.markdown.
  */
 export class AuthBackend extends pulumi.CustomResource {

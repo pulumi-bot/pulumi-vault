@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Manages an JWT/OIDC auth backend role in a Vault server. See the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/jwt.html) for more
  * information.
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/jwt_auth_backend_role.html.markdown.
  */
 export class AuthBackendRole extends pulumi.CustomResource {

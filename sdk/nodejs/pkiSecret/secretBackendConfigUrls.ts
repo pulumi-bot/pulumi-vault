@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     issuingCertificates: ["http://127.0.0.1:8200/v1/pki/ca"],
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_config_urls.html.markdown.
  */
 export class SecretBackendConfigUrls extends pulumi.CustomResource {

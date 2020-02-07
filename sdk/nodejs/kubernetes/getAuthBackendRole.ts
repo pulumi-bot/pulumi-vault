@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  * 
  * export const policies = role.policies!;
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/kubernetes_auth_backend_role.html.markdown.
  */
 export function getAuthBackendRole(args: GetAuthBackendRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendRoleResult> & GetAuthBackendRoleResult {
@@ -106,6 +108,10 @@ export interface GetAuthBackendRoleResult {
      * List of namespaces allowed to access this role. If set to "*" all namespaces are allowed, both this and boundServiceAccountNames can not be set to "*".
      */
     readonly boundServiceAccountNamespaces: string[];
+    /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly maxTtl?: number;
     readonly numUses?: number;
     readonly period?: number;
@@ -166,8 +172,4 @@ export interface GetAuthBackendRoleResult {
      */
     readonly tokenType?: string;
     readonly ttl?: number;
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

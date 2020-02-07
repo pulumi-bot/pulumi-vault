@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     roleName: "my-role",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token_auth_backend_role.html.markdown.
  */
 export class AuthBackendRole extends pulumi.CustomResource {

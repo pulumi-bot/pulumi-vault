@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Manages policy mappings for Github Users authenticated via Github. See the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/github.html) for more
  * information.
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/github_user.html.markdown.
  */
 export class User extends pulumi.CustomResource {

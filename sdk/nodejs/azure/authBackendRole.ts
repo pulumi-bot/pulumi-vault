@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     tokenTtl: 60,
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_auth_backend_role.html.markdown.
  */
 export class AuthBackendRole extends pulumi.CustomResource {

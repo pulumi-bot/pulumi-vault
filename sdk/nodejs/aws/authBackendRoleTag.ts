@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     role: role.role,
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_role_tag.html.markdown.
  */
 export class AuthBackendRoleTag extends pulumi.CustomResource {

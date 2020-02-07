@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     path: "userpass",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/auth_backend.html.markdown.
  */
 export function getAuthBackend(args: GetAuthBackendArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendResult> & GetAuthBackendResult {
@@ -62,6 +62,10 @@ export interface GetAuthBackendResult {
      */
     readonly description: string;
     /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
      */
     readonly listingVisibility: string;
@@ -78,8 +82,4 @@ export interface GetAuthBackendResult {
      * The name of the auth method type.
      */
     readonly type: string;
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
