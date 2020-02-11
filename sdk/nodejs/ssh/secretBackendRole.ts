@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage roles in an SSH secret backend
  * [SSH secret backend within Vault](https://www.vaultproject.io/docs/secrets/ssh/index.html).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const example = new vault.Mount("example", {
  *     type: "ssh",
  * });

@@ -12,7 +12,7 @@ import (
 )
 
 // Creates an PKI certificate.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_root_sign_intermediate.html.markdown.
 type SecretBackendRootSignIntermediate struct {
 	pulumi.CustomResourceState
