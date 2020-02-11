@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/index.html.markdown.
  */
 export class Provider extends pulumi.ProviderResource {
@@ -41,14 +41,19 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["address"] = (args ? args.address : undefined) || utilities.getEnv("VAULT_ADDR");
-            inputs["authLogins"] = pulumi.output(args ? args.authLogins : undefined).apply(JSON.stringify);
+            inputs["authLogins"] = pulumi.output(args ? args.authLogins : undefined).apply(JSON.stringify)
+;
             inputs["caCertDir"] = (args ? args.caCertDir : undefined) || utilities.getEnv("VAULT_CAPATH");
             inputs["caCertFile"] = (args ? args.caCertFile : undefined) || utilities.getEnv("VAULT_CACERT");
-            inputs["clientAuths"] = pulumi.output(args ? args.clientAuths : undefined).apply(JSON.stringify);
-            inputs["maxLeaseTtlSeconds"] = pulumi.output((args ? args.maxLeaseTtlSeconds : undefined) || (utilities.getEnvNumber("TERRAFORM_VAULT_MAX_TTL") || 1200)).apply(JSON.stringify);
-            inputs["maxRetries"] = pulumi.output((args ? args.maxRetries : undefined) || (utilities.getEnvNumber("VAULT_MAX_RETRIES") || 2)).apply(JSON.stringify);
+            inputs["clientAuths"] = pulumi.output(args ? args.clientAuths : undefined).apply(JSON.stringify)
+;
+            inputs["maxLeaseTtlSeconds"] = pulumi.output((args ? args.maxLeaseTtlSeconds : undefined) || (<any>utilities.getEnvNumber("TERRAFORM_VAULT_MAX_TTL") || 1200)).apply(JSON.stringify)
+;
+            inputs["maxRetries"] = pulumi.output((args ? args.maxRetries : undefined) || (<any>utilities.getEnvNumber("VAULT_MAX_RETRIES") || 2)).apply(JSON.stringify)
+;
             inputs["namespace"] = (args ? args.namespace : undefined) || utilities.getEnv("VAULT_NAMESPACE");
-            inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) || utilities.getEnvBoolean("VAULT_SKIP_VERIFY")).apply(JSON.stringify);
+            inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) || <any>utilities.getEnvBoolean("VAULT_SKIP_VERIFY")).apply(JSON.stringify)
+;
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("VAULT_TOKEN");
             inputs["tokenName"] = (args ? args.tokenName : undefined) || utilities.getEnv("VAULT_TOKEN_NAME");
         }

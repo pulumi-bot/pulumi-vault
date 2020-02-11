@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     type: "socket",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/audit.html.markdown.
  */
 export class Audit extends pulumi.CustomResource {

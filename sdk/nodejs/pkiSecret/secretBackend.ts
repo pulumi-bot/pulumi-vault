@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     path: "pki",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend.html.markdown.
  */
 export class SecretBackend extends pulumi.CustomResource {

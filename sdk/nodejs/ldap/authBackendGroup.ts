@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     policies: ["dba"],
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend_group.html.markdown.
  */
 export class AuthBackendGroup extends pulumi.CustomResource {

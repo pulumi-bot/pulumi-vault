@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     policy: examplePolicyDocument.hcl,
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/policy_document.html.markdown.
  */
 export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDocumentResult> & GetPolicyDocumentResult {
@@ -66,9 +66,9 @@ export interface GetPolicyDocumentResult {
      * The above arguments serialized as a standard Vault HCL policy document.
      */
     readonly hcl: string;
-    readonly rules: outputs.GetPolicyDocumentRule[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly rules: outputs.GetPolicyDocumentRule[];
 }

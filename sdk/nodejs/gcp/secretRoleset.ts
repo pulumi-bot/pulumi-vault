@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     tokenScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_roleset.html.markdown.
  */
 export class SecretRoleset extends pulumi.CustomResource {

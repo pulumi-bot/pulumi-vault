@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     type: "github",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/auth_backend.html.markdown.
  */
 export class AuthBackend extends pulumi.CustomResource {
@@ -53,6 +53,8 @@ export class AuthBackend extends pulumi.CustomResource {
     public /*out*/ readonly accessor!: pulumi.Output<string>;
     /**
      * The default lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number>;
     /**
@@ -61,6 +63,8 @@ export class AuthBackend extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     public readonly listingVisibility!: pulumi.Output<string>;
     /**
@@ -69,6 +73,8 @@ export class AuthBackend extends pulumi.CustomResource {
     public readonly local!: pulumi.Output<boolean | undefined>;
     /**
      * The maximum lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number>;
     /**
@@ -138,6 +144,8 @@ export interface AuthBackendState {
     readonly accessor?: pulumi.Input<string>;
     /**
      * The default lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -146,6 +154,8 @@ export interface AuthBackendState {
     readonly description?: pulumi.Input<string>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
@@ -154,6 +164,8 @@ export interface AuthBackendState {
     readonly local?: pulumi.Input<boolean>;
     /**
      * The maximum lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -173,6 +185,8 @@ export interface AuthBackendState {
 export interface AuthBackendArgs {
     /**
      * The default lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -181,6 +195,8 @@ export interface AuthBackendArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
@@ -189,6 +205,8 @@ export interface AuthBackendArgs {
     readonly local?: pulumi.Input<boolean>;
     /**
      * The maximum lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**

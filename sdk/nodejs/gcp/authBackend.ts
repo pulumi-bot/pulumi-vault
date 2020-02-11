@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     credentials: fs.readFileSync("vault-gcp-credentials.json", "utf-8"),
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_auth_backend.html.markdown.
  */
 export class AuthBackend extends pulumi.CustomResource {

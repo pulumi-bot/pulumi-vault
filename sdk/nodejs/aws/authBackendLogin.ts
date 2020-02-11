@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *     signature: "BASE64ENCODEDSHA256IDENTITYDOCUMENTSIGNATURE",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_login.html.markdown.
  */
 export class AuthBackendLogin extends pulumi.CustomResource {

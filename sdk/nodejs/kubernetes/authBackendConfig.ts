@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     tokenReviewerJwt: "ZXhhbXBsZQo=",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/kubernetes_auth_backend_config.html.markdown.
  */
 export class AuthBackendConfig extends pulumi.CustomResource {
