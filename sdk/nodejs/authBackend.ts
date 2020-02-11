@@ -138,6 +138,8 @@ export interface AuthBackendState {
     readonly accessor?: pulumi.Input<string>;
     /**
      * The default lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -146,6 +148,8 @@ export interface AuthBackendState {
     readonly description?: pulumi.Input<string>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
@@ -154,6 +158,8 @@ export interface AuthBackendState {
     readonly local?: pulumi.Input<boolean>;
     /**
      * The maximum lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -173,6 +179,8 @@ export interface AuthBackendState {
 export interface AuthBackendArgs {
     /**
      * The default lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
@@ -181,6 +189,8 @@ export interface AuthBackendArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly listingVisibility?: pulumi.Input<string>;
     /**
@@ -189,6 +199,8 @@ export interface AuthBackendArgs {
     readonly local?: pulumi.Input<boolean>;
     /**
      * The maximum lease duration in seconds.
+     * 
+     * @deprecated Use the tune configuration block to avoid forcing creation of new resource on an update
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
