@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     backend: transit.path,
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/transit_secret_backend_key.html.markdown.
  */
 export class SecretBackendKey extends pulumi.CustomResource {

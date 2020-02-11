@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     userdn: "OU=Users,OU=Accounts,DC=example,DC=org",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend.html.markdown.
  */
 export class AuthBackend extends pulumi.CustomResource {

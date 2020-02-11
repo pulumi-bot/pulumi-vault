@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     issuer: "https://www.acme.com",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_oidc.html.markdown.
  */
 export class Oidc extends pulumi.CustomResource {

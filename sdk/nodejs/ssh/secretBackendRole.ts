@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     keyType: "otp",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ssh_secret_backend_role.html.markdown.
  */
 export class SecretBackendRole extends pulumi.CustomResource {

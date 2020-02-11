@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     username: "test-user",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend_user.html.markdown.
  */
 export class AuthBackendUser extends pulumi.CustomResource {

@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     type: "external",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {

@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Manages an JWT/OIDC auth backend role in a Vault server. See the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/jwt.html) for more
  * information.
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/jwt_auth_backend_role.html.markdown.
  */
 export class AuthBackendRole extends pulumi.CustomResource {
@@ -58,6 +56,8 @@ export class AuthBackendRole extends pulumi.CustomResource {
     /**
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * 
+     * @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2
      */
     public readonly boundCidrs!: pulumi.Output<string[] | undefined>;
     /**
@@ -104,11 +104,15 @@ export class AuthBackendRole extends pulumi.CustomResource {
      * set to // will expect nested structures named meta, user.name, and groups.
      * If this field was set to /./ the groups information would expect to be
      * via nested structures of meta, user, name, and groups.
+     * 
+     * @deprecated `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer.
      */
     public readonly groupsClaimDelimiterPattern!: pulumi.Output<string | undefined>;
     /**
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2
      */
     public readonly maxTtl!: pulumi.Output<number | undefined>;
     /**
@@ -120,6 +124,8 @@ export class AuthBackendRole extends pulumi.CustomResource {
     /**
      * If set, puts a use-count
      * limitation on the issued token.
+     * 
+     * @deprecated use `token_num_uses` instead if you are running Vault >= 1.2
      */
     public readonly numUses!: pulumi.Output<number | undefined>;
     /**
@@ -132,11 +138,15 @@ export class AuthBackendRole extends pulumi.CustomResource {
      * token generated using this role should never expire. The token should be renewed within the
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
+     * 
+     * @deprecated use `token_period` instead if you are running Vault >= 1.2
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
+     * 
+     * @deprecated use `token_policies` instead if you are running Vault >= 1.2
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
@@ -204,6 +214,8 @@ export class AuthBackendRole extends pulumi.CustomResource {
     /**
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_ttl` instead if you are running Vault >= 1.2
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
@@ -335,6 +347,8 @@ export interface AuthBackendRoleState {
     /**
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * 
+     * @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2
      */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -381,11 +395,15 @@ export interface AuthBackendRoleState {
      * set to // will expect nested structures named meta, user.name, and groups.
      * If this field was set to /./ the groups information would expect to be
      * via nested structures of meta, user, name, and groups.
+     * 
+     * @deprecated `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer.
      */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
@@ -397,6 +415,8 @@ export interface AuthBackendRoleState {
     /**
      * If set, puts a use-count
      * limitation on the issued token.
+     * 
+     * @deprecated use `token_num_uses` instead if you are running Vault >= 1.2
      */
     readonly numUses?: pulumi.Input<number>;
     /**
@@ -409,11 +429,15 @@ export interface AuthBackendRoleState {
      * token generated using this role should never expire. The token should be renewed within the
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
+     * 
+     * @deprecated use `token_period` instead if you are running Vault >= 1.2
      */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
+     * 
+     * @deprecated use `token_policies` instead if you are running Vault >= 1.2
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -481,6 +505,8 @@ export interface AuthBackendRoleState {
     /**
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_ttl` instead if you are running Vault >= 1.2
      */
     readonly ttl?: pulumi.Input<number>;
     /**
@@ -519,6 +545,8 @@ export interface AuthBackendRoleArgs {
     /**
      * If set, a list of
      * CIDRs valid as the source address for login requests. This value is also encoded into any resulting token.
+     * 
+     * @deprecated use `token_bound_cidrs` instead if you are running Vault >= 1.2
      */
     readonly boundCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -565,11 +593,15 @@ export interface AuthBackendRoleArgs {
      * set to // will expect nested structures named meta, user.name, and groups.
      * If this field was set to /./ the groups information would expect to be
      * via nested structures of meta, user, name, and groups.
+     * 
+     * @deprecated `groups_claim_delimiter_pattern` has been removed since Vault 1.1. If the groups claim is not at the top level, it can now be specified as a JSONPointer.
      */
     readonly groupsClaimDelimiterPattern?: pulumi.Input<string>;
     /**
      * The maximum allowed lifetime of tokens
      * issued using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_max_ttl` instead if you are running Vault >= 1.2
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
@@ -581,6 +613,8 @@ export interface AuthBackendRoleArgs {
     /**
      * If set, puts a use-count
      * limitation on the issued token.
+     * 
+     * @deprecated use `token_num_uses` instead if you are running Vault >= 1.2
      */
     readonly numUses?: pulumi.Input<number>;
     /**
@@ -593,11 +627,15 @@ export interface AuthBackendRoleArgs {
      * token generated using this role should never expire. The token should be renewed within the
      * duration specified by this value. At each renewal, the token's TTL will be set to the
      * value of this field. Specified in seconds.
+     * 
+     * @deprecated use `token_period` instead if you are running Vault >= 1.2
      */
     readonly period?: pulumi.Input<number>;
     /**
      * An array of strings
      * specifying the policies to be set on tokens issued using this role.
+     * 
+     * @deprecated use `token_policies` instead if you are running Vault >= 1.2
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -665,6 +703,8 @@ export interface AuthBackendRoleArgs {
     /**
      * The TTL period of tokens issued
      * using this role, provided as a number of seconds.
+     * 
+     * @deprecated use `token_ttl` instead if you are running Vault >= 1.2
      */
     readonly ttl?: pulumi.Input<number>;
     /**

@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     secretId: id.secretId,
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/approle_auth_backend_login.html.markdown.
  */
 export class AuthBackendLogin extends pulumi.CustomResource {

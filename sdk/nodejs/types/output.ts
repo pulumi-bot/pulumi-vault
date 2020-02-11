@@ -2,20 +2,21 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AuthBackendTune {
-    allowedResponseHeaders?: string[];
-    auditNonHmacRequestKeys?: string[];
-    auditNonHmacResponseKeys?: string[];
-    defaultLeaseTtl?: string;
+    allowedResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    auditNonHmacRequestKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    auditNonHmacResponseKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultLeaseTtl?: pulumi.Input<string>;
     /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
      */
-    listingVisibility?: string;
-    maxLeaseTtl?: string;
-    passthroughRequestHeaders?: string[];
-    tokenType?: string;
+    listingVisibility?: pulumi.Input<string>;
+    maxLeaseTtl?: pulumi.Input<string>;
+    passthroughRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    tokenType?: pulumi.Input<string>;
 }
 
 export interface GetPolicyDocumentRule {
@@ -75,11 +76,34 @@ export interface GetPolicyDocumentRuleDeniedParameter {
     values: string[];
 }
 
+export interface ProviderAuthLogin {
+    namespace?: pulumi.Input<string>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    path: pulumi.Input<string>;
+}
+
+export interface ProviderClientAuth {
+    certFile: pulumi.Input<string>;
+    keyFile: pulumi.Input<string>;
+}
 export namespace azure {
     export interface BackendRoleAzureRole {
-        roleId: string;
-        roleName: string;
-        scope: string;
+        roleId?: pulumi.Input<string>;
+        roleName: pulumi.Input<string>;
+        scope: pulumi.Input<string>;
+    }
+}
+
+export namespace config {
+    export interface AuthLogins {
+        namespace?: pulumi.Input<string>;
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        path: pulumi.Input<string>;
+    }
+
+    export interface ClientAuths {
+        certFile: pulumi.Input<string>;
+        keyFile: pulumi.Input<string>;
     }
 }
 
@@ -89,46 +113,46 @@ export namespace database {
          * The number of seconds to use as a connection
          * timeout.
          */
-        connectTimeout?: number;
+        connectTimeout?: pulumi.Input<number>;
         /**
          * The hosts to connect to.
          */
-        hosts?: string[];
+        hosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether to skip verification of the server
          * certificate when using TLS.
          */
-        insecureTls?: boolean;
+        insecureTls?: pulumi.Input<boolean>;
         /**
          * The password to authenticate with.
          */
-        password?: string;
+        password?: pulumi.Input<string>;
         /**
          * Concatenated PEM blocks configuring the certificate
          * chain.
          */
-        pemBundle?: string;
+        pemBundle?: pulumi.Input<string>;
         /**
          * A JSON structure configuring the certificate chain.
          */
-        pemJson?: string;
+        pemJson?: pulumi.Input<string>;
         /**
          * The default port to connect to if no port is specified as
          * part of the host.
          */
-        port?: number;
+        port?: pulumi.Input<number>;
         /**
          * The CQL protocol version to use.
          */
-        protocolVersion?: number;
+        protocolVersion?: pulumi.Input<number>;
         /**
          * Whether to use TLS when connecting to Cassandra.
          */
-        tls?: boolean;
+        tls?: pulumi.Input<boolean>;
         /**
          * The username to authenticate with.
          */
-        username?: string;
+        username?: pulumi.Input<string>;
     }
 
     export interface SecretBackendConnectionHana {
@@ -138,22 +162,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMongodb {
@@ -163,22 +187,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMssql {
@@ -188,22 +212,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMysql {
@@ -213,22 +237,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMysqlAurora {
@@ -238,22 +262,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMysqlLegacy {
@@ -263,22 +287,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionMysqlRds {
@@ -288,22 +312,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionOracle {
@@ -313,22 +337,22 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 
     export interface SecretBackendConnectionPostgresql {
@@ -338,41 +362,41 @@ export namespace database {
          * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
          * for an example.
          */
-        connectionUrl?: string;
+        connectionUrl?: pulumi.Input<string>;
         /**
          * The maximum number of seconds to keep
          * a connection alive for.
          */
-        maxConnectionLifetime?: number;
+        maxConnectionLifetime?: pulumi.Input<number>;
         /**
          * The maximum number of idle connections to
          * maintain.
          */
-        maxIdleConnections?: number;
+        maxIdleConnections?: pulumi.Input<number>;
         /**
          * The maximum number of open connections to
          * use.
          */
-        maxOpenConnections?: number;
+        maxOpenConnections?: pulumi.Input<number>;
     }
 }
 
 export namespace gcp {
     export interface SecretRolesetBinding {
-        resource: string;
-        roles: string[];
+        resource: pulumi.Input<string>;
+        roles: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 
 export namespace github {
     export interface AuthBackendTune {
-        allowedResponseHeaders?: string[];
-        auditNonHmacRequestKeys?: string[];
-        auditNonHmacResponseKeys?: string[];
-        defaultLeaseTtl?: string;
-        listingVisibility?: string;
-        maxLeaseTtl?: string;
-        passthroughRequestHeaders?: string[];
+        allowedResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        auditNonHmacRequestKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        auditNonHmacResponseKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        defaultLeaseTtl?: pulumi.Input<string>;
+        listingVisibility?: pulumi.Input<string>;
+        maxLeaseTtl?: pulumi.Input<string>;
+        passthroughRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * (Optional) The type of token that should be generated. Can be `service`,
          * `batch`, or `default` to use the mount's tuned default (which unless changed will be
@@ -380,7 +404,7 @@ export namespace github {
          * `default-service` and `default-batch` which specify the type to return unless the client
          * requests a different type at generation time.
          */
-        tokenType?: string;
+        tokenType?: pulumi.Input<string>;
     }
 }
 
@@ -431,14 +455,14 @@ export namespace identity {
 
 export namespace jwt {
     export interface AuthBackendTune {
-        allowedResponseHeaders?: string[];
-        auditNonHmacRequestKeys?: string[];
-        auditNonHmacResponseKeys?: string[];
-        defaultLeaseTtl?: string;
-        listingVisibility?: string;
-        maxLeaseTtl?: string;
-        passthroughRequestHeaders?: string[];
-        tokenType?: string;
+        allowedResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        auditNonHmacRequestKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        auditNonHmacResponseKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        defaultLeaseTtl?: pulumi.Input<string>;
+        listingVisibility?: pulumi.Input<string>;
+        maxLeaseTtl?: pulumi.Input<string>;
+        passthroughRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        tokenType?: pulumi.Input<string>;
     }
 }
 
@@ -447,34 +471,35 @@ export namespace okta {
         /**
          * Name of the group within the Okta
          */
-        groupName: string;
+        groupName: pulumi.Input<string>;
         /**
          * List of Vault policies to associate with this user
          */
-        policies: string[];
+        policies: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AuthBackendUser {
         /**
          * List of Okta groups to associate with this user
          */
-        groups: string[];
+        groups: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * List of Vault policies to associate with this user
          */
-        policies?: string[];
+        policies?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Name of the user within Okta
          */
-        username: string;
+        username: pulumi.Input<string>;
     }
 }
 
 export namespace rabbitMq {
     export interface SecretBackendRoleVhost {
-        configure: string;
-        host: string;
-        read: string;
-        write: string;
+        configure: pulumi.Input<string>;
+        host: pulumi.Input<string>;
+        read: pulumi.Input<string>;
+        write: pulumi.Input<string>;
     }
 }
+

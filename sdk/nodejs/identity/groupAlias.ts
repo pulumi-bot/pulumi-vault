@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     name: "Github_Team_Slug",
  * });
  * ```
- *
+ * 
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_group_alias.html.markdown.
  */
 export class GroupAlias extends pulumi.CustomResource {
