@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_secret_backend.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_secret_backend.html.md.
  */
 export class Backend extends pulumi.CustomResource {
     /**
@@ -48,8 +48,7 @@ export class Backend extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-     * AzureGermanCloud.
+     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
@@ -129,8 +128,7 @@ export interface BackendState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-     * AzureGermanCloud.
+     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
      */
     readonly environment?: pulumi.Input<string>;
     /**
@@ -165,8 +163,7 @@ export interface BackendArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-     * AzureGermanCloud.
+     * The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
      */
     readonly environment?: pulumi.Input<string>;
     /**
