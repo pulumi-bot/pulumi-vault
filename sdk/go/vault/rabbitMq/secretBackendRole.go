@@ -11,15 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/rabbitmq_secret_backend_role.html.markdown.
 type SecretBackendRole struct {
 	pulumi.CustomResourceState
 
-	// The path the RabbitMQ secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the Rabbitmq Secret Backend the role belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies a comma-separated RabbitMQ management tags.
 	Tags pulumi.StringPtrOutput `pulumi:"tags"`
@@ -58,11 +55,9 @@ func GetSecretBackendRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackendRole resources.
 type secretBackendRoleState struct {
-	// The path the RabbitMQ secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the Rabbitmq Secret Backend the role belongs to.
 	Backend *string `pulumi:"backend"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
 	// Specifies a comma-separated RabbitMQ management tags.
 	Tags *string `pulumi:"tags"`
@@ -71,11 +66,9 @@ type secretBackendRoleState struct {
 }
 
 type SecretBackendRoleState struct {
-	// The path the RabbitMQ secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the Rabbitmq Secret Backend the role belongs to.
 	Backend pulumi.StringPtrInput
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
 	// Specifies a comma-separated RabbitMQ management tags.
 	Tags pulumi.StringPtrInput
@@ -88,11 +81,9 @@ func (SecretBackendRoleState) ElementType() reflect.Type {
 }
 
 type secretBackendRoleArgs struct {
-	// The path the RabbitMQ secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the Rabbitmq Secret Backend the role belongs to.
 	Backend string `pulumi:"backend"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
 	// Specifies a comma-separated RabbitMQ management tags.
 	Tags *string `pulumi:"tags"`
@@ -102,11 +93,9 @@ type secretBackendRoleArgs struct {
 
 // The set of arguments for constructing a SecretBackendRole resource.
 type SecretBackendRoleArgs struct {
-	// The path the RabbitMQ secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the Rabbitmq Secret Backend the role belongs to.
 	Backend pulumi.StringInput
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
 	// Specifies a comma-separated RabbitMQ management tags.
 	Tags pulumi.StringPtrInput

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_cert.html.markdown.
- */
 export class AuthBackendCert extends pulumi.CustomResource {
     /**
      * Get an existing AuthBackendCert resource's state with the given name, ID, and optional extra
@@ -35,25 +32,19 @@ export class AuthBackendCert extends pulumi.CustomResource {
     }
 
     /**
-     * The  Base64 encoded AWS Public key required to
-     * verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-     * the [AWS
-     * documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+     * Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
      */
     public readonly awsPublicCert!: pulumi.Output<string>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     public readonly backend!: pulumi.Output<string | undefined>;
     /**
-     * The name of the certificate.
+     * Name of the certificate to configure.
      */
     public readonly certName!: pulumi.Output<string>;
     /**
-     * Either "pkcs7" or "identity", indicating the type of
-     * document which can be verified using the given certificate. Defaults to
-     * "pkcs7".
+     * The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -102,25 +93,19 @@ export class AuthBackendCert extends pulumi.CustomResource {
  */
 export interface AuthBackendCertState {
     /**
-     * The  Base64 encoded AWS Public key required to
-     * verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-     * the [AWS
-     * documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+     * Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
      */
     readonly awsPublicCert?: pulumi.Input<string>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The name of the certificate.
+     * Name of the certificate to configure.
      */
     readonly certName?: pulumi.Input<string>;
     /**
-     * Either "pkcs7" or "identity", indicating the type of
-     * document which can be verified using the given certificate. Defaults to
-     * "pkcs7".
+     * The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -130,25 +115,19 @@ export interface AuthBackendCertState {
  */
 export interface AuthBackendCertArgs {
     /**
-     * The  Base64 encoded AWS Public key required to
-     * verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-     * the [AWS
-     * documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+     * Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
      */
     readonly awsPublicCert: pulumi.Input<string>;
     /**
-     * The path the AWS auth backend being configured was
-     * mounted at.  Defaults to `aws`.
+     * Unique name of the auth backend to configure.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The name of the certificate.
+     * Name of the certificate to configure.
      */
     readonly certName: pulumi.Input<string>;
     /**
-     * Either "pkcs7" or "identity", indicating the type of
-     * document which can be verified using the given certificate. Defaults to
-     * "pkcs7".
+     * The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
      */
     readonly type?: pulumi.Input<string>;
 }

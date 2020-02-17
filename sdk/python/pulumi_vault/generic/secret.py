@@ -12,48 +12,28 @@ from .. import utilities, tables
 class Secret(pulumi.CustomResource):
     data: pulumi.Output[dict]
     """
-    A mapping whose keys are the top-level data keys returned from
-    Vault and whose values are the corresponding values. This map can only
-    represent string data, so any non-string values returned from Vault are
-    serialized as JSON.
+    Map of strings read from Vault.
     """
     data_json: pulumi.Output[str]
     """
-    String containing a JSON-encoded object that will be
-    written as the secret data at the given path.
+    JSON-encoded secret data to write.
     """
     disable_read: pulumi.Output[bool]
     """
-    True/false. Set this to true if your vault
-    authentication is not able to read the data. Setting this to `true` will
-    break drift detection. Defaults to false.
+    Don't attempt to read the token from Vault if true; drift won't be detected.
     """
     path: pulumi.Output[str]
     """
-    The full logical path at which to write the given data.
-    To write data into the "generic" secret backend mounted in Vault by default,
-    this should be prefixed with `secret/`. Writing to other backends with this
-    resource is possible; consult each backend's documentation to see which
-    endpoints support the `PUT` and `DELETE` methods.
+    Full path where the generic secret will be written.
     """
     def __init__(__self__, resource_name, opts=None, data_json=None, disable_read=None, path=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Secret resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_json: String containing a JSON-encoded object that will be
-               written as the secret data at the given path.
-        :param pulumi.Input[bool] disable_read: True/false. Set this to true if your vault
-               authentication is not able to read the data. Setting this to `true` will
-               break drift detection. Defaults to false.
-        :param pulumi.Input[str] path: The full logical path at which to write the given data.
-               To write data into the "generic" secret backend mounted in Vault by default,
-               this should be prefixed with `secret/`. Writing to other backends with this
-               resource is possible; consult each backend's documentation to see which
-               endpoints support the `PUT` and `DELETE` methods.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_secret.html.markdown.
+        :param pulumi.Input[str] data_json: JSON-encoded secret data to write.
+        :param pulumi.Input[bool] disable_read: Don't attempt to read the token from Vault if true; drift won't be detected.
+        :param pulumi.Input[str] path: Full path where the generic secret will be written.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,30 +71,19 @@ class Secret(pulumi.CustomResource):
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] data: A mapping whose keys are the top-level data keys returned from
-               Vault and whose values are the corresponding values. This map can only
-               represent string data, so any non-string values returned from Vault are
-               serialized as JSON.
-        :param pulumi.Input[str] data_json: String containing a JSON-encoded object that will be
-               written as the secret data at the given path.
-        :param pulumi.Input[bool] disable_read: True/false. Set this to true if your vault
-               authentication is not able to read the data. Setting this to `true` will
-               break drift detection. Defaults to false.
-        :param pulumi.Input[str] path: The full logical path at which to write the given data.
-               To write data into the "generic" secret backend mounted in Vault by default,
-               this should be prefixed with `secret/`. Writing to other backends with this
-               resource is possible; consult each backend's documentation to see which
-               endpoints support the `PUT` and `DELETE` methods.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_secret.html.markdown.
+        :param pulumi.Input[dict] data: Map of strings read from Vault.
+        :param pulumi.Input[str] data_json: JSON-encoded secret data to write.
+        :param pulumi.Input[bool] disable_read: Don't attempt to read the token from Vault if true; drift won't be detected.
+        :param pulumi.Input[str] path: Full path where the generic secret will be written.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["data"] = data
         __props__["data_json"] = data_json
         __props__["disable_read"] = disable_read

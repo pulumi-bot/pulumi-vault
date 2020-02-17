@@ -10,31 +10,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_client.html.markdown.
 type AuthBackendClient struct {
 	pulumi.CustomResourceState
 
-	// The AWS access key that Vault should use for the
-	// auth backend.
+	// AWS Access key with permissions to query AWS APIs.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrOutput `pulumi:"backend"`
-	// Override the URL Vault uses when making EC2 API
-	// calls.
+	// URL to override the default generated endpoint for making AWS EC2 API calls.
 	Ec2Endpoint pulumi.StringPtrOutput `pulumi:"ec2Endpoint"`
-	// Override the URL Vault uses when making IAM API
-	// calls.
+	// URL to override the default generated endpoint for making AWS IAM API calls.
 	IamEndpoint pulumi.StringPtrOutput `pulumi:"iamEndpoint"`
-	// The value to require in the
-	// `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-	// that are used in the IAM auth method.
+	// The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in the
+	// iam auth method.
 	IamServerIdHeaderValue pulumi.StringPtrOutput `pulumi:"iamServerIdHeaderValue"`
-	// The AWS secret key that Vault should use for the
-	// auth backend.
+	// AWS Secret key with permissions to query AWS APIs.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
-	// Override the URL Vault uses when making STS API
-	// calls.
+	// URL to override the default generated endpoint for making AWS STS API calls.
 	StsEndpoint pulumi.StringPtrOutput `pulumi:"stsEndpoint"`
 }
 
@@ -66,52 +58,38 @@ func GetAuthBackendClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthBackendClient resources.
 type authBackendClientState struct {
-	// The AWS access key that Vault should use for the
-	// auth backend.
+	// AWS Access key with permissions to query AWS APIs.
 	AccessKey *string `pulumi:"accessKey"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// Override the URL Vault uses when making EC2 API
-	// calls.
+	// URL to override the default generated endpoint for making AWS EC2 API calls.
 	Ec2Endpoint *string `pulumi:"ec2Endpoint"`
-	// Override the URL Vault uses when making IAM API
-	// calls.
+	// URL to override the default generated endpoint for making AWS IAM API calls.
 	IamEndpoint *string `pulumi:"iamEndpoint"`
-	// The value to require in the
-	// `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-	// that are used in the IAM auth method.
+	// The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in the
+	// iam auth method.
 	IamServerIdHeaderValue *string `pulumi:"iamServerIdHeaderValue"`
-	// The AWS secret key that Vault should use for the
-	// auth backend.
+	// AWS Secret key with permissions to query AWS APIs.
 	SecretKey *string `pulumi:"secretKey"`
-	// Override the URL Vault uses when making STS API
-	// calls.
+	// URL to override the default generated endpoint for making AWS STS API calls.
 	StsEndpoint *string `pulumi:"stsEndpoint"`
 }
 
 type AuthBackendClientState struct {
-	// The AWS access key that Vault should use for the
-	// auth backend.
+	// AWS Access key with permissions to query AWS APIs.
 	AccessKey pulumi.StringPtrInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// Override the URL Vault uses when making EC2 API
-	// calls.
+	// URL to override the default generated endpoint for making AWS EC2 API calls.
 	Ec2Endpoint pulumi.StringPtrInput
-	// Override the URL Vault uses when making IAM API
-	// calls.
+	// URL to override the default generated endpoint for making AWS IAM API calls.
 	IamEndpoint pulumi.StringPtrInput
-	// The value to require in the
-	// `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-	// that are used in the IAM auth method.
+	// The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in the
+	// iam auth method.
 	IamServerIdHeaderValue pulumi.StringPtrInput
-	// The AWS secret key that Vault should use for the
-	// auth backend.
+	// AWS Secret key with permissions to query AWS APIs.
 	SecretKey pulumi.StringPtrInput
-	// Override the URL Vault uses when making STS API
-	// calls.
+	// URL to override the default generated endpoint for making AWS STS API calls.
 	StsEndpoint pulumi.StringPtrInput
 }
 
@@ -120,53 +98,39 @@ func (AuthBackendClientState) ElementType() reflect.Type {
 }
 
 type authBackendClientArgs struct {
-	// The AWS access key that Vault should use for the
-	// auth backend.
+	// AWS Access key with permissions to query AWS APIs.
 	AccessKey *string `pulumi:"accessKey"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// Override the URL Vault uses when making EC2 API
-	// calls.
+	// URL to override the default generated endpoint for making AWS EC2 API calls.
 	Ec2Endpoint *string `pulumi:"ec2Endpoint"`
-	// Override the URL Vault uses when making IAM API
-	// calls.
+	// URL to override the default generated endpoint for making AWS IAM API calls.
 	IamEndpoint *string `pulumi:"iamEndpoint"`
-	// The value to require in the
-	// `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-	// that are used in the IAM auth method.
+	// The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in the
+	// iam auth method.
 	IamServerIdHeaderValue *string `pulumi:"iamServerIdHeaderValue"`
-	// The AWS secret key that Vault should use for the
-	// auth backend.
+	// AWS Secret key with permissions to query AWS APIs.
 	SecretKey *string `pulumi:"secretKey"`
-	// Override the URL Vault uses when making STS API
-	// calls.
+	// URL to override the default generated endpoint for making AWS STS API calls.
 	StsEndpoint *string `pulumi:"stsEndpoint"`
 }
 
 // The set of arguments for constructing a AuthBackendClient resource.
 type AuthBackendClientArgs struct {
-	// The AWS access key that Vault should use for the
-	// auth backend.
+	// AWS Access key with permissions to query AWS APIs.
 	AccessKey pulumi.StringPtrInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// Override the URL Vault uses when making EC2 API
-	// calls.
+	// URL to override the default generated endpoint for making AWS EC2 API calls.
 	Ec2Endpoint pulumi.StringPtrInput
-	// Override the URL Vault uses when making IAM API
-	// calls.
+	// URL to override the default generated endpoint for making AWS IAM API calls.
 	IamEndpoint pulumi.StringPtrInput
-	// The value to require in the
-	// `X-Vault-AWS-IAM-Server-ID` header as part of `GetCallerIdentity` requests
-	// that are used in the IAM auth method.
+	// The value to require in the X-Vault-AWS-IAM-Server-ID header as part of GetCallerIdentity requests that are used in the
+	// iam auth method.
 	IamServerIdHeaderValue pulumi.StringPtrInput
-	// The AWS secret key that Vault should use for the
-	// auth backend.
+	// AWS Secret key with permissions to query AWS APIs.
 	SecretKey pulumi.StringPtrInput
-	// Override the URL Vault uses when making STS API
-	// calls.
+	// URL to override the default generated endpoint for making AWS STS API calls.
 	StsEndpoint pulumi.StringPtrInput
 }
 

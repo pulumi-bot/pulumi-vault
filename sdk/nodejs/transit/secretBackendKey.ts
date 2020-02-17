@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an Encryption Keyring on a Transit Secret Backend for Vault.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vault from "@pulumi/vault";
- * 
- * const transit = new vault.Mount("transit", {
- *     defaultLeaseTtlSeconds: 3600,
- *     description: "Example description",
- *     maxLeaseTtlSeconds: 86400,
- *     path: "transit",
- *     type: "transit",
- * });
- * const key = new vault.transit.SecretBackendKey("key", {
- *     backend: transit.path,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/transit_secret_backend_key.html.markdown.
- */
 export class SecretBackendKey extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendKey resource's state with the given name, ID, and optional extra
@@ -55,16 +32,16 @@ export class SecretBackendKey extends pulumi.CustomResource {
     }
 
     /**
-     * Enables taking backup of entire keyring in the plaintext format. Once set, this cannot be disabled.
-     * * Refer to Vault API documentation on key backups for more information: [Backup Key](https://www.vaultproject.io/api/secret/transit/index.html#backup-key)
+     * If set, enables taking backup of named key in the plaintext format. Once set, this cannot be disabled.
      */
     public readonly allowPlaintextBackup!: pulumi.Output<boolean | undefined>;
     /**
-     * The path the transit secret backend is mounted at, with no leading or trailing `/`s.
+     * The Transit secret backend the resource belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires `derived` to be set to `true`.
+     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires
+     * derived to be set to true.
      */
     public readonly convergentEncryption!: pulumi.Output<boolean | undefined>;
     /**
@@ -72,25 +49,25 @@ export class SecretBackendKey extends pulumi.CustomResource {
      */
     public readonly deletionAllowed!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context which is used for key derivation.
+     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context
+     * which is used for key derivation.
      */
     public readonly derived!: pulumi.Output<boolean | undefined>;
     /**
-     * Enables keys to be exportable. This allows for all valid private keys in the keyring to be exported. Once set, this cannot be disabled.
+     * Enables keys to be exportable. This allows for all the valid keys in the key ring to be exported. Once set, this cannot
+     * be disabled.
      */
     public readonly exportable!: pulumi.Output<boolean | undefined>;
     /**
-     * List of key versions in the keyring. This attribute is zero-indexed and will contain a map of values depending on the `type` of the encryption key.
-     * * for key types `aes256-gcm96` and `chacha20-poly1305`, each key version will be a map of a single value `id` which is just a hash of the key's metadata.
-     * * for key types `ed25519`, `ecdsa-p256`, `rsa-2048` and `rsa-4096`, each key version will be a map of the following:
+     * List of key versions in the keyring.
      */
     public /*out*/ readonly keys!: pulumi.Output<{[key: string]: any}[]>;
     /**
-     * Latest key version available. This value is 1-indexed, so if `latestVersion` is `1`, then the key's information can be referenced from `keys` by selecting element `0`
+     * Latest key version in use in the keyring
      */
     public /*out*/ readonly latestVersion!: pulumi.Output<number>;
     /**
-     * Minimum key version available for use. If keys have been archived by increasing `minDecryptionVersion`, this attribute will reflect that change.
+     * Minimum key version available for use.
      */
     public /*out*/ readonly minAvailableVersion!: pulumi.Output<number>;
     /**
@@ -102,7 +79,7 @@ export class SecretBackendKey extends pulumi.CustomResource {
      */
     public readonly minEncryptionVersion!: pulumi.Output<number | undefined>;
     /**
-     * The name to identify this key within the backend. Must be unique within the backend.
+     * Name of the encryption key to create.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -122,8 +99,8 @@ export class SecretBackendKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly supportsSigning!: pulumi.Output<boolean>;
     /**
-     * Specifies the type of key to create. The currently-supported types are: `aes256-gcm96` (default), `chacha20-poly1305`, `ed25519`, `ecdsa-p256`, `rsa-2048` and `rsa-4096`. 
-     * * Refer to the Vault documentation on transit key types for more information: [Key Types](https://www.vaultproject.io/docs/secrets/transit/index.html#key-types)
+     * Specifies the type of key to create. The currently-supported types are: aes128-gcm96, aes256-gcm96, chacha20-poly1305,
+     * ed25519, ecdsa-p256, ecdsa-p384, ecdsa-p521, rsa-2048, rsa-4096
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -195,16 +172,16 @@ export class SecretBackendKey extends pulumi.CustomResource {
  */
 export interface SecretBackendKeyState {
     /**
-     * Enables taking backup of entire keyring in the plaintext format. Once set, this cannot be disabled.
-     * * Refer to Vault API documentation on key backups for more information: [Backup Key](https://www.vaultproject.io/api/secret/transit/index.html#backup-key)
+     * If set, enables taking backup of named key in the plaintext format. Once set, this cannot be disabled.
      */
     readonly allowPlaintextBackup?: pulumi.Input<boolean>;
     /**
-     * The path the transit secret backend is mounted at, with no leading or trailing `/`s.
+     * The Transit secret backend the resource belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires `derived` to be set to `true`.
+     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires
+     * derived to be set to true.
      */
     readonly convergentEncryption?: pulumi.Input<boolean>;
     /**
@@ -212,25 +189,25 @@ export interface SecretBackendKeyState {
      */
     readonly deletionAllowed?: pulumi.Input<boolean>;
     /**
-     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context which is used for key derivation.
+     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context
+     * which is used for key derivation.
      */
     readonly derived?: pulumi.Input<boolean>;
     /**
-     * Enables keys to be exportable. This allows for all valid private keys in the keyring to be exported. Once set, this cannot be disabled.
+     * Enables keys to be exportable. This allows for all the valid keys in the key ring to be exported. Once set, this cannot
+     * be disabled.
      */
     readonly exportable?: pulumi.Input<boolean>;
     /**
-     * List of key versions in the keyring. This attribute is zero-indexed and will contain a map of values depending on the `type` of the encryption key.
-     * * for key types `aes256-gcm96` and `chacha20-poly1305`, each key version will be a map of a single value `id` which is just a hash of the key's metadata.
-     * * for key types `ed25519`, `ecdsa-p256`, `rsa-2048` and `rsa-4096`, each key version will be a map of the following:
+     * List of key versions in the keyring.
      */
     readonly keys?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
-     * Latest key version available. This value is 1-indexed, so if `latestVersion` is `1`, then the key's information can be referenced from `keys` by selecting element `0`
+     * Latest key version in use in the keyring
      */
     readonly latestVersion?: pulumi.Input<number>;
     /**
-     * Minimum key version available for use. If keys have been archived by increasing `minDecryptionVersion`, this attribute will reflect that change.
+     * Minimum key version available for use.
      */
     readonly minAvailableVersion?: pulumi.Input<number>;
     /**
@@ -242,7 +219,7 @@ export interface SecretBackendKeyState {
      */
     readonly minEncryptionVersion?: pulumi.Input<number>;
     /**
-     * The name to identify this key within the backend. Must be unique within the backend.
+     * Name of the encryption key to create.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -262,8 +239,8 @@ export interface SecretBackendKeyState {
      */
     readonly supportsSigning?: pulumi.Input<boolean>;
     /**
-     * Specifies the type of key to create. The currently-supported types are: `aes256-gcm96` (default), `chacha20-poly1305`, `ed25519`, `ecdsa-p256`, `rsa-2048` and `rsa-4096`. 
-     * * Refer to the Vault documentation on transit key types for more information: [Key Types](https://www.vaultproject.io/docs/secrets/transit/index.html#key-types)
+     * Specifies the type of key to create. The currently-supported types are: aes128-gcm96, aes256-gcm96, chacha20-poly1305,
+     * ed25519, ecdsa-p256, ecdsa-p384, ecdsa-p521, rsa-2048, rsa-4096
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -273,16 +250,16 @@ export interface SecretBackendKeyState {
  */
 export interface SecretBackendKeyArgs {
     /**
-     * Enables taking backup of entire keyring in the plaintext format. Once set, this cannot be disabled.
-     * * Refer to Vault API documentation on key backups for more information: [Backup Key](https://www.vaultproject.io/api/secret/transit/index.html#backup-key)
+     * If set, enables taking backup of named key in the plaintext format. Once set, this cannot be disabled.
      */
     readonly allowPlaintextBackup?: pulumi.Input<boolean>;
     /**
-     * The path the transit secret backend is mounted at, with no leading or trailing `/`s.
+     * The Transit secret backend the resource belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires `derived` to be set to `true`.
+     * Whether or not to support convergent encryption, where the same plaintext creates the same ciphertext. This requires
+     * derived to be set to true.
      */
     readonly convergentEncryption?: pulumi.Input<boolean>;
     /**
@@ -290,11 +267,13 @@ export interface SecretBackendKeyArgs {
      */
     readonly deletionAllowed?: pulumi.Input<boolean>;
     /**
-     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context which is used for key derivation.
+     * Specifies if key derivation is to be used. If enabled, all encrypt/decrypt requests to this key must provide a context
+     * which is used for key derivation.
      */
     readonly derived?: pulumi.Input<boolean>;
     /**
-     * Enables keys to be exportable. This allows for all valid private keys in the keyring to be exported. Once set, this cannot be disabled.
+     * Enables keys to be exportable. This allows for all the valid keys in the key ring to be exported. Once set, this cannot
+     * be disabled.
      */
     readonly exportable?: pulumi.Input<boolean>;
     /**
@@ -306,12 +285,12 @@ export interface SecretBackendKeyArgs {
      */
     readonly minEncryptionVersion?: pulumi.Input<number>;
     /**
-     * The name to identify this key within the backend. Must be unique within the backend.
+     * Name of the encryption key to create.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Specifies the type of key to create. The currently-supported types are: `aes256-gcm96` (default), `chacha20-poly1305`, `ed25519`, `ecdsa-p256`, `rsa-2048` and `rsa-4096`. 
-     * * Refer to the Vault documentation on transit key types for more information: [Key Types](https://www.vaultproject.io/docs/secrets/transit/index.html#key-types)
+     * Specifies the type of key to create. The currently-supported types are: aes128-gcm96, aes256-gcm96, chacha20-poly1305,
+     * ed25519, ecdsa-p256, ecdsa-p384, ecdsa-p521, rsa-2048, rsa-4096
      */
     readonly type?: pulumi.Input<string>;
 }

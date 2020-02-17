@@ -12,7 +12,7 @@ import (
 )
 
 // Allows setting the issuing certificate endpoints, CRL distribution points, and OCSP server endpoints that will be encoded into issued certificates.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_config_urls.html.markdown.
 type SecretBackendConfigUrls struct {
 	pulumi.CustomResourceState

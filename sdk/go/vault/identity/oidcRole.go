@@ -11,22 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_oidc_role.html.markdown.
 type OidcRole struct {
 	pulumi.CustomResourceState
 
-	// The value that will be included in the `aud` field of all the OIDC identity
-	// tokens issued by this role
+	// The value that will be included in the `aud` field of all the OIDC identity tokens issued by this role
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// A configured named key, the key must already exist
-	// before tokens can be issued.
+	// A configured named key, the key must already exist.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// Name of the OIDC Role to create.
+	// Name of the role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The template string to use for generating tokens. This may be in
-	// string-ified JSON or base64 format. See the
-	// [documentation](https://www.vaultproject.io/docs/secrets/identity/index.html#token-contents-and-templates)
-	// for the template format.
+	// The template string to use for generating tokens. This may be in string-ified JSON or base64 format.
 	Template pulumi.StringPtrOutput `pulumi:"template"`
 	// TTL of the tokens generated against the role in number of seconds.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
@@ -63,36 +57,26 @@ func GetOidcRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OidcRole resources.
 type oidcRoleState struct {
-	// The value that will be included in the `aud` field of all the OIDC identity
-	// tokens issued by this role
+	// The value that will be included in the `aud` field of all the OIDC identity tokens issued by this role
 	ClientId *string `pulumi:"clientId"`
-	// A configured named key, the key must already exist
-	// before tokens can be issued.
+	// A configured named key, the key must already exist.
 	Key *string `pulumi:"key"`
-	// Name of the OIDC Role to create.
+	// Name of the role.
 	Name *string `pulumi:"name"`
-	// The template string to use for generating tokens. This may be in
-	// string-ified JSON or base64 format. See the
-	// [documentation](https://www.vaultproject.io/docs/secrets/identity/index.html#token-contents-and-templates)
-	// for the template format.
+	// The template string to use for generating tokens. This may be in string-ified JSON or base64 format.
 	Template *string `pulumi:"template"`
 	// TTL of the tokens generated against the role in number of seconds.
 	Ttl *int `pulumi:"ttl"`
 }
 
 type OidcRoleState struct {
-	// The value that will be included in the `aud` field of all the OIDC identity
-	// tokens issued by this role
+	// The value that will be included in the `aud` field of all the OIDC identity tokens issued by this role
 	ClientId pulumi.StringPtrInput
-	// A configured named key, the key must already exist
-	// before tokens can be issued.
+	// A configured named key, the key must already exist.
 	Key pulumi.StringPtrInput
-	// Name of the OIDC Role to create.
+	// Name of the role.
 	Name pulumi.StringPtrInput
-	// The template string to use for generating tokens. This may be in
-	// string-ified JSON or base64 format. See the
-	// [documentation](https://www.vaultproject.io/docs/secrets/identity/index.html#token-contents-and-templates)
-	// for the template format.
+	// The template string to use for generating tokens. This may be in string-ified JSON or base64 format.
 	Template pulumi.StringPtrInput
 	// TTL of the tokens generated against the role in number of seconds.
 	Ttl pulumi.IntPtrInput
@@ -103,15 +87,11 @@ func (OidcRoleState) ElementType() reflect.Type {
 }
 
 type oidcRoleArgs struct {
-	// A configured named key, the key must already exist
-	// before tokens can be issued.
+	// A configured named key, the key must already exist.
 	Key string `pulumi:"key"`
-	// Name of the OIDC Role to create.
+	// Name of the role.
 	Name *string `pulumi:"name"`
-	// The template string to use for generating tokens. This may be in
-	// string-ified JSON or base64 format. See the
-	// [documentation](https://www.vaultproject.io/docs/secrets/identity/index.html#token-contents-and-templates)
-	// for the template format.
+	// The template string to use for generating tokens. This may be in string-ified JSON or base64 format.
 	Template *string `pulumi:"template"`
 	// TTL of the tokens generated against the role in number of seconds.
 	Ttl *int `pulumi:"ttl"`
@@ -119,15 +99,11 @@ type oidcRoleArgs struct {
 
 // The set of arguments for constructing a OidcRole resource.
 type OidcRoleArgs struct {
-	// A configured named key, the key must already exist
-	// before tokens can be issued.
+	// A configured named key, the key must already exist.
 	Key pulumi.StringInput
-	// Name of the OIDC Role to create.
+	// Name of the role.
 	Name pulumi.StringPtrInput
-	// The template string to use for generating tokens. This may be in
-	// string-ified JSON or base64 format. See the
-	// [documentation](https://www.vaultproject.io/docs/secrets/identity/index.html#token-contents-and-templates)
-	// for the template format.
+	// The template string to use for generating tokens. This may be in string-ified JSON or base64 format.
 	Template pulumi.StringPtrInput
 	// TTL of the tokens generated against the role in number of seconds.
 	Ttl pulumi.IntPtrInput

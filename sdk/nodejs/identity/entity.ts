@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_entity.html.markdown.
- */
 export class Entity extends pulumi.CustomResource {
     /**
      * Get an existing Entity resource's state with the given name, ID, and optional extra
@@ -35,23 +32,23 @@ export class Entity extends pulumi.CustomResource {
     }
 
     /**
-     * True/false Is this entity currently disabled. Defaults to `false`
+     * Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `vault.identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+     * Manage policies externally through `vault_identity_entity_policies`.
      */
     public readonly externalPolicies!: pulumi.Output<boolean | undefined>;
     /**
-     * A Map of additional metadata to associate with the user.
+     * Metadata to be associated with the entity.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the identity entity to create.
+     * Name of the entity.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of policies to apply to the entity.
+     * Policies to be tied to the entity.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
 
@@ -96,23 +93,23 @@ export class Entity extends pulumi.CustomResource {
  */
 export interface EntityState {
     /**
-     * True/false Is this entity currently disabled. Defaults to `false`
+     * Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `vault.identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+     * Manage policies externally through `vault_identity_entity_policies`.
      */
     readonly externalPolicies?: pulumi.Input<boolean>;
     /**
-     * A Map of additional metadata to associate with the user.
+     * Metadata to be associated with the entity.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the identity entity to create.
+     * Name of the entity.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A list of policies to apply to the entity.
+     * Policies to be tied to the entity.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -122,23 +119,23 @@ export interface EntityState {
  */
 export interface EntityArgs {
     /**
-     * True/false Is this entity currently disabled. Defaults to `false`
+     * Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `vault.identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+     * Manage policies externally through `vault_identity_entity_policies`.
      */
     readonly externalPolicies?: pulumi.Input<boolean>;
     /**
-     * A Map of additional metadata to associate with the user.
+     * Metadata to be associated with the entity.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the identity entity to create.
+     * Name of the entity.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A list of policies to apply to the entity.
+     * Policies to be tied to the entity.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
 }

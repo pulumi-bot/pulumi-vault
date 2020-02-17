@@ -12,31 +12,26 @@ from .. import utilities, tables
 class SecretBackendConnection(pulumi.CustomResource):
     allowed_roles: pulumi.Output[list]
     """
-    A list of roles that are allowed to use this
-    connection.
+    A list of roles that are allowed to use this connection.
     """
     backend: pulumi.Output[str]
     """
-    The unique name of the Vault mount to configure.
+    Unique name of the Vault mount to configure.
     """
     cassandra: pulumi.Output[dict]
     """
-    A nested block containing configuration options for Cassandra connections.
-    
-      * `connectTimeout` (`float`) - The number of seconds to use as a connection
-        timeout.
-      * `hosts` (`list`) - The hosts to connect to.
-      * `insecureTls` (`bool`) - Whether to skip verification of the server
-        certificate when using TLS.
-      * `password` (`str`) - The password to authenticate with.
-      * `pemBundle` (`str`) - Concatenated PEM blocks configuring the certificate
-        chain.
-      * `pemJson` (`str`) - A JSON structure configuring the certificate chain.
-      * `port` (`float`) - The default port to connect to if no port is specified as
-        part of the host.
-      * `protocolVersion` (`float`) - The CQL protocol version to use.
-      * `tls` (`bool`) - Whether to use TLS when connecting to Cassandra.
-      * `username` (`str`) - The username to authenticate with.
+    Connection parameters for the cassandra-database-plugin plugin.
+
+      * `connectTimeout` (`float`)
+      * `hosts` (`list`)
+      * `insecureTls` (`bool`)
+      * `password` (`str`)
+      * `pemBundle` (`str`)
+      * `pemJson` (`str`)
+      * `port` (`float`)
+      * `protocolVersion` (`float`)
+      * `tls` (`bool`)
+      * `username` (`str`)
     """
     data: pulumi.Output[dict]
     """
@@ -44,142 +39,88 @@ class SecretBackendConnection(pulumi.CustomResource):
     """
     hana: pulumi.Output[dict]
     """
-    A nested block containing configuration options for SAP HanaDB connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the hana-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mongodb: pulumi.Output[dict]
     """
-    A nested block containing configuration options for MongoDB connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mongodb-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mssql: pulumi.Output[dict]
     """
-    A nested block containing configuration options for MSSQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mssql-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mysql: pulumi.Output[dict]
     """
-    A nested block containing configuration options for MySQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mysql-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mysql_aurora: pulumi.Output[dict]
     """
-    A nested block containing configuration options for Aurora MySQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mysql-aurora-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mysql_legacy: pulumi.Output[dict]
     """
-    A nested block containing configuration options for legacy MySQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mysql-legacy-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     mysql_rds: pulumi.Output[dict]
     """
-    A nested block containing configuration options for RDS MySQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the mysql-rds-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     name: pulumi.Output[str]
     """
-    A unique name to give the database connection.
+    Name of the database connection.
     """
     oracle: pulumi.Output[dict]
     """
-    A nested block containing configuration options for Oracle connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the oracle-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     postgresql: pulumi.Output[dict]
     """
-    A nested block containing configuration options for PostgreSQL connections.
-    
-      * `connectionUrl` (`str`) - A URL containing connection information. See
-        the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-        for an example.
-      * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
-        a connection alive for.
-      * `maxIdleConnections` (`float`) - The maximum number of idle connections to
-        maintain.
-      * `maxOpenConnections` (`float`) - The maximum number of open connections to
-        use.
+    Connection parameters for the postgresql-database-plugin plugin.
+
+      * `connectionUrl` (`str`)
+      * `maxConnectionLifetime` (`float`)
+      * `maxIdleConnections` (`float`)
+      * `maxOpenConnections` (`float`)
     """
     root_rotation_statements: pulumi.Output[list]
     """
@@ -187,169 +128,105 @@ class SecretBackendConnection(pulumi.CustomResource):
     """
     verify_connection: pulumi.Output[bool]
     """
-    Whether the connection should be verified on
-    initial configuration or not.
+    Specifies if the connection is verified during initial configuration.
     """
     def __init__(__self__, resource_name, opts=None, allowed_roles=None, backend=None, cassandra=None, data=None, hana=None, mongodb=None, mssql=None, mysql=None, mysql_aurora=None, mysql_legacy=None, mysql_rds=None, name=None, oracle=None, postgresql=None, root_rotation_statements=None, verify_connection=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretBackendConnection resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allowed_roles: A list of roles that are allowed to use this
-               connection.
-        :param pulumi.Input[str] backend: The unique name of the Vault mount to configure.
-        :param pulumi.Input[dict] cassandra: A nested block containing configuration options for Cassandra connections.
+        :param pulumi.Input[list] allowed_roles: A list of roles that are allowed to use this connection.
+        :param pulumi.Input[str] backend: Unique name of the Vault mount to configure.
+        :param pulumi.Input[dict] cassandra: Connection parameters for the cassandra-database-plugin plugin.
         :param pulumi.Input[dict] data: A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
-        :param pulumi.Input[dict] hana: A nested block containing configuration options for SAP HanaDB connections.
-        :param pulumi.Input[dict] mongodb: A nested block containing configuration options for MongoDB connections.
-        :param pulumi.Input[dict] mssql: A nested block containing configuration options for MSSQL connections.
-        :param pulumi.Input[dict] mysql: A nested block containing configuration options for MySQL connections.
-        :param pulumi.Input[dict] mysql_aurora: A nested block containing configuration options for Aurora MySQL connections.
-        :param pulumi.Input[dict] mysql_legacy: A nested block containing configuration options for legacy MySQL connections.
-        :param pulumi.Input[dict] mysql_rds: A nested block containing configuration options for RDS MySQL connections.
-        :param pulumi.Input[str] name: A unique name to give the database connection.
-        :param pulumi.Input[dict] oracle: A nested block containing configuration options for Oracle connections.
-        :param pulumi.Input[dict] postgresql: A nested block containing configuration options for PostgreSQL connections.
+        :param pulumi.Input[dict] hana: Connection parameters for the hana-database-plugin plugin.
+        :param pulumi.Input[dict] mongodb: Connection parameters for the mongodb-database-plugin plugin.
+        :param pulumi.Input[dict] mssql: Connection parameters for the mssql-database-plugin plugin.
+        :param pulumi.Input[dict] mysql: Connection parameters for the mysql-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_aurora: Connection parameters for the mysql-aurora-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_legacy: Connection parameters for the mysql-legacy-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_rds: Connection parameters for the mysql-rds-database-plugin plugin.
+        :param pulumi.Input[str] name: Name of the database connection.
+        :param pulumi.Input[dict] oracle: Connection parameters for the oracle-database-plugin plugin.
+        :param pulumi.Input[dict] postgresql: Connection parameters for the postgresql-database-plugin plugin.
         :param pulumi.Input[list] root_rotation_statements: A list of database statements to be executed to rotate the root user's credentials.
-        :param pulumi.Input[bool] verify_connection: Whether the connection should be verified on
-               initial configuration or not.
-        
-        The **cassandra** object supports the following:
-        
-          * `connectTimeout` (`pulumi.Input[float]`) - The number of seconds to use as a connection
-            timeout.
-          * `hosts` (`pulumi.Input[list]`) - The hosts to connect to.
-          * `insecureTls` (`pulumi.Input[bool]`) - Whether to skip verification of the server
-            certificate when using TLS.
-          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
-          * `pemBundle` (`pulumi.Input[str]`) - Concatenated PEM blocks configuring the certificate
-            chain.
-          * `pemJson` (`pulumi.Input[str]`) - A JSON structure configuring the certificate chain.
-          * `port` (`pulumi.Input[float]`) - The default port to connect to if no port is specified as
-            part of the host.
-          * `protocolVersion` (`pulumi.Input[float]`) - The CQL protocol version to use.
-          * `tls` (`pulumi.Input[bool]`) - Whether to use TLS when connecting to Cassandra.
-          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
-        
-        The **hana** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mongodb** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mssql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_aurora** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_legacy** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_rds** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **oracle** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **postgresql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
+        :param pulumi.Input[bool] verify_connection: Specifies if the connection is verified during initial configuration.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_connection.html.markdown.
+        The **cassandra** object supports the following:
+
+          * `connectTimeout` (`pulumi.Input[float]`)
+          * `hosts` (`pulumi.Input[list]`)
+          * `insecureTls` (`pulumi.Input[bool]`)
+          * `password` (`pulumi.Input[str]`)
+          * `pemBundle` (`pulumi.Input[str]`)
+          * `pemJson` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `protocolVersion` (`pulumi.Input[float]`)
+          * `tls` (`pulumi.Input[bool]`)
+          * `username` (`pulumi.Input[str]`)
+
+        The **hana** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mongodb** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mssql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_aurora** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_legacy** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_rds** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **oracle** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **postgresql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -397,168 +274,107 @@ class SecretBackendConnection(pulumi.CustomResource):
         """
         Get an existing SecretBackendConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allowed_roles: A list of roles that are allowed to use this
-               connection.
-        :param pulumi.Input[str] backend: The unique name of the Vault mount to configure.
-        :param pulumi.Input[dict] cassandra: A nested block containing configuration options for Cassandra connections.
+        :param pulumi.Input[list] allowed_roles: A list of roles that are allowed to use this connection.
+        :param pulumi.Input[str] backend: Unique name of the Vault mount to configure.
+        :param pulumi.Input[dict] cassandra: Connection parameters for the cassandra-database-plugin plugin.
         :param pulumi.Input[dict] data: A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
-        :param pulumi.Input[dict] hana: A nested block containing configuration options for SAP HanaDB connections.
-        :param pulumi.Input[dict] mongodb: A nested block containing configuration options for MongoDB connections.
-        :param pulumi.Input[dict] mssql: A nested block containing configuration options for MSSQL connections.
-        :param pulumi.Input[dict] mysql: A nested block containing configuration options for MySQL connections.
-        :param pulumi.Input[dict] mysql_aurora: A nested block containing configuration options for Aurora MySQL connections.
-        :param pulumi.Input[dict] mysql_legacy: A nested block containing configuration options for legacy MySQL connections.
-        :param pulumi.Input[dict] mysql_rds: A nested block containing configuration options for RDS MySQL connections.
-        :param pulumi.Input[str] name: A unique name to give the database connection.
-        :param pulumi.Input[dict] oracle: A nested block containing configuration options for Oracle connections.
-        :param pulumi.Input[dict] postgresql: A nested block containing configuration options for PostgreSQL connections.
+        :param pulumi.Input[dict] hana: Connection parameters for the hana-database-plugin plugin.
+        :param pulumi.Input[dict] mongodb: Connection parameters for the mongodb-database-plugin plugin.
+        :param pulumi.Input[dict] mssql: Connection parameters for the mssql-database-plugin plugin.
+        :param pulumi.Input[dict] mysql: Connection parameters for the mysql-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_aurora: Connection parameters for the mysql-aurora-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_legacy: Connection parameters for the mysql-legacy-database-plugin plugin.
+        :param pulumi.Input[dict] mysql_rds: Connection parameters for the mysql-rds-database-plugin plugin.
+        :param pulumi.Input[str] name: Name of the database connection.
+        :param pulumi.Input[dict] oracle: Connection parameters for the oracle-database-plugin plugin.
+        :param pulumi.Input[dict] postgresql: Connection parameters for the postgresql-database-plugin plugin.
         :param pulumi.Input[list] root_rotation_statements: A list of database statements to be executed to rotate the root user's credentials.
-        :param pulumi.Input[bool] verify_connection: Whether the connection should be verified on
-               initial configuration or not.
-        
-        The **cassandra** object supports the following:
-        
-          * `connectTimeout` (`pulumi.Input[float]`) - The number of seconds to use as a connection
-            timeout.
-          * `hosts` (`pulumi.Input[list]`) - The hosts to connect to.
-          * `insecureTls` (`pulumi.Input[bool]`) - Whether to skip verification of the server
-            certificate when using TLS.
-          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
-          * `pemBundle` (`pulumi.Input[str]`) - Concatenated PEM blocks configuring the certificate
-            chain.
-          * `pemJson` (`pulumi.Input[str]`) - A JSON structure configuring the certificate chain.
-          * `port` (`pulumi.Input[float]`) - The default port to connect to if no port is specified as
-            part of the host.
-          * `protocolVersion` (`pulumi.Input[float]`) - The CQL protocol version to use.
-          * `tls` (`pulumi.Input[bool]`) - Whether to use TLS when connecting to Cassandra.
-          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
-        
-        The **hana** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mongodb** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mssql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_aurora** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_legacy** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **mysql_rds** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **oracle** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
-        
-        The **postgresql** object supports the following:
-        
-          * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
-            the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
-            for an example.
-          * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
-            a connection alive for.
-          * `maxIdleConnections` (`pulumi.Input[float]`) - The maximum number of idle connections to
-            maintain.
-          * `maxOpenConnections` (`pulumi.Input[float]`) - The maximum number of open connections to
-            use.
+        :param pulumi.Input[bool] verify_connection: Specifies if the connection is verified during initial configuration.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_connection.html.markdown.
+        The **cassandra** object supports the following:
+
+          * `connectTimeout` (`pulumi.Input[float]`)
+          * `hosts` (`pulumi.Input[list]`)
+          * `insecureTls` (`pulumi.Input[bool]`)
+          * `password` (`pulumi.Input[str]`)
+          * `pemBundle` (`pulumi.Input[str]`)
+          * `pemJson` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `protocolVersion` (`pulumi.Input[float]`)
+          * `tls` (`pulumi.Input[bool]`)
+          * `username` (`pulumi.Input[str]`)
+
+        The **hana** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mongodb** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mssql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_aurora** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_legacy** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **mysql_rds** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **oracle** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
+
+        The **postgresql** object supports the following:
+
+          * `connectionUrl` (`pulumi.Input[str]`)
+          * `maxConnectionLifetime` (`pulumi.Input[float]`)
+          * `maxIdleConnections` (`pulumi.Input[float]`)
+          * `maxOpenConnections` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["allowed_roles"] = allowed_roles
         __props__["backend"] = backend
         __props__["cassandra"] = cassandra

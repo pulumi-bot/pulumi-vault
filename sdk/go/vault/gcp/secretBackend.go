@@ -10,22 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_backend.html.markdown.
 type SecretBackend struct {
 	pulumi.CustomResourceState
 
-	// The GCP service account credentials in JSON format.
+	// JSON-encoded credentials to use to connect to GCP
 	Credentials pulumi.StringPtrOutput `pulumi:"credentials"`
-	// The default TTL for credentials
-	// issued by this backend. Defaults to '0'.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrOutput `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend. Defaults to '0'.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrOutput `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `gcp`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 }
 
@@ -57,34 +53,28 @@ func GetSecretBackend(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackend resources.
 type secretBackendState struct {
-	// The GCP service account credentials in JSON format.
+	// JSON-encoded credentials to use to connect to GCP
 	Credentials *string `pulumi:"credentials"`
-	// The default TTL for credentials
-	// issued by this backend. Defaults to '0'.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend. Defaults to '0'.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `gcp`.
+	// Path to mount the backend at.
 	Path *string `pulumi:"path"`
 }
 
 type SecretBackendState struct {
-	// The GCP service account credentials in JSON format.
+	// JSON-encoded credentials to use to connect to GCP
 	Credentials pulumi.StringPtrInput
-	// The default TTL for credentials
-	// issued by this backend. Defaults to '0'.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend. Defaults to '0'.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `gcp`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrInput
 }
 
@@ -93,35 +83,29 @@ func (SecretBackendState) ElementType() reflect.Type {
 }
 
 type secretBackendArgs struct {
-	// The GCP service account credentials in JSON format.
+	// JSON-encoded credentials to use to connect to GCP
 	Credentials *string `pulumi:"credentials"`
-	// The default TTL for credentials
-	// issued by this backend. Defaults to '0'.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend. Defaults to '0'.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `gcp`.
+	// Path to mount the backend at.
 	Path *string `pulumi:"path"`
 }
 
 // The set of arguments for constructing a SecretBackend resource.
 type SecretBackendArgs struct {
-	// The GCP service account credentials in JSON format.
+	// JSON-encoded credentials to use to connect to GCP
 	Credentials pulumi.StringPtrInput
-	// The default TTL for credentials
-	// issued by this backend. Defaults to '0'.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend. Defaults to '0'.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `gcp`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrInput
 }
 

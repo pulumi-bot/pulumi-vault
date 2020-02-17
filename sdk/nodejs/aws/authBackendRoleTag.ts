@@ -6,13 +6,13 @@ import * as utilities from "../utilities";
 
 /**
  * Reads role tag information from an AWS auth backend in Vault. 
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const aws = new vault.AuthBackend("aws", {
  *     path: "%s",
  *     type: "aws",

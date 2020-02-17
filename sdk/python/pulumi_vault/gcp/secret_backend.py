@@ -12,43 +12,34 @@ from .. import utilities, tables
 class SecretBackend(pulumi.CustomResource):
     credentials: pulumi.Output[str]
     """
-    The GCP service account credentials in JSON format.
+    JSON-encoded credentials to use to connect to GCP
     """
     default_lease_ttl_seconds: pulumi.Output[float]
     """
-    The default TTL for credentials
-    issued by this backend. Defaults to '0'.
+    Default lease duration for secrets in seconds
     """
     description: pulumi.Output[str]
     """
-    A human-friendly description for this backend.
+    Human-friendly description of the mount for the backend.
     """
     max_lease_ttl_seconds: pulumi.Output[float]
     """
-    The maximum TTL that can be requested
-    for credentials issued by this backend. Defaults to '0'.
+    Maximum possible lease duration for secrets in seconds
     """
     path: pulumi.Output[str]
     """
-    The unique path this backend should be mounted at. Must
-    not begin or end with a `/`. Defaults to `gcp`.
+    Path to mount the backend at.
     """
     def __init__(__self__, resource_name, opts=None, credentials=None, default_lease_ttl_seconds=None, description=None, max_lease_ttl_seconds=None, path=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretBackend resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] credentials: The GCP service account credentials in JSON format.
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials
-               issued by this backend. Defaults to '0'.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend. Defaults to '0'.
-        :param pulumi.Input[str] path: The unique path this backend should be mounted at. Must
-               not begin or end with a `/`. Defaults to `gcp`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_backend.html.markdown.
+        :param pulumi.Input[str] credentials: JSON-encoded credentials to use to connect to GCP
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Path to mount the backend at.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,24 +74,20 @@ class SecretBackend(pulumi.CustomResource):
         """
         Get an existing SecretBackend resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] credentials: The GCP service account credentials in JSON format.
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials
-               issued by this backend. Defaults to '0'.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend. Defaults to '0'.
-        :param pulumi.Input[str] path: The unique path this backend should be mounted at. Must
-               not begin or end with a `/`. Defaults to `gcp`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_secret_backend.html.markdown.
+        :param pulumi.Input[str] credentials: JSON-encoded credentials to use to connect to GCP
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Path to mount the backend at.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["credentials"] = credentials
         __props__["default_lease_ttl_seconds"] = default_lease_ttl_seconds
         __props__["description"] = description

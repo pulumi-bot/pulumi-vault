@@ -10,28 +10,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_secret_backend.html.markdown.
 type SecretBackend struct {
 	pulumi.CustomResourceState
 
-	// The AWS Access Key ID this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Access Key ID to use when generating new credentials.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
-	// The default TTL for credentials
-	// issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntOutput `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntOutput `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `aws`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// The AWS region for API calls. Defaults to `us-east-1`.
+	// The AWS region to make API calls against. Defaults to us-east-1.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The AWS Secret Key this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Secret Access Key to use when generating new credentials.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 }
 
@@ -63,46 +57,36 @@ func GetSecretBackend(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackend resources.
 type secretBackendState struct {
-	// The AWS Access Key ID this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Access Key ID to use when generating new credentials.
 	AccessKey *string `pulumi:"accessKey"`
-	// The default TTL for credentials
-	// issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `aws`.
+	// Path to mount the backend at.
 	Path *string `pulumi:"path"`
-	// The AWS region for API calls. Defaults to `us-east-1`.
+	// The AWS region to make API calls against. Defaults to us-east-1.
 	Region *string `pulumi:"region"`
-	// The AWS Secret Key this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Secret Access Key to use when generating new credentials.
 	SecretKey *string `pulumi:"secretKey"`
 }
 
 type SecretBackendState struct {
-	// The AWS Access Key ID this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Access Key ID to use when generating new credentials.
 	AccessKey pulumi.StringPtrInput
-	// The default TTL for credentials
-	// issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `aws`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrInput
-	// The AWS region for API calls. Defaults to `us-east-1`.
+	// The AWS region to make API calls against. Defaults to us-east-1.
 	Region pulumi.StringPtrInput
-	// The AWS Secret Key this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Secret Access Key to use when generating new credentials.
 	SecretKey pulumi.StringPtrInput
 }
 
@@ -111,47 +95,37 @@ func (SecretBackendState) ElementType() reflect.Type {
 }
 
 type secretBackendArgs struct {
-	// The AWS Access Key ID this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Access Key ID to use when generating new credentials.
 	AccessKey *string `pulumi:"accessKey"`
-	// The default TTL for credentials
-	// issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `aws`.
+	// Path to mount the backend at.
 	Path *string `pulumi:"path"`
-	// The AWS region for API calls. Defaults to `us-east-1`.
+	// The AWS region to make API calls against. Defaults to us-east-1.
 	Region *string `pulumi:"region"`
-	// The AWS Secret Key this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Secret Access Key to use when generating new credentials.
 	SecretKey *string `pulumi:"secretKey"`
 }
 
 // The set of arguments for constructing a SecretBackend resource.
 type SecretBackendArgs struct {
-	// The AWS Access Key ID this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Access Key ID to use when generating new credentials.
 	AccessKey pulumi.StringPtrInput
-	// The default TTL for credentials
-	// issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique path this backend should be mounted at. Must
-	// not begin or end with a `/`. Defaults to `aws`.
+	// Path to mount the backend at.
 	Path pulumi.StringPtrInput
-	// The AWS region for API calls. Defaults to `us-east-1`.
+	// The AWS region to make API calls against. Defaults to us-east-1.
 	Region pulumi.StringPtrInput
-	// The AWS Secret Key this backend should use to
-	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+	// The AWS Secret Access Key to use when generating new credentials.
 	SecretKey pulumi.StringPtrInput
 }
 

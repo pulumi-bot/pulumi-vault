@@ -12,87 +12,94 @@ from . import utilities, tables
 class Token(pulumi.CustomResource):
     client_token: pulumi.Output[str]
     """
-    String containing the client token if stored in present file
+    The client token.
     """
     display_name: pulumi.Output[str]
     """
-    String containing the token display name
+    The display name of the token.
     """
     explicit_max_ttl: pulumi.Output[str]
     """
-    The explicit max TTL of this token
+    The explicit max TTL of the token.
     """
     lease_duration: pulumi.Output[float]
     """
-    String containing the token lease duration if present in state file
+    The token lease duration.
     """
     lease_started: pulumi.Output[str]
     """
-    String containing the token lease started time if present in state file
+    The token lease started on.
     """
     no_default_policy: pulumi.Output[bool]
     """
-    Flag to not attach the default policy to this token
+    Flag to disable the default policy.
     """
     no_parent: pulumi.Output[bool]
     """
-    Flag to create a token without parent
+    Flag to create a token without parent.
     """
     num_uses: pulumi.Output[float]
     """
-    The number of allowed uses of this token
+    The number of allowed uses of the token.
     """
     period: pulumi.Output[str]
     """
-    The period of this token
+    The period of the token.
     """
     policies: pulumi.Output[list]
     """
-    List of policies to attach to this token
+    List of policies.
     """
     renew_increment: pulumi.Output[float]
     """
-    The renew increment
+    The renew increment.
     """
     renew_min_lease: pulumi.Output[float]
     """
-    The minimal lease to renew this token
+    The minimum lease to renew token.
     """
     renewable: pulumi.Output[bool]
     """
-    Flag to allow to renew this token
+    Flag to allow the token to be renewed
     """
     role_name: pulumi.Output[str]
     """
-    The token role name
+    The token role name.
     """
     ttl: pulumi.Output[str]
     """
-    The TTL period of this token
+    The TTL period of the token.
     """
     wrapped_token: pulumi.Output[str]
+    """
+    The client wrapped token.
+    """
     wrapping_accessor: pulumi.Output[str]
+    """
+    The client wrapping accessor.
+    """
     wrapping_ttl: pulumi.Output[str]
+    """
+    The TTL period of the wrapped token.
+    """
     def __init__(__self__, resource_name, opts=None, display_name=None, explicit_max_ttl=None, no_default_policy=None, no_parent=None, num_uses=None, period=None, policies=None, renew_increment=None, renew_min_lease=None, renewable=None, role_name=None, ttl=None, wrapping_ttl=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Token resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: String containing the token display name
-        :param pulumi.Input[str] explicit_max_ttl: The explicit max TTL of this token
-        :param pulumi.Input[bool] no_default_policy: Flag to not attach the default policy to this token
-        :param pulumi.Input[bool] no_parent: Flag to create a token without parent
-        :param pulumi.Input[float] num_uses: The number of allowed uses of this token
-        :param pulumi.Input[str] period: The period of this token
-        :param pulumi.Input[list] policies: List of policies to attach to this token
-        :param pulumi.Input[float] renew_increment: The renew increment
-        :param pulumi.Input[float] renew_min_lease: The minimal lease to renew this token
-        :param pulumi.Input[bool] renewable: Flag to allow to renew this token
-        :param pulumi.Input[str] role_name: The token role name
-        :param pulumi.Input[str] ttl: The TTL period of this token
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token.html.markdown.
+        :param pulumi.Input[str] display_name: The display name of the token.
+        :param pulumi.Input[str] explicit_max_ttl: The explicit max TTL of the token.
+        :param pulumi.Input[bool] no_default_policy: Flag to disable the default policy.
+        :param pulumi.Input[bool] no_parent: Flag to create a token without parent.
+        :param pulumi.Input[float] num_uses: The number of allowed uses of the token.
+        :param pulumi.Input[str] period: The period of the token.
+        :param pulumi.Input[list] policies: List of policies.
+        :param pulumi.Input[float] renew_increment: The renew increment.
+        :param pulumi.Input[float] renew_min_lease: The minimum lease to renew token.
+        :param pulumi.Input[bool] renewable: Flag to allow the token to be renewed
+        :param pulumi.Input[str] role_name: The token role name.
+        :param pulumi.Input[str] ttl: The TTL period of the token.
+        :param pulumi.Input[str] wrapping_ttl: The TTL period of the wrapped token.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,31 +147,33 @@ class Token(pulumi.CustomResource):
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] client_token: String containing the client token if stored in present file
-        :param pulumi.Input[str] display_name: String containing the token display name
-        :param pulumi.Input[str] explicit_max_ttl: The explicit max TTL of this token
-        :param pulumi.Input[float] lease_duration: String containing the token lease duration if present in state file
-        :param pulumi.Input[str] lease_started: String containing the token lease started time if present in state file
-        :param pulumi.Input[bool] no_default_policy: Flag to not attach the default policy to this token
-        :param pulumi.Input[bool] no_parent: Flag to create a token without parent
-        :param pulumi.Input[float] num_uses: The number of allowed uses of this token
-        :param pulumi.Input[str] period: The period of this token
-        :param pulumi.Input[list] policies: List of policies to attach to this token
-        :param pulumi.Input[float] renew_increment: The renew increment
-        :param pulumi.Input[float] renew_min_lease: The minimal lease to renew this token
-        :param pulumi.Input[bool] renewable: Flag to allow to renew this token
-        :param pulumi.Input[str] role_name: The token role name
-        :param pulumi.Input[str] ttl: The TTL period of this token
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token.html.markdown.
+        :param pulumi.Input[str] client_token: The client token.
+        :param pulumi.Input[str] display_name: The display name of the token.
+        :param pulumi.Input[str] explicit_max_ttl: The explicit max TTL of the token.
+        :param pulumi.Input[float] lease_duration: The token lease duration.
+        :param pulumi.Input[str] lease_started: The token lease started on.
+        :param pulumi.Input[bool] no_default_policy: Flag to disable the default policy.
+        :param pulumi.Input[bool] no_parent: Flag to create a token without parent.
+        :param pulumi.Input[float] num_uses: The number of allowed uses of the token.
+        :param pulumi.Input[str] period: The period of the token.
+        :param pulumi.Input[list] policies: List of policies.
+        :param pulumi.Input[float] renew_increment: The renew increment.
+        :param pulumi.Input[float] renew_min_lease: The minimum lease to renew token.
+        :param pulumi.Input[bool] renewable: Flag to allow the token to be renewed
+        :param pulumi.Input[str] role_name: The token role name.
+        :param pulumi.Input[str] ttl: The TTL period of the token.
+        :param pulumi.Input[str] wrapped_token: The client wrapped token.
+        :param pulumi.Input[str] wrapping_accessor: The client wrapping accessor.
+        :param pulumi.Input[str] wrapping_ttl: The TTL period of the wrapped token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["client_token"] = client_token
         __props__["display_name"] = display_name
         __props__["explicit_max_ttl"] = explicit_max_ttl

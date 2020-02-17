@@ -11,13 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_config_ca.html.markdown.
 type SecretBackendConfigCa struct {
 	pulumi.CustomResourceState
 
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// The key and certificate PEM bundle
+	// The key and certificate PEM bundle.
 	PemBundle pulumi.StringOutput `pulumi:"pemBundle"`
 }
 
@@ -57,14 +56,14 @@ func GetSecretBackendConfigCa(ctx *pulumi.Context,
 type secretBackendConfigCaState struct {
 	// The PKI secret backend the resource belongs to.
 	Backend *string `pulumi:"backend"`
-	// The key and certificate PEM bundle
+	// The key and certificate PEM bundle.
 	PemBundle *string `pulumi:"pemBundle"`
 }
 
 type SecretBackendConfigCaState struct {
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringPtrInput
-	// The key and certificate PEM bundle
+	// The key and certificate PEM bundle.
 	PemBundle pulumi.StringPtrInput
 }
 
@@ -75,7 +74,7 @@ func (SecretBackendConfigCaState) ElementType() reflect.Type {
 type secretBackendConfigCaArgs struct {
 	// The PKI secret backend the resource belongs to.
 	Backend string `pulumi:"backend"`
-	// The key and certificate PEM bundle
+	// The key and certificate PEM bundle.
 	PemBundle string `pulumi:"pemBundle"`
 }
 
@@ -83,7 +82,7 @@ type secretBackendConfigCaArgs struct {
 type SecretBackendConfigCaArgs struct {
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringInput
-	// The key and certificate PEM bundle
+	// The key and certificate PEM bundle.
 	PemBundle pulumi.StringInput
 }
 

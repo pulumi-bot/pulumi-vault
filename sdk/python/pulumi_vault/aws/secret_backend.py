@@ -12,57 +12,44 @@ from .. import utilities, tables
 class SecretBackend(pulumi.CustomResource):
     access_key: pulumi.Output[str]
     """
-    The AWS Access Key ID this backend should use to
-    issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+    The AWS Access Key ID to use when generating new credentials.
     """
     default_lease_ttl_seconds: pulumi.Output[float]
     """
-    The default TTL for credentials
-    issued by this backend.
+    Default lease duration for secrets in seconds
     """
     description: pulumi.Output[str]
     """
-    A human-friendly description for this backend.
+    Human-friendly description of the mount for the backend.
     """
     max_lease_ttl_seconds: pulumi.Output[float]
     """
-    The maximum TTL that can be requested
-    for credentials issued by this backend.
+    Maximum possible lease duration for secrets in seconds
     """
     path: pulumi.Output[str]
     """
-    The unique path this backend should be mounted at. Must
-    not begin or end with a `/`. Defaults to `aws`.
+    Path to mount the backend at.
     """
     region: pulumi.Output[str]
     """
-    The AWS region for API calls. Defaults to `us-east-1`.
+    The AWS region to make API calls against. Defaults to us-east-1.
     """
     secret_key: pulumi.Output[str]
     """
-    The AWS Secret Key this backend should use to
-    issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
+    The AWS Secret Access Key to use when generating new credentials.
     """
     def __init__(__self__, resource_name, opts=None, access_key=None, default_lease_ttl_seconds=None, description=None, max_lease_ttl_seconds=None, path=None, region=None, secret_key=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretBackend resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key: The AWS Access Key ID this backend should use to
-               issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials
-               issued by this backend.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend.
-        :param pulumi.Input[str] path: The unique path this backend should be mounted at. Must
-               not begin or end with a `/`. Defaults to `aws`.
-        :param pulumi.Input[str] region: The AWS region for API calls. Defaults to `us-east-1`.
-        :param pulumi.Input[str] secret_key: The AWS Secret Key this backend should use to
-               issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_secret_backend.html.markdown.
+        :param pulumi.Input[str] access_key: The AWS Access Key ID to use when generating new credentials.
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Path to mount the backend at.
+        :param pulumi.Input[str] region: The AWS region to make API calls against. Defaults to us-east-1.
+        :param pulumi.Input[str] secret_key: The AWS Secret Access Key to use when generating new credentials.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,28 +86,22 @@ class SecretBackend(pulumi.CustomResource):
         """
         Get an existing SecretBackend resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key: The AWS Access Key ID this backend should use to
-               issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials
-               issued by this backend.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend.
-        :param pulumi.Input[str] path: The unique path this backend should be mounted at. Must
-               not begin or end with a `/`. Defaults to `aws`.
-        :param pulumi.Input[str] region: The AWS region for API calls. Defaults to `us-east-1`.
-        :param pulumi.Input[str] secret_key: The AWS Secret Key this backend should use to
-               issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_secret_backend.html.markdown.
+        :param pulumi.Input[str] access_key: The AWS Access Key ID to use when generating new credentials.
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Path to mount the backend at.
+        :param pulumi.Input[str] region: The AWS region to make API calls against. Defaults to us-east-1.
+        :param pulumi.Input[str] secret_key: The AWS Secret Access Key to use when generating new credentials.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_key"] = access_key
         __props__["default_lease_ttl_seconds"] = default_lease_ttl_seconds
         __props__["description"] = description

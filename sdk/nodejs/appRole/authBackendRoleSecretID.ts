@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
  * Manages an AppRole auth backend SecretID in a Vault server. See the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/approle.html) for more
  * information.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const approle = new vault.AuthBackend("approle", {
  *     type: "approle",
  * });

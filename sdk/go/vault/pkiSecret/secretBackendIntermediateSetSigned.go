@@ -11,13 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_intermediate_set_signed.html.markdown.
 type SecretBackendIntermediateSetSigned struct {
 	pulumi.CustomResourceState
 
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// The certificate
+	// The certificate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 }
 
@@ -57,14 +56,14 @@ func GetSecretBackendIntermediateSetSigned(ctx *pulumi.Context,
 type secretBackendIntermediateSetSignedState struct {
 	// The PKI secret backend the resource belongs to.
 	Backend *string `pulumi:"backend"`
-	// The certificate
+	// The certificate.
 	Certificate *string `pulumi:"certificate"`
 }
 
 type SecretBackendIntermediateSetSignedState struct {
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringPtrInput
-	// The certificate
+	// The certificate.
 	Certificate pulumi.StringPtrInput
 }
 
@@ -75,7 +74,7 @@ func (SecretBackendIntermediateSetSignedState) ElementType() reflect.Type {
 type secretBackendIntermediateSetSignedArgs struct {
 	// The PKI secret backend the resource belongs to.
 	Backend string `pulumi:"backend"`
-	// The certificate
+	// The certificate.
 	Certificate string `pulumi:"certificate"`
 }
 
@@ -83,7 +82,7 @@ type secretBackendIntermediateSetSignedArgs struct {
 type SecretBackendIntermediateSetSignedArgs struct {
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringInput
-	// The certificate
+	// The certificate.
 	Certificate pulumi.StringInput
 }
 

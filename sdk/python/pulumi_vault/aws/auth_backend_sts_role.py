@@ -12,31 +12,24 @@ from .. import utilities, tables
 class AuthBackendStsRole(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
-    The AWS account ID to configure the STS role for.
+    AWS account ID to be associated with STS role.
     """
     backend: pulumi.Output[str]
     """
-    The path the AWS auth backend being configured was
-    mounted at.  Defaults to `aws`.
+    Unique name of the auth backend to configure.
     """
     sts_role: pulumi.Output[str]
     """
-    The STS role to assume when verifying requests made
-    by EC2 instances in the account specified by `account_id`.
+    AWS ARN for STS role to be assumed when interacting with the account specified.
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, backend=None, sts_role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AuthBackendStsRole resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The AWS account ID to configure the STS role for.
-        :param pulumi.Input[str] backend: The path the AWS auth backend being configured was
-               mounted at.  Defaults to `aws`.
-        :param pulumi.Input[str] sts_role: The STS role to assume when verifying requests made
-               by EC2 instances in the account specified by `account_id`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_sts_role.html.markdown.
+        :param pulumi.Input[str] account_id: AWS account ID to be associated with STS role.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] sts_role: AWS ARN for STS role to be assumed when interacting with the account specified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,21 +66,18 @@ class AuthBackendStsRole(pulumi.CustomResource):
         """
         Get an existing AuthBackendStsRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The AWS account ID to configure the STS role for.
-        :param pulumi.Input[str] backend: The path the AWS auth backend being configured was
-               mounted at.  Defaults to `aws`.
-        :param pulumi.Input[str] sts_role: The STS role to assume when verifying requests made
-               by EC2 instances in the account specified by `account_id`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_sts_role.html.markdown.
+        :param pulumi.Input[str] account_id: AWS account ID to be associated with STS role.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] sts_role: AWS ARN for STS role to be assumed when interacting with the account specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["backend"] = backend
         __props__["sts_role"] = sts_role

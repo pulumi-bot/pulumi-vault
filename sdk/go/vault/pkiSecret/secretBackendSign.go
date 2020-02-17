@@ -11,45 +11,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend_sign.html.markdown.
 type SecretBackendSign struct {
 	pulumi.CustomResourceState
 
-	// List of alternative names
+	// List of alternative names.
 	AltNames pulumi.StringArrayOutput `pulumi:"altNames"`
-	// If set to `true`, certs will be renewed if the expiration is within `minSecondsRemaining`. Default `false`
+	// If enabled, a new certificate will be generated if the expiration is within min_seconds_remaining
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// The CA chain
+	// The CA chain.
 	CaChains pulumi.StringArrayOutput `pulumi:"caChains"`
-	// The certificate
+	// The certicate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// CN of certificate to create
+	// CN of intermediate to create.
 	CommonName pulumi.StringOutput `pulumi:"commonName"`
-	// The CSR
+	// The CSR.
 	Csr pulumi.StringOutput `pulumi:"csr"`
-	// Flag to exclude CN from SANs
+	// Flag to exclude CN from SANs.
 	ExcludeCnFromSans pulumi.BoolPtrOutput `pulumi:"excludeCnFromSans"`
-	// The expiration date of the certificate in unix epoch format
+	// The certificate expiration.
 	Expiration pulumi.IntOutput `pulumi:"expiration"`
-	// The format of data
+	// The format of data.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
-	// List of alternative IPs
+	// List of alternative IPs.
 	IpSans pulumi.StringArrayOutput `pulumi:"ipSans"`
-	// The issuing CA
+	// The issuing CA.
 	IssuingCa pulumi.StringOutput `pulumi:"issuingCa"`
-	// Generate a new certificate when the expiration is within this number of seconds, default is 604800 (7 days)
+	// Generate a new certificate when the expiration is within this number of seconds
 	MinSecondsRemaining pulumi.IntPtrOutput `pulumi:"minSecondsRemaining"`
-	// Name of the role to create the certificate against
+	// Name of the role to create the certificate against.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of other SANs
+	// List of other SANs.
 	OtherSans pulumi.StringArrayOutput `pulumi:"otherSans"`
-	// The serial
+	// The serial.
 	Serial pulumi.StringOutput `pulumi:"serial"`
-	// Time to live
+	// Time to leave.
 	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
-	// List of alterative URIs
+	// List of alterative URIs.
 	UriSans pulumi.StringArrayOutput `pulumi:"uriSans"`
 }
 
@@ -90,80 +89,80 @@ func GetSecretBackendSign(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackendSign resources.
 type secretBackendSignState struct {
-	// List of alternative names
+	// List of alternative names.
 	AltNames []string `pulumi:"altNames"`
-	// If set to `true`, certs will be renewed if the expiration is within `minSecondsRemaining`. Default `false`
+	// If enabled, a new certificate will be generated if the expiration is within min_seconds_remaining
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The PKI secret backend the resource belongs to.
 	Backend *string `pulumi:"backend"`
-	// The CA chain
+	// The CA chain.
 	CaChains []string `pulumi:"caChains"`
-	// The certificate
+	// The certicate.
 	Certificate *string `pulumi:"certificate"`
-	// CN of certificate to create
+	// CN of intermediate to create.
 	CommonName *string `pulumi:"commonName"`
-	// The CSR
+	// The CSR.
 	Csr *string `pulumi:"csr"`
-	// Flag to exclude CN from SANs
+	// Flag to exclude CN from SANs.
 	ExcludeCnFromSans *bool `pulumi:"excludeCnFromSans"`
-	// The expiration date of the certificate in unix epoch format
+	// The certificate expiration.
 	Expiration *int `pulumi:"expiration"`
-	// The format of data
+	// The format of data.
 	Format *string `pulumi:"format"`
-	// List of alternative IPs
+	// List of alternative IPs.
 	IpSans []string `pulumi:"ipSans"`
-	// The issuing CA
+	// The issuing CA.
 	IssuingCa *string `pulumi:"issuingCa"`
-	// Generate a new certificate when the expiration is within this number of seconds, default is 604800 (7 days)
+	// Generate a new certificate when the expiration is within this number of seconds
 	MinSecondsRemaining *int `pulumi:"minSecondsRemaining"`
-	// Name of the role to create the certificate against
+	// Name of the role to create the certificate against.
 	Name *string `pulumi:"name"`
-	// List of other SANs
+	// List of other SANs.
 	OtherSans []string `pulumi:"otherSans"`
-	// The serial
+	// The serial.
 	Serial *string `pulumi:"serial"`
-	// Time to live
+	// Time to leave.
 	Ttl *string `pulumi:"ttl"`
-	// List of alterative URIs
+	// List of alterative URIs.
 	UriSans []string `pulumi:"uriSans"`
 }
 
 type SecretBackendSignState struct {
-	// List of alternative names
+	// List of alternative names.
 	AltNames pulumi.StringArrayInput
-	// If set to `true`, certs will be renewed if the expiration is within `minSecondsRemaining`. Default `false`
+	// If enabled, a new certificate will be generated if the expiration is within min_seconds_remaining
 	AutoRenew pulumi.BoolPtrInput
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringPtrInput
-	// The CA chain
+	// The CA chain.
 	CaChains pulumi.StringArrayInput
-	// The certificate
+	// The certicate.
 	Certificate pulumi.StringPtrInput
-	// CN of certificate to create
+	// CN of intermediate to create.
 	CommonName pulumi.StringPtrInput
-	// The CSR
+	// The CSR.
 	Csr pulumi.StringPtrInput
-	// Flag to exclude CN from SANs
+	// Flag to exclude CN from SANs.
 	ExcludeCnFromSans pulumi.BoolPtrInput
-	// The expiration date of the certificate in unix epoch format
+	// The certificate expiration.
 	Expiration pulumi.IntPtrInput
-	// The format of data
+	// The format of data.
 	Format pulumi.StringPtrInput
-	// List of alternative IPs
+	// List of alternative IPs.
 	IpSans pulumi.StringArrayInput
-	// The issuing CA
+	// The issuing CA.
 	IssuingCa pulumi.StringPtrInput
-	// Generate a new certificate when the expiration is within this number of seconds, default is 604800 (7 days)
+	// Generate a new certificate when the expiration is within this number of seconds
 	MinSecondsRemaining pulumi.IntPtrInput
-	// Name of the role to create the certificate against
+	// Name of the role to create the certificate against.
 	Name pulumi.StringPtrInput
-	// List of other SANs
+	// List of other SANs.
 	OtherSans pulumi.StringArrayInput
-	// The serial
+	// The serial.
 	Serial pulumi.StringPtrInput
-	// Time to live
+	// Time to leave.
 	Ttl pulumi.StringPtrInput
-	// List of alterative URIs
+	// List of alterative URIs.
 	UriSans pulumi.StringArrayInput
 }
 
@@ -172,61 +171,61 @@ func (SecretBackendSignState) ElementType() reflect.Type {
 }
 
 type secretBackendSignArgs struct {
-	// List of alternative names
+	// List of alternative names.
 	AltNames []string `pulumi:"altNames"`
-	// If set to `true`, certs will be renewed if the expiration is within `minSecondsRemaining`. Default `false`
+	// If enabled, a new certificate will be generated if the expiration is within min_seconds_remaining
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The PKI secret backend the resource belongs to.
 	Backend string `pulumi:"backend"`
-	// CN of certificate to create
+	// CN of intermediate to create.
 	CommonName string `pulumi:"commonName"`
-	// The CSR
+	// The CSR.
 	Csr string `pulumi:"csr"`
-	// Flag to exclude CN from SANs
+	// Flag to exclude CN from SANs.
 	ExcludeCnFromSans *bool `pulumi:"excludeCnFromSans"`
-	// The format of data
+	// The format of data.
 	Format *string `pulumi:"format"`
-	// List of alternative IPs
+	// List of alternative IPs.
 	IpSans []string `pulumi:"ipSans"`
-	// Generate a new certificate when the expiration is within this number of seconds, default is 604800 (7 days)
+	// Generate a new certificate when the expiration is within this number of seconds
 	MinSecondsRemaining *int `pulumi:"minSecondsRemaining"`
-	// Name of the role to create the certificate against
+	// Name of the role to create the certificate against.
 	Name *string `pulumi:"name"`
-	// List of other SANs
+	// List of other SANs.
 	OtherSans []string `pulumi:"otherSans"`
-	// Time to live
+	// Time to leave.
 	Ttl *string `pulumi:"ttl"`
-	// List of alterative URIs
+	// List of alterative URIs.
 	UriSans []string `pulumi:"uriSans"`
 }
 
 // The set of arguments for constructing a SecretBackendSign resource.
 type SecretBackendSignArgs struct {
-	// List of alternative names
+	// List of alternative names.
 	AltNames pulumi.StringArrayInput
-	// If set to `true`, certs will be renewed if the expiration is within `minSecondsRemaining`. Default `false`
+	// If enabled, a new certificate will be generated if the expiration is within min_seconds_remaining
 	AutoRenew pulumi.BoolPtrInput
 	// The PKI secret backend the resource belongs to.
 	Backend pulumi.StringInput
-	// CN of certificate to create
+	// CN of intermediate to create.
 	CommonName pulumi.StringInput
-	// The CSR
+	// The CSR.
 	Csr pulumi.StringInput
-	// Flag to exclude CN from SANs
+	// Flag to exclude CN from SANs.
 	ExcludeCnFromSans pulumi.BoolPtrInput
-	// The format of data
+	// The format of data.
 	Format pulumi.StringPtrInput
-	// List of alternative IPs
+	// List of alternative IPs.
 	IpSans pulumi.StringArrayInput
-	// Generate a new certificate when the expiration is within this number of seconds, default is 604800 (7 days)
+	// Generate a new certificate when the expiration is within this number of seconds
 	MinSecondsRemaining pulumi.IntPtrInput
-	// Name of the role to create the certificate against
+	// Name of the role to create the certificate against.
 	Name pulumi.StringPtrInput
-	// List of other SANs
+	// List of other SANs.
 	OtherSans pulumi.StringArrayInput
-	// Time to live
+	// Time to leave.
 	Ttl pulumi.StringPtrInput
-	// List of alterative URIs
+	// List of alterative URIs.
 	UriSans pulumi.StringArrayInput
 }
 

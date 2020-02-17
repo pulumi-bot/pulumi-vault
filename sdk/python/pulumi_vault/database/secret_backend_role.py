@@ -12,71 +12,54 @@ from .. import utilities, tables
 class SecretBackendRole(pulumi.CustomResource):
     backend: pulumi.Output[str]
     """
-    The unique name of the Vault mount to configure.
+    The path of the Database Secret Backend the role belongs to.
     """
     creation_statements: pulumi.Output[list]
     """
-    The database statements to execute when
-    creating a user.
+    Database statements to execute to create and configure a user.
     """
     db_name: pulumi.Output[str]
     """
-    The unique name of the database connection to use for
-    the role.
+    Database connection to use for this role.
     """
     default_ttl: pulumi.Output[float]
     """
-    The default number of seconds for leases for this
-    role.
+    Default TTL for leases associated with this role, in seconds.
     """
     max_ttl: pulumi.Output[float]
     """
-    The maximum number of seconds for leases for this
-    role.
+    Maximum TTL for leases associated with this role, in seconds.
     """
     name: pulumi.Output[str]
     """
-    A unique name to give the role.
+    Unique name for the role.
     """
     renew_statements: pulumi.Output[list]
     """
-    The database statements to execute when
-    renewing a user.
+    Database statements to execute to renew a user.
     """
     revocation_statements: pulumi.Output[list]
     """
-    The database statements to execute when
-    revoking a user.
+    Database statements to execute to revoke a user.
     """
     rollback_statements: pulumi.Output[list]
     """
-    The database statements to execute when
-    rolling back creation due to an error.
+    Database statements to execute to rollback a create operation in the event of an error.
     """
     def __init__(__self__, resource_name, opts=None, backend=None, creation_statements=None, db_name=None, default_ttl=None, max_ttl=None, name=None, renew_statements=None, revocation_statements=None, rollback_statements=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretBackendRole resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend: The unique name of the Vault mount to configure.
-        :param pulumi.Input[list] creation_statements: The database statements to execute when
-               creating a user.
-        :param pulumi.Input[str] db_name: The unique name of the database connection to use for
-               the role.
-        :param pulumi.Input[float] default_ttl: The default number of seconds for leases for this
-               role.
-        :param pulumi.Input[float] max_ttl: The maximum number of seconds for leases for this
-               role.
-        :param pulumi.Input[str] name: A unique name to give the role.
-        :param pulumi.Input[list] renew_statements: The database statements to execute when
-               renewing a user.
-        :param pulumi.Input[list] revocation_statements: The database statements to execute when
-               revoking a user.
-        :param pulumi.Input[list] rollback_statements: The database statements to execute when
-               rolling back creation due to an error.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_role.html.markdown.
+        :param pulumi.Input[str] backend: The path of the Database Secret Backend the role belongs to.
+        :param pulumi.Input[list] creation_statements: Database statements to execute to create and configure a user.
+        :param pulumi.Input[str] db_name: Database connection to use for this role.
+        :param pulumi.Input[float] default_ttl: Default TTL for leases associated with this role, in seconds.
+        :param pulumi.Input[float] max_ttl: Maximum TTL for leases associated with this role, in seconds.
+        :param pulumi.Input[str] name: Unique name for the role.
+        :param pulumi.Input[list] renew_statements: Database statements to execute to renew a user.
+        :param pulumi.Input[list] revocation_statements: Database statements to execute to revoke a user.
+        :param pulumi.Input[list] rollback_statements: Database statements to execute to rollback a create operation in the event of an error.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,32 +104,24 @@ class SecretBackendRole(pulumi.CustomResource):
         """
         Get an existing SecretBackendRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend: The unique name of the Vault mount to configure.
-        :param pulumi.Input[list] creation_statements: The database statements to execute when
-               creating a user.
-        :param pulumi.Input[str] db_name: The unique name of the database connection to use for
-               the role.
-        :param pulumi.Input[float] default_ttl: The default number of seconds for leases for this
-               role.
-        :param pulumi.Input[float] max_ttl: The maximum number of seconds for leases for this
-               role.
-        :param pulumi.Input[str] name: A unique name to give the role.
-        :param pulumi.Input[list] renew_statements: The database statements to execute when
-               renewing a user.
-        :param pulumi.Input[list] revocation_statements: The database statements to execute when
-               revoking a user.
-        :param pulumi.Input[list] rollback_statements: The database statements to execute when
-               rolling back creation due to an error.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_role.html.markdown.
+        :param pulumi.Input[str] backend: The path of the Database Secret Backend the role belongs to.
+        :param pulumi.Input[list] creation_statements: Database statements to execute to create and configure a user.
+        :param pulumi.Input[str] db_name: Database connection to use for this role.
+        :param pulumi.Input[float] default_ttl: Default TTL for leases associated with this role, in seconds.
+        :param pulumi.Input[float] max_ttl: Maximum TTL for leases associated with this role, in seconds.
+        :param pulumi.Input[str] name: Unique name for the role.
+        :param pulumi.Input[list] renew_statements: Database statements to execute to renew a user.
+        :param pulumi.Input[list] revocation_statements: Database statements to execute to revoke a user.
+        :param pulumi.Input[list] rollback_statements: Database statements to execute to rollback a create operation in the event of an error.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend"] = backend
         __props__["creation_statements"] = creation_statements
         __props__["db_name"] = db_name

@@ -11,23 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_cert.html.markdown.
 type AuthBackendCert struct {
 	pulumi.CustomResourceState
 
-	// The  Base64 encoded AWS Public key required to
-	// verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-	// the [AWS
-	// documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+	// Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
 	AwsPublicCert pulumi.StringOutput `pulumi:"awsPublicCert"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrOutput `pulumi:"backend"`
-	// The name of the certificate.
+	// Name of the certificate to configure.
 	CertName pulumi.StringOutput `pulumi:"certName"`
-	// Either "pkcs7" or "identity", indicating the type of
-	// document which can be verified using the given certificate. Defaults to
-	// "pkcs7".
+	// The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -65,36 +58,24 @@ func GetAuthBackendCert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthBackendCert resources.
 type authBackendCertState struct {
-	// The  Base64 encoded AWS Public key required to
-	// verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-	// the [AWS
-	// documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+	// Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
 	AwsPublicCert *string `pulumi:"awsPublicCert"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The name of the certificate.
+	// Name of the certificate to configure.
 	CertName *string `pulumi:"certName"`
-	// Either "pkcs7" or "identity", indicating the type of
-	// document which can be verified using the given certificate. Defaults to
-	// "pkcs7".
+	// The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
 	Type *string `pulumi:"type"`
 }
 
 type AuthBackendCertState struct {
-	// The  Base64 encoded AWS Public key required to
-	// verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-	// the [AWS
-	// documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+	// Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
 	AwsPublicCert pulumi.StringPtrInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The name of the certificate.
+	// Name of the certificate to configure.
 	CertName pulumi.StringPtrInput
-	// Either "pkcs7" or "identity", indicating the type of
-	// document which can be verified using the given certificate. Defaults to
-	// "pkcs7".
+	// The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
 	Type pulumi.StringPtrInput
 }
 
@@ -103,37 +84,25 @@ func (AuthBackendCertState) ElementType() reflect.Type {
 }
 
 type authBackendCertArgs struct {
-	// The  Base64 encoded AWS Public key required to
-	// verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-	// the [AWS
-	// documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+	// Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
 	AwsPublicCert string `pulumi:"awsPublicCert"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The name of the certificate.
+	// Name of the certificate to configure.
 	CertName string `pulumi:"certName"`
-	// Either "pkcs7" or "identity", indicating the type of
-	// document which can be verified using the given certificate. Defaults to
-	// "pkcs7".
+	// The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a AuthBackendCert resource.
 type AuthBackendCertArgs struct {
-	// The  Base64 encoded AWS Public key required to
-	// verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-	// the [AWS
-	// documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+	// Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
 	AwsPublicCert pulumi.StringInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The name of the certificate.
+	// Name of the certificate to configure.
 	CertName pulumi.StringInput
-	// Either "pkcs7" or "identity", indicating the type of
-	// document which can be verified using the given certificate. Defaults to
-	// "pkcs7".
+	// The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
 	Type pulumi.StringPtrInput
 }
 

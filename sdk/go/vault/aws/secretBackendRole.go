@@ -11,39 +11,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_secret_backend_role.html.markdown.
 type SecretBackendRole struct {
 	pulumi.CustomResourceState
 
-	// The path the AWS secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the AWS Secret Backend the role belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// Specifies the type of credential to be used when
-	// retrieving credentials from the role. Must be one of `iamUser`, `assumedRole`, or
-	// `federationToken`.
+	// Role credential type.
 	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
-	// The default TTL in seconds for STS credentials.
-	// When a TTL is not specified when STS credentials are requested,
-	// and a default TTL is specified on the role,
-	// then this default TTL will be used. Valid only when `credentialType` is one of
-	// `assumedRole` or `federationToken`.
+	// The default TTL in seconds for STS credentials. When a TTL is not specified when STS credentials are requested, and a
+	// default TTL is specified on the role, then this default TTL will be used. Valid only when credential_type is one of
+	// assumed_role or federation_token.
 	DefaultStsTtl pulumi.IntOutput `pulumi:"defaultStsTtl"`
-	// The max allowed TTL in seconds for STS credentials
-	// (credentials TTL are capped to `maxStsTtl`). Valid only when `credentialType` is
-	// one of `assumedRole` or `federationToken`.
+	// The max allowed TTL in seconds for STS credentials (credentials TTL are capped to max_sts_ttl). Valid only when
+	// credential_type is one of assumed_role or federation_token.
 	MaxStsTtl pulumi.IntOutput `pulumi:"maxStsTtl"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ARN for a pre-existing policy to associate
-	// with this role. Either `policyDocument` or `policyArns` must be specified.
+	// ARN for an existing IAM policy the role should use.
 	PolicyArns pulumi.StringArrayOutput `pulumi:"policyArns"`
-	// The JSON-formatted policy to associate with this
-	// role. Either `policyDocument` or `policyArns` must be specified.
+	// IAM policy the role should use in JSON format.
 	PolicyDocument pulumi.StringPtrOutput `pulumi:"policyDocument"`
-	// Specifies the ARNs of the AWS roles this Vault role
-	// is allowed to assume. Required when `credentialType` is `assumedRole` and
-	// prohibited otherwise.
+	// ARNs of AWS roles allowed to be assumed. Only valid when credential_type is 'assumed_role'
 	RoleArns pulumi.StringArrayOutput `pulumi:"roleArns"`
 }
 
@@ -81,68 +69,46 @@ func GetSecretBackendRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackendRole resources.
 type secretBackendRoleState struct {
-	// The path the AWS secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the AWS Secret Backend the role belongs to.
 	Backend *string `pulumi:"backend"`
-	// Specifies the type of credential to be used when
-	// retrieving credentials from the role. Must be one of `iamUser`, `assumedRole`, or
-	// `federationToken`.
+	// Role credential type.
 	CredentialType *string `pulumi:"credentialType"`
-	// The default TTL in seconds for STS credentials.
-	// When a TTL is not specified when STS credentials are requested,
-	// and a default TTL is specified on the role,
-	// then this default TTL will be used. Valid only when `credentialType` is one of
-	// `assumedRole` or `federationToken`.
+	// The default TTL in seconds for STS credentials. When a TTL is not specified when STS credentials are requested, and a
+	// default TTL is specified on the role, then this default TTL will be used. Valid only when credential_type is one of
+	// assumed_role or federation_token.
 	DefaultStsTtl *int `pulumi:"defaultStsTtl"`
-	// The max allowed TTL in seconds for STS credentials
-	// (credentials TTL are capped to `maxStsTtl`). Valid only when `credentialType` is
-	// one of `assumedRole` or `federationToken`.
+	// The max allowed TTL in seconds for STS credentials (credentials TTL are capped to max_sts_ttl). Valid only when
+	// credential_type is one of assumed_role or federation_token.
 	MaxStsTtl *int `pulumi:"maxStsTtl"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
-	// The ARN for a pre-existing policy to associate
-	// with this role. Either `policyDocument` or `policyArns` must be specified.
+	// ARN for an existing IAM policy the role should use.
 	PolicyArns []string `pulumi:"policyArns"`
-	// The JSON-formatted policy to associate with this
-	// role. Either `policyDocument` or `policyArns` must be specified.
+	// IAM policy the role should use in JSON format.
 	PolicyDocument *string `pulumi:"policyDocument"`
-	// Specifies the ARNs of the AWS roles this Vault role
-	// is allowed to assume. Required when `credentialType` is `assumedRole` and
-	// prohibited otherwise.
+	// ARNs of AWS roles allowed to be assumed. Only valid when credential_type is 'assumed_role'
 	RoleArns []string `pulumi:"roleArns"`
 }
 
 type SecretBackendRoleState struct {
-	// The path the AWS secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the AWS Secret Backend the role belongs to.
 	Backend pulumi.StringPtrInput
-	// Specifies the type of credential to be used when
-	// retrieving credentials from the role. Must be one of `iamUser`, `assumedRole`, or
-	// `federationToken`.
+	// Role credential type.
 	CredentialType pulumi.StringPtrInput
-	// The default TTL in seconds for STS credentials.
-	// When a TTL is not specified when STS credentials are requested,
-	// and a default TTL is specified on the role,
-	// then this default TTL will be used. Valid only when `credentialType` is one of
-	// `assumedRole` or `federationToken`.
+	// The default TTL in seconds for STS credentials. When a TTL is not specified when STS credentials are requested, and a
+	// default TTL is specified on the role, then this default TTL will be used. Valid only when credential_type is one of
+	// assumed_role or federation_token.
 	DefaultStsTtl pulumi.IntPtrInput
-	// The max allowed TTL in seconds for STS credentials
-	// (credentials TTL are capped to `maxStsTtl`). Valid only when `credentialType` is
-	// one of `assumedRole` or `federationToken`.
+	// The max allowed TTL in seconds for STS credentials (credentials TTL are capped to max_sts_ttl). Valid only when
+	// credential_type is one of assumed_role or federation_token.
 	MaxStsTtl pulumi.IntPtrInput
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
-	// The ARN for a pre-existing policy to associate
-	// with this role. Either `policyDocument` or `policyArns` must be specified.
+	// ARN for an existing IAM policy the role should use.
 	PolicyArns pulumi.StringArrayInput
-	// The JSON-formatted policy to associate with this
-	// role. Either `policyDocument` or `policyArns` must be specified.
+	// IAM policy the role should use in JSON format.
 	PolicyDocument pulumi.StringPtrInput
-	// Specifies the ARNs of the AWS roles this Vault role
-	// is allowed to assume. Required when `credentialType` is `assumedRole` and
-	// prohibited otherwise.
+	// ARNs of AWS roles allowed to be assumed. Only valid when credential_type is 'assumed_role'
 	RoleArns pulumi.StringArrayInput
 }
 
@@ -151,69 +117,47 @@ func (SecretBackendRoleState) ElementType() reflect.Type {
 }
 
 type secretBackendRoleArgs struct {
-	// The path the AWS secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the AWS Secret Backend the role belongs to.
 	Backend string `pulumi:"backend"`
-	// Specifies the type of credential to be used when
-	// retrieving credentials from the role. Must be one of `iamUser`, `assumedRole`, or
-	// `federationToken`.
+	// Role credential type.
 	CredentialType string `pulumi:"credentialType"`
-	// The default TTL in seconds for STS credentials.
-	// When a TTL is not specified when STS credentials are requested,
-	// and a default TTL is specified on the role,
-	// then this default TTL will be used. Valid only when `credentialType` is one of
-	// `assumedRole` or `federationToken`.
+	// The default TTL in seconds for STS credentials. When a TTL is not specified when STS credentials are requested, and a
+	// default TTL is specified on the role, then this default TTL will be used. Valid only when credential_type is one of
+	// assumed_role or federation_token.
 	DefaultStsTtl *int `pulumi:"defaultStsTtl"`
-	// The max allowed TTL in seconds for STS credentials
-	// (credentials TTL are capped to `maxStsTtl`). Valid only when `credentialType` is
-	// one of `assumedRole` or `federationToken`.
+	// The max allowed TTL in seconds for STS credentials (credentials TTL are capped to max_sts_ttl). Valid only when
+	// credential_type is one of assumed_role or federation_token.
 	MaxStsTtl *int `pulumi:"maxStsTtl"`
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
-	// The ARN for a pre-existing policy to associate
-	// with this role. Either `policyDocument` or `policyArns` must be specified.
+	// ARN for an existing IAM policy the role should use.
 	PolicyArns []string `pulumi:"policyArns"`
-	// The JSON-formatted policy to associate with this
-	// role. Either `policyDocument` or `policyArns` must be specified.
+	// IAM policy the role should use in JSON format.
 	PolicyDocument *string `pulumi:"policyDocument"`
-	// Specifies the ARNs of the AWS roles this Vault role
-	// is allowed to assume. Required when `credentialType` is `assumedRole` and
-	// prohibited otherwise.
+	// ARNs of AWS roles allowed to be assumed. Only valid when credential_type is 'assumed_role'
 	RoleArns []string `pulumi:"roleArns"`
 }
 
 // The set of arguments for constructing a SecretBackendRole resource.
 type SecretBackendRoleArgs struct {
-	// The path the AWS secret backend is mounted at,
-	// with no leading or trailing `/`s.
+	// The path of the AWS Secret Backend the role belongs to.
 	Backend pulumi.StringInput
-	// Specifies the type of credential to be used when
-	// retrieving credentials from the role. Must be one of `iamUser`, `assumedRole`, or
-	// `federationToken`.
+	// Role credential type.
 	CredentialType pulumi.StringInput
-	// The default TTL in seconds for STS credentials.
-	// When a TTL is not specified when STS credentials are requested,
-	// and a default TTL is specified on the role,
-	// then this default TTL will be used. Valid only when `credentialType` is one of
-	// `assumedRole` or `federationToken`.
+	// The default TTL in seconds for STS credentials. When a TTL is not specified when STS credentials are requested, and a
+	// default TTL is specified on the role, then this default TTL will be used. Valid only when credential_type is one of
+	// assumed_role or federation_token.
 	DefaultStsTtl pulumi.IntPtrInput
-	// The max allowed TTL in seconds for STS credentials
-	// (credentials TTL are capped to `maxStsTtl`). Valid only when `credentialType` is
-	// one of `assumedRole` or `federationToken`.
+	// The max allowed TTL in seconds for STS credentials (credentials TTL are capped to max_sts_ttl). Valid only when
+	// credential_type is one of assumed_role or federation_token.
 	MaxStsTtl pulumi.IntPtrInput
-	// The name to identify this role within the backend.
-	// Must be unique within the backend.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
-	// The ARN for a pre-existing policy to associate
-	// with this role. Either `policyDocument` or `policyArns` must be specified.
+	// ARN for an existing IAM policy the role should use.
 	PolicyArns pulumi.StringArrayInput
-	// The JSON-formatted policy to associate with this
-	// role. Either `policyDocument` or `policyArns` must be specified.
+	// IAM policy the role should use in JSON format.
 	PolicyDocument pulumi.StringPtrInput
-	// Specifies the ARNs of the AWS roles this Vault role
-	// is allowed to assume. Required when `credentialType` is `assumedRole` and
-	// prohibited otherwise.
+	// ARNs of AWS roles allowed to be assumed. Only valid when credential_type is 'assumed_role'
 	RoleArns pulumi.StringArrayInput
 }
 

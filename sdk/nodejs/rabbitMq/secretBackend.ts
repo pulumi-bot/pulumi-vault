@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/rabbitmq_secret_backend.html.markdown.
- */
 export class SecretBackend extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackend resource's state with the given name, ID, and optional extra
@@ -39,35 +36,31 @@ export class SecretBackend extends pulumi.CustomResource {
      */
     public readonly connectionUri!: pulumi.Output<string>;
     /**
-     * The default TTL for credentials
-     * issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     public readonly defaultLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     public readonly maxLeaseTtlSeconds!: pulumi.Output<number>;
     /**
-     * Specifies the RabbitMQ management administrator password.
+     * Specifies the RabbitMQ management administrator password
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `aws`.
+     * The path of the RabbitMQ Secret Backend where the connection should be configured
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the RabbitMQ management administrator username.
+     * Specifies the RabbitMQ management administrator username
      */
     public readonly username!: pulumi.Output<string>;
     /**
      * Specifies whether to verify connection URI, username, and password.
-     * Defaults to `true`.
      */
     public readonly verifyConnection!: pulumi.Output<boolean | undefined>;
 
@@ -131,35 +124,31 @@ export interface SecretBackendState {
      */
     readonly connectionUri?: pulumi.Input<string>;
     /**
-     * The default TTL for credentials
-     * issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * Specifies the RabbitMQ management administrator password.
+     * Specifies the RabbitMQ management administrator password
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `aws`.
+     * The path of the RabbitMQ Secret Backend where the connection should be configured
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Specifies the RabbitMQ management administrator username.
+     * Specifies the RabbitMQ management administrator username
      */
     readonly username?: pulumi.Input<string>;
     /**
      * Specifies whether to verify connection URI, username, and password.
-     * Defaults to `true`.
      */
     readonly verifyConnection?: pulumi.Input<boolean>;
 }
@@ -173,35 +162,31 @@ export interface SecretBackendArgs {
      */
     readonly connectionUri: pulumi.Input<string>;
     /**
-     * The default TTL for credentials
-     * issued by this backend.
+     * Default lease duration for secrets in seconds
      */
     readonly defaultLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * A human-friendly description for this backend.
+     * Human-friendly description of the mount for the backend.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The maximum TTL that can be requested
-     * for credentials issued by this backend.
+     * Maximum possible lease duration for secrets in seconds
      */
     readonly maxLeaseTtlSeconds?: pulumi.Input<number>;
     /**
-     * Specifies the RabbitMQ management administrator password.
+     * Specifies the RabbitMQ management administrator password
      */
     readonly password: pulumi.Input<string>;
     /**
-     * The unique path this backend should be mounted at. Must
-     * not begin or end with a `/`. Defaults to `aws`.
+     * The path of the RabbitMQ Secret Backend where the connection should be configured
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Specifies the RabbitMQ management administrator username.
+     * Specifies the RabbitMQ management administrator username
      */
     readonly username: pulumi.Input<string>;
     /**
      * Specifies whether to verify connection URI, username, and password.
-     * Defaults to `true`.
      */
     readonly verifyConnection?: pulumi.Input<boolean>;
 }

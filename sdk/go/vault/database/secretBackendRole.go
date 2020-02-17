@@ -11,34 +11,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_role.html.markdown.
 type SecretBackendRole struct {
 	pulumi.CustomResourceState
 
-	// The unique name of the Vault mount to configure.
+	// The path of the Database Secret Backend the role belongs to.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// The database statements to execute when
-	// creating a user.
+	// Database statements to execute to create and configure a user.
 	CreationStatements pulumi.StringArrayOutput `pulumi:"creationStatements"`
-	// The unique name of the database connection to use for
-	// the role.
+	// Database connection to use for this role.
 	DbName pulumi.StringOutput `pulumi:"dbName"`
-	// The default number of seconds for leases for this
-	// role.
+	// Default TTL for leases associated with this role, in seconds.
 	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
-	// The maximum number of seconds for leases for this
-	// role.
+	// Maximum TTL for leases associated with this role, in seconds.
 	MaxTtl pulumi.IntPtrOutput `pulumi:"maxTtl"`
-	// A unique name to give the role.
+	// Unique name for the role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The database statements to execute when
-	// renewing a user.
+	// Database statements to execute to renew a user.
 	RenewStatements pulumi.StringArrayOutput `pulumi:"renewStatements"`
-	// The database statements to execute when
-	// revoking a user.
+	// Database statements to execute to revoke a user.
 	RevocationStatements pulumi.StringArrayOutput `pulumi:"revocationStatements"`
-	// The database statements to execute when
-	// rolling back creation due to an error.
+	// Database statements to execute to rollback a create operation in the event of an error.
 	RollbackStatements pulumi.StringArrayOutput `pulumi:"rollbackStatements"`
 }
 
@@ -79,58 +71,44 @@ func GetSecretBackendRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackendRole resources.
 type secretBackendRoleState struct {
-	// The unique name of the Vault mount to configure.
+	// The path of the Database Secret Backend the role belongs to.
 	Backend *string `pulumi:"backend"`
-	// The database statements to execute when
-	// creating a user.
+	// Database statements to execute to create and configure a user.
 	CreationStatements []string `pulumi:"creationStatements"`
-	// The unique name of the database connection to use for
-	// the role.
+	// Database connection to use for this role.
 	DbName *string `pulumi:"dbName"`
-	// The default number of seconds for leases for this
-	// role.
+	// Default TTL for leases associated with this role, in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The maximum number of seconds for leases for this
-	// role.
+	// Maximum TTL for leases associated with this role, in seconds.
 	MaxTtl *int `pulumi:"maxTtl"`
-	// A unique name to give the role.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
-	// The database statements to execute when
-	// renewing a user.
+	// Database statements to execute to renew a user.
 	RenewStatements []string `pulumi:"renewStatements"`
-	// The database statements to execute when
-	// revoking a user.
+	// Database statements to execute to revoke a user.
 	RevocationStatements []string `pulumi:"revocationStatements"`
-	// The database statements to execute when
-	// rolling back creation due to an error.
+	// Database statements to execute to rollback a create operation in the event of an error.
 	RollbackStatements []string `pulumi:"rollbackStatements"`
 }
 
 type SecretBackendRoleState struct {
-	// The unique name of the Vault mount to configure.
+	// The path of the Database Secret Backend the role belongs to.
 	Backend pulumi.StringPtrInput
-	// The database statements to execute when
-	// creating a user.
+	// Database statements to execute to create and configure a user.
 	CreationStatements pulumi.StringArrayInput
-	// The unique name of the database connection to use for
-	// the role.
+	// Database connection to use for this role.
 	DbName pulumi.StringPtrInput
-	// The default number of seconds for leases for this
-	// role.
+	// Default TTL for leases associated with this role, in seconds.
 	DefaultTtl pulumi.IntPtrInput
-	// The maximum number of seconds for leases for this
-	// role.
+	// Maximum TTL for leases associated with this role, in seconds.
 	MaxTtl pulumi.IntPtrInput
-	// A unique name to give the role.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
-	// The database statements to execute when
-	// renewing a user.
+	// Database statements to execute to renew a user.
 	RenewStatements pulumi.StringArrayInput
-	// The database statements to execute when
-	// revoking a user.
+	// Database statements to execute to revoke a user.
 	RevocationStatements pulumi.StringArrayInput
-	// The database statements to execute when
-	// rolling back creation due to an error.
+	// Database statements to execute to rollback a create operation in the event of an error.
 	RollbackStatements pulumi.StringArrayInput
 }
 
@@ -139,59 +117,45 @@ func (SecretBackendRoleState) ElementType() reflect.Type {
 }
 
 type secretBackendRoleArgs struct {
-	// The unique name of the Vault mount to configure.
+	// The path of the Database Secret Backend the role belongs to.
 	Backend string `pulumi:"backend"`
-	// The database statements to execute when
-	// creating a user.
+	// Database statements to execute to create and configure a user.
 	CreationStatements []string `pulumi:"creationStatements"`
-	// The unique name of the database connection to use for
-	// the role.
+	// Database connection to use for this role.
 	DbName string `pulumi:"dbName"`
-	// The default number of seconds for leases for this
-	// role.
+	// Default TTL for leases associated with this role, in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The maximum number of seconds for leases for this
-	// role.
+	// Maximum TTL for leases associated with this role, in seconds.
 	MaxTtl *int `pulumi:"maxTtl"`
-	// A unique name to give the role.
+	// Unique name for the role.
 	Name *string `pulumi:"name"`
-	// The database statements to execute when
-	// renewing a user.
+	// Database statements to execute to renew a user.
 	RenewStatements []string `pulumi:"renewStatements"`
-	// The database statements to execute when
-	// revoking a user.
+	// Database statements to execute to revoke a user.
 	RevocationStatements []string `pulumi:"revocationStatements"`
-	// The database statements to execute when
-	// rolling back creation due to an error.
+	// Database statements to execute to rollback a create operation in the event of an error.
 	RollbackStatements []string `pulumi:"rollbackStatements"`
 }
 
 // The set of arguments for constructing a SecretBackendRole resource.
 type SecretBackendRoleArgs struct {
-	// The unique name of the Vault mount to configure.
+	// The path of the Database Secret Backend the role belongs to.
 	Backend pulumi.StringInput
-	// The database statements to execute when
-	// creating a user.
+	// Database statements to execute to create and configure a user.
 	CreationStatements pulumi.StringArrayInput
-	// The unique name of the database connection to use for
-	// the role.
+	// Database connection to use for this role.
 	DbName pulumi.StringInput
-	// The default number of seconds for leases for this
-	// role.
+	// Default TTL for leases associated with this role, in seconds.
 	DefaultTtl pulumi.IntPtrInput
-	// The maximum number of seconds for leases for this
-	// role.
+	// Maximum TTL for leases associated with this role, in seconds.
 	MaxTtl pulumi.IntPtrInput
-	// A unique name to give the role.
+	// Unique name for the role.
 	Name pulumi.StringPtrInput
-	// The database statements to execute when
-	// renewing a user.
+	// Database statements to execute to renew a user.
 	RenewStatements pulumi.StringArrayInput
-	// The database statements to execute when
-	// revoking a user.
+	// Database statements to execute to revoke a user.
 	RevocationStatements pulumi.StringArrayInput
-	// The database statements to execute when
-	// rolling back creation due to an error.
+	// Database statements to execute to rollback a create operation in the event of an error.
 	RollbackStatements pulumi.StringArrayInput
 }
 

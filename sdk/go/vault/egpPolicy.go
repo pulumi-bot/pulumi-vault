@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a resource to manage Endpoint Governing Policy (EGP) via [Sentinel](https://www.vaultproject.io/docs/enterprise/sentinel/index.html).
-// 
+//
 // **Note** this feature is available only with Vault Enterprise.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/egp_policy.html.markdown.
 type EgpPolicy struct {
 	pulumi.CustomResourceState

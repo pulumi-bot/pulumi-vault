@@ -11,27 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_endpoint.html.markdown.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
-	// String containing a JSON-encoded object that will be
-	// written to the given path as the secret data.
+	// JSON-encoded data to write.
 	DataJson pulumi.StringOutput `pulumi:"dataJson"`
 	// Don't attempt to delete the path from Vault if true
 	DisableDelete pulumi.BoolPtrOutput `pulumi:"disableDelete"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data or if the endpoint does
-	// not support the `GET` method. Setting this to `true` will break drift
-	// detection. You should set this to `true` for endpoints that are
-	// write-only. Defaults to false.
+	// Don't attempt to read the path from Vault if true; drift won't be detected
 	DisableRead pulumi.BoolPtrOutput `pulumi:"disableRead"`
 	// When reading, disregard fields not present in data_json
 	IgnoreAbsentFields pulumi.BoolPtrOutput `pulumi:"ignoreAbsentFields"`
-	// The full logical path at which to write the given
-	// data. Consult each backend's documentation to see which endpoints
-	// support the `PUT` methods and to determine whether they also support
-	// `DELETE` and `GET`.
+	// Full path where to the endpoint that will be written
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Map of strings returned by write operation
 	WriteData pulumi.StringMapOutput `pulumi:"writeData"`
@@ -75,23 +66,15 @@ func GetEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Endpoint resources.
 type endpointState struct {
-	// String containing a JSON-encoded object that will be
-	// written to the given path as the secret data.
+	// JSON-encoded data to write.
 	DataJson *string `pulumi:"dataJson"`
 	// Don't attempt to delete the path from Vault if true
 	DisableDelete *bool `pulumi:"disableDelete"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data or if the endpoint does
-	// not support the `GET` method. Setting this to `true` will break drift
-	// detection. You should set this to `true` for endpoints that are
-	// write-only. Defaults to false.
+	// Don't attempt to read the path from Vault if true; drift won't be detected
 	DisableRead *bool `pulumi:"disableRead"`
 	// When reading, disregard fields not present in data_json
 	IgnoreAbsentFields *bool `pulumi:"ignoreAbsentFields"`
-	// The full logical path at which to write the given
-	// data. Consult each backend's documentation to see which endpoints
-	// support the `PUT` methods and to determine whether they also support
-	// `DELETE` and `GET`.
+	// Full path where to the endpoint that will be written
 	Path *string `pulumi:"path"`
 	// Map of strings returned by write operation
 	WriteData map[string]string `pulumi:"writeData"`
@@ -102,23 +85,15 @@ type endpointState struct {
 }
 
 type EndpointState struct {
-	// String containing a JSON-encoded object that will be
-	// written to the given path as the secret data.
+	// JSON-encoded data to write.
 	DataJson pulumi.StringPtrInput
 	// Don't attempt to delete the path from Vault if true
 	DisableDelete pulumi.BoolPtrInput
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data or if the endpoint does
-	// not support the `GET` method. Setting this to `true` will break drift
-	// detection. You should set this to `true` for endpoints that are
-	// write-only. Defaults to false.
+	// Don't attempt to read the path from Vault if true; drift won't be detected
 	DisableRead pulumi.BoolPtrInput
 	// When reading, disregard fields not present in data_json
 	IgnoreAbsentFields pulumi.BoolPtrInput
-	// The full logical path at which to write the given
-	// data. Consult each backend's documentation to see which endpoints
-	// support the `PUT` methods and to determine whether they also support
-	// `DELETE` and `GET`.
+	// Full path where to the endpoint that will be written
 	Path pulumi.StringPtrInput
 	// Map of strings returned by write operation
 	WriteData pulumi.StringMapInput
@@ -133,23 +108,15 @@ func (EndpointState) ElementType() reflect.Type {
 }
 
 type endpointArgs struct {
-	// String containing a JSON-encoded object that will be
-	// written to the given path as the secret data.
+	// JSON-encoded data to write.
 	DataJson string `pulumi:"dataJson"`
 	// Don't attempt to delete the path from Vault if true
 	DisableDelete *bool `pulumi:"disableDelete"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data or if the endpoint does
-	// not support the `GET` method. Setting this to `true` will break drift
-	// detection. You should set this to `true` for endpoints that are
-	// write-only. Defaults to false.
+	// Don't attempt to read the path from Vault if true; drift won't be detected
 	DisableRead *bool `pulumi:"disableRead"`
 	// When reading, disregard fields not present in data_json
 	IgnoreAbsentFields *bool `pulumi:"ignoreAbsentFields"`
-	// The full logical path at which to write the given
-	// data. Consult each backend's documentation to see which endpoints
-	// support the `PUT` methods and to determine whether they also support
-	// `DELETE` and `GET`.
+	// Full path where to the endpoint that will be written
 	Path string `pulumi:"path"`
 	// Top-level fields returned by write to persist in state
 	WriteFields []string `pulumi:"writeFields"`
@@ -157,23 +124,15 @@ type endpointArgs struct {
 
 // The set of arguments for constructing a Endpoint resource.
 type EndpointArgs struct {
-	// String containing a JSON-encoded object that will be
-	// written to the given path as the secret data.
+	// JSON-encoded data to write.
 	DataJson pulumi.StringInput
 	// Don't attempt to delete the path from Vault if true
 	DisableDelete pulumi.BoolPtrInput
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data or if the endpoint does
-	// not support the `GET` method. Setting this to `true` will break drift
-	// detection. You should set this to `true` for endpoints that are
-	// write-only. Defaults to false.
+	// Don't attempt to read the path from Vault if true; drift won't be detected
 	DisableRead pulumi.BoolPtrInput
 	// When reading, disregard fields not present in data_json
 	IgnoreAbsentFields pulumi.BoolPtrInput
-	// The full logical path at which to write the given
-	// data. Consult each backend's documentation to see which endpoints
-	// support the `PUT` methods and to determine whether they also support
-	// `DELETE` and `GET`.
+	// Full path where to the endpoint that will be written
 	Path pulumi.StringInput
 	// Top-level fields returned by write to persist in state
 	WriteFields pulumi.StringArrayInput

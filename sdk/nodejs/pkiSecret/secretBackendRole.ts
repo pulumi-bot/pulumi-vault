@@ -6,13 +6,13 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a role on an PKI Secret Backend for Vault.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const pki = new vault.pkiSecret.SecretBackend("pki", {
  *     defaultLeaseTtlSeconds: 3600,
  *     maxLeaseTtlSeconds: 86400,
@@ -153,13 +153,13 @@ export class SecretBackendRole extends pulumi.CustomResource {
      */
     public readonly noStore!: pulumi.Output<boolean | undefined>;
     /**
-     * The organization of generated certificates
-     */
-    public readonly organizations!: pulumi.Output<string[] | undefined>;
-    /**
      * The organization unit of generated certificates
      */
     public readonly organizationUnit!: pulumi.Output<string[] | undefined>;
+    /**
+     * The organization of generated certificates
+     */
+    public readonly organizations!: pulumi.Output<string[] | undefined>;
     /**
      * Specify the list of allowed policies IODs
      */
@@ -234,8 +234,8 @@ export class SecretBackendRole extends pulumi.CustomResource {
             inputs["maxTtl"] = state ? state.maxTtl : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["noStore"] = state ? state.noStore : undefined;
-            inputs["organizations"] = state ? state.organizations : undefined;
             inputs["organizationUnit"] = state ? state.organizationUnit : undefined;
+            inputs["organizations"] = state ? state.organizations : undefined;
             inputs["policyIdentifiers"] = state ? state.policyIdentifiers : undefined;
             inputs["postalCodes"] = state ? state.postalCodes : undefined;
             inputs["provinces"] = state ? state.provinces : undefined;
@@ -275,8 +275,8 @@ export class SecretBackendRole extends pulumi.CustomResource {
             inputs["maxTtl"] = args ? args.maxTtl : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noStore"] = args ? args.noStore : undefined;
-            inputs["organizations"] = args ? args.organizations : undefined;
             inputs["organizationUnit"] = args ? args.organizationUnit : undefined;
+            inputs["organizations"] = args ? args.organizations : undefined;
             inputs["policyIdentifiers"] = args ? args.policyIdentifiers : undefined;
             inputs["postalCodes"] = args ? args.postalCodes : undefined;
             inputs["provinces"] = args ? args.provinces : undefined;
@@ -403,13 +403,13 @@ export interface SecretBackendRoleState {
      */
     readonly noStore?: pulumi.Input<boolean>;
     /**
-     * The organization of generated certificates
-     */
-    readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The organization unit of generated certificates
      */
     readonly organizationUnit?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The organization of generated certificates
+     */
+    readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specify the list of allowed policies IODs
      */
@@ -553,13 +553,13 @@ export interface SecretBackendRoleArgs {
      */
     readonly noStore?: pulumi.Input<boolean>;
     /**
-     * The organization of generated certificates
-     */
-    readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The organization unit of generated certificates
      */
     readonly organizationUnit?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The organization of generated certificates
+     */
+    readonly organizations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specify the list of allowed policies IODs
      */

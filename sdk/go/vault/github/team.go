@@ -11,19 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Manages policy mappings for Github Teams authenticated via Github. See the [Vault
-// documentation](https://www.vaultproject.io/docs/auth/github.html) for more
-// information.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/github_team.html.markdown.
 type Team struct {
 	pulumi.CustomResourceState
 
-	// Path where the github auth backend is mounted. Defaults to `github`
-	// if not specified.
+	// Auth backend to which team mapping will be congigured.
 	Backend pulumi.StringPtrOutput `pulumi:"backend"`
-	// An array of strings specifying the policies to be set on tokens
-	// issued using this role.
+	// Policies to be assigned to this team.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// GitHub team name in "slugified" format.
 	Team pulumi.StringOutput `pulumi:"team"`
@@ -78,11 +71,9 @@ func GetTeam(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Team resources.
 type teamState struct {
-	// Path where the github auth backend is mounted. Defaults to `github`
-	// if not specified.
+	// Auth backend to which team mapping will be congigured.
 	Backend *string `pulumi:"backend"`
-	// An array of strings specifying the policies to be set on tokens
-	// issued using this role.
+	// Policies to be assigned to this team.
 	Policies []string `pulumi:"policies"`
 	// GitHub team name in "slugified" format.
 	Team *string `pulumi:"team"`
@@ -107,11 +98,9 @@ type teamState struct {
 }
 
 type TeamState struct {
-	// Path where the github auth backend is mounted. Defaults to `github`
-	// if not specified.
+	// Auth backend to which team mapping will be congigured.
 	Backend pulumi.StringPtrInput
-	// An array of strings specifying the policies to be set on tokens
-	// issued using this role.
+	// Policies to be assigned to this team.
 	Policies pulumi.StringArrayInput
 	// GitHub team name in "slugified" format.
 	Team pulumi.StringPtrInput
@@ -140,11 +129,9 @@ func (TeamState) ElementType() reflect.Type {
 }
 
 type teamArgs struct {
-	// Path where the github auth backend is mounted. Defaults to `github`
-	// if not specified.
+	// Auth backend to which team mapping will be congigured.
 	Backend *string `pulumi:"backend"`
-	// An array of strings specifying the policies to be set on tokens
-	// issued using this role.
+	// Policies to be assigned to this team.
 	Policies []string `pulumi:"policies"`
 	// GitHub team name in "slugified" format.
 	Team string `pulumi:"team"`
@@ -170,11 +157,9 @@ type teamArgs struct {
 
 // The set of arguments for constructing a Team resource.
 type TeamArgs struct {
-	// Path where the github auth backend is mounted. Defaults to `github`
-	// if not specified.
+	// Auth backend to which team mapping will be congigured.
 	Backend pulumi.StringPtrInput
-	// An array of strings specifying the policies to be set on tokens
-	// issued using this role.
+	// Policies to be assigned to this team.
 	Policies pulumi.StringArrayInput
 	// GitHub team name in "slugified" format.
 	Team pulumi.StringInput

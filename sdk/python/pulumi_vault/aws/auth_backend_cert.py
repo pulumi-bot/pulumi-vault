@@ -12,44 +12,29 @@ from .. import utilities, tables
 class AuthBackendCert(pulumi.CustomResource):
     aws_public_cert: pulumi.Output[str]
     """
-    The  Base64 encoded AWS Public key required to
-    verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-    the [AWS
-    documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
+    Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
     """
     backend: pulumi.Output[str]
     """
-    The path the AWS auth backend being configured was
-    mounted at.  Defaults to `aws`.
+    Unique name of the auth backend to configure.
     """
     cert_name: pulumi.Output[str]
     """
-    The name of the certificate.
+    Name of the certificate to configure.
     """
     type: pulumi.Output[str]
     """
-    Either "pkcs7" or "identity", indicating the type of
-    document which can be verified using the given certificate. Defaults to
-    "pkcs7".
+    The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
     """
     def __init__(__self__, resource_name, opts=None, aws_public_cert=None, backend=None, cert_name=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AuthBackendCert resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aws_public_cert: The  Base64 encoded AWS Public key required to
-               verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-               the [AWS
-               documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
-        :param pulumi.Input[str] backend: The path the AWS auth backend being configured was
-               mounted at.  Defaults to `aws`.
-        :param pulumi.Input[str] cert_name: The name of the certificate.
-        :param pulumi.Input[str] type: Either "pkcs7" or "identity", indicating the type of
-               document which can be verified using the given certificate. Defaults to
-               "pkcs7".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_cert.html.markdown.
+        :param pulumi.Input[str] aws_public_cert: Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] cert_name: Name of the certificate to configure.
+        :param pulumi.Input[str] type: The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,26 +72,19 @@ class AuthBackendCert(pulumi.CustomResource):
         """
         Get an existing AuthBackendCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aws_public_cert: The  Base64 encoded AWS Public key required to
-               verify PKCS7 signature of the EC2 instance metadata. You can find this key in
-               the [AWS
-               documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html).
-        :param pulumi.Input[str] backend: The path the AWS auth backend being configured was
-               mounted at.  Defaults to `aws`.
-        :param pulumi.Input[str] cert_name: The name of the certificate.
-        :param pulumi.Input[str] type: Either "pkcs7" or "identity", indicating the type of
-               document which can be verified using the given certificate. Defaults to
-               "pkcs7".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_cert.html.markdown.
+        :param pulumi.Input[str] aws_public_cert: Base64 encoded AWS Public key required to verify PKCS7 signature of the EC2 instance metadata.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] cert_name: Name of the certificate to configure.
+        :param pulumi.Input[str] type: The type of document that can be verified using the certificate. Must be either "pkcs7" or "identity".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["aws_public_cert"] = aws_public_cert
         __props__["backend"] = backend
         __props__["cert_name"] = cert_name
