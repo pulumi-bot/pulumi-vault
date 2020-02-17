@@ -10,39 +10,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token.html.markdown.
 type Token struct {
 	pulumi.CustomResourceState
 
-	// String containing the client token if stored in present file
+	// The client token.
 	ClientToken pulumi.StringOutput `pulumi:"clientToken"`
-	// String containing the token display name
+	// The display name of the token.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The explicit max TTL of this token
+	// The explicit max TTL of the token.
 	ExplicitMaxTtl pulumi.StringPtrOutput `pulumi:"explicitMaxTtl"`
-	// String containing the token lease duration if present in state file
+	// The token lease duration.
 	LeaseDuration pulumi.IntOutput `pulumi:"leaseDuration"`
-	// String containing the token lease started time if present in state file
+	// The token lease started on.
 	LeaseStarted pulumi.StringOutput `pulumi:"leaseStarted"`
-	// Flag to not attach the default policy to this token
+	// Flag to disable the default policy.
 	NoDefaultPolicy pulumi.BoolPtrOutput `pulumi:"noDefaultPolicy"`
-	// Flag to create a token without parent
+	// Flag to create a token without parent.
 	NoParent pulumi.BoolOutput `pulumi:"noParent"`
-	// The number of allowed uses of this token
+	// The number of allowed uses of the token.
 	NumUses pulumi.IntOutput `pulumi:"numUses"`
-	// The period of this token
+	// The period of the token.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// List of policies to attach to this token
+	// List of policies.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
-	// The renew increment
+	// The renew increment.
 	RenewIncrement pulumi.IntPtrOutput `pulumi:"renewIncrement"`
-	// The minimal lease to renew this token
+	// The minimum lease to renew token.
 	RenewMinLease pulumi.IntPtrOutput `pulumi:"renewMinLease"`
-	// Flag to allow to renew this token
+	// Flag to allow the token to be renewed
 	Renewable pulumi.BoolOutput `pulumi:"renewable"`
-	// The token role name
+	// The token role name.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
-	// The TTL period of this token
+	// The TTL period of the token.
 	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
 	// The client wrapped token.
 	WrappedToken pulumi.StringOutput `pulumi:"wrappedToken"`
@@ -80,35 +79,35 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	// String containing the client token if stored in present file
+	// The client token.
 	ClientToken *string `pulumi:"clientToken"`
-	// String containing the token display name
+	// The display name of the token.
 	DisplayName *string `pulumi:"displayName"`
-	// The explicit max TTL of this token
+	// The explicit max TTL of the token.
 	ExplicitMaxTtl *string `pulumi:"explicitMaxTtl"`
-	// String containing the token lease duration if present in state file
+	// The token lease duration.
 	LeaseDuration *int `pulumi:"leaseDuration"`
-	// String containing the token lease started time if present in state file
+	// The token lease started on.
 	LeaseStarted *string `pulumi:"leaseStarted"`
-	// Flag to not attach the default policy to this token
+	// Flag to disable the default policy.
 	NoDefaultPolicy *bool `pulumi:"noDefaultPolicy"`
-	// Flag to create a token without parent
+	// Flag to create a token without parent.
 	NoParent *bool `pulumi:"noParent"`
-	// The number of allowed uses of this token
+	// The number of allowed uses of the token.
 	NumUses *int `pulumi:"numUses"`
-	// The period of this token
+	// The period of the token.
 	Period *string `pulumi:"period"`
-	// List of policies to attach to this token
+	// List of policies.
 	Policies []string `pulumi:"policies"`
-	// The renew increment
+	// The renew increment.
 	RenewIncrement *int `pulumi:"renewIncrement"`
-	// The minimal lease to renew this token
+	// The minimum lease to renew token.
 	RenewMinLease *int `pulumi:"renewMinLease"`
-	// Flag to allow to renew this token
+	// Flag to allow the token to be renewed
 	Renewable *bool `pulumi:"renewable"`
-	// The token role name
+	// The token role name.
 	RoleName *string `pulumi:"roleName"`
-	// The TTL period of this token
+	// The TTL period of the token.
 	Ttl *string `pulumi:"ttl"`
 	// The client wrapped token.
 	WrappedToken *string `pulumi:"wrappedToken"`
@@ -119,35 +118,35 @@ type tokenState struct {
 }
 
 type TokenState struct {
-	// String containing the client token if stored in present file
+	// The client token.
 	ClientToken pulumi.StringPtrInput
-	// String containing the token display name
+	// The display name of the token.
 	DisplayName pulumi.StringPtrInput
-	// The explicit max TTL of this token
+	// The explicit max TTL of the token.
 	ExplicitMaxTtl pulumi.StringPtrInput
-	// String containing the token lease duration if present in state file
+	// The token lease duration.
 	LeaseDuration pulumi.IntPtrInput
-	// String containing the token lease started time if present in state file
+	// The token lease started on.
 	LeaseStarted pulumi.StringPtrInput
-	// Flag to not attach the default policy to this token
+	// Flag to disable the default policy.
 	NoDefaultPolicy pulumi.BoolPtrInput
-	// Flag to create a token without parent
+	// Flag to create a token without parent.
 	NoParent pulumi.BoolPtrInput
-	// The number of allowed uses of this token
+	// The number of allowed uses of the token.
 	NumUses pulumi.IntPtrInput
-	// The period of this token
+	// The period of the token.
 	Period pulumi.StringPtrInput
-	// List of policies to attach to this token
+	// List of policies.
 	Policies pulumi.StringArrayInput
-	// The renew increment
+	// The renew increment.
 	RenewIncrement pulumi.IntPtrInput
-	// The minimal lease to renew this token
+	// The minimum lease to renew token.
 	RenewMinLease pulumi.IntPtrInput
-	// Flag to allow to renew this token
+	// Flag to allow the token to be renewed
 	Renewable pulumi.BoolPtrInput
-	// The token role name
+	// The token role name.
 	RoleName pulumi.StringPtrInput
-	// The TTL period of this token
+	// The TTL period of the token.
 	Ttl pulumi.StringPtrInput
 	// The client wrapped token.
 	WrappedToken pulumi.StringPtrInput
@@ -162,29 +161,29 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
-	// String containing the token display name
+	// The display name of the token.
 	DisplayName *string `pulumi:"displayName"`
-	// The explicit max TTL of this token
+	// The explicit max TTL of the token.
 	ExplicitMaxTtl *string `pulumi:"explicitMaxTtl"`
-	// Flag to not attach the default policy to this token
+	// Flag to disable the default policy.
 	NoDefaultPolicy *bool `pulumi:"noDefaultPolicy"`
-	// Flag to create a token without parent
+	// Flag to create a token without parent.
 	NoParent *bool `pulumi:"noParent"`
-	// The number of allowed uses of this token
+	// The number of allowed uses of the token.
 	NumUses *int `pulumi:"numUses"`
-	// The period of this token
+	// The period of the token.
 	Period *string `pulumi:"period"`
-	// List of policies to attach to this token
+	// List of policies.
 	Policies []string `pulumi:"policies"`
-	// The renew increment
+	// The renew increment.
 	RenewIncrement *int `pulumi:"renewIncrement"`
-	// The minimal lease to renew this token
+	// The minimum lease to renew token.
 	RenewMinLease *int `pulumi:"renewMinLease"`
-	// Flag to allow to renew this token
+	// Flag to allow the token to be renewed
 	Renewable *bool `pulumi:"renewable"`
-	// The token role name
+	// The token role name.
 	RoleName *string `pulumi:"roleName"`
-	// The TTL period of this token
+	// The TTL period of the token.
 	Ttl *string `pulumi:"ttl"`
 	// The TTL period of the wrapped token.
 	WrappingTtl *string `pulumi:"wrappingTtl"`
@@ -192,29 +191,29 @@ type tokenArgs struct {
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
-	// String containing the token display name
+	// The display name of the token.
 	DisplayName pulumi.StringPtrInput
-	// The explicit max TTL of this token
+	// The explicit max TTL of the token.
 	ExplicitMaxTtl pulumi.StringPtrInput
-	// Flag to not attach the default policy to this token
+	// Flag to disable the default policy.
 	NoDefaultPolicy pulumi.BoolPtrInput
-	// Flag to create a token without parent
+	// Flag to create a token without parent.
 	NoParent pulumi.BoolPtrInput
-	// The number of allowed uses of this token
+	// The number of allowed uses of the token.
 	NumUses pulumi.IntPtrInput
-	// The period of this token
+	// The period of the token.
 	Period pulumi.StringPtrInput
-	// List of policies to attach to this token
+	// List of policies.
 	Policies pulumi.StringArrayInput
-	// The renew increment
+	// The renew increment.
 	RenewIncrement pulumi.IntPtrInput
-	// The minimal lease to renew this token
+	// The minimum lease to renew token.
 	RenewMinLease pulumi.IntPtrInput
-	// Flag to allow to renew this token
+	// Flag to allow the token to be renewed
 	Renewable pulumi.BoolPtrInput
-	// The token role name
+	// The token role name.
 	RoleName pulumi.StringPtrInput
-	// The TTL period of this token
+	// The TTL period of the token.
 	Ttl pulumi.StringPtrInput
 	// The TTL period of the wrapped token.
 	WrappingTtl pulumi.StringPtrInput

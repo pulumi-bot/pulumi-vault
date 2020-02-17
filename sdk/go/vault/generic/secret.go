@@ -11,27 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_secret.html.markdown.
 type Secret struct {
 	pulumi.CustomResourceState
 
-	// A mapping whose keys are the top-level data keys returned from
-	// Vault and whose values are the corresponding values. This map can only
-	// represent string data, so any non-string values returned from Vault are
-	// serialized as JSON.
+	// Map of strings read from Vault.
 	Data pulumi.MapOutput `pulumi:"data"`
-	// String containing a JSON-encoded object that will be
-	// written as the secret data at the given path.
+	// JSON-encoded secret data to write.
 	DataJson pulumi.StringOutput `pulumi:"dataJson"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data. Setting this to `true` will
-	// break drift detection. Defaults to false.
+	// Don't attempt to read the token from Vault if true; drift won't be detected.
 	DisableRead pulumi.BoolPtrOutput `pulumi:"disableRead"`
-	// The full logical path at which to write the given data.
-	// To write data into the "generic" secret backend mounted in Vault by default,
-	// this should be prefixed with `secret/`. Writing to other backends with this
-	// resource is possible; consult each backend's documentation to see which
-	// endpoints support the `PUT` and `DELETE` methods.
+	// Full path where the generic secret will be written.
 	Path pulumi.StringOutput `pulumi:"path"`
 }
 
@@ -69,44 +58,24 @@ func GetSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Secret resources.
 type secretState struct {
-	// A mapping whose keys are the top-level data keys returned from
-	// Vault and whose values are the corresponding values. This map can only
-	// represent string data, so any non-string values returned from Vault are
-	// serialized as JSON.
+	// Map of strings read from Vault.
 	Data map[string]interface{} `pulumi:"data"`
-	// String containing a JSON-encoded object that will be
-	// written as the secret data at the given path.
+	// JSON-encoded secret data to write.
 	DataJson *string `pulumi:"dataJson"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data. Setting this to `true` will
-	// break drift detection. Defaults to false.
+	// Don't attempt to read the token from Vault if true; drift won't be detected.
 	DisableRead *bool `pulumi:"disableRead"`
-	// The full logical path at which to write the given data.
-	// To write data into the "generic" secret backend mounted in Vault by default,
-	// this should be prefixed with `secret/`. Writing to other backends with this
-	// resource is possible; consult each backend's documentation to see which
-	// endpoints support the `PUT` and `DELETE` methods.
+	// Full path where the generic secret will be written.
 	Path *string `pulumi:"path"`
 }
 
 type SecretState struct {
-	// A mapping whose keys are the top-level data keys returned from
-	// Vault and whose values are the corresponding values. This map can only
-	// represent string data, so any non-string values returned from Vault are
-	// serialized as JSON.
+	// Map of strings read from Vault.
 	Data pulumi.MapInput
-	// String containing a JSON-encoded object that will be
-	// written as the secret data at the given path.
+	// JSON-encoded secret data to write.
 	DataJson pulumi.StringPtrInput
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data. Setting this to `true` will
-	// break drift detection. Defaults to false.
+	// Don't attempt to read the token from Vault if true; drift won't be detected.
 	DisableRead pulumi.BoolPtrInput
-	// The full logical path at which to write the given data.
-	// To write data into the "generic" secret backend mounted in Vault by default,
-	// this should be prefixed with `secret/`. Writing to other backends with this
-	// resource is possible; consult each backend's documentation to see which
-	// endpoints support the `PUT` and `DELETE` methods.
+	// Full path where the generic secret will be written.
 	Path pulumi.StringPtrInput
 }
 
@@ -115,35 +84,21 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
-	// String containing a JSON-encoded object that will be
-	// written as the secret data at the given path.
+	// JSON-encoded secret data to write.
 	DataJson string `pulumi:"dataJson"`
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data. Setting this to `true` will
-	// break drift detection. Defaults to false.
+	// Don't attempt to read the token from Vault if true; drift won't be detected.
 	DisableRead *bool `pulumi:"disableRead"`
-	// The full logical path at which to write the given data.
-	// To write data into the "generic" secret backend mounted in Vault by default,
-	// this should be prefixed with `secret/`. Writing to other backends with this
-	// resource is possible; consult each backend's documentation to see which
-	// endpoints support the `PUT` and `DELETE` methods.
+	// Full path where the generic secret will be written.
 	Path string `pulumi:"path"`
 }
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
-	// String containing a JSON-encoded object that will be
-	// written as the secret data at the given path.
+	// JSON-encoded secret data to write.
 	DataJson pulumi.StringInput
-	// True/false. Set this to true if your vault
-	// authentication is not able to read the data. Setting this to `true` will
-	// break drift detection. Defaults to false.
+	// Don't attempt to read the token from Vault if true; drift won't be detected.
 	DisableRead pulumi.BoolPtrInput
-	// The full logical path at which to write the given data.
-	// To write data into the "generic" secret backend mounted in Vault by default,
-	// this should be prefixed with `secret/`. Writing to other backends with this
-	// resource is possible; consult each backend's documentation to see which
-	// endpoints support the `PUT` and `DELETE` methods.
+	// Full path where the generic secret will be written.
 	Path pulumi.StringInput
 }
 

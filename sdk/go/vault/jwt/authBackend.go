@@ -12,7 +12,7 @@ import (
 
 // Provides a resource for managing an
 // [JWT auth backend within Vault](https://www.vaultproject.io/docs/auth/jwt.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/jwt_auth_backend.html.markdown.
 type AuthBackend struct {
 	pulumi.CustomResourceState

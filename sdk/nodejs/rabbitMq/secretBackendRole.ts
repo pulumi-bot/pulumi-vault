@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/rabbitmq_secret_backend_role.html.markdown.
- */
 export class SecretBackendRole extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendRole resource's state with the given name, ID, and optional extra
@@ -37,13 +34,11 @@ export class SecretBackendRole extends pulumi.CustomResource {
     }
 
     /**
-     * The path the RabbitMQ secret backend is mounted at,
-     * with no leading or trailing `/`s.
+     * The path of the Rabbitmq Secret Backend the role belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * The name to identify this role within the backend.
-     * Must be unique within the backend.
+     * Unique name for the role.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -97,13 +92,11 @@ export class SecretBackendRole extends pulumi.CustomResource {
  */
 export interface SecretBackendRoleState {
     /**
-     * The path the RabbitMQ secret backend is mounted at,
-     * with no leading or trailing `/`s.
+     * The path of the Rabbitmq Secret Backend the role belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The name to identify this role within the backend.
-     * Must be unique within the backend.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -121,13 +114,11 @@ export interface SecretBackendRoleState {
  */
 export interface SecretBackendRoleArgs {
     /**
-     * The path the RabbitMQ secret backend is mounted at,
-     * with no leading or trailing `/`s.
+     * The path of the Rabbitmq Secret Backend the role belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * The name to identify this role within the backend.
-     * Must be unique within the backend.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**

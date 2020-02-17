@@ -11,28 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_auth_backend_config.html.markdown.
 type AuthBackendConfig struct {
 	pulumi.CustomResourceState
 
-	// The path the Azure auth backend being configured was
-	// mounted at.  Defaults to `azure`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrOutput `pulumi:"backend"`
-	// The client id for credentials to query the Azure APIs.
-	// Currently read permissions to query compute resources are required.
+	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are
+	// required.
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
-	// The client secret for credentials to query the
-	// Azure APIs.
+	// The client secret for credentials to query the Azure APIs
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	// The Azure cloud environment. Valid values:
-	// AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-	// AzureGermanCloud.  Defaults to `AzurePublicCloud`.
+	// The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	// The configured URL for the application registered in
-	// Azure Active Directory.
+	// The configured URL for the application registered in Azure Active Directory.
 	Resource pulumi.StringOutput `pulumi:"resource"`
-	// The tenant id for the Azure Active Directory
-	// organization.
+	// The tenant id for the Azure Active Directory organization.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
 
@@ -70,46 +63,34 @@ func GetAuthBackendConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthBackendConfig resources.
 type authBackendConfigState struct {
-	// The path the Azure auth backend being configured was
-	// mounted at.  Defaults to `azure`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The client id for credentials to query the Azure APIs.
-	// Currently read permissions to query compute resources are required.
+	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are
+	// required.
 	ClientId *string `pulumi:"clientId"`
-	// The client secret for credentials to query the
-	// Azure APIs.
+	// The client secret for credentials to query the Azure APIs
 	ClientSecret *string `pulumi:"clientSecret"`
-	// The Azure cloud environment. Valid values:
-	// AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-	// AzureGermanCloud.  Defaults to `AzurePublicCloud`.
+	// The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
 	Environment *string `pulumi:"environment"`
-	// The configured URL for the application registered in
-	// Azure Active Directory.
+	// The configured URL for the application registered in Azure Active Directory.
 	Resource *string `pulumi:"resource"`
-	// The tenant id for the Azure Active Directory
-	// organization.
+	// The tenant id for the Azure Active Directory organization.
 	TenantId *string `pulumi:"tenantId"`
 }
 
 type AuthBackendConfigState struct {
-	// The path the Azure auth backend being configured was
-	// mounted at.  Defaults to `azure`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The client id for credentials to query the Azure APIs.
-	// Currently read permissions to query compute resources are required.
+	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are
+	// required.
 	ClientId pulumi.StringPtrInput
-	// The client secret for credentials to query the
-	// Azure APIs.
+	// The client secret for credentials to query the Azure APIs
 	ClientSecret pulumi.StringPtrInput
-	// The Azure cloud environment. Valid values:
-	// AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-	// AzureGermanCloud.  Defaults to `AzurePublicCloud`.
+	// The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
 	Environment pulumi.StringPtrInput
-	// The configured URL for the application registered in
-	// Azure Active Directory.
+	// The configured URL for the application registered in Azure Active Directory.
 	Resource pulumi.StringPtrInput
-	// The tenant id for the Azure Active Directory
-	// organization.
+	// The tenant id for the Azure Active Directory organization.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -118,47 +99,35 @@ func (AuthBackendConfigState) ElementType() reflect.Type {
 }
 
 type authBackendConfigArgs struct {
-	// The path the Azure auth backend being configured was
-	// mounted at.  Defaults to `azure`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The client id for credentials to query the Azure APIs.
-	// Currently read permissions to query compute resources are required.
+	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are
+	// required.
 	ClientId *string `pulumi:"clientId"`
-	// The client secret for credentials to query the
-	// Azure APIs.
+	// The client secret for credentials to query the Azure APIs
 	ClientSecret *string `pulumi:"clientSecret"`
-	// The Azure cloud environment. Valid values:
-	// AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-	// AzureGermanCloud.  Defaults to `AzurePublicCloud`.
+	// The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
 	Environment *string `pulumi:"environment"`
-	// The configured URL for the application registered in
-	// Azure Active Directory.
+	// The configured URL for the application registered in Azure Active Directory.
 	Resource string `pulumi:"resource"`
-	// The tenant id for the Azure Active Directory
-	// organization.
+	// The tenant id for the Azure Active Directory organization.
 	TenantId string `pulumi:"tenantId"`
 }
 
 // The set of arguments for constructing a AuthBackendConfig resource.
 type AuthBackendConfigArgs struct {
-	// The path the Azure auth backend being configured was
-	// mounted at.  Defaults to `azure`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The client id for credentials to query the Azure APIs.
-	// Currently read permissions to query compute resources are required.
+	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are
+	// required.
 	ClientId pulumi.StringPtrInput
-	// The client secret for credentials to query the
-	// Azure APIs.
+	// The client secret for credentials to query the Azure APIs
 	ClientSecret pulumi.StringPtrInput
-	// The Azure cloud environment. Valid values:
-	// AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud,
-	// AzureGermanCloud.  Defaults to `AzurePublicCloud`.
+	// The Azure cloud environment. Valid values: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud.
 	Environment pulumi.StringPtrInput
-	// The configured URL for the application registered in
-	// Azure Active Directory.
+	// The configured URL for the application registered in Azure Active Directory.
 	Resource pulumi.StringInput
-	// The tenant id for the Azure Active Directory
-	// organization.
+	// The tenant id for the Azure Active Directory organization.
 	TenantId pulumi.StringInput
 }
 

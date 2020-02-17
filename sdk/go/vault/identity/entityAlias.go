@@ -11,15 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_entity_alias.html.markdown.
 type EntityAlias struct {
 	pulumi.CustomResourceState
 
-	// Entity ID to which this alias belongs to.
+	// ID of the entity to which this is an alias.
 	CanonicalId pulumi.StringOutput `pulumi:"canonicalId"`
-	// Accessor of the mount to which the alias should belong to.
+	// Mount accessor to which this alias belongs toMount accessor to which this alias belongs to.
 	MountAccessor pulumi.StringOutput `pulumi:"mountAccessor"`
-	// Name of the alias. Name should be the identifier of the client in the authentication source. For example, if the alias belongs to userpass backend, the name should be a valid username within userpass backend. If alias belongs to GitHub, it should be the GitHub username.
+	// Name of the entity alias.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -57,20 +56,20 @@ func GetEntityAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntityAlias resources.
 type entityAliasState struct {
-	// Entity ID to which this alias belongs to.
+	// ID of the entity to which this is an alias.
 	CanonicalId *string `pulumi:"canonicalId"`
-	// Accessor of the mount to which the alias should belong to.
+	// Mount accessor to which this alias belongs toMount accessor to which this alias belongs to.
 	MountAccessor *string `pulumi:"mountAccessor"`
-	// Name of the alias. Name should be the identifier of the client in the authentication source. For example, if the alias belongs to userpass backend, the name should be a valid username within userpass backend. If alias belongs to GitHub, it should be the GitHub username.
+	// Name of the entity alias.
 	Name *string `pulumi:"name"`
 }
 
 type EntityAliasState struct {
-	// Entity ID to which this alias belongs to.
+	// ID of the entity to which this is an alias.
 	CanonicalId pulumi.StringPtrInput
-	// Accessor of the mount to which the alias should belong to.
+	// Mount accessor to which this alias belongs toMount accessor to which this alias belongs to.
 	MountAccessor pulumi.StringPtrInput
-	// Name of the alias. Name should be the identifier of the client in the authentication source. For example, if the alias belongs to userpass backend, the name should be a valid username within userpass backend. If alias belongs to GitHub, it should be the GitHub username.
+	// Name of the entity alias.
 	Name pulumi.StringPtrInput
 }
 
@@ -79,21 +78,21 @@ func (EntityAliasState) ElementType() reflect.Type {
 }
 
 type entityAliasArgs struct {
-	// Entity ID to which this alias belongs to.
+	// ID of the entity to which this is an alias.
 	CanonicalId string `pulumi:"canonicalId"`
-	// Accessor of the mount to which the alias should belong to.
+	// Mount accessor to which this alias belongs toMount accessor to which this alias belongs to.
 	MountAccessor string `pulumi:"mountAccessor"`
-	// Name of the alias. Name should be the identifier of the client in the authentication source. For example, if the alias belongs to userpass backend, the name should be a valid username within userpass backend. If alias belongs to GitHub, it should be the GitHub username.
+	// Name of the entity alias.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a EntityAlias resource.
 type EntityAliasArgs struct {
-	// Entity ID to which this alias belongs to.
+	// ID of the entity to which this is an alias.
 	CanonicalId pulumi.StringInput
-	// Accessor of the mount to which the alias should belong to.
+	// Mount accessor to which this alias belongs toMount accessor to which this alias belongs to.
 	MountAccessor pulumi.StringInput
-	// Name of the alias. Name should be the identifier of the client in the authentication source. For example, if the alias belongs to userpass backend, the name should be a valid username within userpass backend. If alias belongs to GitHub, it should be the GitHub username.
+	// Name of the entity alias.
 	Name pulumi.StringPtrInput
 }
 

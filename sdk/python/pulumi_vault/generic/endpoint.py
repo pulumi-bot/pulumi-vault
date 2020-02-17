@@ -12,48 +12,47 @@ from .. import utilities, tables
 class Endpoint(pulumi.CustomResource):
     data_json: pulumi.Output[str]
     """
-    String containing a JSON-encoded object that will be
-    written to the given path as the secret data.
+    JSON-encoded data to write.
     """
     disable_delete: pulumi.Output[bool]
+    """
+    Don't attempt to delete the path from Vault if true
+    """
     disable_read: pulumi.Output[bool]
     """
-    True/false. Set this to true if your vault
-    authentication is not able to read the data or if the endpoint does
-    not support the `GET` method. Setting this to `true` will break drift
-    detection. You should set this to `true` for endpoints that are
-    write-only. Defaults to false.
+    Don't attempt to read the path from Vault if true; drift won't be detected
     """
     ignore_absent_fields: pulumi.Output[bool]
+    """
+    When reading, disregard fields not present in data_json
+    """
     path: pulumi.Output[str]
     """
-    The full logical path at which to write the given
-    data. Consult each backend's documentation to see which endpoints
-    support the `PUT` methods and to determine whether they also support
-    `DELETE` and `GET`.
+    Full path where to the endpoint that will be written
     """
     write_data: pulumi.Output[dict]
+    """
+    Map of strings returned by write operation
+    """
     write_data_json: pulumi.Output[str]
+    """
+    JSON data returned by write operation
+    """
     write_fields: pulumi.Output[list]
+    """
+    Top-level fields returned by write to persist in state
+    """
     def __init__(__self__, resource_name, opts=None, data_json=None, disable_delete=None, disable_read=None, ignore_absent_fields=None, path=None, write_fields=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Endpoint resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_json: String containing a JSON-encoded object that will be
-               written to the given path as the secret data.
-        :param pulumi.Input[bool] disable_read: True/false. Set this to true if your vault
-               authentication is not able to read the data or if the endpoint does
-               not support the `GET` method. Setting this to `true` will break drift
-               detection. You should set this to `true` for endpoints that are
-               write-only. Defaults to false.
-        :param pulumi.Input[str] path: The full logical path at which to write the given
-               data. Consult each backend's documentation to see which endpoints
-               support the `PUT` methods and to determine whether they also support
-               `DELETE` and `GET`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_endpoint.html.markdown.
+        :param pulumi.Input[str] data_json: JSON-encoded data to write.
+        :param pulumi.Input[bool] disable_delete: Don't attempt to delete the path from Vault if true
+        :param pulumi.Input[bool] disable_read: Don't attempt to read the path from Vault if true; drift won't be detected
+        :param pulumi.Input[bool] ignore_absent_fields: When reading, disregard fields not present in data_json
+        :param pulumi.Input[str] path: Full path where to the endpoint that will be written
+        :param pulumi.Input[list] write_fields: Top-level fields returned by write to persist in state
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,27 +94,23 @@ class Endpoint(pulumi.CustomResource):
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_json: String containing a JSON-encoded object that will be
-               written to the given path as the secret data.
-        :param pulumi.Input[bool] disable_read: True/false. Set this to true if your vault
-               authentication is not able to read the data or if the endpoint does
-               not support the `GET` method. Setting this to `true` will break drift
-               detection. You should set this to `true` for endpoints that are
-               write-only. Defaults to false.
-        :param pulumi.Input[str] path: The full logical path at which to write the given
-               data. Consult each backend's documentation to see which endpoints
-               support the `PUT` methods and to determine whether they also support
-               `DELETE` and `GET`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_endpoint.html.markdown.
+        :param pulumi.Input[str] data_json: JSON-encoded data to write.
+        :param pulumi.Input[bool] disable_delete: Don't attempt to delete the path from Vault if true
+        :param pulumi.Input[bool] disable_read: Don't attempt to read the path from Vault if true; drift won't be detected
+        :param pulumi.Input[bool] ignore_absent_fields: When reading, disregard fields not present in data_json
+        :param pulumi.Input[str] path: Full path where to the endpoint that will be written
+        :param pulumi.Input[dict] write_data: Map of strings returned by write operation
+        :param pulumi.Input[str] write_data_json: JSON data returned by write operation
+        :param pulumi.Input[list] write_fields: Top-level fields returned by write to persist in state
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["data_json"] = data_json
         __props__["disable_delete"] = disable_delete
         __props__["disable_read"] = disable_read

@@ -11,43 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_connection.html.markdown.
 type SecretBackendConnection struct {
 	pulumi.CustomResourceState
 
-	// A list of roles that are allowed to use this
-	// connection.
+	// A list of roles that are allowed to use this connection.
 	AllowedRoles pulumi.StringArrayOutput `pulumi:"allowedRoles"`
-	// The unique name of the Vault mount to configure.
+	// Unique name of the Vault mount to configure.
 	Backend pulumi.StringOutput `pulumi:"backend"`
-	// A nested block containing configuration options for Cassandra connections.
+	// Connection parameters for the cassandra-database-plugin plugin.
 	Cassandra SecretBackendConnectionCassandraPtrOutput `pulumi:"cassandra"`
 	// A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
 	Data pulumi.MapOutput `pulumi:"data"`
-	// A nested block containing configuration options for SAP HanaDB connections.
+	// Connection parameters for the hana-database-plugin plugin.
 	Hana SecretBackendConnectionHanaPtrOutput `pulumi:"hana"`
-	// A nested block containing configuration options for MongoDB connections.
+	// Connection parameters for the mongodb-database-plugin plugin.
 	Mongodb SecretBackendConnectionMongodbPtrOutput `pulumi:"mongodb"`
-	// A nested block containing configuration options for MSSQL connections.
+	// Connection parameters for the mssql-database-plugin plugin.
 	Mssql SecretBackendConnectionMssqlPtrOutput `pulumi:"mssql"`
-	// A nested block containing configuration options for MySQL connections.
+	// Connection parameters for the mysql-database-plugin plugin.
 	Mysql SecretBackendConnectionMysqlPtrOutput `pulumi:"mysql"`
-	// A nested block containing configuration options for Aurora MySQL connections.
+	// Connection parameters for the mysql-aurora-database-plugin plugin.
 	MysqlAurora SecretBackendConnectionMysqlAuroraPtrOutput `pulumi:"mysqlAurora"`
-	// A nested block containing configuration options for legacy MySQL connections.
+	// Connection parameters for the mysql-legacy-database-plugin plugin.
 	MysqlLegacy SecretBackendConnectionMysqlLegacyPtrOutput `pulumi:"mysqlLegacy"`
-	// A nested block containing configuration options for RDS MySQL connections.
+	// Connection parameters for the mysql-rds-database-plugin plugin.
 	MysqlRds SecretBackendConnectionMysqlRdsPtrOutput `pulumi:"mysqlRds"`
-	// A unique name to give the database connection.
+	// Name of the database connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested block containing configuration options for Oracle connections.
+	// Connection parameters for the oracle-database-plugin plugin.
 	Oracle SecretBackendConnectionOraclePtrOutput `pulumi:"oracle"`
-	// A nested block containing configuration options for PostgreSQL connections.
+	// Connection parameters for the postgresql-database-plugin plugin.
 	Postgresql SecretBackendConnectionPostgresqlPtrOutput `pulumi:"postgresql"`
 	// A list of database statements to be executed to rotate the root user's credentials.
 	RootRotationStatements pulumi.StringArrayOutput `pulumi:"rootRotationStatements"`
-	// Whether the connection should be verified on
-	// initial configuration or not.
+	// Specifies if the connection is verified during initial configuration.
 	VerifyConnection pulumi.BoolPtrOutput `pulumi:"verifyConnection"`
 }
 
@@ -82,76 +79,72 @@ func GetSecretBackendConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretBackendConnection resources.
 type secretBackendConnectionState struct {
-	// A list of roles that are allowed to use this
-	// connection.
+	// A list of roles that are allowed to use this connection.
 	AllowedRoles []string `pulumi:"allowedRoles"`
-	// The unique name of the Vault mount to configure.
+	// Unique name of the Vault mount to configure.
 	Backend *string `pulumi:"backend"`
-	// A nested block containing configuration options for Cassandra connections.
+	// Connection parameters for the cassandra-database-plugin plugin.
 	Cassandra *SecretBackendConnectionCassandra `pulumi:"cassandra"`
 	// A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
 	Data map[string]interface{} `pulumi:"data"`
-	// A nested block containing configuration options for SAP HanaDB connections.
+	// Connection parameters for the hana-database-plugin plugin.
 	Hana *SecretBackendConnectionHana `pulumi:"hana"`
-	// A nested block containing configuration options for MongoDB connections.
+	// Connection parameters for the mongodb-database-plugin plugin.
 	Mongodb *SecretBackendConnectionMongodb `pulumi:"mongodb"`
-	// A nested block containing configuration options for MSSQL connections.
+	// Connection parameters for the mssql-database-plugin plugin.
 	Mssql *SecretBackendConnectionMssql `pulumi:"mssql"`
-	// A nested block containing configuration options for MySQL connections.
+	// Connection parameters for the mysql-database-plugin plugin.
 	Mysql *SecretBackendConnectionMysql `pulumi:"mysql"`
-	// A nested block containing configuration options for Aurora MySQL connections.
+	// Connection parameters for the mysql-aurora-database-plugin plugin.
 	MysqlAurora *SecretBackendConnectionMysqlAurora `pulumi:"mysqlAurora"`
-	// A nested block containing configuration options for legacy MySQL connections.
+	// Connection parameters for the mysql-legacy-database-plugin plugin.
 	MysqlLegacy *SecretBackendConnectionMysqlLegacy `pulumi:"mysqlLegacy"`
-	// A nested block containing configuration options for RDS MySQL connections.
+	// Connection parameters for the mysql-rds-database-plugin plugin.
 	MysqlRds *SecretBackendConnectionMysqlRds `pulumi:"mysqlRds"`
-	// A unique name to give the database connection.
+	// Name of the database connection.
 	Name *string `pulumi:"name"`
-	// A nested block containing configuration options for Oracle connections.
+	// Connection parameters for the oracle-database-plugin plugin.
 	Oracle *SecretBackendConnectionOracle `pulumi:"oracle"`
-	// A nested block containing configuration options for PostgreSQL connections.
+	// Connection parameters for the postgresql-database-plugin plugin.
 	Postgresql *SecretBackendConnectionPostgresql `pulumi:"postgresql"`
 	// A list of database statements to be executed to rotate the root user's credentials.
 	RootRotationStatements []string `pulumi:"rootRotationStatements"`
-	// Whether the connection should be verified on
-	// initial configuration or not.
+	// Specifies if the connection is verified during initial configuration.
 	VerifyConnection *bool `pulumi:"verifyConnection"`
 }
 
 type SecretBackendConnectionState struct {
-	// A list of roles that are allowed to use this
-	// connection.
+	// A list of roles that are allowed to use this connection.
 	AllowedRoles pulumi.StringArrayInput
-	// The unique name of the Vault mount to configure.
+	// Unique name of the Vault mount to configure.
 	Backend pulumi.StringPtrInput
-	// A nested block containing configuration options for Cassandra connections.
+	// Connection parameters for the cassandra-database-plugin plugin.
 	Cassandra SecretBackendConnectionCassandraPtrInput
 	// A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
 	Data pulumi.MapInput
-	// A nested block containing configuration options for SAP HanaDB connections.
+	// Connection parameters for the hana-database-plugin plugin.
 	Hana SecretBackendConnectionHanaPtrInput
-	// A nested block containing configuration options for MongoDB connections.
+	// Connection parameters for the mongodb-database-plugin plugin.
 	Mongodb SecretBackendConnectionMongodbPtrInput
-	// A nested block containing configuration options for MSSQL connections.
+	// Connection parameters for the mssql-database-plugin plugin.
 	Mssql SecretBackendConnectionMssqlPtrInput
-	// A nested block containing configuration options for MySQL connections.
+	// Connection parameters for the mysql-database-plugin plugin.
 	Mysql SecretBackendConnectionMysqlPtrInput
-	// A nested block containing configuration options for Aurora MySQL connections.
+	// Connection parameters for the mysql-aurora-database-plugin plugin.
 	MysqlAurora SecretBackendConnectionMysqlAuroraPtrInput
-	// A nested block containing configuration options for legacy MySQL connections.
+	// Connection parameters for the mysql-legacy-database-plugin plugin.
 	MysqlLegacy SecretBackendConnectionMysqlLegacyPtrInput
-	// A nested block containing configuration options for RDS MySQL connections.
+	// Connection parameters for the mysql-rds-database-plugin plugin.
 	MysqlRds SecretBackendConnectionMysqlRdsPtrInput
-	// A unique name to give the database connection.
+	// Name of the database connection.
 	Name pulumi.StringPtrInput
-	// A nested block containing configuration options for Oracle connections.
+	// Connection parameters for the oracle-database-plugin plugin.
 	Oracle SecretBackendConnectionOraclePtrInput
-	// A nested block containing configuration options for PostgreSQL connections.
+	// Connection parameters for the postgresql-database-plugin plugin.
 	Postgresql SecretBackendConnectionPostgresqlPtrInput
 	// A list of database statements to be executed to rotate the root user's credentials.
 	RootRotationStatements pulumi.StringArrayInput
-	// Whether the connection should be verified on
-	// initial configuration or not.
+	// Specifies if the connection is verified during initial configuration.
 	VerifyConnection pulumi.BoolPtrInput
 }
 
@@ -160,77 +153,73 @@ func (SecretBackendConnectionState) ElementType() reflect.Type {
 }
 
 type secretBackendConnectionArgs struct {
-	// A list of roles that are allowed to use this
-	// connection.
+	// A list of roles that are allowed to use this connection.
 	AllowedRoles []string `pulumi:"allowedRoles"`
-	// The unique name of the Vault mount to configure.
+	// Unique name of the Vault mount to configure.
 	Backend string `pulumi:"backend"`
-	// A nested block containing configuration options for Cassandra connections.
+	// Connection parameters for the cassandra-database-plugin plugin.
 	Cassandra *SecretBackendConnectionCassandra `pulumi:"cassandra"`
 	// A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
 	Data map[string]interface{} `pulumi:"data"`
-	// A nested block containing configuration options for SAP HanaDB connections.
+	// Connection parameters for the hana-database-plugin plugin.
 	Hana *SecretBackendConnectionHana `pulumi:"hana"`
-	// A nested block containing configuration options for MongoDB connections.
+	// Connection parameters for the mongodb-database-plugin plugin.
 	Mongodb *SecretBackendConnectionMongodb `pulumi:"mongodb"`
-	// A nested block containing configuration options for MSSQL connections.
+	// Connection parameters for the mssql-database-plugin plugin.
 	Mssql *SecretBackendConnectionMssql `pulumi:"mssql"`
-	// A nested block containing configuration options for MySQL connections.
+	// Connection parameters for the mysql-database-plugin plugin.
 	Mysql *SecretBackendConnectionMysql `pulumi:"mysql"`
-	// A nested block containing configuration options for Aurora MySQL connections.
+	// Connection parameters for the mysql-aurora-database-plugin plugin.
 	MysqlAurora *SecretBackendConnectionMysqlAurora `pulumi:"mysqlAurora"`
-	// A nested block containing configuration options for legacy MySQL connections.
+	// Connection parameters for the mysql-legacy-database-plugin plugin.
 	MysqlLegacy *SecretBackendConnectionMysqlLegacy `pulumi:"mysqlLegacy"`
-	// A nested block containing configuration options for RDS MySQL connections.
+	// Connection parameters for the mysql-rds-database-plugin plugin.
 	MysqlRds *SecretBackendConnectionMysqlRds `pulumi:"mysqlRds"`
-	// A unique name to give the database connection.
+	// Name of the database connection.
 	Name *string `pulumi:"name"`
-	// A nested block containing configuration options for Oracle connections.
+	// Connection parameters for the oracle-database-plugin plugin.
 	Oracle *SecretBackendConnectionOracle `pulumi:"oracle"`
-	// A nested block containing configuration options for PostgreSQL connections.
+	// Connection parameters for the postgresql-database-plugin plugin.
 	Postgresql *SecretBackendConnectionPostgresql `pulumi:"postgresql"`
 	// A list of database statements to be executed to rotate the root user's credentials.
 	RootRotationStatements []string `pulumi:"rootRotationStatements"`
-	// Whether the connection should be verified on
-	// initial configuration or not.
+	// Specifies if the connection is verified during initial configuration.
 	VerifyConnection *bool `pulumi:"verifyConnection"`
 }
 
 // The set of arguments for constructing a SecretBackendConnection resource.
 type SecretBackendConnectionArgs struct {
-	// A list of roles that are allowed to use this
-	// connection.
+	// A list of roles that are allowed to use this connection.
 	AllowedRoles pulumi.StringArrayInput
-	// The unique name of the Vault mount to configure.
+	// Unique name of the Vault mount to configure.
 	Backend pulumi.StringInput
-	// A nested block containing configuration options for Cassandra connections.
+	// Connection parameters for the cassandra-database-plugin plugin.
 	Cassandra SecretBackendConnectionCassandraPtrInput
 	// A map of sensitive data to pass to the endpoint. Useful for templated connection strings.
 	Data pulumi.MapInput
-	// A nested block containing configuration options for SAP HanaDB connections.
+	// Connection parameters for the hana-database-plugin plugin.
 	Hana SecretBackendConnectionHanaPtrInput
-	// A nested block containing configuration options for MongoDB connections.
+	// Connection parameters for the mongodb-database-plugin plugin.
 	Mongodb SecretBackendConnectionMongodbPtrInput
-	// A nested block containing configuration options for MSSQL connections.
+	// Connection parameters for the mssql-database-plugin plugin.
 	Mssql SecretBackendConnectionMssqlPtrInput
-	// A nested block containing configuration options for MySQL connections.
+	// Connection parameters for the mysql-database-plugin plugin.
 	Mysql SecretBackendConnectionMysqlPtrInput
-	// A nested block containing configuration options for Aurora MySQL connections.
+	// Connection parameters for the mysql-aurora-database-plugin plugin.
 	MysqlAurora SecretBackendConnectionMysqlAuroraPtrInput
-	// A nested block containing configuration options for legacy MySQL connections.
+	// Connection parameters for the mysql-legacy-database-plugin plugin.
 	MysqlLegacy SecretBackendConnectionMysqlLegacyPtrInput
-	// A nested block containing configuration options for RDS MySQL connections.
+	// Connection parameters for the mysql-rds-database-plugin plugin.
 	MysqlRds SecretBackendConnectionMysqlRdsPtrInput
-	// A unique name to give the database connection.
+	// Name of the database connection.
 	Name pulumi.StringPtrInput
-	// A nested block containing configuration options for Oracle connections.
+	// Connection parameters for the oracle-database-plugin plugin.
 	Oracle SecretBackendConnectionOraclePtrInput
-	// A nested block containing configuration options for PostgreSQL connections.
+	// Connection parameters for the postgresql-database-plugin plugin.
 	Postgresql SecretBackendConnectionPostgresqlPtrInput
 	// A list of database statements to be executed to rotate the root user's credentials.
 	RootRotationStatements pulumi.StringArrayInput
-	// Whether the connection should be verified on
-	// initial configuration or not.
+	// Specifies if the connection is verified during initial configuration.
 	VerifyConnection pulumi.BoolPtrInput
 }
 

@@ -11,24 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/consul_secret_backend.html.markdown.
 type SecretBackend struct {
 	pulumi.CustomResourceState
 
 	// Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The default TTL for credentials issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrOutput `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrOutput `pulumi:"maxLeaseTtlSeconds"`
-	// The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+	// Unique name of the Vault Consul mount to configure
 	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// Specifies the URL scheme to use. Defaults to `http`.
+	// Specifies the URL scheme to use. Defaults to "http".
 	Scheme pulumi.StringPtrOutput `pulumi:"scheme"`
-	// The Consul management token this backend should use to issue new tokens.
+	// Specifies the Consul ACL token to use. This must be a management type token.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
 
@@ -68,36 +66,34 @@ func GetSecretBackend(ctx *pulumi.Context,
 type secretBackendState struct {
 	// Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
 	Address *string `pulumi:"address"`
-	// The default TTL for credentials issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+	// Unique name of the Vault Consul mount to configure
 	Path *string `pulumi:"path"`
-	// Specifies the URL scheme to use. Defaults to `http`.
+	// Specifies the URL scheme to use. Defaults to "http".
 	Scheme *string `pulumi:"scheme"`
-	// The Consul management token this backend should use to issue new tokens.
+	// Specifies the Consul ACL token to use. This must be a management type token.
 	Token *string `pulumi:"token"`
 }
 
 type SecretBackendState struct {
 	// Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
 	Address pulumi.StringPtrInput
-	// The default TTL for credentials issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+	// Unique name of the Vault Consul mount to configure
 	Path pulumi.StringPtrInput
-	// Specifies the URL scheme to use. Defaults to `http`.
+	// Specifies the URL scheme to use. Defaults to "http".
 	Scheme pulumi.StringPtrInput
-	// The Consul management token this backend should use to issue new tokens.
+	// Specifies the Consul ACL token to use. This must be a management type token.
 	Token pulumi.StringPtrInput
 }
 
@@ -108,18 +104,17 @@ func (SecretBackendState) ElementType() reflect.Type {
 type secretBackendArgs struct {
 	// Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
 	Address string `pulumi:"address"`
-	// The default TTL for credentials issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds *int `pulumi:"defaultLeaseTtlSeconds"`
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description *string `pulumi:"description"`
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds *int `pulumi:"maxLeaseTtlSeconds"`
-	// The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+	// Unique name of the Vault Consul mount to configure
 	Path *string `pulumi:"path"`
-	// Specifies the URL scheme to use. Defaults to `http`.
+	// Specifies the URL scheme to use. Defaults to "http".
 	Scheme *string `pulumi:"scheme"`
-	// The Consul management token this backend should use to issue new tokens.
+	// Specifies the Consul ACL token to use. This must be a management type token.
 	Token string `pulumi:"token"`
 }
 
@@ -127,18 +122,17 @@ type secretBackendArgs struct {
 type SecretBackendArgs struct {
 	// Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
 	Address pulumi.StringInput
-	// The default TTL for credentials issued by this backend.
+	// Default lease duration for secrets in seconds
 	DefaultLeaseTtlSeconds pulumi.IntPtrInput
-	// A human-friendly description for this backend.
+	// Human-friendly description of the mount for the backend.
 	Description pulumi.StringPtrInput
-	// The maximum TTL that can be requested
-	// for credentials issued by this backend.
+	// Maximum possible lease duration for secrets in seconds
 	MaxLeaseTtlSeconds pulumi.IntPtrInput
-	// The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+	// Unique name of the Vault Consul mount to configure
 	Path pulumi.StringPtrInput
-	// Specifies the URL scheme to use. Defaults to `http`.
+	// Specifies the URL scheme to use. Defaults to "http".
 	Scheme pulumi.StringPtrInput
-	// The Consul management token this backend should use to issue new tokens.
+	// Specifies the Consul ACL token to use. This must be a management type token.
 	Token pulumi.StringInput
 }
 

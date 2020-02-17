@@ -16,45 +16,40 @@ class SecretBackend(pulumi.CustomResource):
     """
     default_lease_ttl_seconds: pulumi.Output[float]
     """
-    The default TTL for credentials issued by this backend.
+    Default lease duration for secrets in seconds
     """
     description: pulumi.Output[str]
     """
-    A human-friendly description for this backend.
+    Human-friendly description of the mount for the backend.
     """
     max_lease_ttl_seconds: pulumi.Output[float]
     """
-    The maximum TTL that can be requested
-    for credentials issued by this backend.
+    Maximum possible lease duration for secrets in seconds
     """
     path: pulumi.Output[str]
     """
-    The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
+    Unique name of the Vault Consul mount to configure
     """
     scheme: pulumi.Output[str]
     """
-    Specifies the URL scheme to use. Defaults to `http`.
+    Specifies the URL scheme to use. Defaults to "http".
     """
     token: pulumi.Output[str]
     """
-    The Consul management token this backend should use to issue new tokens.
+    Specifies the Consul ACL token to use. This must be a management type token.
     """
     def __init__(__self__, resource_name, opts=None, address=None, default_lease_ttl_seconds=None, description=None, max_lease_ttl_seconds=None, path=None, scheme=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretBackend resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials issued by this backend.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend.
-        :param pulumi.Input[str] path: The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
-        :param pulumi.Input[str] scheme: Specifies the URL scheme to use. Defaults to `http`.
-        :param pulumi.Input[str] token: The Consul management token this backend should use to issue new tokens.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/consul_secret_backend.html.markdown.
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Unique name of the Vault Consul mount to configure
+        :param pulumi.Input[str] scheme: Specifies the URL scheme to use. Defaults to "http".
+        :param pulumi.Input[str] token: Specifies the Consul ACL token to use. This must be a management type token.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,24 +90,22 @@ class SecretBackend(pulumi.CustomResource):
         """
         Get an existing SecretBackend resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Specifies the address of the Consul instance, provided as "host:port" like "127.0.0.1:8500".
-        :param pulumi.Input[float] default_lease_ttl_seconds: The default TTL for credentials issued by this backend.
-        :param pulumi.Input[str] description: A human-friendly description for this backend.
-        :param pulumi.Input[float] max_lease_ttl_seconds: The maximum TTL that can be requested
-               for credentials issued by this backend.
-        :param pulumi.Input[str] path: The unique location this backend should be mounted at. Must not begin or end with a `/`. Defaults to `consul`.
-        :param pulumi.Input[str] scheme: Specifies the URL scheme to use. Defaults to `http`.
-        :param pulumi.Input[str] token: The Consul management token this backend should use to issue new tokens.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/consul_secret_backend.html.markdown.
+        :param pulumi.Input[float] default_lease_ttl_seconds: Default lease duration for secrets in seconds
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[float] max_lease_ttl_seconds: Maximum possible lease duration for secrets in seconds
+        :param pulumi.Input[str] path: Unique name of the Vault Consul mount to configure
+        :param pulumi.Input[str] scheme: Specifies the URL scheme to use. Defaults to "http".
+        :param pulumi.Input[str] token: Specifies the Consul ACL token to use. This must be a management type token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["default_lease_ttl_seconds"] = default_lease_ttl_seconds
         __props__["description"] = description

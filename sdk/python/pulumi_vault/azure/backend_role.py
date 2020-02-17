@@ -12,59 +12,48 @@ from .. import utilities, tables
 class BackendRole(pulumi.CustomResource):
     application_object_id: pulumi.Output[str]
     """
-    Application Object ID for an existing service principal that will
-    be used instead of creating dynamic service principals. If present, `azure_roles` will be ignored.
+    Application Object ID for an existing service principal that will be used instead of creating dynamic service
+    principals.
     """
     azure_roles: pulumi.Output[list]
-    """
-    List of Azure roles to be assigned to the generated service principal.
-    
-      * `role_id` (`str`)
-      * `role_name` (`str`)
-      * `scope` (`str`)
-    """
     backend: pulumi.Output[str]
     """
-    Path to the mounted Azure auth backend
+    Unique name of the auth backend to configure.
     """
     description: pulumi.Output[str]
+    """
+    Human-friendly description of the mount for the backend.
+    """
     max_ttl: pulumi.Output[str]
     """
-    Specifies the maximum TTL for service principals generated using this role. Accepts time
-    suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine max TTL time.
+    Human-friendly description of the mount for the backend.
     """
     role: pulumi.Output[str]
     """
-    Name of the Azure role
+    Name of the role to create
     """
     ttl: pulumi.Output[str]
     """
-    Specifies the default TTL for service principals generated using this role.
-    Accepts time suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine default TTL time.
+    Human-friendly description of the mount for the backend.
     """
     def __init__(__self__, resource_name, opts=None, application_object_id=None, azure_roles=None, backend=None, description=None, max_ttl=None, role=None, ttl=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a BackendRole resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: Application Object ID for an existing service principal that will
-               be used instead of creating dynamic service principals. If present, `azure_roles` will be ignored.
-        :param pulumi.Input[list] azure_roles: List of Azure roles to be assigned to the generated service principal.
-        :param pulumi.Input[str] backend: Path to the mounted Azure auth backend
-        :param pulumi.Input[str] max_ttl: Specifies the maximum TTL for service principals generated using this role. Accepts time
-               suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine max TTL time.
-        :param pulumi.Input[str] role: Name of the Azure role
-        :param pulumi.Input[str] ttl: Specifies the default TTL for service principals generated using this role.
-               Accepts time suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine default TTL time.
-        
-        The **azure_roles** object supports the following:
-        
-          * `role_id` (`pulumi.Input[str]`)
-          * `role_name` (`pulumi.Input[str]`)
-          * `scope` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] application_object_id: Application Object ID for an existing service principal that will be used instead of creating dynamic service
+               principals.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[str] max_ttl: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[str] role: Name of the role to create
+        :param pulumi.Input[str] ttl: Human-friendly description of the mount for the backend.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_secret_backend_role.html.markdown.
+        The **azure_roles** object supports the following:
+
+          * `roleId` (`pulumi.Input[str]`)
+          * `roleName` (`pulumi.Input[str]`)
+          * `scope` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,31 +92,28 @@ class BackendRole(pulumi.CustomResource):
         """
         Get an existing BackendRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: Application Object ID for an existing service principal that will
-               be used instead of creating dynamic service principals. If present, `azure_roles` will be ignored.
-        :param pulumi.Input[list] azure_roles: List of Azure roles to be assigned to the generated service principal.
-        :param pulumi.Input[str] backend: Path to the mounted Azure auth backend
-        :param pulumi.Input[str] max_ttl: Specifies the maximum TTL for service principals generated using this role. Accepts time
-               suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine max TTL time.
-        :param pulumi.Input[str] role: Name of the Azure role
-        :param pulumi.Input[str] ttl: Specifies the default TTL for service principals generated using this role.
-               Accepts time suffixed strings ("1h") or an integer number of seconds. Defaults to the system/engine default TTL time.
-        
-        The **azure_roles** object supports the following:
-        
-          * `role_id` (`pulumi.Input[str]`)
-          * `role_name` (`pulumi.Input[str]`)
-          * `scope` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] application_object_id: Application Object ID for an existing service principal that will be used instead of creating dynamic service
+               principals.
+        :param pulumi.Input[str] backend: Unique name of the auth backend to configure.
+        :param pulumi.Input[str] description: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[str] max_ttl: Human-friendly description of the mount for the backend.
+        :param pulumi.Input[str] role: Name of the role to create
+        :param pulumi.Input[str] ttl: Human-friendly description of the mount for the backend.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/azure_secret_backend_role.html.markdown.
+        The **azure_roles** object supports the following:
+
+          * `roleId` (`pulumi.Input[str]`)
+          * `roleName` (`pulumi.Input[str]`)
+          * `scope` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["application_object_id"] = application_object_id
         __props__["azure_roles"] = azure_roles
         __props__["backend"] = backend

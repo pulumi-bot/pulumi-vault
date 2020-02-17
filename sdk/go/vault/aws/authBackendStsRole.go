@@ -11,17 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_sts_role.html.markdown.
 type AuthBackendStsRole struct {
 	pulumi.CustomResourceState
 
-	// The AWS account ID to configure the STS role for.
+	// AWS account ID to be associated with STS role.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrOutput `pulumi:"backend"`
-	// The STS role to assume when verifying requests made
-	// by EC2 instances in the account specified by `accountId`.
+	// AWS ARN for STS role to be assumed when interacting with the account specified.
 	StsRole pulumi.StringOutput `pulumi:"stsRole"`
 }
 
@@ -59,24 +56,20 @@ func GetAuthBackendStsRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthBackendStsRole resources.
 type authBackendStsRoleState struct {
-	// The AWS account ID to configure the STS role for.
+	// AWS account ID to be associated with STS role.
 	AccountId *string `pulumi:"accountId"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The STS role to assume when verifying requests made
-	// by EC2 instances in the account specified by `accountId`.
+	// AWS ARN for STS role to be assumed when interacting with the account specified.
 	StsRole *string `pulumi:"stsRole"`
 }
 
 type AuthBackendStsRoleState struct {
-	// The AWS account ID to configure the STS role for.
+	// AWS account ID to be associated with STS role.
 	AccountId pulumi.StringPtrInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The STS role to assume when verifying requests made
-	// by EC2 instances in the account specified by `accountId`.
+	// AWS ARN for STS role to be assumed when interacting with the account specified.
 	StsRole pulumi.StringPtrInput
 }
 
@@ -85,25 +78,21 @@ func (AuthBackendStsRoleState) ElementType() reflect.Type {
 }
 
 type authBackendStsRoleArgs struct {
-	// The AWS account ID to configure the STS role for.
+	// AWS account ID to be associated with STS role.
 	AccountId string `pulumi:"accountId"`
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend *string `pulumi:"backend"`
-	// The STS role to assume when verifying requests made
-	// by EC2 instances in the account specified by `accountId`.
+	// AWS ARN for STS role to be assumed when interacting with the account specified.
 	StsRole string `pulumi:"stsRole"`
 }
 
 // The set of arguments for constructing a AuthBackendStsRole resource.
 type AuthBackendStsRoleArgs struct {
-	// The AWS account ID to configure the STS role for.
+	// AWS account ID to be associated with STS role.
 	AccountId pulumi.StringInput
-	// The path the AWS auth backend being configured was
-	// mounted at.  Defaults to `aws`.
+	// Unique name of the auth backend to configure.
 	Backend pulumi.StringPtrInput
-	// The STS role to assume when verifying requests made
-	// by EC2 instances in the account specified by `accountId`.
+	// AWS ARN for STS role to be assumed when interacting with the account specified.
 	StsRole pulumi.StringInput
 }
 

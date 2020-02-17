@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/generic_secret.html.markdown.
- */
 export class Secret extends pulumi.CustomResource {
     /**
      * Get an existing Secret resource's state with the given name, ID, and optional extra
@@ -35,29 +32,19 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
-     * A mapping whose keys are the top-level data keys returned from
-     * Vault and whose values are the corresponding values. This map can only
-     * represent string data, so any non-string values returned from Vault are
-     * serialized as JSON.
+     * Map of strings read from Vault.
      */
     public /*out*/ readonly data!: pulumi.Output<{[key: string]: any}>;
     /**
-     * String containing a JSON-encoded object that will be
-     * written as the secret data at the given path.
+     * JSON-encoded secret data to write.
      */
     public readonly dataJson!: pulumi.Output<string>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data. Setting this to `true` will
-     * break drift detection. Defaults to false.
+     * Don't attempt to read the token from Vault if true; drift won't be detected.
      */
     public readonly disableRead!: pulumi.Output<boolean | undefined>;
     /**
-     * The full logical path at which to write the given data.
-     * To write data into the "generic" secret backend mounted in Vault by default,
-     * this should be prefixed with `secret/`. Writing to other backends with this
-     * resource is possible; consult each backend's documentation to see which
-     * endpoints support the `PUT` and `DELETE` methods.
+     * Full path where the generic secret will be written.
      */
     public readonly path!: pulumi.Output<string>;
 
@@ -106,29 +93,19 @@ export class Secret extends pulumi.CustomResource {
  */
 export interface SecretState {
     /**
-     * A mapping whose keys are the top-level data keys returned from
-     * Vault and whose values are the corresponding values. This map can only
-     * represent string data, so any non-string values returned from Vault are
-     * serialized as JSON.
+     * Map of strings read from Vault.
      */
     readonly data?: pulumi.Input<{[key: string]: any}>;
     /**
-     * String containing a JSON-encoded object that will be
-     * written as the secret data at the given path.
+     * JSON-encoded secret data to write.
      */
     readonly dataJson?: pulumi.Input<string>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data. Setting this to `true` will
-     * break drift detection. Defaults to false.
+     * Don't attempt to read the token from Vault if true; drift won't be detected.
      */
     readonly disableRead?: pulumi.Input<boolean>;
     /**
-     * The full logical path at which to write the given data.
-     * To write data into the "generic" secret backend mounted in Vault by default,
-     * this should be prefixed with `secret/`. Writing to other backends with this
-     * resource is possible; consult each backend's documentation to see which
-     * endpoints support the `PUT` and `DELETE` methods.
+     * Full path where the generic secret will be written.
      */
     readonly path?: pulumi.Input<string>;
 }
@@ -138,22 +115,15 @@ export interface SecretState {
  */
 export interface SecretArgs {
     /**
-     * String containing a JSON-encoded object that will be
-     * written as the secret data at the given path.
+     * JSON-encoded secret data to write.
      */
     readonly dataJson: pulumi.Input<string>;
     /**
-     * True/false. Set this to true if your vault
-     * authentication is not able to read the data. Setting this to `true` will
-     * break drift detection. Defaults to false.
+     * Don't attempt to read the token from Vault if true; drift won't be detected.
      */
     readonly disableRead?: pulumi.Input<boolean>;
     /**
-     * The full logical path at which to write the given data.
-     * To write data into the "generic" secret backend mounted in Vault by default,
-     * this should be prefixed with `secret/`. Writing to other backends with this
-     * resource is possible; consult each backend's documentation to see which
-     * endpoints support the `PUT` and `DELETE` methods.
+     * Full path where the generic secret will be written.
      */
     readonly path: pulumi.Input<string>;
 }

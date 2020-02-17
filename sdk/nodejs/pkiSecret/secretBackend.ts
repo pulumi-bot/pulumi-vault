@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Creates an PKI Secret Backend for Vault. PKI secret backends can then issue certificates, once a role has been added to
  * the backend.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const pki = new vault.pkiSecret.SecretBackend("pki", {
  *     defaultLeaseTtlSeconds: 3600,
  *     maxLeaseTtlSeconds: 86400,

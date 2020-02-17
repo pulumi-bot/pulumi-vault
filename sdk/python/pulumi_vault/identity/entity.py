@@ -12,37 +12,34 @@ from .. import utilities, tables
 class Entity(pulumi.CustomResource):
     disabled: pulumi.Output[bool]
     """
-    True/false Is this entity currently disabled. Defaults to `false`
+    Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
     """
     external_policies: pulumi.Output[bool]
     """
-    `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+    Manage policies externally through `vault_identity_entity_policies`.
     """
     metadata: pulumi.Output[dict]
     """
-    A Map of additional metadata to associate with the user.
+    Metadata to be associated with the entity.
     """
     name: pulumi.Output[str]
     """
-    Name of the identity entity to create.
+    Name of the entity.
     """
     policies: pulumi.Output[list]
     """
-    A list of policies to apply to the entity.
+    Policies to be tied to the entity.
     """
     def __init__(__self__, resource_name, opts=None, disabled=None, external_policies=None, metadata=None, name=None, policies=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Entity resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disabled: True/false Is this entity currently disabled. Defaults to `false`
-        :param pulumi.Input[bool] external_policies: `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
-        :param pulumi.Input[dict] metadata: A Map of additional metadata to associate with the user.
-        :param pulumi.Input[str] name: Name of the identity entity to create.
-        :param pulumi.Input[list] policies: A list of policies to apply to the entity.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_entity.html.markdown.
+        :param pulumi.Input[bool] disabled: Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
+        :param pulumi.Input[bool] external_policies: Manage policies externally through `vault_identity_entity_policies`.
+        :param pulumi.Input[dict] metadata: Metadata to be associated with the entity.
+        :param pulumi.Input[str] name: Name of the entity.
+        :param pulumi.Input[list] policies: Policies to be tied to the entity.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,21 +74,20 @@ class Entity(pulumi.CustomResource):
         """
         Get an existing Entity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disabled: True/false Is this entity currently disabled. Defaults to `false`
-        :param pulumi.Input[bool] external_policies: `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
-        :param pulumi.Input[dict] metadata: A Map of additional metadata to associate with the user.
-        :param pulumi.Input[str] name: Name of the identity entity to create.
-        :param pulumi.Input[list] policies: A list of policies to apply to the entity.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_entity.html.markdown.
+        :param pulumi.Input[bool] disabled: Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
+        :param pulumi.Input[bool] external_policies: Manage policies externally through `vault_identity_entity_policies`.
+        :param pulumi.Input[dict] metadata: Metadata to be associated with the entity.
+        :param pulumi.Input[str] name: Name of the entity.
+        :param pulumi.Input[list] policies: Policies to be tied to the entity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["disabled"] = disabled
         __props__["external_policies"] = external_policies
         __props__["metadata"] = metadata

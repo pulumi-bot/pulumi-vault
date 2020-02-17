@@ -2,13 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/database_secret_backend_role.html.markdown.
- */
 export class SecretBackendRole extends pulumi.CustomResource {
     /**
      * Get an existing SecretBackendRole resource's state with the given name, ID, and optional extra
@@ -37,46 +32,39 @@ export class SecretBackendRole extends pulumi.CustomResource {
     }
 
     /**
-     * The unique name of the Vault mount to configure.
+     * The path of the Database Secret Backend the role belongs to.
      */
     public readonly backend!: pulumi.Output<string>;
     /**
-     * The database statements to execute when
-     * creating a user.
+     * Database statements to execute to create and configure a user.
      */
     public readonly creationStatements!: pulumi.Output<string[]>;
     /**
-     * The unique name of the database connection to use for
-     * the role.
+     * Database connection to use for this role.
      */
     public readonly dbName!: pulumi.Output<string>;
     /**
-     * The default number of seconds for leases for this
-     * role.
+     * Default TTL for leases associated with this role, in seconds.
      */
     public readonly defaultTtl!: pulumi.Output<number | undefined>;
     /**
-     * The maximum number of seconds for leases for this
-     * role.
+     * Maximum TTL for leases associated with this role, in seconds.
      */
     public readonly maxTtl!: pulumi.Output<number | undefined>;
     /**
-     * A unique name to give the role.
+     * Unique name for the role.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The database statements to execute when
-     * renewing a user.
+     * Database statements to execute to renew a user.
      */
     public readonly renewStatements!: pulumi.Output<string[] | undefined>;
     /**
-     * The database statements to execute when
-     * revoking a user.
+     * Database statements to execute to revoke a user.
      */
     public readonly revocationStatements!: pulumi.Output<string[] | undefined>;
     /**
-     * The database statements to execute when
-     * rolling back creation due to an error.
+     * Database statements to execute to rollback a create operation in the event of an error.
      */
     public readonly rollbackStatements!: pulumi.Output<string[] | undefined>;
 
@@ -138,46 +126,39 @@ export class SecretBackendRole extends pulumi.CustomResource {
  */
 export interface SecretBackendRoleState {
     /**
-     * The unique name of the Vault mount to configure.
+     * The path of the Database Secret Backend the role belongs to.
      */
     readonly backend?: pulumi.Input<string>;
     /**
-     * The database statements to execute when
-     * creating a user.
+     * Database statements to execute to create and configure a user.
      */
     readonly creationStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the database connection to use for
-     * the role.
+     * Database connection to use for this role.
      */
     readonly dbName?: pulumi.Input<string>;
     /**
-     * The default number of seconds for leases for this
-     * role.
+     * Default TTL for leases associated with this role, in seconds.
      */
     readonly defaultTtl?: pulumi.Input<number>;
     /**
-     * The maximum number of seconds for leases for this
-     * role.
+     * Maximum TTL for leases associated with this role, in seconds.
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
-     * A unique name to give the role.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The database statements to execute when
-     * renewing a user.
+     * Database statements to execute to renew a user.
      */
     readonly renewStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The database statements to execute when
-     * revoking a user.
+     * Database statements to execute to revoke a user.
      */
     readonly revocationStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The database statements to execute when
-     * rolling back creation due to an error.
+     * Database statements to execute to rollback a create operation in the event of an error.
      */
     readonly rollbackStatements?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -187,46 +168,39 @@ export interface SecretBackendRoleState {
  */
 export interface SecretBackendRoleArgs {
     /**
-     * The unique name of the Vault mount to configure.
+     * The path of the Database Secret Backend the role belongs to.
      */
     readonly backend: pulumi.Input<string>;
     /**
-     * The database statements to execute when
-     * creating a user.
+     * Database statements to execute to create and configure a user.
      */
     readonly creationStatements: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the database connection to use for
-     * the role.
+     * Database connection to use for this role.
      */
     readonly dbName: pulumi.Input<string>;
     /**
-     * The default number of seconds for leases for this
-     * role.
+     * Default TTL for leases associated with this role, in seconds.
      */
     readonly defaultTtl?: pulumi.Input<number>;
     /**
-     * The maximum number of seconds for leases for this
-     * role.
+     * Maximum TTL for leases associated with this role, in seconds.
      */
     readonly maxTtl?: pulumi.Input<number>;
     /**
-     * A unique name to give the role.
+     * Unique name for the role.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The database statements to execute when
-     * renewing a user.
+     * Database statements to execute to renew a user.
      */
     readonly renewStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The database statements to execute when
-     * revoking a user.
+     * Database statements to execute to revoke a user.
      */
     readonly revocationStatements?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The database statements to execute when
-     * rolling back creation due to an error.
+     * Database statements to execute to rollback a create operation in the event of an error.
      */
     readonly rollbackStatements?: pulumi.Input<pulumi.Input<string>[]>;
 }

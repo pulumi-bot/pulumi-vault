@@ -14,7 +14,7 @@ import (
 // Manages an Kubernetes auth backend config in a Vault server. See the [Vault
 // documentation](https://www.vaultproject.io/docs/auth/kubernetes.html) for more
 // information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/kubernetes_auth_backend_config.html.markdown.
 type AuthBackendConfig struct {
 	pulumi.CustomResourceState

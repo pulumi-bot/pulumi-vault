@@ -2,22 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Reads the Role ID of an AppRole from a Vault server.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const role = vault.appRole.getAuthBackendRoleId({
  *     backend: "my-approle-backend",
  *     roleName: "my-role",
  * });
- * 
+ *
  * export const roleId = role.roleId;
  * ```
  *
@@ -60,12 +62,12 @@ export interface GetAuthBackendRoleIdArgs {
 export interface GetAuthBackendRoleIdResult {
     readonly backend?: string;
     /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The RoleID of the role.
      */
     readonly roleId: string;
     readonly roleName: string;
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

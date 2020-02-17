@@ -13,37 +13,25 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, data=None, data_json=None, lease_duration=None, lease_id=None, lease_renewable=None, lease_start_time=None, path=None, version=None, id=None):
+    def __init__(__self__, data=None, data_json=None, id=None, lease_duration=None, lease_id=None, lease_renewable=None, lease_start_time=None, path=None, version=None):
         if data and not isinstance(data, dict):
             raise TypeError("Expected argument 'data' to be a dict")
         __self__.data = data
-        """
-        A mapping whose keys are the top-level data keys returned from
-        Vault and whose values are the corresponding values. This map can only
-        represent string data, so any non-string values returned from Vault are
-        serialized as JSON.
-        """
         if data_json and not isinstance(data_json, str):
             raise TypeError("Expected argument 'data_json' to be a str")
         __self__.data_json = data_json
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
         """
-        A string containing the full data payload retrieved from
-        Vault, serialized in JSON format.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if lease_duration and not isinstance(lease_duration, float):
             raise TypeError("Expected argument 'lease_duration' to be a float")
         __self__.lease_duration = lease_duration
-        """
-        The duration of the secret lease, in seconds relative
-        to the time the data was requested. Once this time has passed any plan
-        generated with this data may fail to apply.
-        """
         if lease_id and not isinstance(lease_id, str):
             raise TypeError("Expected argument 'lease_id' to be a str")
         __self__.lease_id = lease_id
-        """
-        The lease identifier assigned by Vault, if any.
-        """
         if lease_renewable and not isinstance(lease_renewable, bool):
             raise TypeError("Expected argument 'lease_renewable' to be a bool")
         __self__.lease_renewable = lease_renewable
@@ -56,12 +44,6 @@ class GetSecretResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,27 +52,20 @@ class AwaitableGetSecretResult(GetSecretResult):
         return GetSecretResult(
             data=self.data,
             data_json=self.data_json,
+            id=self.id,
             lease_duration=self.lease_duration,
             lease_id=self.lease_id,
             lease_renewable=self.lease_renewable,
             lease_start_time=self.lease_start_time,
             path=self.path,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_secret(path=None,version=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str path: The full logical path from which to request data.
-           To read data from the "generic" secret backend mounted in Vault by
-           default, this should be prefixed with `secret/`. Reading from other backends
-           with this data source is possible; consult each backend's documentation
-           to see which endpoints support the `GET` method.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/generic_secret.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['path'] = path
     __args__['version'] = version
@@ -103,10 +78,10 @@ def get_secret(path=None,version=None,opts=None):
     return AwaitableGetSecretResult(
         data=__ret__.get('data'),
         data_json=__ret__.get('dataJson'),
+        id=__ret__.get('id'),
         lease_duration=__ret__.get('leaseDuration'),
         lease_id=__ret__.get('leaseId'),
         lease_renewable=__ret__.get('leaseRenewable'),
         lease_start_time=__ret__.get('leaseStartTime'),
         path=__ret__.get('path'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

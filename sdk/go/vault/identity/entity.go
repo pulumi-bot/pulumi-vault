@@ -10,19 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/identity_entity.html.markdown.
 type Entity struct {
 	pulumi.CustomResourceState
 
-	// True/false Is this entity currently disabled. Defaults to `false`
+	// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+	// Manage policies externally through `vault_identity_entity_policies`.
 	ExternalPolicies pulumi.BoolPtrOutput `pulumi:"externalPolicies"`
-	// A Map of additional metadata to associate with the user.
+	// Metadata to be associated with the entity.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Name of the identity entity to create.
+	// Name of the entity.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of policies to apply to the entity.
+	// Policies to be tied to the entity.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 }
 
@@ -54,28 +53,28 @@ func GetEntity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Entity resources.
 type entityState struct {
-	// True/false Is this entity currently disabled. Defaults to `false`
+	// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
 	Disabled *bool `pulumi:"disabled"`
-	// `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+	// Manage policies externally through `vault_identity_entity_policies`.
 	ExternalPolicies *bool `pulumi:"externalPolicies"`
-	// A Map of additional metadata to associate with the user.
+	// Metadata to be associated with the entity.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the identity entity to create.
+	// Name of the entity.
 	Name *string `pulumi:"name"`
-	// A list of policies to apply to the entity.
+	// Policies to be tied to the entity.
 	Policies []string `pulumi:"policies"`
 }
 
 type EntityState struct {
-	// True/false Is this entity currently disabled. Defaults to `false`
+	// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
 	Disabled pulumi.BoolPtrInput
-	// `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+	// Manage policies externally through `vault_identity_entity_policies`.
 	ExternalPolicies pulumi.BoolPtrInput
-	// A Map of additional metadata to associate with the user.
+	// Metadata to be associated with the entity.
 	Metadata pulumi.StringMapInput
-	// Name of the identity entity to create.
+	// Name of the entity.
 	Name pulumi.StringPtrInput
-	// A list of policies to apply to the entity.
+	// Policies to be tied to the entity.
 	Policies pulumi.StringArrayInput
 }
 
@@ -84,29 +83,29 @@ func (EntityState) ElementType() reflect.Type {
 }
 
 type entityArgs struct {
-	// True/false Is this entity currently disabled. Defaults to `false`
+	// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
 	Disabled *bool `pulumi:"disabled"`
-	// `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+	// Manage policies externally through `vault_identity_entity_policies`.
 	ExternalPolicies *bool `pulumi:"externalPolicies"`
-	// A Map of additional metadata to associate with the user.
+	// Metadata to be associated with the entity.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the identity entity to create.
+	// Name of the entity.
 	Name *string `pulumi:"name"`
-	// A list of policies to apply to the entity.
+	// Policies to be tied to the entity.
 	Policies []string `pulumi:"policies"`
 }
 
 // The set of arguments for constructing a Entity resource.
 type EntityArgs struct {
-	// True/false Is this entity currently disabled. Defaults to `false`
+	// Whether the entity is disabled. Disabled entities' associated tokens cannot be used, but are not revoked.
 	Disabled pulumi.BoolPtrInput
-	// `false` by default. If set to `true`, this resource will ignore any policies return from Vault or specified in the resource. You can use `identity.EntityPolicies` to manage policies for this entity in a decoupled manner.
+	// Manage policies externally through `vault_identity_entity_policies`.
 	ExternalPolicies pulumi.BoolPtrInput
-	// A Map of additional metadata to associate with the user.
+	// Metadata to be associated with the entity.
 	Metadata pulumi.StringMapInput
-	// Name of the identity entity to create.
+	// Name of the entity.
 	Name pulumi.StringPtrInput
-	// A list of policies to apply to the entity.
+	// Policies to be tied to the entity.
 	Policies pulumi.StringArrayInput
 }
 
