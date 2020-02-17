@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
  * Manages an Kubernetes auth backend config in a Vault server. See the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/kubernetes.html) for more
  * information.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const kubernetes = new vault.AuthBackend("kubernetes", {
  *     type: "kubernetes",
  * });
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/kubernetes_auth_backend_config.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/.
  */
 export class AuthBackendConfig extends pulumi.CustomResource {
     /**
