@@ -11,10 +11,10 @@ import (
 )
 
 // Configures the periodic tidying operation of the whitelisted identity entries.
-// 
+//
 // For more information, see the
 // [Vault docs](https://www.vaultproject.io/api/auth/aws/index.html#configure-identity-whitelist-tidy-operation).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_identity_whitelist.html.markdown.
 type AuthBackendIdentityWhitelist struct {
 	pulumi.CustomResourceState

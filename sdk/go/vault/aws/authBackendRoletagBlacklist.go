@@ -12,7 +12,7 @@ import (
 )
 
 // Configures the periodic tidying operation of the blacklisted role tag entries.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_roletag_blacklist.html.markdown.
 type AuthBackendRoletagBlacklist struct {
 	pulumi.CustomResourceState

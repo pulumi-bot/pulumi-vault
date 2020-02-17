@@ -6,13 +6,13 @@ import * as utilities from "../utilities";
 
 /**
  * Creates an Encryption Keyring on a Transit Secret Backend for Vault.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const transit = new vault.Mount("transit", {
  *     defaultLeaseTtlSeconds: 3600,
  *     description: "Example description",

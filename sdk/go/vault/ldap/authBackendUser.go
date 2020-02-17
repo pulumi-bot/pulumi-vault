@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a resource to create a user in an [LDAP auth backend within Vault](https://www.vaultproject.io/docs/auth/ldap.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/ldap_auth_backend_user.html.markdown.
 type AuthBackendUser struct {
 	pulumi.CustomResourceState
