@@ -14,7 +14,7 @@ import (
 // Manages policy mappings for Github Users authenticated via Github. See the [Vault
 // documentation](https://www.vaultproject.io/docs/auth/github.html) for more
 // information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/github_user.html.markdown.
 type User struct {
 	pulumi.CustomResourceState

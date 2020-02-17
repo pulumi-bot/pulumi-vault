@@ -11,7 +11,7 @@ import (
 // Reads the Role of an Kubernetes from a Vault server. See the [Vault
 // documentation](https://www.vaultproject.io/api/auth/kubernetes/index.html#read-config) for more
 // information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/kubernetes_auth_backend_config.html.markdown.
 func LookupAuthBackendConfig(ctx *pulumi.Context, args *LookupAuthBackendConfigArgs, opts ...pulumi.InvokeOption) (*LookupAuthBackendConfigResult, error) {
 	var rv LookupAuthBackendConfigResult

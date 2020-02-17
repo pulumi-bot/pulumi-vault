@@ -2,21 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Provides a resource to manage [Duo MFA](https://www.vaultproject.io/docs/enterprise/mfa/mfa-duo.html).
- * 
+ *
  * **Note** this feature is available only with Vault Enterprise.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const userpass = new vault.AuthBackend("userpass", {
  *     path: "userpass",
  *     type: "userpass",
@@ -67,8 +65,8 @@ export class MfaDuo extends pulumi.CustomResource {
      */
     public readonly integrationKey!: pulumi.Output<string>;
     /**
-     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases
-     * associated with this mount as the username in the mapping.
+     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated
+     * with this mount as the username in the mapping.
      */
     public readonly mountAccessor!: pulumi.Output<string>;
     /**
@@ -153,8 +151,8 @@ export interface MfaDuoState {
      */
     readonly integrationKey?: pulumi.Input<string>;
     /**
-     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases
-     * associated with this mount as the username in the mapping.
+     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated
+     * with this mount as the username in the mapping.
      */
     readonly mountAccessor?: pulumi.Input<string>;
     /**
@@ -188,8 +186,8 @@ export interface MfaDuoArgs {
      */
     readonly integrationKey: pulumi.Input<string>;
     /**
-     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases
-     * associated with this mount as the username in the mapping.
+     * The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated
+     * with this mount as the username in the mapping.
      */
     readonly mountAccessor: pulumi.Input<string>;
     /**

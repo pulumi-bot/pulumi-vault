@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a resource to create a role in an [GCP auth backend within Vault](https://www.vaultproject.io/docs/auth/gcp.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/gcp_auth_backend_role.html.markdown.
 type AuthBackendRole struct {
 	pulumi.CustomResourceState

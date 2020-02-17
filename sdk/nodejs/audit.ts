@@ -6,11 +6,11 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage (file audit device)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const test = new vault.Audit("test", {
  *     options: {
  *         file_path: "C:/temp/audit.txt",
@@ -18,13 +18,13 @@ import * as utilities from "./utilities";
  *     type: "file",
  * });
  * ```
- * 
+ *
  * ## Example Usage (socket audit device)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const test = new vault.Audit("test", {
  *     options: {
  *         address: "127.0.0.1:8000",

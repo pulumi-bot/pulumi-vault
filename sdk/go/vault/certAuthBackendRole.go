@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a resource to create a role in an [Cert auth backend within Vault](https://www.vaultproject.io/docs/auth/cert.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/cert_auth_backend_role.html.markdown.
 type CertAuthBackendRole struct {
 	pulumi.CustomResourceState
