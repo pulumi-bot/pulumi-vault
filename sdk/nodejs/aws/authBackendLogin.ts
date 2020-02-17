@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  * accomplished using a signed identity request from IAM or using ec2
  * instance metadata. For more information, see the [Vault
  * documentation](https://www.vaultproject.io/docs/auth/aws.html).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const aws = new vault.AuthBackend("aws", {
  *     type: "aws",
  * });
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_login.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/aws_auth_backend_login.html.md.
  */
 export class AuthBackendLogin extends pulumi.CustomResource {
     /**
