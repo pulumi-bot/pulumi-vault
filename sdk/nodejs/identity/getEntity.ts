@@ -2,12 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/identity_entity.html.markdown.
- */
 export function getEntity(args?: GetEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityResult> & GetEntityResult {
     args = args || {};
     if (!opts) {
@@ -91,6 +89,10 @@ export interface GetEntityResult {
      */
     readonly groupIds: string[];
     /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * List of all Group IDs of which the entity is a member of transitively
      */
     readonly inheritedGroupIds: string[];
@@ -114,8 +116,4 @@ export interface GetEntityResult {
      * List of policies attached to the entity
      */
     readonly policies: string[];
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

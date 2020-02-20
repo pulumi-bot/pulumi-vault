@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Creates an PKI Secret Backend for Vault. PKI secret backends can then issue certificates, once a role has been added to
  * the backend.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const pki = new vault.pkiSecret.SecretBackend("pki", {
  *     defaultLeaseTtlSeconds: 3600,
  *     maxLeaseTtlSeconds: 86400,
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/pki_secret_backend.html.md.
  */
 export class SecretBackend extends pulumi.CustomResource {
     /**

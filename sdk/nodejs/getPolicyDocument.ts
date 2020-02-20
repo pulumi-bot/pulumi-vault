@@ -8,13 +8,13 @@ import * as utilities from "./utilities";
 
 /**
  * This is a data source which can be used to construct a HCL representation of an Vault policy document, for use with resources which expect policy documents, such as the `vault..Policy` resource.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const examplePolicyDocument = vault.getPolicyDocument({
  *     rules: [{
  *         capabilities: [
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/policy_document.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/policy_document.md.
  */
 export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDocumentResult> & GetPolicyDocumentResult {
     args = args || {};
@@ -66,9 +66,9 @@ export interface GetPolicyDocumentResult {
      * The above arguments serialized as a standard Vault HCL policy document.
      */
     readonly hcl: string;
-    readonly rules: outputs.GetPolicyDocumentRule[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly rules: outputs.GetPolicyDocumentRule[];
 }
