@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vault from "@pulumi/vault";
- * 
+ *
  * const example = vault.getAuthBackend({
  *     path: "userpass",
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/auth_backend.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/d/auth_backend.html.md.
  */
 export function getAuthBackend(args: GetAuthBackendArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthBackendResult> & GetAuthBackendResult {
     if (!opts) {
@@ -62,6 +62,10 @@ export interface GetAuthBackendResult {
      */
     readonly description: string;
     /**
+     * id is the provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Speficies whether to show this mount in the UI-specific listing endpoint.
      */
     readonly listingVisibility: string;
@@ -78,8 +82,4 @@ export interface GetAuthBackendResult {
      * The name of the auth method type.
      */
     readonly type: string;
-    /**
-     * id is the provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
