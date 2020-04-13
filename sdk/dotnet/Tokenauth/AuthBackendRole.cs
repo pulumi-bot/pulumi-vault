@@ -14,6 +14,8 @@ namespace Pulumi.Vault.TokenAuth
     /// documentation](https://www.vaultproject.io/docs/auth/token.html) for more
     /// information.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vault/blob/master/website/docs/r/token_auth_backend_role.html.md.
     /// </summary>
     public partial class AuthBackendRole : Pulumi.CustomResource
@@ -38,7 +40,8 @@ namespace Pulumi.Vault.TokenAuth
         public Output<ImmutableArray<string>> DisallowedPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// Number of seconds after which issued tokens can no longer be renewed.
+        /// If set, the
+        /// token will have an explicit max TTL set upon it.
         /// </summary>
         [Output("explicitMaxTtl")]
         public Output<string?> ExplicitMaxTtl { get; private set; } = null!;
@@ -232,7 +235,8 @@ namespace Pulumi.Vault.TokenAuth
         }
 
         /// <summary>
-        /// Number of seconds after which issued tokens can no longer be renewed.
+        /// If set, the
+        /// token will have an explicit max TTL set upon it.
         /// </summary>
         [Input("explicitMaxTtl")]
         public Input<string>? ExplicitMaxTtl { get; set; }
@@ -399,7 +403,8 @@ namespace Pulumi.Vault.TokenAuth
         }
 
         /// <summary>
-        /// Number of seconds after which issued tokens can no longer be renewed.
+        /// If set, the
+        /// token will have an explicit max TTL set upon it.
         /// </summary>
         [Input("explicitMaxTtl")]
         public Input<string>? ExplicitMaxTtl { get; set; }
