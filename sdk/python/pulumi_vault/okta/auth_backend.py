@@ -32,7 +32,7 @@ class AuthBackend(pulumi.CustomResource):
     See below for more details.
 
       * `group_name` (`str`) - Name of the group within the Okta
-      * `policies` (`list`) - List of Vault policies to associate with this user
+      * `policies` (`list`) - Vault policies to associate with this group
     """
     max_ttl: pulumi.Output[str]
     """
@@ -63,7 +63,7 @@ class AuthBackend(pulumi.CustomResource):
     See below for more details.
 
       * `groups` (`list`) - List of Okta groups to associate with this user
-      * `policies` (`list`) - List of Vault policies to associate with this user
+      * `policies` (`list`) - Vault policies to associate with this group
       * `username` (`str`) - Name of the user within Okta
     """
     def __init__(__self__, resource_name, opts=None, base_url=None, bypass_okta_mfa=None, description=None, groups=None, max_ttl=None, organization=None, path=None, token=None, ttl=None, users=None, __props__=None, __name__=None, __opts__=None):
@@ -94,12 +94,12 @@ class AuthBackend(pulumi.CustomResource):
         The **groups** object supports the following:
 
           * `group_name` (`pulumi.Input[str]`) - Name of the group within the Okta
-          * `policies` (`pulumi.Input[list]`) - List of Vault policies to associate with this user
+          * `policies` (`pulumi.Input[list]`) - Vault policies to associate with this group
 
         The **users** object supports the following:
 
           * `groups` (`pulumi.Input[list]`) - List of Okta groups to associate with this user
-          * `policies` (`pulumi.Input[list]`) - List of Vault policies to associate with this user
+          * `policies` (`pulumi.Input[list]`) - Vault policies to associate with this group
           * `username` (`pulumi.Input[str]`) - Name of the user within Okta
         """
         if __name__ is not None:
@@ -167,12 +167,12 @@ class AuthBackend(pulumi.CustomResource):
         The **groups** object supports the following:
 
           * `group_name` (`pulumi.Input[str]`) - Name of the group within the Okta
-          * `policies` (`pulumi.Input[list]`) - List of Vault policies to associate with this user
+          * `policies` (`pulumi.Input[list]`) - Vault policies to associate with this group
 
         The **users** object supports the following:
 
           * `groups` (`pulumi.Input[list]`) - List of Okta groups to associate with this user
-          * `policies` (`pulumi.Input[list]`) - List of Vault policies to associate with this user
+          * `policies` (`pulumi.Input[list]`) - Vault policies to associate with this group
           * `username` (`pulumi.Input[str]`) - Name of the user within Okta
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -142,7 +142,7 @@ export namespace database {
          */
         insecureTls?: pulumi.Input<boolean>;
         /**
-         * The password to be used in the connection.
+         * The password to authenticate with.
          */
         password?: pulumi.Input<string>;
         /**
@@ -168,14 +168,14 @@ export namespace database {
          */
         tls?: pulumi.Input<boolean>;
         /**
-         * The username to be used in the connection.
+         * The username to authenticate with.
          */
         username?: pulumi.Input<string>;
     }
 
     export interface SecretBackendConnectionElasticsearch {
         /**
-         * The password to be used in the connection.
+         * The password to authenticate with.
          */
         password: pulumi.Input<string>;
         /**
@@ -184,7 +184,7 @@ export namespace database {
          */
         url: pulumi.Input<string>;
         /**
-         * The username to be used in the connection.
+         * The username to authenticate with.
          */
         username: pulumi.Input<string>;
     }
@@ -193,7 +193,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -218,7 +218,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -243,7 +243,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -268,7 +268,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -293,7 +293,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -318,7 +318,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -343,7 +343,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -368,7 +368,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -393,7 +393,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: pulumi.Input<string>;
@@ -532,7 +532,7 @@ export namespace okta {
          */
         groupName: pulumi.Input<string>;
         /**
-         * List of Vault policies to associate with this user
+         * Vault policies to associate with this group
          */
         policies: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -543,7 +543,7 @@ export namespace okta {
          */
         groups: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * List of Vault policies to associate with this user
+         * Vault policies to associate with this group
          */
         policies?: pulumi.Input<pulumi.Input<string>[]>;
         /**

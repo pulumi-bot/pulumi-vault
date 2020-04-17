@@ -19,7 +19,7 @@ type SecretBackendConnectionCassandra struct {
 	// Whether to skip verification of the server
 	// certificate when using TLS.
 	InsecureTls *bool `pulumi:"insecureTls"`
-	// The password to be used in the connection.
+	// The password to authenticate with.
 	Password *string `pulumi:"password"`
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
@@ -33,7 +33,7 @@ type SecretBackendConnectionCassandra struct {
 	ProtocolVersion *int `pulumi:"protocolVersion"`
 	// Whether to use TLS when connecting to Cassandra.
 	Tls *bool `pulumi:"tls"`
-	// The username to be used in the connection.
+	// The username to authenticate with.
 	Username *string `pulumi:"username"`
 }
 
@@ -58,7 +58,7 @@ type SecretBackendConnectionCassandraArgs struct {
 	// Whether to skip verification of the server
 	// certificate when using TLS.
 	InsecureTls pulumi.BoolPtrInput `pulumi:"insecureTls"`
-	// The password to be used in the connection.
+	// The password to authenticate with.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
@@ -72,7 +72,7 @@ type SecretBackendConnectionCassandraArgs struct {
 	ProtocolVersion pulumi.IntPtrInput `pulumi:"protocolVersion"`
 	// Whether to use TLS when connecting to Cassandra.
 	Tls pulumi.BoolPtrInput `pulumi:"tls"`
-	// The username to be used in the connection.
+	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -171,7 +171,7 @@ func (o SecretBackendConnectionCassandraOutput) InsecureTls() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *bool { return v.InsecureTls }).(pulumi.BoolPtrOutput)
 }
 
-// The password to be used in the connection.
+// The password to authenticate with.
 func (o SecretBackendConnectionCassandraOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -203,7 +203,7 @@ func (o SecretBackendConnectionCassandraOutput) Tls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
 }
 
-// The username to be used in the connection.
+// The username to authenticate with.
 func (o SecretBackendConnectionCassandraOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -243,7 +243,7 @@ func (o SecretBackendConnectionCassandraPtrOutput) InsecureTls() pulumi.BoolPtrO
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *bool { return v.InsecureTls }).(pulumi.BoolPtrOutput)
 }
 
-// The password to be used in the connection.
+// The password to authenticate with.
 func (o SecretBackendConnectionCassandraPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -275,18 +275,18 @@ func (o SecretBackendConnectionCassandraPtrOutput) Tls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
 }
 
-// The username to be used in the connection.
+// The username to authenticate with.
 func (o SecretBackendConnectionCassandraPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionCassandra) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type SecretBackendConnectionElasticsearch struct {
-	// The password to be used in the connection.
+	// The password to authenticate with.
 	Password string `pulumi:"password"`
 	// The URL for Elasticsearch's API. https requires certificate
 	// by trusted CA if used.
 	Url string `pulumi:"url"`
-	// The username to be used in the connection.
+	// The username to authenticate with.
 	Username string `pulumi:"username"`
 }
 
@@ -303,12 +303,12 @@ type SecretBackendConnectionElasticsearchInput interface {
 }
 
 type SecretBackendConnectionElasticsearchArgs struct {
-	// The password to be used in the connection.
+	// The password to authenticate with.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The URL for Elasticsearch's API. https requires certificate
 	// by trusted CA if used.
 	Url pulumi.StringInput `pulumi:"url"`
-	// The username to be used in the connection.
+	// The username to authenticate with.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -390,7 +390,7 @@ func (o SecretBackendConnectionElasticsearchOutput) ToSecretBackendConnectionEla
 	}).(SecretBackendConnectionElasticsearchPtrOutput)
 }
 
-// The password to be used in the connection.
+// The password to authenticate with.
 func (o SecretBackendConnectionElasticsearchOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -401,7 +401,7 @@ func (o SecretBackendConnectionElasticsearchOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username to be used in the connection.
+// The username to authenticate with.
 func (o SecretBackendConnectionElasticsearchOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -424,7 +424,7 @@ func (o SecretBackendConnectionElasticsearchPtrOutput) Elem() SecretBackendConne
 	return o.ApplyT(func(v *SecretBackendConnectionElasticsearch) SecretBackendConnectionElasticsearch { return *v }).(SecretBackendConnectionElasticsearchOutput)
 }
 
-// The password to be used in the connection.
+// The password to authenticate with.
 func (o SecretBackendConnectionElasticsearchPtrOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -435,7 +435,7 @@ func (o SecretBackendConnectionElasticsearchPtrOutput) Url() pulumi.StringOutput
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username to be used in the connection.
+// The username to authenticate with.
 func (o SecretBackendConnectionElasticsearchPtrOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretBackendConnectionElasticsearch) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -443,7 +443,7 @@ func (o SecretBackendConnectionElasticsearchPtrOutput) Username() pulumi.StringO
 type SecretBackendConnectionHana struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -472,7 +472,7 @@ type SecretBackendConnectionHanaInput interface {
 type SecretBackendConnectionHanaArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -566,7 +566,7 @@ func (o SecretBackendConnectionHanaOutput) ToSecretBackendConnectionHanaPtrOutpu
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionHanaOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionHana) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -610,7 +610,7 @@ func (o SecretBackendConnectionHanaPtrOutput) Elem() SecretBackendConnectionHana
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionHanaPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionHana) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -637,7 +637,7 @@ func (o SecretBackendConnectionHanaPtrOutput) MaxOpenConnections() pulumi.IntPtr
 type SecretBackendConnectionMongodb struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -666,7 +666,7 @@ type SecretBackendConnectionMongodbInput interface {
 type SecretBackendConnectionMongodbArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -760,7 +760,7 @@ func (o SecretBackendConnectionMongodbOutput) ToSecretBackendConnectionMongodbPt
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMongodbOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMongodb) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -804,7 +804,7 @@ func (o SecretBackendConnectionMongodbPtrOutput) Elem() SecretBackendConnectionM
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMongodbPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMongodb) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -831,7 +831,7 @@ func (o SecretBackendConnectionMongodbPtrOutput) MaxOpenConnections() pulumi.Int
 type SecretBackendConnectionMssql struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -860,7 +860,7 @@ type SecretBackendConnectionMssqlInput interface {
 type SecretBackendConnectionMssqlArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -954,7 +954,7 @@ func (o SecretBackendConnectionMssqlOutput) ToSecretBackendConnectionMssqlPtrOut
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMssqlOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMssql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -998,7 +998,7 @@ func (o SecretBackendConnectionMssqlPtrOutput) Elem() SecretBackendConnectionMss
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMssqlPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMssql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1025,7 +1025,7 @@ func (o SecretBackendConnectionMssqlPtrOutput) MaxOpenConnections() pulumi.IntPt
 type SecretBackendConnectionMysql struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1054,7 +1054,7 @@ type SecretBackendConnectionMysqlInput interface {
 type SecretBackendConnectionMysqlArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1148,7 +1148,7 @@ func (o SecretBackendConnectionMysqlOutput) ToSecretBackendConnectionMysqlPtrOut
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1192,7 +1192,7 @@ func (o SecretBackendConnectionMysqlPtrOutput) Elem() SecretBackendConnectionMys
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1219,7 +1219,7 @@ func (o SecretBackendConnectionMysqlPtrOutput) MaxOpenConnections() pulumi.IntPt
 type SecretBackendConnectionMysqlAurora struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1248,7 +1248,7 @@ type SecretBackendConnectionMysqlAuroraInput interface {
 type SecretBackendConnectionMysqlAuroraArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1342,7 +1342,7 @@ func (o SecretBackendConnectionMysqlAuroraOutput) ToSecretBackendConnectionMysql
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlAuroraOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlAurora) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1386,7 +1386,7 @@ func (o SecretBackendConnectionMysqlAuroraPtrOutput) Elem() SecretBackendConnect
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlAuroraPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlAurora) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1413,7 +1413,7 @@ func (o SecretBackendConnectionMysqlAuroraPtrOutput) MaxOpenConnections() pulumi
 type SecretBackendConnectionMysqlLegacy struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1442,7 +1442,7 @@ type SecretBackendConnectionMysqlLegacyInput interface {
 type SecretBackendConnectionMysqlLegacyArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1536,7 +1536,7 @@ func (o SecretBackendConnectionMysqlLegacyOutput) ToSecretBackendConnectionMysql
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlLegacyOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlLegacy) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1580,7 +1580,7 @@ func (o SecretBackendConnectionMysqlLegacyPtrOutput) Elem() SecretBackendConnect
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlLegacyPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlLegacy) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1607,7 +1607,7 @@ func (o SecretBackendConnectionMysqlLegacyPtrOutput) MaxOpenConnections() pulumi
 type SecretBackendConnectionMysqlRds struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1636,7 +1636,7 @@ type SecretBackendConnectionMysqlRdsInput interface {
 type SecretBackendConnectionMysqlRdsArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1730,7 +1730,7 @@ func (o SecretBackendConnectionMysqlRdsOutput) ToSecretBackendConnectionMysqlRds
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlRdsOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlRds) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1774,7 +1774,7 @@ func (o SecretBackendConnectionMysqlRdsPtrOutput) Elem() SecretBackendConnection
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionMysqlRdsPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionMysqlRds) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1801,7 +1801,7 @@ func (o SecretBackendConnectionMysqlRdsPtrOutput) MaxOpenConnections() pulumi.In
 type SecretBackendConnectionOracle struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1830,7 +1830,7 @@ type SecretBackendConnectionOracleInput interface {
 type SecretBackendConnectionOracleArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -1924,7 +1924,7 @@ func (o SecretBackendConnectionOracleOutput) ToSecretBackendConnectionOraclePtrO
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionOracleOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionOracle) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1968,7 +1968,7 @@ func (o SecretBackendConnectionOraclePtrOutput) Elem() SecretBackendConnectionOr
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionOraclePtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionOracle) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -1995,7 +1995,7 @@ func (o SecretBackendConnectionOraclePtrOutput) MaxOpenConnections() pulumi.IntP
 type SecretBackendConnectionPostgresql struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl *string `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -2024,7 +2024,7 @@ type SecretBackendConnectionPostgresqlInput interface {
 type SecretBackendConnectionPostgresqlArgs struct {
 	// A URL containing connection information. See
 	// the [Vault
-	// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+	// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 	// for an example.
 	ConnectionUrl pulumi.StringPtrInput `pulumi:"connectionUrl"`
 	// The maximum number of seconds to keep
@@ -2118,7 +2118,7 @@ func (o SecretBackendConnectionPostgresqlOutput) ToSecretBackendConnectionPostgr
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionPostgresqlOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionPostgresql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)
@@ -2162,7 +2162,7 @@ func (o SecretBackendConnectionPostgresqlPtrOutput) Elem() SecretBackendConnecti
 
 // A URL containing connection information. See
 // the [Vault
-// docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+// docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
 // for an example.
 func (o SecretBackendConnectionPostgresqlPtrOutput) ConnectionUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretBackendConnectionPostgresql) *string { return v.ConnectionUrl }).(pulumi.StringPtrOutput)

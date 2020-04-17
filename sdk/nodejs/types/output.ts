@@ -131,7 +131,7 @@ export namespace database {
          */
         insecureTls?: boolean;
         /**
-         * The password to be used in the connection.
+         * The password to authenticate with.
          */
         password?: string;
         /**
@@ -157,14 +157,14 @@ export namespace database {
          */
         tls?: boolean;
         /**
-         * The username to be used in the connection.
+         * The username to authenticate with.
          */
         username?: string;
     }
 
     export interface SecretBackendConnectionElasticsearch {
         /**
-         * The password to be used in the connection.
+         * The password to authenticate with.
          */
         password: string;
         /**
@@ -173,7 +173,7 @@ export namespace database {
          */
         url: string;
         /**
-         * The username to be used in the connection.
+         * The username to authenticate with.
          */
         username: string;
     }
@@ -182,7 +182,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -207,7 +207,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -232,7 +232,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -257,7 +257,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -282,7 +282,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -307,7 +307,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -332,7 +332,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -357,7 +357,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -382,7 +382,7 @@ export namespace database {
         /**
          * A URL containing connection information. See
          * the [Vault
-         * docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+         * docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
          * for an example.
          */
         connectionUrl?: string;
@@ -563,7 +563,7 @@ export namespace okta {
          */
         groupName: string;
         /**
-         * List of Vault policies to associate with this user
+         * Vault policies to associate with this group
          */
         policies: string[];
     }
@@ -574,7 +574,7 @@ export namespace okta {
          */
         groups: string[];
         /**
-         * List of Vault policies to associate with this user
+         * Vault policies to associate with this group
          */
         policies?: string[];
         /**

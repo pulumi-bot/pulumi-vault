@@ -28,7 +28,7 @@ class SecretBackendConnection(pulumi.CustomResource):
       * `hosts` (`list`) - The hosts to connect to.
       * `insecure_tls` (`bool`) - Whether to skip verification of the server
         certificate when using TLS.
-      * `password` (`str`) - The password to be used in the connection.
+      * `password` (`str`) - The password to authenticate with.
       * `pem_bundle` (`str`) - Concatenated PEM blocks configuring the certificate
         chain.
       * `pemJson` (`str`) - A JSON structure configuring the certificate chain.
@@ -36,7 +36,7 @@ class SecretBackendConnection(pulumi.CustomResource):
         part of the host.
       * `protocolVersion` (`float`) - The CQL protocol version to use.
       * `tls` (`bool`) - Whether to use TLS when connecting to Cassandra.
-      * `username` (`str`) - The username to be used in the connection.
+      * `username` (`str`) - The username to authenticate with.
     """
     data: pulumi.Output[dict]
     """
@@ -46,10 +46,10 @@ class SecretBackendConnection(pulumi.CustomResource):
     """
     A nested block containing configuration options for Elasticsearch connections.
 
-      * `password` (`str`) - The password to be used in the connection.
+      * `password` (`str`) - The password to authenticate with.
       * `url` (`str`) - The URL for Elasticsearch's API. https requires certificate
         by trusted CA if used.
-      * `username` (`str`) - The username to be used in the connection.
+      * `username` (`str`) - The username to authenticate with.
     """
     hana: pulumi.Output[dict]
     """
@@ -57,7 +57,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -72,7 +72,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -87,7 +87,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -102,7 +102,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -117,7 +117,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -132,7 +132,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -147,7 +147,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -166,7 +166,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -181,7 +181,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
       * `connectionUrl` (`str`) - A URL containing connection information. See
         the [Vault
-        docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+        docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
         for an example.
       * `maxConnectionLifetime` (`float`) - The maximum number of seconds to keep
         a connection alive for.
@@ -231,7 +231,7 @@ class SecretBackendConnection(pulumi.CustomResource):
           * `hosts` (`pulumi.Input[list]`) - The hosts to connect to.
           * `insecure_tls` (`pulumi.Input[bool]`) - Whether to skip verification of the server
             certificate when using TLS.
-          * `password` (`pulumi.Input[str]`) - The password to be used in the connection.
+          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
           * `pem_bundle` (`pulumi.Input[str]`) - Concatenated PEM blocks configuring the certificate
             chain.
           * `pemJson` (`pulumi.Input[str]`) - A JSON structure configuring the certificate chain.
@@ -239,20 +239,20 @@ class SecretBackendConnection(pulumi.CustomResource):
             part of the host.
           * `protocolVersion` (`pulumi.Input[float]`) - The CQL protocol version to use.
           * `tls` (`pulumi.Input[bool]`) - Whether to use TLS when connecting to Cassandra.
-          * `username` (`pulumi.Input[str]`) - The username to be used in the connection.
+          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
 
         The **elasticsearch** object supports the following:
 
-          * `password` (`pulumi.Input[str]`) - The password to be used in the connection.
+          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
           * `url` (`pulumi.Input[str]`) - The URL for Elasticsearch's API. https requires certificate
             by trusted CA if used.
-          * `username` (`pulumi.Input[str]`) - The username to be used in the connection.
+          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
 
         The **hana** object supports the following:
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -265,7 +265,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -278,7 +278,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -291,7 +291,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -304,7 +304,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -317,7 +317,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -330,7 +330,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -343,7 +343,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -356,7 +356,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -443,7 +443,7 @@ class SecretBackendConnection(pulumi.CustomResource):
           * `hosts` (`pulumi.Input[list]`) - The hosts to connect to.
           * `insecure_tls` (`pulumi.Input[bool]`) - Whether to skip verification of the server
             certificate when using TLS.
-          * `password` (`pulumi.Input[str]`) - The password to be used in the connection.
+          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
           * `pem_bundle` (`pulumi.Input[str]`) - Concatenated PEM blocks configuring the certificate
             chain.
           * `pemJson` (`pulumi.Input[str]`) - A JSON structure configuring the certificate chain.
@@ -451,20 +451,20 @@ class SecretBackendConnection(pulumi.CustomResource):
             part of the host.
           * `protocolVersion` (`pulumi.Input[float]`) - The CQL protocol version to use.
           * `tls` (`pulumi.Input[bool]`) - Whether to use TLS when connecting to Cassandra.
-          * `username` (`pulumi.Input[str]`) - The username to be used in the connection.
+          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
 
         The **elasticsearch** object supports the following:
 
-          * `password` (`pulumi.Input[str]`) - The password to be used in the connection.
+          * `password` (`pulumi.Input[str]`) - The password to authenticate with.
           * `url` (`pulumi.Input[str]`) - The URL for Elasticsearch's API. https requires certificate
             by trusted CA if used.
-          * `username` (`pulumi.Input[str]`) - The username to be used in the connection.
+          * `username` (`pulumi.Input[str]`) - The username to authenticate with.
 
         The **hana** object supports the following:
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -477,7 +477,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -490,7 +490,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -503,7 +503,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -516,7 +516,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -529,7 +529,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -542,7 +542,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -555,7 +555,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.
@@ -568,7 +568,7 @@ class SecretBackendConnection(pulumi.CustomResource):
 
           * `connectionUrl` (`pulumi.Input[str]`) - A URL containing connection information. See
             the [Vault
-            docs](https://www.vaultproject.io/api/secret/databases/oracle.html#sample-payload)
+            docs](https://www.vaultproject.io/api/secret/databases/mongodb.html#sample-payload)
             for an example.
           * `maxConnectionLifetime` (`pulumi.Input[float]`) - The maximum number of seconds to keep
             a connection alive for.

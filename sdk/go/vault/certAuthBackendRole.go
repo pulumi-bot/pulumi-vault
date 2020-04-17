@@ -65,9 +65,8 @@ type CertAuthBackendRole struct {
 	// If set, the default policy will not be set on
 	// generated tokens; otherwise it will be added to the policies set in token_policies.
 	TokenNoDefaultPolicy pulumi.BoolPtrOutput `pulumi:"tokenNoDefaultPolicy"`
-	// The
-	// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-	// if any, in number of seconds to set on the token.
+	// The number of times issued tokens can be used.
+	// A value of 0 means unlimited uses.
 	TokenNumUses pulumi.IntPtrOutput `pulumi:"tokenNumUses"`
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
@@ -173,9 +172,8 @@ type certAuthBackendRoleState struct {
 	// If set, the default policy will not be set on
 	// generated tokens; otherwise it will be added to the policies set in token_policies.
 	TokenNoDefaultPolicy *bool `pulumi:"tokenNoDefaultPolicy"`
-	// The
-	// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-	// if any, in number of seconds to set on the token.
+	// The number of times issued tokens can be used.
+	// A value of 0 means unlimited uses.
 	TokenNumUses *int `pulumi:"tokenNumUses"`
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
@@ -251,9 +249,8 @@ type CertAuthBackendRoleState struct {
 	// If set, the default policy will not be set on
 	// generated tokens; otherwise it will be added to the policies set in token_policies.
 	TokenNoDefaultPolicy pulumi.BoolPtrInput
-	// The
-	// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-	// if any, in number of seconds to set on the token.
+	// The number of times issued tokens can be used.
+	// A value of 0 means unlimited uses.
 	TokenNumUses pulumi.IntPtrInput
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
@@ -333,9 +330,8 @@ type certAuthBackendRoleArgs struct {
 	// If set, the default policy will not be set on
 	// generated tokens; otherwise it will be added to the policies set in token_policies.
 	TokenNoDefaultPolicy *bool `pulumi:"tokenNoDefaultPolicy"`
-	// The
-	// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-	// if any, in number of seconds to set on the token.
+	// The number of times issued tokens can be used.
+	// A value of 0 means unlimited uses.
 	TokenNumUses *int `pulumi:"tokenNumUses"`
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the
@@ -412,9 +408,8 @@ type CertAuthBackendRoleArgs struct {
 	// If set, the default policy will not be set on
 	// generated tokens; otherwise it will be added to the policies set in token_policies.
 	TokenNoDefaultPolicy pulumi.BoolPtrInput
-	// The
-	// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-	// if any, in number of seconds to set on the token.
+	// The number of times issued tokens can be used.
+	// A value of 0 means unlimited uses.
 	TokenNumUses pulumi.IntPtrInput
 	// If set, indicates that the
 	// token generated using this role should never expire. The token should be renewed within the

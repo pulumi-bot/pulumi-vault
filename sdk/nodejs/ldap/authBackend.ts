@@ -134,9 +134,8 @@ export class AuthBackend extends pulumi.CustomResource {
      */
     public readonly tokenNoDefaultPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The number of times issued tokens can be used.
+     * A value of 0 means unlimited uses.
      */
     public readonly tokenNumUses!: pulumi.Output<number | undefined>;
     /**
@@ -354,9 +353,8 @@ export interface AuthBackendState {
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The number of times issued tokens can be used.
+     * A value of 0 means unlimited uses.
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**
@@ -484,9 +482,8 @@ export interface AuthBackendArgs {
      */
     readonly tokenNoDefaultPolicy?: pulumi.Input<boolean>;
     /**
-     * The
-     * [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-     * if any, in number of seconds to set on the token.
+     * The number of times issued tokens can be used.
+     * A value of 0 means unlimited uses.
      */
     readonly tokenNumUses?: pulumi.Input<number>;
     /**

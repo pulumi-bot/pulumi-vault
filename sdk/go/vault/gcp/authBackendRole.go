@@ -23,7 +23,7 @@ type AuthBackendRole struct {
 	BoundInstanceGroups pulumi.StringArrayOutput `pulumi:"boundInstanceGroups"`
 	// A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
 	BoundLabels pulumi.StringArrayOutput `pulumi:"boundLabels"`
-	// GCP Projects that the role exists within
+	// An array of GCP project IDs. Only entities belonging to this project can authenticate under the role.
 	BoundProjects pulumi.StringArrayOutput `pulumi:"boundProjects"`
 	// The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
 	BoundRegions pulumi.StringArrayOutput `pulumi:"boundRegions"`
@@ -132,7 +132,7 @@ type authBackendRoleState struct {
 	BoundInstanceGroups []string `pulumi:"boundInstanceGroups"`
 	// A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
 	BoundLabels []string `pulumi:"boundLabels"`
-	// GCP Projects that the role exists within
+	// An array of GCP project IDs. Only entities belonging to this project can authenticate under the role.
 	BoundProjects []string `pulumi:"boundProjects"`
 	// The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
 	BoundRegions []string `pulumi:"boundRegions"`
@@ -208,7 +208,7 @@ type AuthBackendRoleState struct {
 	BoundInstanceGroups pulumi.StringArrayInput
 	// A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
 	BoundLabels pulumi.StringArrayInput
-	// GCP Projects that the role exists within
+	// An array of GCP project IDs. Only entities belonging to this project can authenticate under the role.
 	BoundProjects pulumi.StringArrayInput
 	// The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
 	BoundRegions pulumi.StringArrayInput
@@ -288,7 +288,7 @@ type authBackendRoleArgs struct {
 	BoundInstanceGroups []string `pulumi:"boundInstanceGroups"`
 	// A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
 	BoundLabels []string `pulumi:"boundLabels"`
-	// GCP Projects that the role exists within
+	// An array of GCP project IDs. Only entities belonging to this project can authenticate under the role.
 	BoundProjects []string `pulumi:"boundProjects"`
 	// The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
 	BoundRegions []string `pulumi:"boundRegions"`
@@ -365,7 +365,7 @@ type AuthBackendRoleArgs struct {
 	BoundInstanceGroups pulumi.StringArrayInput
 	// A comma-separated list of GCP labels formatted as `"key:value"` strings that must be set on authorized GCE instances. Because GCP labels are not currently ACL'd, we recommend that this be used in conjunction with other restrictions.
 	BoundLabels pulumi.StringArrayInput
-	// GCP Projects that the role exists within
+	// An array of GCP project IDs. Only entities belonging to this project can authenticate under the role.
 	BoundProjects pulumi.StringArrayInput
 	// The list of regions that a GCE instance must belong to in order to be authenticated. If boundInstanceGroups is provided, it is assumed to be a regional group and the group must belong to this region. If boundZones are provided, this attribute is ignored.
 	BoundRegions pulumi.StringArrayInput

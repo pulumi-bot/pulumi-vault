@@ -142,9 +142,8 @@ namespace Pulumi.Vault
         public Output<bool?> TokenNoDefaultPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The
-        /// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-        /// if any, in number of seconds to set on the token.
+        /// The number of times issued tokens can be used.
+        /// A value of 0 means unlimited uses.
         /// </summary>
         [Output("tokenNumUses")]
         public Output<int?> TokenNumUses { get; private set; } = null!;
@@ -425,9 +424,8 @@ namespace Pulumi.Vault
         public Input<bool>? TokenNoDefaultPolicy { get; set; }
 
         /// <summary>
-        /// The
-        /// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-        /// if any, in number of seconds to set on the token.
+        /// The number of times issued tokens can be used.
+        /// A value of 0 means unlimited uses.
         /// </summary>
         [Input("tokenNumUses")]
         public Input<int>? TokenNumUses { get; set; }
@@ -675,9 +673,8 @@ namespace Pulumi.Vault
         public Input<bool>? TokenNoDefaultPolicy { get; set; }
 
         /// <summary>
-        /// The
-        /// [period](https://www.vaultproject.io/docs/concepts/tokens.html#token-time-to-live-periodic-tokens-and-explicit-max-ttls),
-        /// if any, in number of seconds to set on the token.
+        /// The number of times issued tokens can be used.
+        /// A value of 0 means unlimited uses.
         /// </summary>
         [Input("tokenNumUses")]
         public Input<int>? TokenNumUses { get; set; }
