@@ -44,7 +44,7 @@ class AuthBackendRole(pulumi.CustomResource):
     """
     renewable: pulumi.Output[bool]
     """
-    Wether to disable the ability of the token to be renewed past its initial TTL.
+    Whether to disable the ability of the token to be renewed past its initial TTL.
     """
     role_name: pulumi.Output[str]
     """
@@ -124,7 +124,7 @@ class AuthBackendRole(pulumi.CustomResource):
                token generated using this role should never expire. The token should be renewed within the
                duration specified by this value. At each renewal, the token's TTL will be set to the
                value of this field. Specified in seconds.
-        :param pulumi.Input[bool] renewable: Wether to disable the ability of the token to be renewed past its initial TTL.
+        :param pulumi.Input[bool] renewable: Whether to disable the ability of the token to be renewed past its initial TTL.
         :param pulumi.Input[str] role_name: The name of the role.
         :param pulumi.Input[list] token_bound_cidrs: List of CIDR blocks; if set, specifies blocks of IP
                addresses which can authenticate successfully, and ties the resulting token to these blocks
@@ -216,7 +216,7 @@ class AuthBackendRole(pulumi.CustomResource):
                token generated using this role should never expire. The token should be renewed within the
                duration specified by this value. At each renewal, the token's TTL will be set to the
                value of this field. Specified in seconds.
-        :param pulumi.Input[bool] renewable: Wether to disable the ability of the token to be renewed past its initial TTL.
+        :param pulumi.Input[bool] renewable: Whether to disable the ability of the token to be renewed past its initial TTL.
         :param pulumi.Input[str] role_name: The name of the role.
         :param pulumi.Input[list] token_bound_cidrs: List of CIDR blocks; if set, specifies blocks of IP
                addresses which can authenticate successfully, and ties the resulting token to these blocks

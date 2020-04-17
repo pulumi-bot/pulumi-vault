@@ -34,7 +34,7 @@ type AuthBackendRole struct {
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// Wether to disable the ability of the token to be renewed past its initial TTL.
+	// Whether to disable the ability of the token to be renewed past its initial TTL.
 	Renewable pulumi.BoolPtrOutput `pulumi:"renewable"`
 	// The name of the role.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
@@ -124,7 +124,7 @@ type authBackendRoleState struct {
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
 	Period *string `pulumi:"period"`
-	// Wether to disable the ability of the token to be renewed past its initial TTL.
+	// Whether to disable the ability of the token to be renewed past its initial TTL.
 	Renewable *bool `pulumi:"renewable"`
 	// The name of the role.
 	RoleName *string `pulumi:"roleName"`
@@ -184,7 +184,7 @@ type AuthBackendRoleState struct {
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
 	Period pulumi.StringPtrInput
-	// Wether to disable the ability of the token to be renewed past its initial TTL.
+	// Whether to disable the ability of the token to be renewed past its initial TTL.
 	Renewable pulumi.BoolPtrInput
 	// The name of the role.
 	RoleName pulumi.StringPtrInput
@@ -248,7 +248,7 @@ type authBackendRoleArgs struct {
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
 	Period *string `pulumi:"period"`
-	// Wether to disable the ability of the token to be renewed past its initial TTL.
+	// Whether to disable the ability of the token to be renewed past its initial TTL.
 	Renewable *bool `pulumi:"renewable"`
 	// The name of the role.
 	RoleName string `pulumi:"roleName"`
@@ -309,7 +309,7 @@ type AuthBackendRoleArgs struct {
 	// duration specified by this value. At each renewal, the token's TTL will be set to the
 	// value of this field. Specified in seconds.
 	Period pulumi.StringPtrInput
-	// Wether to disable the ability of the token to be renewed past its initial TTL.
+	// Whether to disable the ability of the token to be renewed past its initial TTL.
 	Renewable pulumi.BoolPtrInput
 	// The name of the role.
 	RoleName pulumi.StringInput

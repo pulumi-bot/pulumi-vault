@@ -63,7 +63,7 @@ namespace Pulumi.Vault.TokenAuth
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Wether to disable the ability of the token to be renewed past its initial TTL.
+        /// Whether to disable the ability of the token to be renewed past its initial TTL.
         /// </summary>
         [Output("renewable")]
         public Output<bool?> Renewable { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.Vault.TokenAuth
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// Wether to disable the ability of the token to be renewed past its initial TTL.
+        /// Whether to disable the ability of the token to be renewed past its initial TTL.
         /// </summary>
         [Input("renewable")]
         public Input<bool>? Renewable { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Vault.TokenAuth
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// Wether to disable the ability of the token to be renewed past its initial TTL.
+        /// Whether to disable the ability of the token to be renewed past its initial TTL.
         /// </summary>
         [Input("renewable")]
         public Input<bool>? Renewable { get; set; }
