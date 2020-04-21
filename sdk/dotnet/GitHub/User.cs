@@ -329,7 +329,7 @@ namespace Pulumi.Vault.GitHub
         /// GitHub user name.
         /// </summary>
         [Input("user")]
-        public Input<string>? UserName { get; set; }
+        public Input<string>? User { get; set; }
 
         public UserState()
         {

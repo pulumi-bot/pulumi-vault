@@ -665,9 +665,11 @@ github.com/pulumi/pulumi-terraform-bridge/v2 v2.0.0 h1:TkdHeUcgMzETceij2Sri7isVS
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.0.0/go.mod h1:CShKXRvffj8fOwzDfBM8qxEpqfMpLLbEAb6QCtcGeUw=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0 h1:5rBPG2Wnoqgbt4Fz1MbahtE4gLxaPdwI9sr1zaV6lUs=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
+github.com/pulumi/pulumi/pkg/v2 v2.0.1-0.20200421203338-6afefe050ff1 h1:sTsI+MBya/YLuqJVFGbKGecCTXH2tto6of43zX4lxLs=
 github.com/pulumi/pulumi/pkg/v2 v2.0.1-0.20200421203338-6afefe050ff1/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0 h1:3VMXbEo3bqeaU+YDt8ufVBLD0WhLYE3tG3t/nIZ3Iac=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
+github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200421203338-6afefe050ff1 h1:fSRiizU7KaJO0TJFbmvUfIIUS7Yr/Q7iI0QJiyG+1EA=
 github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200421203338-6afefe050ff1/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
 github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be h1:ta7tUOvsPHVHGom5hKW5VXNc2xZIkfCKP8iaqOyYtUQ=
 github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be/go.mod h1:MIDFMn7db1kT65GmV94GzpX9Qdi7N/pQlwb+AN8wh+Q=
