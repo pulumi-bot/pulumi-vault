@@ -261,7 +261,7 @@ namespace Pulumi.Vault.GitHub
         /// GitHub team name in "slugified" format.
         /// </summary>
         [Input("team")]
-        public Input<string>? TeamCity { get; set; }
+        public Input<string>? Team { get; set; }
 
         [Input("tokenBoundCidrs")]
         private InputList<string>? _tokenBoundCidrs;

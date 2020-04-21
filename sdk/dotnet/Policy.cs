@@ -98,7 +98,7 @@ namespace Pulumi.Vault
         /// String containing a Vault policy
         /// </summary>
         [Input("policy")]
-        public Input<string>? PolicyContents { get; set; }
+        public Input<string>? Policy { get; set; }
 
         public PolicyState()
         {
